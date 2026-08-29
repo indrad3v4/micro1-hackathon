@@ -76,15 +76,25 @@ def _brief_from(**kw) -> Brief:
     )
 
 
-def _verdicts_to_json(verdicts) -> list[dict]:
+def _verdicts_to_json(verdicts, directions=None) -> list[dict]:
+    # map direction_id (frame:name) -> Direction to attach the content a human
+    # must see before signing/rejecting ("sign only what you saw")
+    dir_map = {}
+    if directions:
+        for d in directions:
+            dir_map[f"{d.frame}:{d.name}"] = d
     out = []
     for v in verdicts:
+        d = dir_map.get(v.direction_id)
         out.append({
             "direction_id": v.direction_id,
             "total": v.total,
             "approved": v.approved,
             "summary": v.summary,
             "scores": {s.dimension: s.score for s in v.scores},
+            "concept": d.concept if d else "",
+            "rationale": d.rationale if d else "",
+            "risks": list(d.risks) if d else [],
         })
     return out
 
@@ -129,7 +139,7 @@ def court_run_brief(title: str, description: str, audience: str = "",
             "trace_path": str(trace_path),
             "directions_count": len(directions),
             "approved_count": len(approved),
-            "verdicts": _verdicts_to_json(verdicts),
+            "verdicts": _verdicts_to_json(verdicts, directions),
             "note": ("Judge is " + ("LLM-backed" if LLMClient().available
                                     else "heuristic fallback (no LLM key)")),
         }
@@ -181,7 +191,7 @@ def court_veto(run_id: str, direction_id: str, reason: str) -> dict:
             "reworked_direction": reworked.direction_id,
             "reason": reason,
             "reworked_verdict": reworked.total,
-            "all_verdicts": _verdicts_to_json(verdicts),
+            "all_verdicts": _verdicts_to_json(verdicts, directions),
             "trace_path": str(trace_path),
         }
     finally:
