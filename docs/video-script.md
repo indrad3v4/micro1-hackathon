@@ -117,7 +117,8 @@ Recording setup: 1920×1080, dark theme, font ≥20pt, cursor enlarged. OBS; one
 
 **Fact ledger (source → scene):**
 - Drift-catch 0/10 → 10/10; probe 79.5→18.6; 33→7.5 min (modelled); $0.10369; 10 vetoes/10 replacements — `final_report.csv` + Changelog §1.
-- Veto rework example (`Poet-to-Poet Signal` → `Pen-Poem Exchange`, 38.5 → 84.8) — live MCP demo run in Hermes (verified 2026-08-29, creative-court traces).
+- Veto rework example (LIVE in Hermes, verified 2026-08-29, `creative-court/traces/run_20260829_195251.jsonl`): `natural:Poetry from the Wild` (78.2) vetoed for budget-constraint breach (its own risks admit "may exceed the 50 EUR budget") → reworked to `natural:Natural angle` 29.0 (rejected) → `artistic:Artistic angle` 71.5 survived → signed. 42 trace events, veto=yes, human_checkpoint=yes.
+- Alternative earlier demo (same day, creative-court traces): `social:Poet-to-Poet Signal` → `social:Pen-Poem Exchange` 38.5 → 84.8 — use whichever live run you record; do NOT mix numbers.
 - 81.0 "Historical angle" top score on contradictory brief + B12 veto — `IMPROVEMENT_CHANGELOG.md` (comparison, conclusion 2–3).
 - Judge rubric dimensions (relevance/novelty/feasibility/risk/quality) + `goal_fit` — README §What this is.
 - TRACK 1 rubric weights (Problem 15 / Engineering 30 / E2E 20 / Measured 15 / Repro 15 / Hot take 5) — for editor's self-check, not shown in video.
