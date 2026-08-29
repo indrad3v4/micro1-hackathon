@@ -13,6 +13,17 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
+from app.models import (
+    DemoRequest,
+    VerdictResponse,
+    VetoRequest,
+    HealthResponse,
+    RunInfo,
+    ListRunsResponse,
+    TraceExportResponse,
+    PipelineResult,
+)
+
 # Make sure creative_court package is importable — works both locally and in Docker
 _LOCAL_ROOT = Path("/root/.hermes/micro1-hackathon/creative-court")
 _DOCKER_ROOT = Path("/app")
@@ -38,71 +49,12 @@ from creative_court.agents.creator import CreatorAgent
 from creative_court.agents.judge import JudgeAgent
 
 # ---------------------------------------------------------------------------
-# Pydantic models (request / response schemas)
-# ---------------------------------------------------------------------------
-
-class DemoRequest(BaseModel):
-    """Run the full pipeline with a brief (inline or from file)."""
-    title: str | None = Field(default=None, description="Brief title")
-    description: str | None = Field(default=None, description="Brief description")
-    audience: str | None = Field(default=None, description="Target audience")
-    goal: str | None = Field(default=None, description="Goal of the project")
-    constraints: list[str] = Field(default_factory=list, description="Constraints")
-    brief_file: str | None = Field(default=None, description="Path to a demo_briefs JSON file")
-
-
-class VerdictResponse(BaseModel):
-    direction_id: str
-    total: float
-    scores: list[dict[str, Any]]
-    summary: str
-    approved: bool
-    vetoed: bool = False
-    veto_reason: str = ""
-
-
-class VetoRequest(BaseModel):
-    direction_id: str = Field(description="Direction ID in format 'frame:name'")
-    reason: str = Field(description="Reason for veto")
-
-
-class HealthResponse(BaseModel):
-    status: str
-    version: str = "0.1.0"
-    llm_available: bool = False
-
-
-class RunInfo(BaseModel):
-    identifier: str
-    trace_path: str
-    total_events: int
-    event_types: dict[str, int]
-
-
-class ListRunsResponse(BaseModel):
-    runs: list[RunInfo]
-
-
-class TraceExportResponse(BaseModel):
-    path: str | None = None
-    lines: int = 0
-
-
-class PipelineResult(BaseModel):
-    run_identifier: str
-    brief: dict[str, Any]
-    directions_count: int
-    verdicts: list[VerdictResponse]
-    trace_path: str
-    events: dict[str, int]
-
-
-# ---------------------------------------------------------------------------
-# Helpers
+# State helpers
 # ---------------------------------------------------------------------------
 
 TRACE_DIR = _ROOT / "traces"
 BRIEFS_DIR = _ROOT / "demo_briefs"
+
 
 def _check_llm() -> bool:
     """Return True if an LLM key is configured."""
@@ -209,10 +161,6 @@ async def run_demo(req: DemoRequest):
     brief = _load_brief(req)
     run_id = _make_run_identifier()
     trace_path = TRACE_DIR / f"{run_id}.jsonl"
-
-    # Force heuristic mode unless LLM key present
-    os.environ.pop("COMETAPI_KEY", None) if os.environ.get("COMETAPI_KEY") else None
-    os.environ.pop("LLM_API_KEY", None) if os.environ.get("LLM_API_KEY") else None
 
     with TraceRecorder(str(trace_path), meta={"brief": brief.title, "run": run_id}) as rec:
         creator = CreatorAgent(rec)
