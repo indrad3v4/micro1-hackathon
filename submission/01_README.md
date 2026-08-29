@@ -1,10 +1,8 @@
 # Creative Court 2.0
 
-> **I signed what I was shown — not what I saw.**
+> **A judgment layer between your agent and your signature — as an MCP server.**
 >
-> The more you delegate to an agent, the less of *you* is left in the work.
-> Creative Court is the judgment layer that brings your signature back —
-> signable, vetoable, provable.
+> Delegate the generation. Keep the verdict. When you sign, you sign what you saw.
 
 **Submission:** micro1 Agentic Workflows Hackathon — Frontier Engineering Challenge 2026 (HackerEarth)
 **Repo:** `github.com/indrad3v4/micro1-hackathon` · branch `master` · English only (code, docs, UI)
@@ -12,19 +10,15 @@
 
 ---
 
-## The tension
+## The problem it solves
 
-Most agentic tools sell **speed**: delegate more, ship faster. The hidden price is never shown.
+Most agentic tools sell **speed**: delegate more, ship faster. The hidden price is never shown: the more you delegate, the less of *you* is left in the work — yet you sign for all of it. Publicly you say "the agent handles it"; privately: "where am I in this?"
 
-- **Driver:** you delegate — the agent produces more, faster.
-- **Barrier:** you delegate — less of *you* remains in the work, yet you sign for all of it.
-- **Tension:** *both* grow from the same action. Scale up delegation, and you scale up blindness at the same rate.
+**The drama:** *"My agent already decided. I signed what I was shown, not what I saw."*
 
-> **The insight:** the more a human delegates, the less of themselves is left in the work — although they are the one responsible for all of it. A person does not fear the agent; they lose *themselves* in their own work. Publicly they say "the agent handles it"; privately: "where am I in this?"
+Creative Court solves this with one clean split: **delegate the generation, keep the verdict.** Your agent stays fast (the driver). Blind signatures disappear (the barrier). You can ask "why this?" without losing face — the judge asks it on every direction, by default. Your signature means something again.
 
-**The drama it resolves:** *"My agent already decided. I signed what I was shown, not what I saw."*
-
-The Court separates one action into two: **delegate the generation, keep the verdict.** Speed stays (driver), blind signatures disappear (barrier). You can ask "why this?" without losing face — the judge asks it on every direction, by default. Your signature means something again.
+**The form of the relationship:** a *court* — Creator, Judge, and you the signatory — expressed as an **MCP server**, so any AI IDE you already use becomes the court's chamber.
 
 ---
 
