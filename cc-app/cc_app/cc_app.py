@@ -1,4 +1,4 @@
-"""Creative Court 2.0 - Black Box Unveiled Dashboard.
+"""Creative Court 2.0 - Token Result Gate Dashboard.
 
 A Reflex-based interactive frontend for the Creative Court pipeline.
 Shows brief input (left panel), generated directions with scores in the Arena
@@ -118,6 +118,16 @@ class CCState(rx.State):
     verdicts: List[Dict[str, Any]] = []
     all_approved: bool = False
 
+    # -- Sign-off moment (human signs decisions after the run completes) --
+    run_complete: bool = False
+    signed: bool = False
+    # Pre-allocated slots for the top-3 approved directions (plain strings)
+    _signoff_lines: List[str] = ["", "", ""]
+
+    # -- Token meter (honest counters, no fabricated token numbers) --
+    judge_calls: int = 0
+    creator_calls: int = 0
+
     # -- Orchestration flags --
     is_running: bool = False
     max_retries: int = 3
@@ -201,6 +211,11 @@ class CCState(rx.State):
         self.is_running = True
         self.retry_count = 0
         self.all_approved = False
+        self.run_complete = False
+        self.signed = False
+        self.judge_calls = 0
+        self.creator_calls = 0
+        self._signoff_lines = ["", "", ""]
         # Clear all direction fields
         for i in range(6):
             for attr in ["_frame", "_name", "_concept", "_rationale",
@@ -234,6 +249,7 @@ class CCState(rx.State):
                                  "type": "agent_start",
                                  "instruction": f"Generate for: {self.title}"})
                 directions = creator.generate(brief)
+                self.creator_calls += 1
                 self.num_directions = len(directions)
                 for i, d in enumerate(directions):
                     self._set_direction(i, d, None)
@@ -245,6 +261,7 @@ class CCState(rx.State):
                                  "type": "agent_start",
                                  "instruction": f"Judge {len(directions)} directions"})
                 verdicts = judge.judge(brief, directions)
+                self.judge_calls += 1
                 approved_count = 0
                 for i, (d, v) in enumerate(zip(directions, verdicts)):
                     self._set_direction(i, d, v)
@@ -283,7 +300,45 @@ class CCState(rx.State):
         finally:
             recorder.close()
             self.is_running = False
+            self.run_complete = True
+            self._compute_signoff_lines()
 
+        return rx.stop_propagation
+
+    # --- Sign-off handler ---
+
+    def _compute_signoff_lines(self) -> None:
+        """Build plain-text lines for the top-3 approved directions."""
+        approved = []
+        for i in range(self.num_directions):
+            if getattr(self, f"direction_{i}_approved"):
+                approved.append((
+                    getattr(self, f"direction_{i}_score"),
+                    getattr(self, f"direction_{i}_name"),
+                    getattr(self, f"direction_{i}_frame"),
+                ))
+        approved.sort(key=lambda t: t[0], reverse=True)
+        lines = ["", "", ""]
+        for slot, (score, name, frame) in enumerate(approved[:3]):
+            lines[slot] = f"{name} ({frame}) — score {score:.0f}/100"
+        self._signoff_lines = lines
+
+    def handle_signoff(self) -> rx.event.EventSpec:
+        """Record the human sign-off in the trajectory and flip the flag."""
+        if self.signed or not self.run_complete:
+            return rx.stop_propagation
+        try:
+            rec = TraceRecorder(self.trace_path or os.path.join(
+                _CC_TRACES, "traces", f"signoff_{datetime.now().strftime('%Y%m%d_%H%M%S')}.jsonl"))
+            rec.human_checkpoint("human", "human signed decisions")
+            rec.close()
+        except Exception as exc:
+            self._log_event({"ts": self._now(), "agent": "error",
+                             "type": "error", "action": f"sign-off trace: {exc}"})
+        self.signed = True
+        self._log_event({"ts": self._now(), "agent": "human",
+                         "type": "human_checkpoint",
+                         "action": "human signed decisions"})
         return rx.stop_propagation
 
     # --- Veto handler ---
@@ -557,6 +612,88 @@ def arena_panel() -> rx.Component:
 
 
 # ---------------------------------------------------------------------------
+# SIGN-OFF MOMENT - Human signs the approved decisions
+# ---------------------------------------------------------------------------
+
+
+def signoff_section() -> rx.Component:
+    """Sign-off section shown after the run completes (all_approved or max retries)."""
+    def signoff_row(i: int) -> rx.Component:
+        return rx.flex(
+            rx.badge(f"#{i + 1}", radius="full", size="1",
+                     color_scheme="green", variant="soft"),
+            rx.text(CCState._signoff_lines[i], size="2", color=DARK_TEXT,
+                    font_family="monospace"),
+            align_items="center", gap="0.5rem", width="100%")
+    return rx.cond(
+        CCState.run_complete,
+        rx.card(
+            rx.vstack(
+                rx.flex(
+                    rx.heading("Sign-off", size="4", color=ACCENT_GOLD,
+                               font_weight="bold"),
+                    rx.badge("Human Decision Point", radius="full", size="1",
+                             color_scheme="gold", variant="soft"),
+                    align_items="center", gap="0.75rem", width="100%"),
+                rx.text("Approved directions, ranked by judge score:",
+                        size="2", color=DARK_MUTED),
+                rx.vstack(signoff_row(0), signoff_row(1), signoff_row(2),
+                          spacing="2", width="100%"),
+                rx.cond(
+                    CCState.signed,
+                    rx.text("Signed by human — recorded in trajectory",
+                            size="3", color=GREEN_APPROVED, font_weight="bold"),
+                    rx.button("Sign these decisions", width="100%",
+                              variant="solid", color_scheme="gold",
+                              bg=ACCENT_GOLD, color="#0a0a0f",
+                              font_weight="bold", size="3",
+                              on_click=CCState.handle_signoff)),
+                spacing="3", width="100%"),
+            bg=DARK_ELEVATED, border=f"2px solid {ACCENT_GOLD}",
+            border_radius="12px", padding="1rem", width="100%"),
+    )
+
+
+# ---------------------------------------------------------------------------
+# TOKEN METER - Honest per-run economics
+# ---------------------------------------------------------------------------
+
+
+def token_meter() -> rx.Component:
+    """Token meter: verification vs blind generation (honest counters)."""
+    return rx.card(
+        rx.vstack(
+            rx.flex(
+                rx.heading("Token Meter", size="4", color=DARK_TEXT),
+                rx.badge("per run", radius="full", size="1",
+                         color_scheme="gray", variant="soft"),
+                align_items="center", gap="0.75rem"),
+            rx.flex(
+                rx.vstack(
+                    rx.text("Tokens on goal (verification)", size="1",
+                            color=GREEN_APPROVED, font_weight="semibold"),
+                    rx.heading(CCState.judge_calls, size="6",
+                               color=GREEN_APPROVED),
+                    rx.text("judge (verification) calls", size="1",
+                            color=DARK_MUTED),
+                    align_items="center", width="100%"),
+                rx.vstack(
+                    rx.text("Tokens burned (blind generation)", size="1",
+                            color=RED_REJECTED, font_weight="semibold"),
+                    rx.heading(CCState.creator_calls, size="6",
+                               color=RED_REJECTED),
+                    rx.text("creator (generation) calls", size="1",
+                            color=DARK_MUTED),
+                    align_items="center", width="100%"),
+                justify="between", width="100%", gap="1rem"),
+            rx.text("Every judge call is a verification token — it protects the goal",
+                    size="1", color=DARK_MUTED, font_style="italic"),
+            spacing="3", width="100%"),
+        bg=DARK_SURFACE, border=f"1px solid {DARK_BORDER}",
+        border_radius="12px", padding="1rem", width="100%")
+
+
+# ---------------------------------------------------------------------------
 # RIGHT PANEL - Terminal Trace Log
 # ---------------------------------------------------------------------------
 
@@ -613,11 +750,12 @@ def dashboard() -> rx.Component:
     """Three-panel split-screen layout."""
     return rx.container(
         rx.vstack(
+            token_meter(),
             rx.flex(
-                rx.heading("Creative Court 2.0", size="5",
+                rx.heading("Creative Court 2.0 — Token Result Gate", size="5",
                            color=DARK_TEXT, font_weight="bold"),
-                rx.text("Black Box Unveiled", size="3",
-                        color=DARK_MUTED, font_style="italic"),
+                rx.text("You pay for tokens that work toward your goal — not for tokens that warm the air",
+                        size="2", color=DARK_MUTED, font_style="italic"),
                 rx.spacer(),
                 rx.cond(
                     CCState.is_running,
@@ -632,6 +770,7 @@ def dashboard() -> rx.Component:
                 brief_form(), arena_panel(), terminal_log(),
                 flex_grow="1", min_width="0", gap="1rem",
                 width="100%", wrap="wrap"),
+            signoff_section(),
             spacing="0", width="100%", height="100vh"),
         background_color=DARK_BG, padding="0")
 
@@ -643,4 +782,4 @@ def dashboard() -> rx.Component:
 app = rx.App()
 
 app.add_page(dashboard, route="/",
-             title="Creative Court 2.0 - Black Box Unveiled")
+             title="Creative Court 2.0 — Token Result Gate")
