@@ -1,0 +1,65 @@
+[
+  {
+    "brief_id": "B01",
+    "brief_title": "Умная кофеварка для одиноких профессионалов",
+    "complex": false,
+    "output_preview": "Идея: **«Утренний метеоролог»** — кофеварка, которая превращает утро в маленький сеанс самонаблюдения. Вместо того чтобы полагаться на интерфейс и приложения, она ведёт себя как чуткий помощник, использующий шторку и открытость среды. Внутри корпуса спрятан не OLED-экран, а аналоговый «барометр настроения» — шкала с гравировкой от «Туман» до «Солнечно». Кофеварка оснащена микрофоном и датчиком осв",
+    "output_full_chars": 3313,
+    "wall_s": 13.58,
+    "llm_calls": 1,
+    "tokens": {
+      "prompt_tokens": 228,
+      "completion_tokens": 1552,
+      "total_tokens": 1780
+    },
+    "cost_usd": 0.001047,
+    "concept_count": 1,
+    "frames_used": 0,
+    "rubric_scores": false,
+    "verdicts": false,
+    "veto": false,
+    "trace": "creative-court/traces/eval_base_B01.jsonl"
+  },
+  {
+    "brief_id": "B02",
+    "brief_title": "Приложение для neighbourhood-взаимопомощи",
+    "complex": false,
+    "output_preview": "**Идея: «Двор» (Podwórko)**\n\nПредставьте, что приложение превращает спальный квартал в живой краковский двор-колодец с его традиционными «соседскими окнами». Каждая квартира — это личная карточка со «дверью», за которой сосед рассказывает о себе: увлечения, привычки, что он умеет и что ему нужно. Просьба о помощи выглядит как вывеска у этой двери: «Соседу с 3 этажа нужен яблочный пирог для внучки»",
+    "output_full_chars": 2470,
+    "wall_s": 43.96,
+    "llm_calls": 1,
+    "tokens": {
+      "prompt_tokens": 253,
+      "completion_tokens": 5341,
+      "total_tokens": 5594
+    },
+    "cost_usd": 0.003553,
+    "concept_count": 1,
+    "frames_used": 0,
+    "rubric_scores": false,
+    "verdicts": false,
+    "veto": false,
+    "trace": "creative-court/traces/eval_base_B02.jsonl"
+  },
+  {
+    "brief_id": "B03",
+    "brief_title": "Кампания запуска веганской пекарни",
+    "complex": false,
+    "output_preview": "Креативная концепция — **«Слепой экзамен»**. Запуск пекарни превращается в игру-испытание, которая вскрывает главный стереотип: «веганская выпечка — это компромисс». Пекарня выходит в район с офлайн-челленджем: в Instagram Reels публикуются короткие видео, где прохожие вслепую пробуют два одинаковых на вид десерта — один фирменный веганский, другой из сетевой кондитерской по соседству. Задача — уг",
+    "output_full_chars": 1877,
+    "wall_s": 56.49,
+    "llm_calls": 1,
+    "tokens": {
+      "prompt_tokens": 251,
+      "completion_tokens": 6834,
+      "total_tokens": 7085
+    },
+    "cost_usd": 0.004538,
+    "concept_count": 1,
+    "frames_used": 0,
+    "rubric_scores": false,
+    "verdicts": false,
+    "veto": false,
+    "trace": "creative-court/traces/eval_base_B03.jsonl"
+  }
+]

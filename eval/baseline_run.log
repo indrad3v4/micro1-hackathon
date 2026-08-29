@@ -1,0 +1,18 @@
+baseline B01: 60.86s $0.000000
+  retry: empty content (attempt 1): keys=['role', 'reasoning_content'], finish=stop
+baseline B02: 115.84s $0.003694
+baseline B03: 32.05s $0.000000
+baseline B04: 39.13s $0.003045
+baseline B05: 9.92s $0.000737
+  retry: empty content (attempt 1): keys=['role', 'reasoning_content'], finish=stop
+  retry: empty content (attempt 2): keys=['role', 'reasoning_content'], finish=stop
+baseline B06: 191.57s $0.004426
+baseline B07: 56.34s $0.000000
+baseline B08: 11.32s $0.000000
+  retry: empty content (attempt 1): keys=['role', 'reasoning_content'], finish=stop
+  retry: empty content (attempt 2): keys=['role', 'content', 'refusal', 'reasoning', 'reasoning_details'], finish=length
+baseline B09: 178.3s $0.005438
+baseline B10: 18.66s $0.001483
+baseline B11: 12.81s $0.000000
+baseline B12: 48.98s $0.000000
+saved /root/.hermes/micro1-hackathon/eval/results/baseline_results.json

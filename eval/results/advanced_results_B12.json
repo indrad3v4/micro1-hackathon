@@ -1,0 +1,44 @@
+[
+  {
+    "brief_id": "B12",
+    "brief_title": "Единая программа лояльности: сеть кафе против арендодателя и агрегаторов",
+    "complex": true,
+    "output_preview": "6 направлений; топ-1: ritual:Утренний ритуал (73.5)",
+    "direction_count": 6,
+    "frames_used": [
+      "artistic",
+      "historical",
+      "natural",
+      "professional",
+      "ritual",
+      "social"
+    ],
+    "wall_s": 42.83,
+    "llm_calls": 1,
+    "tokens": {
+      "prompt_tokens": 203,
+      "completion_tokens": 4511,
+      "total_tokens": 4714
+    },
+    "cost_usd": 0.0,
+    "rubric_scores": true,
+    "verdicts": true,
+    "veto": "ritual:Утренний ритуал",
+    "trace": "creative-court/traces/eval_adv_B12.jsonl",
+    "approved": [
+      "artistic:Кофейный фолиант",
+      "professional:Кофейный сомелье",
+      "social:Соседский круг",
+      "natural:Кофейное дерево",
+      "historical:Кофейная сберкнижка"
+    ],
+    "top_scores": {
+      "ritual:Утренний ритуал": 73.5,
+      "artistic:Кофейный фолиант": 73.0,
+      "professional:Кофейный сомелье": 73.0,
+      "social:Соседский круг": 71.5,
+      "natural:Кофейное дерево": 71.1,
+      "historical:Кофейная сберкнижка": 68.7
+    }
+  }
+]

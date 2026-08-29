@@ -1,0 +1,468 @@
+[
+  {
+    "brief_id": "B01",
+    "brief_title": "Умная кофеварка для одиноких профессионалов",
+    "complex": false,
+    "output_preview": "6 направлений; топ-1: professional:Рабочий пик (69.1)",
+    "direction_count": 6,
+    "frames_used": [
+      "artistic",
+      "historical",
+      "natural",
+      "professional",
+      "ritual",
+      "social"
+    ],
+    "wall_s": 22.63,
+    "llm_calls": 1,
+    "tokens": {
+      "prompt_tokens": 220,
+      "completion_tokens": 2586,
+      "total_tokens": 2806
+    },
+    "cost_usd": 0.001728,
+    "rubric_scores": true,
+    "verdicts": true,
+    "veto": null,
+    "trace": "creative-court/traces/eval_adv_B01.jsonl",
+    "approved": [
+      "professional:Рабочий пик",
+      "historical:Кофейня прошлого",
+      "ritual:Утренний тотем",
+      "natural:Биоритм чашки",
+      "artistic:Кофе-импрессионист",
+      "social:Кофейная пара"
+    ],
+    "top_scores": {
+      "professional:Рабочий пик": 69.1,
+      "historical:Кофейня прошлого": 66.3,
+      "ritual:Утренний тотем": 66.3,
+      "natural:Биоритм чашки": 63.9,
+      "artistic:Кофе-импрессионист": 61.9,
+      "social:Кофейная пара": 61.9
+    }
+  },
+  {
+    "brief_id": "B02",
+    "brief_title": "Приложение для neighbourhood-взаимопомощи",
+    "complex": false,
+    "output_preview": "6 направлений; топ-1: ritual:Соседский круг (66.3)",
+    "direction_count": 6,
+    "frames_used": [
+      "artistic",
+      "historical",
+      "natural",
+      "professional",
+      "ritual",
+      "social"
+    ],
+    "wall_s": 17.06,
+    "llm_calls": 1,
+    "tokens": {
+      "prompt_tokens": 232,
+      "completion_tokens": 1857,
+      "total_tokens": 2089
+    },
+    "cost_usd": 0.001249,
+    "rubric_scores": true,
+    "verdicts": true,
+    "veto": null,
+    "trace": "creative-court/traces/eval_adv_B02.jsonl",
+    "approved": [
+      "ritual:Соседский круг",
+      "artistic:Мозаика двора",
+      "professional:Соседский подряд",
+      "historical:Помочи по-соседски",
+      "natural:Экосистема дворовой заботы",
+      "social:Соседский банк времени"
+    ],
+    "top_scores": {
+      "ritual:Соседский круг": 66.3,
+      "artistic:Мозаика двора": 64.3,
+      "professional:Соседский подряд": 64.3,
+      "historical:Помочи по-соседски": 63.9,
+      "natural:Экосистема дворовой заботы": 63.9,
+      "social:Соседский банк времени": 61.9
+    }
+  },
+  {
+    "brief_id": "B03",
+    "brief_title": "Кампания запуска веганской пекарни",
+    "complex": false,
+    "output_preview": "6 направлений; топ-1: historical:Постные пироги из прошлого (66.3)",
+    "direction_count": 6,
+    "frames_used": [
+      "artistic",
+      "historical",
+      "natural",
+      "professional",
+      "ritual",
+      "social"
+    ],
+    "wall_s": 19.82,
+    "llm_calls": 1,
+    "tokens": {
+      "prompt_tokens": 231,
+      "completion_tokens": 2130,
+      "total_tokens": 2361
+    },
+    "cost_usd": 0.001429,
+    "rubric_scores": true,
+    "verdicts": true,
+    "veto": null,
+    "trace": "creative-court/traces/eval_adv_B03.jsonl",
+    "approved": [
+      "historical:Постные пироги из прошлого",
+      "natural:Фабрика-сад",
+      "social:Соседский турнир выпечки",
+      "ritual:Утренний обряд с одним пирожным",
+      "artistic:Живая палитра",
+      "professional:Лаборатория текстуры"
+    ],
+    "top_scores": {
+      "historical:Постные пироги из прошлого": 66.3,
+      "natural:Фабрика-сад": 66.3,
+      "social:Соседский турнир выпечки": 64.3,
+      "ritual:Утренний обряд с одним пирожным": 63.9,
+      "artistic:Живая палитра": 61.9,
+      "professional:Лаборатория текстуры": 61.9
+    }
+  },
+  {
+    "brief_id": "B04",
+    "brief_title": "Сервис аренды инструментов между мастерами",
+    "complex": false,
+    "output_preview": "6 направлений; топ-1: natural:Экосистема гаража (73.5)",
+    "direction_count": 6,
+    "frames_used": [
+      "artistic",
+      "historical",
+      "natural",
+      "professional",
+      "ritual",
+      "social"
+    ],
+    "wall_s": 23.16,
+    "llm_calls": 1,
+    "tokens": {
+      "prompt_tokens": 244,
+      "completion_tokens": 2635,
+      "total_tokens": 2879
+    },
+    "cost_usd": 0.001766,
+    "rubric_scores": true,
+    "verdicts": true,
+    "veto": null,
+    "trace": "creative-court/traces/eval_adv_B04.jsonl",
+    "approved": [
+      "natural:Экосистема гаража",
+      "social:Гаражное комьюнити",
+      "historical:Инструмент как наследие",
+      "professional:Инструментальный банк",
+      "artistic:Инструментальная симфония",
+      "ritual:Ритуал передачи"
+    ],
+    "top_scores": {
+      "natural:Экосистема гаража": 73.5,
+      "social:Гаражное комьюнити": 69.1,
+      "historical:Инструмент как наследие": 68.7,
+      "professional:Инструментальный банк": 66.7,
+      "artistic:Инструментальная симфония": 64.3,
+      "ritual:Ритуал передачи": 61.5
+    }
+  },
+  {
+    "brief_id": "B05",
+    "brief_title": "Бот-ассистент для волонтёрского приюта животных",
+    "complex": false,
+    "output_preview": "6 направлений; топ-1: социальный:Соседский круг (69.1)",
+    "direction_count": 6,
+    "frames_used": [
+      "исторический",
+      "природный",
+      "профессиональный",
+      "ритуальный",
+      "социальный",
+      "художественный"
+    ],
+    "wall_s": 17.98,
+    "llm_calls": 1,
+    "tokens": {
+      "prompt_tokens": 245,
+      "completion_tokens": 1947,
+      "total_tokens": 2192
+    },
+    "cost_usd": 0.001312,
+    "rubric_scores": true,
+    "verdicts": true,
+    "veto": null,
+    "trace": "creative-court/traces/eval_adv_B05.jsonl",
+    "approved": [
+      "социальный:Соседский круг",
+      "профессиональный:Операционный диспетчер",
+      "исторический:Летопись приюта",
+      "художественный:Живой контур",
+      "природный:Экосистема ресурсов"
+    ],
+    "top_scores": {
+      "социальный:Соседский круг": 69.1,
+      "профессиональный:Операционный диспетчер": 69.1,
+      "исторический:Летопись приюта": 64.3,
+      "художественный:Живой контур": 61.9,
+      "природный:Экосистема ресурсов": 61.9,
+      "ритуальный:Круг заботы": 59.5
+    }
+  },
+  {
+    "brief_id": "B06",
+    "brief_title": "Концепт офисного пространства для гибридной команды",
+    "complex": false,
+    "output_preview": "6 направлений; топ-1: natural:Офис-оранжерея (73.5)",
+    "direction_count": 6,
+    "frames_used": [
+      "artistic",
+      "historical",
+      "natural",
+      "professional",
+      "ritual",
+      "social"
+    ],
+    "wall_s": 118.2,
+    "llm_calls": 1,
+    "tokens": {
+      "prompt_tokens": 157,
+      "completion_tokens": 1591,
+      "total_tokens": 1748
+    },
+    "cost_usd": 0.0,
+    "rubric_scores": true,
+    "verdicts": true,
+    "veto": null,
+    "trace": "creative-court/traces/eval_adv_B06.jsonl",
+    "approved": [
+      "natural:Офис-оранжерея",
+      "artistic:Живой холст",
+      "ritual:Офис-ритуал",
+      "social:Гостиная на сорок человек",
+      "historical:Музей пути компании",
+      "professional:Сцена и репетиционная"
+    ],
+    "top_scores": {
+      "natural:Офис-оранжерея": 73.5,
+      "artistic:Живой холст": 73.0,
+      "ritual:Офис-ритуал": 68.7,
+      "social:Гостиная на сорок человек": 66.7,
+      "historical:Музей пути компании": 66.3,
+      "professional:Сцена и репетиционная": 64.3
+    }
+  },
+  {
+    "brief_id": "B07",
+    "brief_title": "Линейка merchandise для инди-группы",
+    "complex": false,
+    "output_preview": "6 направлений; топ-1: professional:Кофр роуди (64.3)",
+    "direction_count": 6,
+    "frames_used": [
+      "artistic",
+      "historical",
+      "natural",
+      "professional",
+      "ritual",
+      "social"
+    ],
+    "wall_s": 46.36,
+    "llm_calls": 1,
+    "tokens": {
+      "prompt_tokens": 162,
+      "completion_tokens": 4164,
+      "total_tokens": 4326
+    },
+    "cost_usd": 0.0,
+    "rubric_scores": true,
+    "verdicts": true,
+    "veto": null,
+    "trace": "creative-court/traces/eval_adv_B07.jsonl",
+    "approved": [
+      "professional:Кофр роуди",
+      "historical:Архив маленьких комнат",
+      "ritual:Термальное пробуждение",
+      "natural:Мох-код"
+    ],
+    "top_scores": {
+      "professional:Кофр роуди": 64.3,
+      "historical:Архив маленьких комнат": 61.5,
+      "ritual:Термальное пробуждение": 61.5,
+      "natural:Мох-код": 61.5,
+      "artistic:Палимпсест": 59.5,
+      "social:Пять тысяч": 59.5
+    }
+  },
+  {
+    "brief_id": "B08",
+    "brief_title": "Сервис для пожилых людей: лекарства и визиты к врачу",
+    "complex": false,
+    "output_preview": "6 направлений; топ-1: social:Тихий круг (66.7)",
+    "direction_count": 6,
+    "frames_used": [
+      "artistic",
+      "historical",
+      "natural",
+      "professional",
+      "ritual",
+      "social"
+    ],
+    "wall_s": 21.08,
+    "llm_calls": 1,
+    "tokens": {
+      "prompt_tokens": 247,
+      "completion_tokens": 2364,
+      "total_tokens": 2611
+    },
+    "cost_usd": 0.001587,
+    "rubric_scores": true,
+    "verdicts": true,
+    "veto": null,
+    "trace": "creative-court/traces/eval_adv_B08.jsonl",
+    "approved": [
+      "social:Тихий круг",
+      "professional:Карманная медсестра",
+      "historical:Семейная летопись здоровья",
+      "ritual:Час здоровья",
+      "artistic:Аптечный театр",
+      "natural:Сад здоровья"
+    ],
+    "top_scores": {
+      "social:Тихий круг": 66.7,
+      "professional:Карманная медсестра": 64.3,
+      "historical:Семейная летопись здоровья": 63.9,
+      "ritual:Час здоровья": 63.9,
+      "artistic:Аптечный театр": 61.9,
+      "natural:Сад здоровья": 61.5
+    }
+  },
+  {
+    "brief_id": "B09",
+    "brief_title": "Экологичный сервис доставки еды в reusable-таре",
+    "complex": false,
+    "output_preview": "6 направлений; топ-1: historical:Historical angle (81.0)",
+    "direction_count": 6,
+    "frames_used": [
+      "artistic",
+      "historical",
+      "natural",
+      "professional",
+      "ritual",
+      "social"
+    ],
+    "wall_s": 45.65,
+    "llm_calls": 1,
+    "tokens": {
+      "prompt_tokens": 244,
+      "completion_tokens": 5112,
+      "total_tokens": 5356
+    },
+    "cost_usd": 0.0034,
+    "rubric_scores": true,
+    "verdicts": true,
+    "veto": null,
+    "trace": "creative-court/traces/eval_adv_B09.jsonl",
+    "approved": [
+      "historical:Historical angle",
+      "natural:Natural angle",
+      "social:Social angle",
+      "ritual:Ritual angle",
+      "artistic:Artistic angle",
+      "professional:Professional angle"
+    ],
+    "top_scores": {
+      "historical:Historical angle": 81.0,
+      "natural:Natural angle": 81.0,
+      "social:Social angle": 79.0,
+      "ritual:Ritual angle": 73.5,
+      "artistic:Artistic angle": 71.5,
+      "professional:Professional angle": 71.5
+    }
+  },
+  {
+    "brief_id": "B10",
+    "brief_title": "Летняя образовательная программа для подростков",
+    "complex": false,
+    "output_preview": "6 направлений; топ-1: historical:Музей будущего сегодня (61.5)",
+    "direction_count": 6,
+    "frames_used": [
+      "artistic",
+      "historical",
+      "natural",
+      "professional",
+      "ritual",
+      "social"
+    ],
+    "wall_s": 22.04,
+    "llm_calls": 1,
+    "tokens": {
+      "prompt_tokens": 238,
+      "completion_tokens": 2436,
+      "total_tokens": 2674
+    },
+    "cost_usd": 0.001633,
+    "rubric_scores": true,
+    "verdicts": true,
+    "veto": null,
+    "trace": "creative-court/traces/eval_adv_B10.jsonl",
+    "approved": [
+      "historical:Музей будущего сегодня",
+      "ritual:Солярный ритуал",
+      "natural:Дикая еда города"
+    ],
+    "top_scores": {
+      "historical:Музей будущего сегодня": 61.5,
+      "ritual:Солярный ритуал": 61.5,
+      "natural:Дикая еда города": 61.5,
+      "artistic:Стена-говорилка": 59.5,
+      "social:Племя 2.0": 59.5,
+      "professional:Стартап на одну смену": 59.5
+    }
+  },
+  {
+    "brief_id": "B11",
+    "brief_title": "Интерактивная инсталляция для городского музея",
+    "complex": false,
+    "output_preview": "6 направлений; топ-1: historical:Дверь из времени (73.5)",
+    "direction_count": 6,
+    "frames_used": [
+      "artistic",
+      "historical",
+      "natural",
+      "professional",
+      "ritual",
+      "social"
+    ],
+    "wall_s": 17.5,
+    "llm_calls": 1,
+    "tokens": {
+      "prompt_tokens": 160,
+      "completion_tokens": 1530,
+      "total_tokens": 1690
+    },
+    "cost_usd": 0.0,
+    "rubric_scores": true,
+    "verdicts": true,
+    "veto": null,
+    "trace": "creative-court/traces/eval_adv_B11.jsonl",
+    "approved": [
+      "historical:Дверь из времени",
+      "ritual:Обещание городу",
+      "professional:Руки города",
+      "natural:Река времени",
+      "artistic:Световые хроники"
+    ],
+    "top_scores": {
+      "historical:Дверь из времени": 73.5,
+      "ritual:Обещание городу": 68.7,
+      "professional:Руки города": 66.7,
+      "natural:Река времени": 66.3,
+      "artistic:Световые хроники": 64.3,
+      "social:Скамья трёх эпох": 59.5
+    }
+  }
+]

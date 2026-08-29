@@ -1,0 +1,4 @@
+baseline B01: 13.58s $0.001047
+baseline B02: 43.96s $0.003553
+baseline B03: 56.49s $0.004538
+saved /root/.hermes/micro1-hackathon/eval/results/baseline_results_B01_B02_B03.json
