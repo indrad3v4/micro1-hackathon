@@ -13,7 +13,7 @@
     },
     "interpretation_notes": [
       "Drift-catch rate is the primary, apples-to-apples metric: the SAME constraint-violating drift probe (identical text, saturated with brief keywords) is judged by both systems on every brief; catch = probe rejected (total < threshold) or vetoed.",
-      "Mean verdict scores are NOT cross-condition comparable as a quality scale: baseline scores come from the lenient lexical heuristic and advanced from the strict LLM rubric. Within-condition signal is the discrimination (score_spread): the heuristic cluster ~0-10 pts, the LLM judge 7-37 pts.",
+      "Mean verdict scores are NOT cross-condition comparable as a quality scale: baseline scores come from the lenient lexical heuristic and advanced from the strict LLM rubric. Within-condition signal is the discrimination (score_spread, max-min verdict total): the heuristic cluster is a constant 9.5 pts on every brief, the LLM judge 9.8-65.0 pts.",
       "human_time_min is a MODELLED proxy (constants in run_benchmark.py), not measured; wall_clock_s and token/cost figures ARE measured (real API usage incl. usage.cost).",
       "advanced llm_calls include retries of the reasoning model's empty-content answers."
     ]

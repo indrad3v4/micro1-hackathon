@@ -2,6 +2,7 @@
 
 **Submission:** micro1 Agentic Workflows Hackathon — Frontier Engineering Challenge 2026 (HackerEarth)
 **Project:** Creative Court 2.0 — an agentic system where a Creator agent generates a fan of creative directions from a product brief and a Judge agent scores them on a contextual rubric, vetoes constraint-violating drift, and leaves the human as the final authority (trace-logged override).
+**One-liner:** *You pay for tokens that work toward your goal — not for tokens that warm the air.* Token spend is a gate on result: the Court routes model parameters at the brief and vetoes drift before tokens are burned on the wrong path.
 **Benchmark:** `creator-court-measured-improvement-v1` — 10 demo briefs, one deliberately contradictory "edge" brief, one hand-written constraint-violating **drift probe** per brief (identical text in both conditions).
 **Harness:** `cc-app/evaluation/run_benchmark.py` · **Model:** `deepseek-v4-flash-vision-exp` · **Python:** 3.12.14 · **Generated (UTC):** 2026-08-29T06:47:11Z
 

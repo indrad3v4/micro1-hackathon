@@ -1,5 +1,5 @@
 {
-  "current_step": "5.5",
+  "current_step": "done",
   "steps": {
     "5.1": {
       "title": "Collect benchmark evidence (cc-app/evaluation/results/ final_report.csv+json from run_benchmark.py)",
@@ -19,27 +19,29 @@
     },
     "5.5": {
       "title": "Full-package judge roast + applied fixes",
-      "status": "pending"
+      "status": "done"
     }
   },
   "last_judge_verdict": {
-    "step": "5.4",
+    "step": "5.5",
     "pass": true,
     "total": 82,
     "scores": {
       "Problem&UserValue": 12,
-      "AgentSolution&Engineering": 27,
-      "EndToEnd": 15,
-      "MeasuredImprovement": 11,
+      "AgentSolution&Engineering": 24,
+      "EndToEnd": 16,
+      "MeasuredImprovement": 12,
       "Reproducibility": 13,
-      "HotTake": 4
+      "HotTake": 5
     },
-    "note": "Trajectories package verified: 36 jsonl committed under creative-court/traces, 20 bench_eval_*_{baseline,advanced} trace pairs (10 briefs x 2 conditions) with literal README refs; 12-key flat schema valid on 100% of 56 files; README section 6 maps instruction->action->feedback->human checkpoints to schema fields (req 04); v2 token-result message core present, no stale 'visibility' framing. Weakness flagged: only 1 human_checkpoint event in corpus, 0 in bench traces; baseline bench traces lack tool_call/tool_response events -> carried to 5.5 polish.",
+    "note": "Full-package roast PASS (82/100). v2 token-result message core verified in README+changelog, no stale visibility framing. Hot Take section 7 grounded solely in final_report.json (verified by recomputation; no fabricated numbers). Trace-coverage honesty note accurate vs files. Fixes applied: reconciled interpretation_notes[1] with per_brief score_spread (9.5 / 9.8-65.0), added trace-snapshot staleness note, added v2 one-liner to changelog. Remaining judge recommendations (not blockers, capability-level): live LLM-backed human-override demo, replacement re-veto guard.",
     "evidence": [
       "README.md",
-      "creative-court/src/creative_court/core/trace.py",
+      "IMPROVEMENT_CHANGELOG.md",
+      "cc-app/evaluation/results/final_report.json",
+      "cc-app/evaluation/results/traces/bench_eval_01_coffee_advanced.jsonl",
       "creative-court/traces/eval_adv_B12.jsonl",
-      "cc-app/evaluation/results/traces/bench_eval_01_coffee_baseline.jsonl",
+      "cc-app/traces/traces/dashboard_20260829_091427.jsonl",
       "orchestration/state.json"
     ]
   }
