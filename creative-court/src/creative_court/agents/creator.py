@@ -32,15 +32,23 @@ class CreatorAgent:
         self.recorder = recorder
         self.llm = llm or LLMClient()
 
-    def generate(self, brief: Brief) -> list[Direction]:
+    def generate(self, brief: Brief, rework: dict | None = None) -> list[Direction]:
+        """Generate creative directions.
+
+        rework: optional {direction_id, reason} — the human vetoed one direction
+        and wants THAT direction reworked to address the reason (brand-champion
+        rule: the human's signature re-enters the work). When present, the
+        rework reason is injected as a hard requirement for the target frame.
+        """
         agent = "creator"
         self.recorder.event(
             agent=agent, type="agent_start",
-            instruction=f"Generate creative directions for brief: {brief.title}",
+            instruction=f"Generate creative directions for brief: {brief.title}"
+                        + (f" (rework {rework['direction_id']}: {rework['reason']})" if rework else ""),
         )
         if self.llm.available and _CREATOR_SYSTEM:
             try:
-                raw = self._build_user_prompt(brief)
+                raw = self._build_user_prompt(brief, rework=rework)
                 response = self.llm.chat(system=_CREATOR_SYSTEM, user=raw, max_tokens=4096)
                 self.recorder.tool_response(agent, "llm", response)
                 payload = _parse_json(response)
@@ -68,7 +76,7 @@ class CreatorAgent:
         return directions
 
     @staticmethod
-    def _build_user_prompt(brief: Brief) -> str:
+    def _build_user_prompt(brief: Brief, rework: dict | None = None) -> str:
         parts = [f"Title: {brief.title}", f"Description: {brief.description}"]
         if brief.audience:
             parts.append(f"Audience: {brief.audience}")
@@ -76,6 +84,15 @@ class CreatorAgent:
             parts.append(f"Goal: {brief.goal}")
         if brief.constraints:
             parts.append(f"Constraints:\n" + "\n".join(f"- {c}" for c in brief.constraints))
+        if rework and rework.get("direction_id") and rework.get("reason"):
+            # hard human requirement: rework THE SAME direction to address the reason
+            parts.append(
+                "REWORK REQUIREMENT (human veto): "
+                f"direction '{rework['direction_id']}' was rejected by the human. "
+                f"Reason: {rework['reason']}. "
+                "Provide a NEW version of THIS direction that resolves the reason "
+                "while keeping the same frame. Do not replace it with a different frame."
+            )
         return "\n".join(parts)
 
 

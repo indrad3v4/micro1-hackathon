@@ -1,0 +1,387 @@
+{
+  "title": "Дизайн упаковки сыра «Луговой»",
+  "constraints": [
+    "фотографии продукта не использовать",
+    "на упаковке обязательны состав, ГОСТ и штрихкод"
+  ],
+  "baseline": {
+    "mode": "baseline",
+    "llm_used": false,
+    "wall_clock_s": 0.034,
+    "llm_calls": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "cost_usd": 0.0,
+    "n_directions": 6,
+    "mean_score": 73.8,
+    "score_spread": 9.5,
+    "probe_total": 80.5,
+    "drift_caught": false,
+    "vetoes": 0,
+    "replacements": 0,
+    "judge_fallbacks": 0,
+    "human_time_min": 33.0,
+    "verdicts": [
+      {
+        "direction_id": "artistic:Artistic angle",
+        "total": 69.1,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 60.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "social:Social angle",
+        "total": 76.6,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 60.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "professional:Professional angle",
+        "total": 69.1,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 60.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "historical:Historical angle",
+        "total": 78.6,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "ritual:Ritual angle",
+        "total": 71.1,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 70.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "natural:Natural angle",
+        "total": 78.6,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "artistic:Максимальная сырная фотосетка",
+        "total": 80.5,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 95,
+          "novelty": 60.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      }
+    ],
+    "trace": {
+      "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_08_cheese_baseline.jsonl",
+      "total_events": 24,
+      "by_type": {
+        "agent_start": 4,
+        "agent_step": 16,
+        "agent_end": 4
+      }
+    }
+  },
+  "advanced": {
+    "mode": "advanced",
+    "llm_used": true,
+    "wall_clock_s": 154.64,
+    "llm_calls": 10,
+    "prompt_tokens": 11686,
+    "completion_tokens": 14689,
+    "total_tokens": 26375,
+    "cost_usd": 0.008,
+    "usage_estimated": 0,
+    "api_failures": 0,
+    "n_directions": 7,
+    "mean_score": 78.8,
+    "score_spread": 12.0,
+    "probe_total": 16.8,
+    "drift_caught": true,
+    "vetoes": 1,
+    "replacements": 1,
+    "judge_fallbacks": 0,
+    "human_time_min": 7.5,
+    "verdicts": [
+      {
+        "direction_id": "artistic:Луговой лубок",
+        "total": 78.6,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 85.0,
+          "novelty": 78.0,
+          "feasibility": 75.0,
+          "risk": 68.0,
+          "quality": 82.0
+        },
+        "comments": {
+          "relevance": "Strongly meets recognition and memorability goals for the 35-60 audience via dense color and folk-art code; minor gap: mandatory info (composition, GOST, barcode) not addressed.",
+          "novelty": "Fresh twist on folk art with clean geometric abstraction, though lubok-style packaging is not unprecedented.",
+          "feasibility": "Executable, but high printing costs for complex color transitions require clarification and budget validation.",
+          "risk": "Risks are identified—stylization may repel conservative buyers and printing costs are high—but no concrete mitigation strategies are provided.",
+          "quality": "Clear, coherent, and elegant concept with strong rationale; would be stronger with explicit placement plans for mandatory label elements."
+        }
+      },
+      {
+        "direction_id": "social:Свои на лугу",
+        "total": 78.2,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 85.0,
+          "novelty": 82.0,
+          "feasibility": 78.0,
+          "risk": 60.0,
+          "quality": 78.0
+        },
+        "comments": {
+          "relevance": "Strongly answers the brief: creates a distinctive, memorable package for 35-60 shoppers and avoids product photos. Slight gap: mandatory composition/GOST/barcode are noted only as risks, not solved in the layout.",
+          "novelty": "Fresh 'people behind the brand' concept with a vinyl-style name band; the QR-to-direct-contact layer adds a clever twist, though social proof angles are somewhat familiar.",
+          "feasibility": "Buildable as a packaging concept, but needs consent from named people, a managed promo page, and careful typographic handling of long names plus mandatory elements.",
+          "risk": "Risks such as composition overload and uncontrolled user communication are identified, but no concrete mitigation strategies are provided, leaving major edge cases unaddressed.",
+          "quality": "The concept is clear and elegant, but execution lacks specific layout, typography, and visual hierarchy decisions, so the path from idea to final design is still underdefined."
+        }
+      },
+      {
+        "direction_id": "professional:Карта сыровара",
+        "total": 81.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 85.0,
+          "novelty": 90.0,
+          "feasibility": 75.0,
+          "risk": 70.0,
+          "quality": 80.0
+        },
+        "comments": {
+          "relevance": "Направление хорошо отвечает на бриф: решает задачу выделения на полке и создаёт запоминающийся образ без фотографий продукта. Однако для аудитории 35-60 лет может быть не совсем очевидна метафора 'рабочей тетради сыровара' — есть риск, что часть покупателей сочтёт её слишком сложной и не поймёт, как эта информация помогает сделать выбор.",
+          "novelty": "Идея 'карты сыровара' — свежий и неочевидный ход. Обычные упаковки сыра используют либо фото продукта, либо стереотипные 'деревенские' образы. Визуальный язык диаграмм, шкал созревания и зон для пометок предлагает уникальный и техничный способ выделиться на полке, что является неожиданным углом для категории.",
+          "feasibility": "Концепция в целом реализуема, но требует значительной проработки. Необходимо создать модульную сетку, которая вместит обязательную информацию (состав, ГОСТ, штрихкод) вместе с диаграммами и зонами. Нужны уточнения по конструкции упаковки, типографике и способам нанесения. Также остаются вопросы о том, как все эти элементы будут масштабироваться для разных сортов.",
+          "risk": "Автор указал на основные риски: конкуренция обязательной информации с таблицами и возможное непонимание 'ремесленного' кода. Однако предложенные митигации ('продумать модульную сетку') являются общими и не содержат конкретных решений. Не рассмотрены дополнительные риски: перегруженность упаковки, плохая читаемость мелких элементов для аудитории 35-60 лет, сложность восприятия на расстоянии трёх метров.",
+          "quality": "Идея изложена ясно и логично, есть чёткое позиционирование и визуальный образ. Ключевые элементы (шкалы, зоны пометок, диаграммы) описаны образно, но не представлены в виде конкретной структуры или макета. Не хватает деталей о том, как именно будет выглядеть 'карта зрелости' и как она будет интегрирована с обязательными реквизитами."
+        }
+      },
+      {
+        "direction_id": "historical:Традиция из-под рук",
+        "total": 81.8,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 90.0,
+          "novelty": 72.0,
+          "feasibility": 82.0,
+          "risk": 75.0,
+          "quality": 85.0
+        },
+        "comments": {
+          "relevance": "Directly targets shelf recognition and trust for the 35-60 audience; respects no-photo constraint and acknowledges mandatory composition/GOST elements.",
+          "novelty": "Retro/historical cheese packaging is a familiar territory; the stamped/pressed typography and field-herb vignettes add a modest twist but not a radical reframe.",
+          "feasibility": "Clearly executable with typography and prepress work, though legibility of GOST, composition, and barcode requires careful layout and production refinement.",
+          "risk": "Museum-like detachment and informational readability are named as risks, but mitigation remains general; more explicit handling of barcode scannability and shelf-distance legibility would improve robustness.",
+          "quality": "Coherent, well-articulated direction with a clear historical narrative and elegant design rationale; minor ambiguity remains in translating vintage aesthetics to mandatory modern packaging elements."
+        }
+      },
+      {
+        "direction_id": "ritual:Пять дней до сыра",
+        "total": 71.3,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 68.0,
+          "novelty": 85.0,
+          "feasibility": 70.0,
+          "risk": 63.0,
+          "quality": 70.0
+        },
+        "comments": {
+          "relevance": "Идея отвечает задаче запоминаемости через ритуал, но основное внимание уделено обороту упаковки, тогда как ключевая цель — узнаваемость с трёх метров — требует проработанного лицевого решения. Также не хватает явного учёта обязательной информации.",
+          "novelty": "Отрывной календарь с пятидневным ритуалом дегустации — свежий и неожиданный ход для сырной упаковки. Он превращает покупку в традицию и помогает выделиться среди похожих соседей на полке.",
+          "feasibility": "Концепция в целом реализуема, но остаются вопросы по технологии отрывных элементов на упаковке сыра, по размещению обязательных данных при перегруженном обороте и по тому, как физически устроены «день 1–5».",
+          "risk": "Риски названы: покупатели не читают оборот, а вставка может мешать читаемости ГОСТа и состава. Однако митигирующих решений не предложено, также не рассмотрены транспортные повреждения и перегруженность лицевой стороны.",
+          "quality": "Идея описана ясно и с хорошим настроением, но не хватает конкретики: типографика, цветовая система, точная структура лицевой стороны и взаимодействие календаря с обязательными элементами остаются размытыми."
+        }
+      },
+      {
+        "direction_id": "natural:Травяной гербарий",
+        "total": 77.1,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 88.0,
+          "novelty": 78.0,
+          "feasibility": 75.0,
+          "risk": 62.0,
+          "quality": 72.0
+        },
+        "comments": {
+          "relevance": "Strongly answers the brief: uses nature-rooted imagery to create shelf presence, avoids product photos, and targets the 35-60 naturalness-seeking audience. Slight gap in ensuring the cheese identity reads instantly from three meters.",
+          "novelty": "Herbarium kraft packaging is familiar in eco-design, but the cheese silhouette formed from leaves and color zones tied to actual ingredients adds a clever, memorable twist.",
+          "feasibility": "Kraft pouch with printed botanicals is buildable, but requires special print processes and material testing. Placement of mandatory elements like GOST, ingredients, and barcode is not yet specified.",
+          "risk": "Two risks are named: higher kraft printing cost and possible vegan-product confusion. However, no concrete mitigation strategies or additional edge cases are addressed.",
+          "quality": "Concept is clear and coherent, but execution details are still high-level; the leaf-composition construction and on-pack information hierarchy need further specification."
+        }
+      },
+      {
+        "direction_id": "artistic:Максимальная сырная фотосетка",
+        "total": 16.8,
+        "approved": false,
+        "vetoed": true,
+        "veto_reason": "Court veto: direction violates an explicit hard constraint of the brief (drift from brief).",
+        "scores": {
+          "relevance": 10.0,
+          "novelty": 20.0,
+          "feasibility": 30.0,
+          "risk": 5.0,
+          "quality": 20.0
+        },
+        "comments": {
+          "relevance": "Прямо нарушает ключевое ограничение брифа: использование фотографий продукта запрещено. Не отвечает задачам и аудитории.",
+          "novelty": "Гиперреалистичные фото сыра — шаблонный и предсказуемый приём для молочной упаковки, усугублённый противоречащим брифу решением.",
+          "feasibility": "Печать фото реализуема, но вынос обязательных состава, ГОСТа и штрихкода в QR-код не соответствует требованиям и нормам маркировки.",
+          "risk": "Риски не описаны вообще. Основной риск — юридическая несостоятельность и полное несоответствие брифу — не учтён.",
+          "quality": "План противоречив: заявлен минимализм, но предложена фотосетка; исполнение описано поверхностно и без инженерной проработки."
+        }
+      },
+      {
+        "direction_id": "artistic:Цветущий луг",
+        "total": 83.3,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 92.0,
+          "novelty": 76.0,
+          "feasibility": 75.0,
+          "risk": 85.0,
+          "quality": 85.0
+        },
+        "comments": {
+          "relevance": "Directly answers the brief: large meadow color field ensures 3-meter shelf recognition, tactile/abstract graphics avoid product photos, and a separate white herbarium label accommodates mandatory composition, GOST and barcode without breaking the visual. Audience fit is strong.",
+          "novelty": "The abstract meadow with tactile embossing and foil rosette is a clear step away from standard cheese photography, though 'meadow/natural' imagery is a somewhat familiar territory. The tactile detail and herbarium label add a fresh twist.",
+          "feasibility": "Generally executable with current packaging technologies, but tactile embossing/foil on cheese packaging requires material selection, print testing, and cost validation. Some technical details remain unspecified.",
+          "risk": "Risks are explicitly identified: higher production cost, durability against condensation/friction, and potential retail confusion. Testing and promo support are proposed as mitigations, showing solid risk awareness.",
+          "quality": "Cleanly articulated concept with a coherent visual hierarchy: color field, tactile texture, abstract landscape, foil accent, and informational label. Elegant, though slight clarity on production parameters could strengthen execution."
+        }
+      }
+    ],
+    "trace": {
+      "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_08_cheese_advanced.jsonl",
+      "total_events": 58,
+      "by_type": {
+        "agent_start": 9,
+        "tool_response": 4,
+        "agent_step": 32,
+        "agent_end": 8,
+        "retry": 3,
+        "veto": 2
+      }
+    }
+  }
+}

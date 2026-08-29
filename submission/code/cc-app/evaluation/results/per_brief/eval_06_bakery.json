@@ -1,0 +1,387 @@
+{
+  "title": "Крафтовая пекарня «Тёплый мякиш»",
+  "constraints": [
+    "не использовать слово «крафтовый»",
+    "открытие через 3 недели, бюджет на маркетинг 50 000 руб"
+  ],
+  "baseline": {
+    "mode": "baseline",
+    "llm_used": false,
+    "wall_clock_s": 0.034,
+    "llm_calls": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "cost_usd": 0.0,
+    "n_directions": 6,
+    "mean_score": 76.2,
+    "score_spread": 9.5,
+    "probe_total": 80.5,
+    "drift_caught": false,
+    "vetoes": 0,
+    "replacements": 0,
+    "judge_fallbacks": 0,
+    "human_time_min": 33.0,
+    "verdicts": [
+      {
+        "direction_id": "artistic:Artistic angle",
+        "total": 71.5,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 90,
+          "novelty": 60.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "social:Social angle",
+        "total": 79.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 90,
+          "novelty": 60.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "professional:Professional angle",
+        "total": 71.5,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 90,
+          "novelty": 60.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "historical:Historical angle",
+        "total": 81.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 90,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "ritual:Ritual angle",
+        "total": 73.5,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 90,
+          "novelty": 70.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "natural:Natural angle",
+        "total": 81.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 90,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "professional:Крафтовый громкий старт",
+        "total": 80.5,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 95,
+          "novelty": 60.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      }
+    ],
+    "trace": {
+      "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_06_bakery_baseline.jsonl",
+      "total_events": 12,
+      "by_type": {
+        "agent_start": 2,
+        "agent_step": 8,
+        "agent_end": 2
+      }
+    }
+  },
+  "advanced": {
+    "mode": "advanced",
+    "llm_used": true,
+    "wall_clock_s": 439.09,
+    "llm_calls": 14,
+    "prompt_tokens": 15914,
+    "completion_tokens": 25078,
+    "total_tokens": 40992,
+    "cost_usd": 0.01118,
+    "usage_estimated": 0,
+    "api_failures": 0,
+    "n_directions": 7,
+    "mean_score": 77.7,
+    "score_spread": 25.7,
+    "probe_total": 7.8,
+    "drift_caught": true,
+    "vetoes": 1,
+    "replacements": 1,
+    "judge_fallbacks": 1,
+    "human_time_min": 7.5,
+    "verdicts": [
+      {
+        "direction_id": "artistic:Хлебная галерея",
+        "total": 80.2,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 85.0,
+          "novelty": 90.0,
+          "feasibility": 75.0,
+          "risk": 65.0,
+          "quality": 80.0
+        },
+        "comments": {
+          "relevance": "Отвечает ключевой цели — превращает витрину в центр притяжения, укладывается в бюджет 50 000 руб. и срок 3 недели, не использует слово «крафтовый». Аудитория семей с детьми и пенсионеров хорошо заходит на яркие узнаваемые формы, но связь со старыми прабабушкиными рецептами прямо не раскрыта.",
+          "novelty": "Неожиданный и свежий ход: ежедневная съедобная «галерея» из теста превращает обычную витрину в событие. Это не шаблонная акция, а оригинальное переосмысление витринного пространства пекарни.",
+          "feasibility": "Концепция дешевая и реализуемая: нужны формовка и бумажные описания, первые пять экспонатов подготовить за 3 недели реально. Однако остаются технические вопросы по ежедневному циклу производства, квалификации пекаря и сохранению формы/свежести хлеба в витрине.",
+          "risk": "Риски частично названы: трудоёмкость формовки и возможность затора у витрины. Есть частичное смягчение по заготовке декора, но нет решения для блокировки прохода и не учтены пищевые/санитарные риски длительного экспонирования хлеба.",
+          "quality": "Идея изложена ясно и элегантно, рациональная часть убедительна. Не хватает операционных деталей: расписание замены витрины, протокол продажи вечернего экспоната и описание оформления бумажных табличек."
+        }
+      },
+      {
+        "direction_id": "social:Соседний стол",
+        "total": 59.5,
+        "approved": false,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 50,
+          "novelty": 60.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "professional:Школа закваски",
+        "total": 79.7,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 85.0,
+          "novelty": 75.0,
+          "feasibility": 78.0,
+          "risk": 75.0,
+          "quality": 82.0
+        },
+        "comments": {
+          "relevance": "Directly supports becoming a neighborhood attraction, targets families and pensioners through a free hands-on sourdough school, and avoids the forbidden word. Minor gap: does not explicitly emphasize great-grandmother recipes or a full plan for the 3-week launch.",
+          "novelty": "Community baking classes are somewhat familiar, but the 'bread apprentice' take-home jar concept adds a charming twist and creates an ongoing relationship with the bakery.",
+          "feasibility": "Feasible within a small marketing budget, but requires clear allocation of baker time, sourdough maintenance, jar prep, and registration logistics before the 3-week opening.",
+          "risk": "Overcrowding and baker workload are explicitly acknowledged, with pre-registration as a mitigation. Additional risks like food safety or low attendance are not fully addressed.",
+          "quality": "Clear, coherent, and warmly articulated plan with a strong rationale and an elegant community-building loop from class to regular customer."
+        }
+      },
+      {
+        "direction_id": "historical:Пекарня-музей",
+        "total": 79.9,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 88.0,
+          "novelty": 76.0,
+          "feasibility": 73.0,
+          "risk": 76.0,
+          "quality": 82.0
+        },
+        "comments": {
+          "relevance": "Сильно попадает в бренд-легенду о прабабушкиных рецептах и в аудиторию: пенсионеры узнают знакомое, дети получают живую историю. Отвечает задачам, хотя не полностью проработана роль семьи и сообщества.",
+          "novelty": "Концепция «пекарня-музей» узнаваема, но добавление истории на каждой коробке с выпечкой — свежий и трогательный ход, который выделяет ее среди сетей.",
+          "feasibility": "В целом реализуемо за 3 недели и 50 тыс. руб., если использовать копии и печатные материалы. Однако требует уточнения источников атрибутики и подбора экспонатов.",
+          "risk": "Риски обозначены: нехватка подлинных вещей и проверка исторических фактов. Есть частичные пути решения, но не хватает экономии времени и запасного плана.",
+          "quality": "Ясная концепция с понятной логикой: история создает эмоциональную привязку. Немного не хватает конкретики по бюджету и срокам монтажа."
+        }
+      },
+      {
+        "direction_id": "ritual:Тёплый час",
+        "total": 83.8,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 90.0,
+          "novelty": 76.0,
+          "feasibility": 88.0,
+          "risk": 75.0,
+          "quality": 85.0
+        },
+        "comments": {
+          "relevance": "Directly answers the brief: a daily ritual creates a neighborhood anchor, targets families with children and pensioners, aligns with old recipes, and avoids the forbidden word 'крафтовый'.",
+          "novelty": "The 'warm hour' ritual with a bell and discounted hot bread is a fresh twist on a bakery happy hour, though the concept of timed fresh-bread sales is somewhat familiar.",
+          "feasibility": "Easily executable with a bell, fixed baking schedule, discounts, and free tea; minor clarification is needed on how the 50,000 rub budget and 3-week timeline are used.",
+          "risk": "Identifies key risks: margin erosion, queue only during a short window, and disappointment if bread is unavailable. Mitigations are suggested, but edge cases like overcrowding or schedule failures remain partially addressed.",
+          "quality": "Clear, elegant, and well-articulated concept with a simple operational rhythm; only minor clarity gaps around exact discount amounts and audience targeting remain."
+        }
+      },
+      {
+        "direction_id": "natural:Хлеб по сезону",
+        "total": 75.7,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 85.0,
+          "novelty": 74.0,
+          "feasibility": 72.0,
+          "risk": 70.0,
+          "quality": 70.0
+        },
+        "comments": {
+          "relevance": "Directly ties the bakery to a natural seasonal cycle that appeals to parents and grandparents; avoids the forbidden word and aligns with old family recipes, though community-hub positioning could be stronger.",
+          "novelty": "Seasonal menus are a familiar bakery trope, but the live starter jar and 'growth diary' add a refreshing, memorable ritual twist.",
+          "feasibility": "Concept is feasible as a direction, but the 3-week launch window and 50k budget require a simplified phased rollout; monthly full menu changes need extra R&D planning.",
+          "risk": "Risks about seasonal sourcing, staff confusion, and waste are acknowledged, but concrete mitigation plans are underdeveloped — only a vague 'plan in advance' is implied.",
+          "quality": "The concept is clear and evocative, but lacks operational detail: no budget breakdown, timeline, or concrete menu-calendar execution path."
+        }
+      },
+      {
+        "direction_id": "professional:Крафтовый громкий старт",
+        "total": 7.8,
+        "approved": false,
+        "vetoed": true,
+        "veto_reason": "Court veto: direction violates an explicit hard constraint of the brief (drift from brief).",
+        "scores": {
+          "relevance": 10.0,
+          "novelty": 15.0,
+          "feasibility": 5.0,
+          "risk": 0.0,
+          "quality": 5.0
+        },
+        "comments": {
+          "relevance": "Directly violates the brief's explicit constraint against using 'крафтовый', ignores the 50,000 rub budget and 3-week opening, and does not address families/pensioners or the grandmother-recipe heritage.",
+          "novelty": "The 'craft' positioning is a familiar, template-level cliché; there is no unexpected angle or clever twist, only an oversized media plan disconnected from the actual brief.",
+          "feasibility": "Not buildable as described: the 3 million rub campaign exceeds the budget by 60x and would launch six months after the opening, while the core concept is forbidden by the brief.",
+          "risk": "No risks are acknowledged, despite severe risks including brand-constraint violation, budget infeasibility, and total audience mismatch.",
+          "quality": "The plan is incoherent and self-contradictory: it explicitly uses the forbidden word, cites an unrelated recipe heritage, and proposes a delayed campaign for an immediate opening."
+        }
+      },
+      {
+        "direction_id": "professional:Академия Тёплого мякиша",
+        "total": 85.2,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 88.0,
+          "novelty": 82.0,
+          "feasibility": 90.0,
+          "risk": 75.0,
+          "quality": 88.0
+        },
+        "comments": {
+          "relevance": "Напрямую отвечает на бриф: семейная пекарня становится центром притяжения через еженедельный ритуал, вовлекает и детей, и пенсионеров, не использует запрещённое слово и укладывается в срок и бюджет.",
+          "novelty": "Формат «однодневного подмастерья» с именной карточкой и порядковым номером — свежий и придающий статус, хотя сам мастер-класс как жанр уже знаком.",
+          "feasibility": "Реализуемо за 3 недели при бюджете 50 000 ₽: нужны только печать карточек, бейджи и выделенный стол в существующей пекарне.",
+          "risk": "Основные риски замедления производства и дефицита мест названы, предложены лист записи и очередь ожидания, но не рассмотрены санитарные и возрастные нюансы.",
+          "quality": "Ясная и элегантная концепция с понятной логикой повторных визитов и сарафанного радио, минимальная перегруженность деталями."
+        }
+      }
+    ],
+    "trace": {
+      "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_06_bakery_advanced.jsonl",
+      "total_events": 50,
+      "by_type": {
+        "agent_start": 9,
+        "tool_response": 4,
+        "agent_step": 23,
+        "agent_end": 7,
+        "retry": 5,
+        "veto": 2
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+[project]
+name = "creative-court"
+version = "0.1.0"
+description = "Creative Court — agent harness with trajectory recording for micro1 Frontier Engineering Challenge 2026"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+creative-court = "creative_court.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"

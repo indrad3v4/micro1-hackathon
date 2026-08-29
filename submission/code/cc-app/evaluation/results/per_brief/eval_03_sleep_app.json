@@ -1,0 +1,387 @@
+{
+  "title": "Приложение для сна «Дрёма»",
+  "constraints": [
+    "не использовать образ спальни и кровати в коммуникации",
+    "запуск без бюджета на рекламу"
+  ],
+  "baseline": {
+    "mode": "baseline",
+    "llm_used": false,
+    "wall_clock_s": 0.037,
+    "llm_calls": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "cost_usd": 0.0,
+    "n_directions": 6,
+    "mean_score": 69.0,
+    "score_spread": 9.5,
+    "probe_total": 82.5,
+    "drift_caught": false,
+    "vetoes": 0,
+    "replacements": 0,
+    "judge_fallbacks": 0,
+    "human_time_min": 33.0,
+    "verdicts": [
+      {
+        "direction_id": "artistic:Artistic angle",
+        "total": 64.3,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 66,
+          "novelty": 60.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "social:Social angle",
+        "total": 71.8,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 66,
+          "novelty": 60.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "professional:Professional angle",
+        "total": 64.3,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 66,
+          "novelty": 60.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "historical:Historical angle",
+        "total": 73.8,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 66,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "ritual:Ritual angle",
+        "total": 66.3,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 66,
+          "novelty": 70.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "natural:Natural angle",
+        "total": 73.8,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 66,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "ritual:Спальня как герой кампании",
+        "total": 82.5,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 95,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      }
+    ],
+    "trace": {
+      "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_03_sleep_app_baseline.jsonl",
+      "total_events": 24,
+      "by_type": {
+        "agent_start": 4,
+        "agent_step": 16,
+        "agent_end": 4
+      }
+    }
+  },
+  "advanced": {
+    "mode": "advanced",
+    "llm_used": true,
+    "wall_clock_s": 270.86,
+    "llm_calls": 10,
+    "prompt_tokens": 11668,
+    "completion_tokens": 23935,
+    "total_tokens": 35603,
+    "cost_usd": 0.00614,
+    "usage_estimated": 0,
+    "api_failures": 0,
+    "n_directions": 7,
+    "mean_score": 77.1,
+    "score_spread": 11.3,
+    "probe_total": 11.7,
+    "drift_caught": true,
+    "vetoes": 1,
+    "replacements": 1,
+    "judge_fallbacks": 0,
+    "human_time_min": 7.5,
+    "verdicts": [
+      {
+        "direction_id": "artistic:Соната для одной ночи",
+        "total": 81.1,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 88.0,
+          "novelty": 92.0,
+          "feasibility": 72.0,
+          "risk": 68.0,
+          "quality": 78.0
+        },
+        "comments": {
+          "relevance": "Directly targets the brief's key aims: uses voice and nature sounds, avoids bedroom/bed imagery, and creates an organic shareable hook to replace paid ads. Slight gap: the sleep-inducing function is implicit rather than central.",
+          "novelty": "Reframes the sleep app as a generative art gallery, not a utility. The daily unique sound painting and shareable artifact is an unexpected angle in a crowded category.",
+          "feasibility": "Feasible in principle, but the audio-generation pipeline, visualizer, storage, and export flow need more concrete technical definition before MVP execution.",
+          "risk": "Two relevant risks are named, but mitigation is only partial: tonal limits are mentioned without a fallback plan, and storage/export costs are noted but not resolved.",
+          "quality": "The concept is clearly and elegantly articulated, with strong art direction and a coherent viral loop. The execution path remains somewhat abstract on the technical side."
+        }
+      },
+      {
+        "direction_id": "social:Ночная перекличка",
+        "total": 69.8,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 78.0,
+          "novelty": 82.0,
+          "feasibility": 60.0,
+          "risk": 55.0,
+          "quality": 65.0
+        },
+        "comments": {
+          "relevance": "Addresses sleep and insomnia, and the no-budget launch via user-generated social sharing. However, the shared voice stream may feel more stimulating than calming, slightly drifting from the narrator-led sleep core.",
+          "novelty": "A fresh social twist on sleep apps—users’ whispered thoughts become the audio content. Unconventional and emotionally resonant, though the collective audio stream idea is not entirely unprecedented.",
+          "feasibility": "Building the audio recording and playback system is plausible, but the concept depends on a critical mass of users and a cold-start content loop that is not explained. Technical moderation and audio processing details are also unspecified.",
+          "risk": "Risks of anxious voices and an empty chorus are acknowledged, but no concrete mitigation strategies are given for moderation, privacy, or solving the cold-start problem.",
+          "quality": "The direction is clear and evocative in its rationale, but the execution path, architecture, and MVP scope remain under-specified."
+        }
+      },
+      {
+        "direction_id": "professional:Гильдия усыпителей",
+        "total": 77.8,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 72.0,
+          "novelty": 92.0,
+          "feasibility": 78.0,
+          "risk": 68.0,
+          "quality": 80.0
+        },
+        "comments": {
+          "relevance": "Отвечает на задачу дифференциации и самопродвижения без бюджета, но смещает фокус с простого засыпания на состязание, что может не совпадать с ожиданиями аудитории с бессонницей.",
+          "novelty": "Неожиданный и редкий для сна подход — гильдия и признание мастеров вместо «лечения». Сильный творческий ход.",
+          "feasibility": "Механика реализуема: запись, экзамен, значки, библиотека. Требует уточнения модерации и оценки качества пользовательского контента.",
+          "risk": "Риски названы, но почти без стратегий смягчения: не ясно, как защитить качество и не перегрузить интерфейс.",
+          "quality": "Идея и логика изложены ясно, есть обоснование и осознание слабых мест, но не хватает деталей реализации."
+        }
+      },
+      {
+        "direction_id": "historical:Колыбельная прабабушки",
+        "total": 73.7,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 85.0,
+          "novelty": 90.0,
+          "feasibility": 55.0,
+          "risk": 50.0,
+          "quality": 78.0
+        },
+        "comments": {
+          "relevance": "Направление напрямую отвечает на задачу создания медитативного приложения для засыпания с голосом диктора, выделяется на фоне конкурентов и хорошо соответствует аудитории 30-55, но может не подойти части пользователей, которым нужен нейтральный звук.",
+          "novelty": "Оригинальный подход: культурное наследие, колыбельные и заговоры как еженедельные 'голоса прошлого' — сильный контраст с типичными медитативными приложениями.",
+          "feasibility": "Реализация требует получения редких этнографических материалов, лицензий и экспедиций, что сложно без бюджета и существенно повышает неопределенность.",
+          "risk": "Риски упомянуты, но не проработаны: нет стратегии обхода правовых сложностей, запасного контента или плана привлечения аудитории, которой не близка культурная тематика.",
+          "quality": "Концепция изложена ясно и вдохновляюще, но отсутствуют детали по технической реализации, процессу создания контента и монетизации."
+        }
+      },
+      {
+        "direction_id": "ritual:Двадцать один вечер",
+        "total": 80.5,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 88.0,
+          "novelty": 75.0,
+          "feasibility": 85.0,
+          "risk": 65.0,
+          "quality": 82.0
+        },
+        "comments": {
+          "relevance": "Directly addresses the brief: creates a distinctive sleep ritual with voice and sound, avoids bedroom/bed imagery, and uses habit formation for retention and word-of-mouth without ad spend. Minor gap: the ritual frame may appeal more broadly than the specific insomnia audience.",
+          "novelty": "Fresh enough: framing sleep as an intentionally 'grown' personal ritual is a clever twist on typical sleep apps. However, the 21-day habit concept is a familiar trope, and the basic structure of reminders plus audio is not radically new.",
+          "feasibility": "Clearly executable with standard mobile app capabilities: scheduled signals, voice prompts, nature audio, and simple user actions. Some technical details around persistence of the ritual without the app remain unspecified but are not major blockers.",
+          "risk": "Two key risks are explicitly named: notification fatigue and the potentially off-putting 'grown ritual' language. However, no concrete mitigation strategies are offered, leaving an important gap in robustness analysis.",
+          "quality": "Well-articulated and elegant in its simplicity. The rationale is coherent, but the 'grown ritual' phrase and the exact transition from in-app ritual to app-free persistence could be described more precisely."
+        }
+      },
+      {
+        "direction_id": "natural:Годовой круг",
+        "total": 76.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 85.0,
+          "novelty": 80.0,
+          "feasibility": 65.0,
+          "risk": 65.0,
+          "quality": 78.0
+        },
+        "comments": {
+          "relevance": "Directly addresses differentiation via seasonal sounds; fits 30-55 nature affinity and avoids bedroom imagery. Minor gap: daily variation may not suit all insomnia users.",
+          "novelty": "Fresh twist on familiar nature sounds: annual cycle as a living narrative. Not radically unprecedented but clever and non-obvious.",
+          "feasibility": "Requires substantial seasonal audio library; launch without ad budget doesn't solve production cost. Possible but with significant content dependencies.",
+          "risk": "Acknowledges high content cost and potential dislike of changing audio for sleep stability, but no concrete mitigation strategies provided.",
+          "quality": "Clearly articulated concept and rationale; elegant 'aging forest' metaphor. Lacks execution detail for daily selection and voice integration."
+        }
+      },
+      {
+        "direction_id": "ritual:Спальня как герой кампании",
+        "total": 11.7,
+        "approved": false,
+        "vetoed": true,
+        "veto_reason": "Court veto: direction violates an explicit hard constraint of the brief (drift from brief).",
+        "scores": {
+          "relevance": 8.0,
+          "novelty": 10.0,
+          "feasibility": 25.0,
+          "risk": 0.0,
+          "quality": 15.0
+        },
+        "comments": {
+          "relevance": "Прямо нарушает ключевое ограничение — образ спальни и кровати — и требует платного бюджета, тогда как по брифу запуск без рекламного бюджета.",
+          "novelty": "Типовой визуал сна и стандартный платный трафик; нет неожиданного или нестандартного хода.",
+          "feasibility": "В описанных рамках не реализуемо: платный медиаплан противоречит отсутствию бюджета, а образ спальни — запрету.",
+          "risk": "Риски не указаны; не учтены ни нарушение ограничений, ни провал платного запуска без бюджета.",
+          "quality": "Идея описана связно, но противоречит брифу и не предлагает рабочего решения в заданных условиях."
+        }
+      },
+      {
+        "direction_id": "ritual:Выдох дня",
+        "total": 81.1,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 90.0,
+          "novelty": 84.0,
+          "feasibility": 68.0,
+          "risk": 72.0,
+          "quality": 86.0
+        },
+        "comments": {
+          "relevance": "Directly targets insomnia as a mental shift, integrates with existing evening actions, avoids bedroom imagery, and is sharable without ad spend.",
+          "novelty": "Turns the app into an evening ritual/action rather than a place; changing daily content adds freshness, though habit-ritual mechanics are somewhat familiar.",
+          "feasibility": "Core playback is simple, but daily new 3-minute stories require constant voice/audio production; without ad budget this is a significant dependency.",
+          "risk": "Both key risks are named, but mitigation strategies are not fully developed; content burnout and habit breaks remain partly unhandled.",
+          "quality": "Well-articulated concept with clear rationale, coherent framing, and concise execution path; minor ambiguity around content production model."
+        }
+      }
+    ],
+    "trace": {
+      "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_03_sleep_app_advanced.jsonl",
+      "total_events": 52,
+      "by_type": {
+        "agent_start": 8,
+        "tool_response": 4,
+        "agent_step": 28,
+        "agent_end": 8,
+        "veto": 2,
+        "retry": 2
+      }
+    }
+  }
+}

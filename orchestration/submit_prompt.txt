@@ -1,0 +1,14 @@
+You are a kanban worker executing card t_1e60e97b (SUBMIT) on board micro1-hackathon. НЕ стварай новую картку — працуй па гэтай. Workspace: use ONLY /root/.hermes/micro1-hackathon/submission/ for deliverables (do not delete source files elsewhere).
+
+GOAL: Assemble the hackathon submission package in /root/.hermes/micro1-hackathon/submission/ by COPYING and STRUCTURING existing artifacts. Do NOT invent content; copy from disk.
+
+Deliverables (create submission/ files numbered):
+1. 01-code+README: copy the project README.md (root /root/.hermes/micro1-hackathon/README.md) → submission/01_README.md. Also create submission/code/ with a copy of the source tree essentials (src/, creative-court/, cc-app/ if exists — exclude heavy deps like node_modules, .venv, caches).
+2. 02-Improvement Changelog: copy root IMPROVEMENT_CHANGELOG.md → submission/02_IMPROVEMENT_CHANGELOG.md.
+3. 03-Reproduction guide: build submission/03_REPRODUCTION.md — extract/copy commands, versions, runtime/cost info. If a reproduction guide already exists somewhere (check eval/, docs/, README), copy it; otherwise assemble from eval/run_eval.py usage + logs (baseline_run.md, advanced_run.md, comparison.md). Include actual commands and requirements.txt if present.
+4. 04-video: if a recorded video file exists anywhere under the project (search *.mp4/*.mov/*.webm), copy → submission/04_demo_video.<ext>. Otherwise copy docs/video-script.md → submission/04_video_script.md and mark the video NOT READY in package_check.md with reason.
+5. 05-agent trajectories: find JSONL trajectory files (search eval/results/ and anywhere for *.jsonl). Convert/copy into submission/05_trajectories/ in submission format: one JSONL per case, and write submission/05_trajectories/README.md explaining format and count. If no JSONL exists, mark NOT READY in package_check.md.
+
+FINALLY: write submission/package_check.md — a checklist of the 5 deliverables, each PRESENT (path + size in bytes, verify with ls -la) or NOT READY (reason). Cross-check against the SUBMIT checklist in concept.md (README user/bottleneck/value+failure mode+hot take, changelog with evidence, repro commands+versions+runtime/cost, video ≤5min, trajectories).
+
+Do NOT submit to HackerEarth, do NOT send emails. Verify every file exists with ls -la before finishing. Report: list of files + sizes + which deliverables are NOT READY and why.

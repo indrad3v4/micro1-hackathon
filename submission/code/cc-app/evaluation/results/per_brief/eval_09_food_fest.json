@@ -1,0 +1,387 @@
+{
+  "title": "Фестиваль уличной еды «Перекрёсток»",
+  "constraints": [
+    "дополнительный бюджет не выделяется",
+    "алкоголь на фестивале запрещён администрацией парка"
+  ],
+  "baseline": {
+    "mode": "baseline",
+    "llm_used": false,
+    "wall_clock_s": 0.085,
+    "llm_calls": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "cost_usd": 0.0,
+    "n_directions": 6,
+    "mean_score": 73.8,
+    "score_spread": 9.5,
+    "probe_total": 78.6,
+    "drift_caught": false,
+    "vetoes": 0,
+    "replacements": 0,
+    "judge_fallbacks": 0,
+    "human_time_min": 33.0,
+    "verdicts": [
+      {
+        "direction_id": "artistic:Artistic angle",
+        "total": 69.1,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 60.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "social:Social angle",
+        "total": 76.6,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 60.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "professional:Professional angle",
+        "total": 69.1,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 60.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "historical:Historical angle",
+        "total": 78.6,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "ritual:Ritual angle",
+        "total": 71.1,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 70.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "natural:Natural angle",
+        "total": 78.6,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "ritual:Пивная легенда Перекрёстка",
+        "total": 78.6,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      }
+    ],
+    "trace": {
+      "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_09_food_fest_baseline.jsonl",
+      "total_events": 36,
+      "by_type": {
+        "agent_start": 6,
+        "agent_step": 24,
+        "agent_end": 6
+      }
+    }
+  },
+  "advanced": {
+    "mode": "advanced",
+    "llm_used": true,
+    "wall_clock_s": 466.03,
+    "llm_calls": 13,
+    "prompt_tokens": 14966,
+    "completion_tokens": 46591,
+    "total_tokens": 61557,
+    "cost_usd": 0.01651,
+    "usage_estimated": 0,
+    "api_failures": 0,
+    "n_directions": 7,
+    "mean_score": 80.1,
+    "score_spread": 12.0,
+    "probe_total": 14.8,
+    "drift_caught": true,
+    "vetoes": 1,
+    "replacements": 1,
+    "judge_fallbacks": 0,
+    "human_time_min": 7.5,
+    "verdicts": [
+      {
+        "direction_id": "artistic:Съедобная партитура",
+        "total": 78.6,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 88.0,
+          "novelty": 85.0,
+          "feasibility": 65.0,
+          "risk": 70.0,
+          "quality": 78.0
+        },
+        "comments": {
+          "relevance": "Directly addresses the core goal of making guests stay until the finale via an edible narrative arc; fits young adult audience and respects no-additional-budget constraint. Minor gap: two stages and 20 corners are not deeply integrated, and some eat-and-go attendees may not engage.",
+          "novelty": "Reframes eating at a festival as consuming music, creating an immersive post-ironic performance; the hidden-symbol and live-animation twist is fresh, though interactive food events are not entirely unprecedented.",
+          "feasibility": "Printing symbols on napkins or dishes is feasible at low cost, but the technical path from guests wiping/revealing symbols to a live animated finale remains undefined; significant unknowns in data collection and coordination with 20 corners.",
+          "risk": "Two main risks are explicitly acknowledged with partial mitigation: symbols being consumed early and the metaphor not landing. Missing deeper handling of technical failure, hygiene, and participant confusion.",
+          "quality": "The concept is elegantly articulated and powerful, but the execution plan is vague around how symbols are gathered and translated into the final animation, leaving a gap between artistic vision and operational clarity."
+        }
+      },
+      {
+        "direction_id": "social:Большой общий стол",
+        "total": 79.8,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 90.0,
+          "novelty": 72.0,
+          "feasibility": 78.0,
+          "risk": 74.0,
+          "quality": 78.0
+        },
+        "comments": {
+          "relevance": "Directly targets the retention goal by creating a social anchor that keeps people engaged until the finale; fits the youth audience, no-alcohol constraint, and zero-budget requirement.",
+          "novelty": "The shared table concept is familiar, but the themed stickers, communal artifact, and final group photo add a fresh, memorable twist.",
+          "feasibility": "Executable with minimal resources, but practical details like table size, seating, food handling, and cleanup need clarification.",
+          "risk": "Main risks are acknowledged with mitigations, though spillage, hygiene, weather, and crowd-flow risks remain underexplored.",
+          "quality": "The concept is clearly articulated and elegant in its simplicity, but the execution path would benefit from more operational detail."
+        }
+      },
+      {
+        "direction_id": "professional:Поединок поварят",
+        "total": 80.1,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 88.0,
+          "novelty": 75.0,
+          "feasibility": 78.0,
+          "risk": 74.0,
+          "quality": 80.0
+        },
+        "comments": {
+          "relevance": "Directly addresses the brief: creates a reason to stay until the finale, works within the zero-alcohol/no-budget constraints, and fits young audiences through participation and competition. Minor gap: not every visitor may want the 'kitchen school' framing.",
+          "novelty": "The stamp-booklet learning mechanic and the audience-vote final duel are a fresh twist on standard street-food entertainment, though cooking competitions and collectable stamps are familiar tools.",
+          "feasibility": "Uses food and ingredients already at the corners; core execution is possible with existing resources. Needs clarification on printing/booklets, recruiting volunteers, and rehearsal logistics, but no major blockers.",
+          "risk": "Correctly identifies the two biggest risks — poor timing and audience reluctance to participate — and gives partial mitigations (rehearsal, volunteers). Misses hygiene, knife safety, and crowd-vote dispute edge cases.",
+          "quality": "Clear and elegant concept with a simple progression from corners to a stage finale. Execution path is understandable, though participant selection and the tie between 20 corners and final meal need more detail."
+        }
+      },
+      {
+        "direction_id": "historical:Вкусная история парка",
+        "total": 80.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82.0,
+          "novelty": 86.0,
+          "feasibility": 74.0,
+          "risk": 72.0,
+          "quality": 84.0
+        },
+        "comments": {
+          "relevance": "Directly targets the key goal of keeping guests until the finale through the passport/ribbon mechanic; slight uncertainty remains on whether the selected decades resonate with 18-35.",
+          "novelty": "The historical food time-travel framing is unexpected, and turning stamped passports into a collective 'ribbon of time' at the finale is a genuinely clever twist.",
+          "feasibility": "Paper tickets and thematic menus are low-cost, but recreating/stylizing period recipes may require ingredients and equipment that many vendors cannot provide without clarification.",
+          "risk": "Two key risks are noted and one is partially mitigated; however, crowd-flow, passport loss, and a concrete mitigation for recipe feasibility are still missing.",
+          "quality": "The narrative arc is clear and elegant, with a strong symbolic finale; execution is more conceptual than operational but still understandable."
+        }
+      },
+      {
+        "direction_id": "ritual:Бесконечный тост",
+        "total": 75.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 80.0,
+          "novelty": 72.0,
+          "feasibility": 72.0,
+          "risk": 68.0,
+          "quality": 80.0
+        },
+        "comments": {
+          "relevance": "Directly addresses the brief by creating a participatory ritual that leads to a collective final moment, though it doesn't fully solve all reasons visitors leave.",
+          "novelty": "Fresh twist on the alcohol ban by reframing it as a toast ritual, but the core mechanic is familiar.",
+          "feasibility": "Executable with existing drinks and simple cups, but needs coordination across corners and clarifications on drink sourcing.",
+          "risk": "Two key risks identified, with partial mitigations, but dependencies on corner menus and participant understanding remain.",
+          "quality": "Clear and elegant plan with a poetic link between ritual and stage opening, though slightly over-engineered."
+        }
+      },
+      {
+        "direction_id": "natural:Живое лоно земли",
+        "total": 80.4,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 85.0,
+          "novelty": 92.0,
+          "feasibility": 70.0,
+          "risk": 85.0,
+          "quality": 65.0
+        },
+        "comments": {
+          "relevance": "Focuses on retention with a participatory ritual leading to the finale, but leaves the food/stage programming under-addressed.",
+          "novelty": "Unexpected organic metaphor; the collective seed toss is a fresh visual hook.",
+          "feasibility": "Low cost, but the seed-sticking-then-tossing mechanic is ambiguous and needs clarification; relies on unstated materials for the fertile circle.",
+          "risk": "Acknowledges wind and litter with mitigations; however, crowd movement and the physical circle installation are unaddressed.",
+          "quality": "Poetic but contradictory execution path; needs clearer choreography of when seeds are planted vs. thrown."
+        }
+      },
+      {
+        "direction_id": "ritual:Пивная легенда Перекрёстка",
+        "total": 14.8,
+        "approved": false,
+        "vetoed": true,
+        "veto_reason": "Court veto: direction violates an explicit hard constraint of the brief (drift from brief).",
+        "scores": {
+          "relevance": 15.0,
+          "novelty": 30.0,
+          "feasibility": 10.0,
+          "risk": 0.0,
+          "quality": 15.0
+        },
+        "comments": {
+          "relevance": "The central mechanism directly violates the explicit park administration ban on alcohol, which is a hard constraint. It also relies on an unapproved sponsor budget, so it does not actually answer the brief.",
+          "novelty": "Using a beer tent as a festival anchor is a predictable and familiar tactic. There is no creative reframe beyond adding alcohol, which itself is an obvious solution.",
+          "feasibility": "Not practically executable as described because serving alcohol is prohibited. The sponsor-covered budget is also unconfirmed and lacks any implementation details.",
+          "risk": "No risks are identified at all. The direction ignores the most critical risk: the alcohol ban, which makes the entire concept invalid.",
+          "quality": "The plan is internally vague and contradictory, relying on a prohibited element while claiming 80% retention without evidence. Execution path is unclear."
+        }
+      },
+      {
+        "direction_id": "ritual:Последний укус",
+        "total": 87.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 90.0,
+          "novelty": 85.0,
+          "feasibility": 85.0,
+          "risk": 85.0,
+          "quality": 88.0
+        },
+        "comments": {
+          "relevance": "Directly targets the goal of keeping guests until the finale; uses only already-purchased food, requires no alcohol, and needs no additional budget. Fits the young audience's participatory energy.",
+          "novelty": "Fresh ritual twist—deferring a bite and making the finale a collective act—reframes the problem creatively, though it is not radically unprecedented.",
+          "feasibility": "Executable with minimal production overhead; needs clear corner-level instructions, timing/sound coordination, and a festival map note, but all are low-cost and realistic.",
+          "risk": "Identifies the two main risks and provides practical mitigations; could also address food safety or guests without saved bites, but the risk handling is strong.",
+          "quality": "Clean, coherent, and elegant concept; rationale is tightly linked to constraints and the execution path is easy to follow."
+        }
+      }
+    ],
+    "trace": {
+      "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_09_food_fest_advanced.jsonl",
+      "total_events": 39,
+      "by_type": {
+        "agent_start": 9,
+        "tool_response": 3,
+        "agent_step": 20,
+        "agent_end": 5,
+        "veto": 1,
+        "retry": 1
+      }
+    }
+  }
+}

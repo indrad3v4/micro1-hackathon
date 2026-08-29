@@ -1,0 +1,387 @@
+{
+  "title": "Онлайн-школа программирования для детей",
+  "constraints": [
+    "в коммуникации нельзя обещать будущую профессию или доход",
+    "запуск только в родительских сообществах (Telegram, чаты)"
+  ],
+  "baseline": {
+    "mode": "baseline",
+    "llm_used": false,
+    "wall_clock_s": 0.041,
+    "llm_calls": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "cost_usd": 0.0,
+    "n_directions": 6,
+    "mean_score": 77.8,
+    "score_spread": 9.5,
+    "probe_total": 69.4,
+    "drift_caught": false,
+    "vetoes": 0,
+    "replacements": 0,
+    "judge_fallbacks": 0,
+    "human_time_min": 33.0,
+    "verdicts": [
+      {
+        "direction_id": "artistic:Artistic angle",
+        "total": 73.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 95,
+          "novelty": 60.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "social:Social angle",
+        "total": 80.5,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 95,
+          "novelty": 60.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "professional:Professional angle",
+        "total": 73.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 95,
+          "novelty": 60.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "historical:Historical angle",
+        "total": 82.5,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 95,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "ritual:Ritual angle",
+        "total": 75.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 95,
+          "novelty": 70.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "natural:Natural angle",
+        "total": 82.5,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 95,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "social:Программист к 14 — миллион в кармане",
+        "total": 69.4,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 58,
+          "novelty": 60.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      }
+    ],
+    "trace": {
+      "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_07_kids_coding_baseline.jsonl",
+      "total_events": 24,
+      "by_type": {
+        "agent_start": 4,
+        "agent_step": 16,
+        "agent_end": 4
+      }
+    }
+  },
+  "advanced": {
+    "mode": "advanced",
+    "llm_used": true,
+    "wall_clock_s": 374.29,
+    "llm_calls": 11,
+    "prompt_tokens": 12757,
+    "completion_tokens": 28457,
+    "total_tokens": 41214,
+    "cost_usd": 0.01233,
+    "usage_estimated": 0,
+    "api_failures": 0,
+    "n_directions": 7,
+    "mean_score": 78.3,
+    "score_spread": 25.5,
+    "probe_total": 19.0,
+    "drift_caught": true,
+    "vetoes": 1,
+    "replacements": 1,
+    "judge_fallbacks": 0,
+    "human_time_min": 7.5,
+    "verdicts": [
+      {
+        "direction_id": "artistic:Код как пиксельная живопись",
+        "total": 79.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 85.0,
+          "novelty": 75.0,
+          "feasibility": 75.0,
+          "risk": 75.0,
+          "quality": 82.0
+        },
+        "comments": {
+          "relevance": "Directly reframes screen time as meaningful creative output and is shareable in parent chats; slight risk of reading as 'art only' rather than core learning, with no explicit educational skills promise beyond the risk note.",
+          "novelty": "Coding-as-painting is a fresh creative angle, and the printed posters/album twist is memorable; however, creative coding is a known trope in kids' education.",
+          "feasibility": "Feasible with standard coding platforms, but online gallery curation, printing, and album logistics need operational detail.",
+          "risk": "Two key risks are identified with partial mitigations (show algorithms/logic; careful curation). Additional risks like screen-time structure and privacy are not addressed.",
+          "quality": "Clear, coherent, and elegantly framed concept; the gallery/album execution path is slightly under-specified."
+        }
+      },
+      {
+        "direction_id": "social:Семейный гейм-тест",
+        "total": 86.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 92.0,
+          "novelty": 85.0,
+          "feasibility": 78.0,
+          "risk": 88.0,
+          "quality": 84.0
+        },
+        "comments": {
+          "relevance": "Прямо отвечает на возражение об экранном времени, превращая одиночный экранный вечер в совместный ритуал. Точное попадание в аудиторию родителей детей 9-14 лет. Не обещает профессию/доход. Соответствует запуску в родительских сообществах, так как создает повод для обмена опытом.",
+          "novelty": "Свежий взгляд на проблему экранного времени: не запрет/ограничение, а новый формат использования. Идея «письма для родителя» и роли первого игрока дает понятный ритуал. Не революционно, но содержит заметный креативный поворот.",
+          "feasibility": "Реализуемо: после каждого урока генерировать/отправлять письмо с мини-игрой несложно технически. Однако требует дополнительной проработки: как именно ребенок делится кодом с родителем, какие форматы мини-игр, какая платформа. Некоторые детали не уточнены.",
+          "risk": "Риски явно идентифицированы: низкая вовлеченность уставших родителей и конфликт из-за критики. Предложены релевантные смягчения: короткий необязательный отзыв и обучение бережной обратной связи. Не хватает детализации по техническим сбоям в передаче письма.",
+          "quality": "Идея изложена ясно и структурно. Введение в курс и расстановка ролей понятны. Небольшая перегруженность смыслами (код + обратная связь + совместный ритуал), но в целом исполнение чистое и логичное."
+        }
+      },
+      {
+        "direction_id": "professional:Ремесленная мастерская кода",
+        "total": 61.8,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 45.0,
+          "novelty": 65.0,
+          "feasibility": 75.0,
+          "risk": 55.0,
+          "quality": 80.0
+        },
+        "comments": {
+          "relevance": "Focuses on real skills and social proof but does not directly address parents' main concern about excessive screen time; partial answer.",
+          "novelty": "Craft workshop metaphor with ranks and technical reviews is a fresh twist, though gamified mentoring is familiar.",
+          "feasibility": "Concept is executable as an online program, but platform/process details need clarification.",
+          "risk": "Some risks noted (competitiveness, semantics of 'workshop') but no mitigation for the core screen-time objection or other edge cases.",
+          "quality": "Clear and coherent vision; elegant alignment of workshop metaphor with skill progression."
+        }
+      },
+      {
+        "direction_id": "historical:Археология пиксельных игр",
+        "total": 72.2,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 58.0,
+          "novelty": 78.0,
+          "feasibility": 80.0,
+          "risk": 75.0,
+          "quality": 80.0
+        },
+        "comments": {
+          "relevance": "Частично отвечает на бриф: подходит для родительских чатов и не обещает профессий/дохода, но не снимает напрямую ключевое возражение родителей об избытке экранного времени.",
+          "novelty": "Свежий и неожиданный для детской школы угол: археология игр и ретро-эстетика добавляют культурный контекст, хотя сам жанр ретро-переписывания знаком индустрии.",
+          "feasibility": "Реализуемо: коды классических игр доступны, современные инструменты для переписывания существуют; требуют уточнения конкретный стек и соревновательная обвязка.",
+          "risk": "Риски устаревания, скуки и недоверия родителей обозначены, есть частичные митигации, но не проработана проблема ограничения экранного времени.",
+          "quality": "Концепция изложена ясно и связно: структура «эпох», «музей» и рациональное обоснование создают понятную рамку, но есть небольшой перекос в описание курса вместо кампании."
+        }
+      },
+      {
+        "direction_id": "ritual:Тридцать минут до ужина",
+        "total": 83.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 91.0,
+          "novelty": 78.0,
+          "feasibility": 72.0,
+          "risk": 85.0,
+          "quality": 86.0
+        },
+        "comments": {
+          "relevance": "Directly answers the core screen-time objection with a bounded, family-centered ritual; fits parents of 9-14 and works in parent chats; no forbidden career/income promises.",
+          "novelty": "Familiar time-limiting idea, but the ritual framing with opening, task, closing beacon, and dinner storytelling adds a fresh, memorable twist.",
+          "feasibility": "Executable as a campaign and product feature, but needs clarification on enforced timing, session plans, and how the 'beacon' and save/continue flow work.",
+          "risk": "Risks are explicitly named with mitigations: parent non-compliance via reminders/stickers, and flow interruption via flexible 'save and continue'.",
+          "quality": "Clean, well-articulated concept with a clear rationale, simple ritual structure, and sensible risk handling."
+        }
+      },
+      {
+        "direction_id": "natural:Сад кода",
+        "total": 79.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 80.0,
+          "novelty": 82.0,
+          "feasibility": 76.0,
+          "risk": 70.0,
+          "quality": 86.0
+        },
+        "comments": {
+          "relevance": "Отвечает на тревогу родителей через метафору роста, но связь с экранным временем нужно дополнительно проявить; не обещает профессию/доход, аудитория точная.",
+          "novelty": "Свежий поворот: природные циклы как путь обучения, ошибки-увядания и подкормки-исправления; не шаблонно, хотя метафора сада встречается.",
+          "feasibility": "Концепт реализуем в родительских чатах, но требует уточнить, как именно оформляются «артефакты урожая» и дневник наблюдений на короткой дистанции.",
+          "risk": "Риски названы: медленность и возможное усиление страха экрана; есть частичные меры (материальные артефакты, подчеркивание цифрового сада), но не хватает полных сценариев.",
+          "quality": "Ясная и элегантная структура, последовательная метафора, понятная логика: сезоны соответствуют этапам работы; незначительная перегруженность образами."
+        }
+      },
+      {
+        "direction_id": "social:Программист к 14 — миллион в кармане",
+        "total": 19.0,
+        "approved": false,
+        "vetoed": true,
+        "veto_reason": "Court veto: direction violates an explicit hard constraint of the brief (drift from brief).",
+        "scores": {
+          "relevance": 10.0,
+          "novelty": 30.0,
+          "feasibility": 20.0,
+          "risk": 10.0,
+          "quality": 30.0
+        },
+        "comments": {
+          "relevance": "Прямо нарушает ключевые ограничения: обещает будущую профессию и доход, а канал размещения (TikTok/YouTube) не соответствует запуску в родительских сообществах Telegram/чатах.",
+          "novelty": "Идея шаблонная и даже вредная: обещание 'миллиона в кармане' — типичный кликбейт, не предлагает нового решения снятия возражения об экранном времени.",
+          "feasibility": "Нежизнеспособно из-за нарушения ограничений: нельзя реализовать коммуникацию с обещанием дохода, а площадки не соответствуют заданным каналам.",
+          "risk": "Риски не указаны, при этом очевидны: юридические/этические последствия ложных обещаний, негативная реакция родителей, несоответствие платформам.",
+          "quality": "План противоречив: рационализация противоречит ограничениям, отсутствует проработка снятия возражения про экранное время."
+        }
+      },
+      {
+        "direction_id": "social:Семейное тест-драйв",
+        "total": 87.3,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 90.0,
+          "novelty": 84.0,
+          "feasibility": 85.0,
+          "risk": 90.0,
+          "quality": 87.0
+        },
+        "comments": {
+          "relevance": "Directly targets parents' screen-time objection by reframing game creation as a shared parent-child activity; fits parent chat channels and respects no career/income promises.",
+          "novelty": "Fresh twist on parent-child co-play: child as creator, parent as tester, plus community recognition via bug-report ritual. Familiar social mechanics but the framing is memorable.",
+          "feasibility": "Buildable with school game platform and Telegram; requires technical details around QR access and moderation, but no major blockers.",
+          "risk": "Explicitly names the risks of parent time-friction and low community response, and supplies mitigations: framing as a lesson and a moderator who ensures responses.",
+          "quality": "Clear, elegant loop: test-drive, bug-report, social recognition. Slight ambiguity remains around moderator cost/scope, but overall well articulated."
+        }
+      }
+    ],
+    "trace": {
+      "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_07_kids_coding_advanced.jsonl",
+      "total_events": 52,
+      "by_type": {
+        "agent_start": 8,
+        "tool_response": 4,
+        "agent_step": 28,
+        "agent_end": 8,
+        "veto": 2,
+        "retry": 2
+      }
+    }
+  }
+}
