@@ -1,0 +1,3937 @@
+{
+  "meta": {
+    "benchmark": "creator-court-measured-improvement-v1",
+    "generated_at_utc": "2026-08-29T06:47:11Z",
+    "python": "3.12.14",
+    "model": "deepseek-v4-flash-vision-exp",
+    "llm_key_present": true,
+    "threshold": 60.0,
+    "human_time_proxy": {
+      "note": "MODELLED minutes from constants in run_benchmark.py, not measured",
+      "baseline_formula": "read_brief + write_direction*6 + score_direction*7",
+      "advanced_formula": "review_verdict*V + veto*vetoes + retry_check*replacements + sign_off"
+    },
+    "interpretation_notes": [
+      "Drift-catch rate is the primary, apples-to-apples metric: the SAME constraint-violating drift probe (identical text, saturated with brief keywords) is judged by both systems on every brief; catch = probe rejected (total < threshold) or vetoed.",
+      "Mean verdict scores are NOT cross-condition comparable as a quality scale: baseline scores come from the lenient lexical heuristic and advanced from the strict LLM rubric. Within-condition signal is the discrimination (score_spread): the heuristic cluster ~0-10 pts, the LLM judge 7-37 pts.",
+      "human_time_min is a MODELLED proxy (constants in run_benchmark.py), not measured; wall_clock_s and token/cost figures ARE measured (real API usage incl. usage.cost).",
+      "advanced llm_calls include retries of the reasoning model's empty-content answers."
+    ]
+  },
+  "summary": {
+    "n_briefs": 10,
+    "drift_catch_rate_baseline": 0.0,
+    "drift_catch_rate_advanced": 1.0,
+    "drift_caught_counts": {
+      "baseline": 0,
+      "advanced": 10
+    },
+    "mean_verdict_score_baseline": 73.7,
+    "mean_verdict_score_advanced": 69.7,
+    "human_time_min_baseline_total": 330.0,
+    "human_time_min_advanced_total": 75.0,
+    "human_time_min_saved_total": 255.0,
+    "advanced_wall_clock_total_s": 2900.0,
+    "advanced_llm_calls_total": 109,
+    "advanced_total_tokens": 378866,
+    "advanced_cost_usd_total": 0.10369,
+    "advanced_cost_usd_per_task": 0.01037,
+    "vetoes_total": 10,
+    "replacements_total": 10,
+    "mean_probe_total_baseline": 79.5,
+    "mean_probe_total_advanced": 18.6
+  },
+  "per_brief": {
+    "eval_01_coffee": {
+      "title": "Умная кофеварка",
+      "constraints": [
+        "должна работать без смартфона",
+        "цена не выше 25 000 руб"
+      ],
+      "baseline": {
+        "mode": "baseline",
+        "llm_used": false,
+        "wall_clock_s": 0.035,
+        "llm_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0.0,
+        "n_directions": 6,
+        "mean_score": 69.0,
+        "score_spread": 9.5,
+        "probe_total": 79.0,
+        "drift_caught": false,
+        "vetoes": 0,
+        "replacements": 0,
+        "judge_fallbacks": 0,
+        "human_time_min": 33.0,
+        "verdicts": [
+          {
+            "direction_id": "artistic:Artistic angle",
+            "total": 64.3,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 66,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "social:Social angle",
+            "total": 71.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 66,
+              "novelty": 60.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "professional:Professional angle",
+            "total": 64.3,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 66,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "historical:Historical angle",
+            "total": 73.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 66,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "ritual:Ritual angle",
+            "total": 66.3,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 66,
+              "novelty": 70.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "natural:Natural angle",
+            "total": 73.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 66,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "professional:Кофейный сомелье в смартфоне",
+            "total": 79.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90,
+              "novelty": 60.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          }
+        ],
+        "trace": {
+          "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_01_coffee_baseline.jsonl",
+          "total_events": 24,
+          "by_type": {
+            "agent_start": 4,
+            "agent_step": 16,
+            "agent_end": 4
+          }
+        }
+      },
+      "advanced": {
+        "mode": "advanced",
+        "llm_used": true,
+        "wall_clock_s": 254.51,
+        "llm_calls": 10,
+        "prompt_tokens": 10505,
+        "completion_tokens": 19484,
+        "total_tokens": 29989,
+        "cost_usd": 0.00985,
+        "usage_estimated": 0,
+        "api_failures": 0,
+        "n_directions": 7,
+        "mean_score": 42.8,
+        "score_spread": 34.6,
+        "probe_total": 28.0,
+        "drift_caught": true,
+        "vetoes": 1,
+        "replacements": 1,
+        "judge_fallbacks": 0,
+        "human_time_min": 7.5,
+        "verdicts": [
+          {
+            "direction_id": "artistic:Artistic angle",
+            "total": 41.0,
+            "approved": false,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 40.0,
+              "novelty": 50.0,
+              "feasibility": 35.0,
+              "risk": 40.0,
+              "quality": 40.0
+            },
+            "comments": {
+              "relevance": "Artistic framing addresses the audience superficially but omits core functionality: mood-based recipe selection, schedule learning, calendar sync, and the constraints of no-smartphone operation and price cap.",
+              "novelty": "Framing a smart coffee maker as artistic expression is a mild twist, but it is a fairly common lifestyle/marketing angle and not a surprising reframe of the problem.",
+              "feasibility": "No implementable product details are provided; lacks specifics on how the device learns, operates offline, or stays within 25,000 RUB.",
+              "risk": "Only names the need for user validation; misses edge cases such as mood misdetection, calendar conflicts, offline failures, and learning errors.",
+              "quality": "Vague and underdeveloped; the concept is a framing statement rather than a coherent execution plan with engineering clarity."
+            }
+          },
+          {
+            "direction_id": "social:Social angle",
+            "total": 31.0,
+            "approved": false,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 45.0,
+              "novelty": 35.0,
+              "feasibility": 30.0,
+              "risk": 10.0,
+              "quality": 20.0
+            },
+            "comments": {
+              "relevance": "Targets the audience and names the product, but ignores the brief's core functionality: mood/schedule-based recipes, learning habits, and calendar sync. Also misses the no-smartphone and price constraints.",
+              "novelty": "The 'social expression' frame is a familiar positioning lens; the rationale explicitly calls it a familiar lens, so it offers little surprise or rethinking of the problem.",
+              "feasibility": "Not buildable as described. There is no concrete mechanism, design, or implementation path for turning the coffee machine into a social expression experience.",
+              "risk": "Risks are listed as '(none)', with no acknowledgment of edge cases, technical dependencies, privacy concerns, or social missteps.",
+              "quality": "Direction is vague and underdeveloped. It does not articulate how the social frame would be translated into an actual product experience."
+            }
+          },
+          {
+            "direction_id": "professional:Professional angle",
+            "total": 45.5,
+            "approved": false,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 55.0,
+              "novelty": 40.0,
+              "feasibility": 45.0,
+              "risk": 45.0,
+              "quality": 35.0
+            },
+            "comments": {
+              "relevance": "Cites the target audience and a familiar lens, but does not address the core functionality, calendar sync/habit learning, or the no-smartphone and price constraints.",
+              "novelty": "The 'professional expression' frame is generic and widely used; it offers no surprising reframe or distinctive creative twist.",
+              "feasibility": "No concrete implementation plan, product features, or technical details are described; significant unknowns remain about how this concept would be built.",
+              "risk": "Only notes that validation with real users is needed; key risks around offline operation, price ceiling, privacy, and misuse are not identified.",
+              "quality": "The direction is vague and underdeveloped, with no clear execution path, structure, or actionable design principles."
+            }
+          },
+          {
+            "direction_id": "historical:Historical angle",
+            "total": 31.5,
+            "approved": false,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 30.0,
+              "novelty": 60.0,
+              "feasibility": 30.0,
+              "risk": 0.0,
+              "quality": 30.0
+            },
+            "comments": {
+              "relevance": "The direction only proposes a 'historical frame' without addressing the core brief: mood-based recipe selection, schedule learning, calendar sync, or the no-smartphone and price constraints.",
+              "novelty": "A historical framing is somewhat unexpected for a smart coffee maker, but the idea is vaguely familiar and lacks a truly creative twist or reframing.",
+              "feasibility": "No concrete product features or implementation details are provided, making it impossible to assess buildability against the stated constraints.",
+              "risk": "Risks are explicitly listed as 'none', showing no consideration of edge cases or technical/consumer risks.",
+              "quality": "The description is extremely vague, using phrases like 'historical expression' and 'familiar lens' without clarifying the actual execution plan."
+            }
+          },
+          {
+            "direction_id": "ritual:Ritual angle",
+            "total": 54.2,
+            "approved": false,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 55.0,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 40.0,
+              "quality": 45.0
+            },
+            "comments": {
+              "relevance": "The ritual frame fits the audience and broad product idea, but it does not address the specific smart features, offline requirement, or price constraint.",
+              "novelty": "Reframing coffee as a ritual expression is mildly fresh but remains a familiar angle in coffee marketing.",
+              "feasibility": "The framing itself is executable, but it lacks concrete product details and technical requirements for implementation.",
+              "risk": "Only one risk is mentioned—needs validation—with no edge cases, failure modes, or mitigation strategies.",
+              "quality": "The concept is coherent but too abstract and short; it does not provide an execution path or engineering clarity."
+            }
+          },
+          {
+            "direction_id": "natural:Natural angle",
+            "total": 30.8,
+            "approved": false,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 45.0,
+              "novelty": 30.0,
+              "feasibility": 30.0,
+              "risk": 0.0,
+              "quality": 35.0
+            },
+            "comments": {
+              "relevance": "Frames as 'natural expression' but never addresses smart recipe selection, mood/schedule learning, calendar sync, offline operation, or price constraint. Only the audience is vaguely mentioned.",
+              "novelty": "Natural expression is a generic, familiar framing; no unexpected angle or creative reframe of the smart coffee machine problem.",
+              "feasibility": "No concrete product concept or execution details; cannot be built or reproduced as described.",
+              "risk": "No risks acknowledged; explicitly lists '(none)' despite the highly vague direction.",
+              "quality": "Plan is too underdeveloped and ambiguous to follow; no detailed execution path."
+            }
+          },
+          {
+            "direction_id": "professional:Кофейный сомелье в смартфоне",
+            "total": 28.0,
+            "approved": false,
+            "vetoed": true,
+            "veto_reason": "Court veto: direction violates an explicit hard constraint of the brief (drift from brief).",
+            "scores": {
+              "relevance": 25.0,
+              "novelty": 30.0,
+              "feasibility": 35.0,
+              "risk": 10.0,
+              "quality": 40.0
+            },
+            "comments": {
+              "relevance": "Направление частично отвечает на бриф (настроение, календарь, привычки), но прямо нарушает два ключевых ограничения: требуется обязательный смартфон и цена 45 000 руб. вместо 25 000 руб.",
+              "novelty": "Идея премиум-приложения с подпиской и «кофейным сомелье» предсказуема для городских профессионалов; не предлагает неожиданного переосмысления задачи.",
+              "feasibility": "Технически реализуемо, но не соответствует заданным ограничениям: требует смартфона и превышает бюджет, поэтому не может быть воспроизведено в рамках брифа.",
+              "risk": "Риски не указаны вовсе; нет анализа зависимости от смартфона, подписки, цены, приватности данных или отказа синхронизации.",
+              "quality": "План изложен ясно, но перегружен противоречащими брифу деталями (экран смартфона как «сенсорный», обязательная подписка); исполнение выглядит как коммерческое предложение, а не инженерное решение."
+            }
+          },
+          {
+            "direction_id": "professional:Барриста в устройстве",
+            "total": 65.4,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 50.0,
+              "novelty": 75.0,
+              "feasibility": 72.0,
+              "risk": 65.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Addresses no-smartphone and price constraints and audience desire for mastery, but omits core automatic recipe selection by mood/schedule/calendar.",
+              "novelty": "Fresh gamification twist on a coffee machine, though the mentor/training concept is familiar in other contexts.",
+              "feasibility": "Feasible with basic sensors and display, but the 25k budget and depth of analytics need clarification.",
+              "risk": "Identifies cost and user annoyance risks, but lacks concrete mitigations and ignores technical failure modes.",
+              "quality": "Clear concept and rationale, but execution plan lacks specifics for algorithm and UI."
+            }
+          }
+        ],
+        "trace": {
+          "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_01_coffee_advanced.jsonl",
+          "total_events": 52,
+          "by_type": {
+            "agent_start": 10,
+            "tool_response": 4,
+            "agent_step": 29,
+            "agent_end": 6,
+            "retry": 2,
+            "veto": 1
+          }
+        }
+      }
+    },
+    "eval_02_perfume": {
+      "title": "Парфюм «Северный свет»",
+      "constraints": [
+        "без телевидения",
+        "бюджет запуска: только соцсети и один оффлайн-ивент"
+      ],
+      "baseline": {
+        "mode": "baseline",
+        "llm_used": false,
+        "wall_clock_s": 0.035,
+        "llm_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0.0,
+        "n_directions": 6,
+        "mean_score": 71.5,
+        "score_spread": 9.5,
+        "probe_total": 80.5,
+        "drift_caught": false,
+        "vetoes": 0,
+        "replacements": 0,
+        "judge_fallbacks": 0,
+        "human_time_min": 33.0,
+        "verdicts": [
+          {
+            "direction_id": "artistic:Artistic angle",
+            "total": 66.7,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 74,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "social:Social angle",
+            "total": 74.2,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 74,
+              "novelty": 60.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "professional:Professional angle",
+            "total": 66.7,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 74,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "historical:Historical angle",
+            "total": 76.2,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 74,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "ritual:Ritual angle",
+            "total": 68.7,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 74,
+              "novelty": 70.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "natural:Natural angle",
+            "total": 76.2,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 74,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "social:Телевизионная премьера «Северного света»",
+            "total": 80.5,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 95,
+              "novelty": 60.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          }
+        ],
+        "trace": {
+          "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_02_perfume_baseline.jsonl",
+          "total_events": 24,
+          "by_type": {
+            "agent_start": 4,
+            "agent_step": 16,
+            "agent_end": 4
+          }
+        }
+      },
+      "advanced": {
+        "mode": "advanced",
+        "llm_used": true,
+        "wall_clock_s": 180.31,
+        "llm_calls": 10,
+        "prompt_tokens": 12339,
+        "completion_tokens": 17527,
+        "total_tokens": 29866,
+        "cost_usd": 0.00732,
+        "usage_estimated": 0,
+        "api_failures": 0,
+        "n_directions": 7,
+        "mean_score": 76.2,
+        "score_spread": 17.5,
+        "probe_total": 14.8,
+        "drift_caught": true,
+        "vetoes": 1,
+        "replacements": 1,
+        "judge_fallbacks": 0,
+        "human_time_min": 7.5,
+        "verdicts": [
+          {
+            "direction_id": "artistic:Лёд, который тает в руках",
+            "total": 76.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90.0,
+              "novelty": 80.0,
+              "feasibility": 60.0,
+              "risk": 70.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Ориентирован точно на ключевую задачу: бессловесная тактильная метафора холода и тепла раскрывает историю аромата для коллекционеров; оффлайн-ивент соответствует одному разрешенному событию.",
+              "novelty": "Идея флакона-льда, тающего от тепла рук, неожиданна для нишевого запуска; визуально сильная, но узнаваемая для «северных» тем.",
+              "feasibility": "Эффект таяния на стекле и сохранение содержимого требуют спецматериалов или имитации; 500 уникальных флаконов и галерея создают существенные производственные и бюджетные неясности.",
+              "risk": "Основные риски названы (технология, бюджет, аудитория), но митигации не предложены; нет плана Б и критериев отбора покупателей.",
+              "quality": "Концепт ясный и цельный, однако исполнение описано на уровне образа, без технической схемы и деталей организации ивента."
+            }
+          },
+          {
+            "direction_id": "social:Тайна первого снега",
+            "total": 80.3,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 85.0,
+              "novelty": 78.0,
+              "feasibility": 80.0,
+              "risk": 70.0,
+              "quality": 85.0
+            },
+            "comments": {
+              "relevance": "Directly targets the niche collector audience and fits social + single-event constraints. The closed community and numbered flacon make ownership feel exclusive, but the reliance on user stories partially blurs the brief's 'without words' requirement.",
+              "novelty": "The 'Witnesses of Polar Night' community and numbered flacon ritual provide a fresh status-driven twist, but the underlying UGC + invite-event mechanic is a familiar niche brand pattern.",
+              "feasibility": "Buildable with social media and one offline event. Numbered flacons and community management are demanding but realistic; some operational details would need clarification.",
+              "risk": "Three key risks are explicitly identified, but no concrete mitigation or fallback plan is offered for critical mass, brand drift, or numbering logistics.",
+              "quality": "Cohesive and elegant narrative arc: numbered purchase, personal ritual, collective event. Minor clarity gaps remain around participant selection and how the scent story is told non-verbally."
+            }
+          },
+          {
+            "direction_id": "professional:Парфюмер-отшельник",
+            "total": 73.5,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 85.0,
+              "novelty": 60.0,
+              "feasibility": 75.0,
+              "risk": 65.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Concept closely aligns with the brief: it uses only social media and one offline event, and it conveys the story of the polar-night scent through visual, wordless lab narrative. The audience of intellectual niche collectors is well targeted, though the emotional story of the scent is somewhat downplayed in favor of technique.",
+              "novelty": "The 'perfumer's lab' insider view is a fairly common trope in niche perfume marketing. The 'master class without words' and exclusive signing event add a twist, but the overall approach remains predictable and is even acknowledged as resembling competitors.",
+              "feasibility": "The plan is executable with social media video content and a small offline event; however, some technical aspects like filming negative-temperature lab work and 'molecules of light' need clearer definition. Budget constraints are broadly respected.",
+              "risk": "Risks are identified, including alienating emotional buyers, high event cost limiting sales, and competitive similarity, but no concrete mitigation strategies or fallback plans are provided.",
+              "quality": "The concept is clearly articulated with a coherent narrative structure and a plausible execution path. Some elements remain vague, and the plan could be more elegant in balancing technical allure with emotional resonance."
+            }
+          },
+          {
+            "direction_id": "historical:Амулет поморов",
+            "total": 71.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 68.0,
+              "novelty": 74.0,
+              "feasibility": 77.0,
+              "risk": 65.0,
+              "quality": 76.0
+            },
+            "comments": {
+              "relevance": "Strong heritage angle fits collectors, but the written scroll/legend and QR map rely on text, conflicting with 'no words' constraint; first-snow metaphor is sidelined by seafaring focus.",
+              "novelty": "The amulet framing and 'keepers of light' interactive map add a fresh twist, though historical-artifact storytelling is a familiar niche-perfume trope.",
+              "feasibility": "Bottle shape, engraving, scroll, and QR map are buildable, but historical research and production of the amulet-form flacon require clarification.",
+              "risk": "Cultural appropriation, metaphor drift, and slow social spread are named, but no concrete mitigations or plan for addressing these risks is provided.",
+              "quality": "Concept is elegantly articulated, though some ambiguity remains about the scroll/QR delivery and how the visual story unfolds without text."
+            }
+          },
+          {
+            "direction_id": "ritual:Обратная сторона дня",
+            "total": 76.7,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 85.0,
+              "novelty": 75.0,
+              "feasibility": 72.0,
+              "risk": 65.0,
+              "quality": 80.0
+            },
+            "comments": {
+              "relevance": "Directly addresses the brief: a wordless ritual tells the polar night / first snow story and fits the niche collector audience; slight gap is the lack of explicit offline event integration.",
+              "novelty": "Fresh and clever with the 'night altar' and candle ritual, but the meditative self-care perfume angle is somewhat familiar in niche fragrance marketing.",
+              "feasibility": "Social video rituals are feasible, but bundling a candle and stand raises logistical, safety, and cost questions; offline event specifics are not described.",
+              "risk": "Three risks are clearly identified, including cost and rejection of the ritual, but no concrete mitigation strategies or fallback plans are offered.",
+              "quality": "The concept is clearly articulated and philosophically coherent; minor over-complication in the ritual and lack of tactical execution detail hold it back."
+            }
+          },
+          {
+            "direction_id": "natural:Эхо полярного сада",
+            "total": 68.5,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 75.0,
+              "novelty": 78.0,
+              "feasibility": 58.0,
+              "risk": 60.0,
+              "quality": 65.0
+            },
+            "comments": {
+              "relevance": "Концепция отвечает на бриф через природную метафору и 'выращивание' аромата, но акцент на тундре и мхах уводит от образа полярной ночи и первого снега; для коллекционеров нишевой парфюмерии требует более премиальной подачи.",
+              "novelty": "Идея живого аромата, пробуждающегося от тепла тела, и флакона-семени неожиданна и креативна, хотя экологичная/природная тема в нишевой парфюмерии используется всё чаще.",
+              "feasibility": "Экстракты мхов и лишайников реальны, но 'выращивание' аромата и флакон с почвой/эфирным маслом — значительная техническая и эксплуатационная неопределённость: нет ясности, как это стабильно и удобно использовать.",
+              "risk": "Риски указаны, но без явных стратегий смягчения; не рассмотрены возможные провалы в сенсорном восприятии, логистике или юридической чистоте ингредиентов.",
+              "quality": "Концепция описана вдохновляюще, но исполнение размыто: нет конкретного плана запуска в соцсетях и на оффлайн-ивенте, а образ 'семени' нуждается в более чёткой проработке."
+            }
+          },
+          {
+            "direction_id": "social:Телевизионная премьера «Северного света»",
+            "total": 14.8,
+            "approved": false,
+            "vetoed": true,
+            "veto_reason": "Court veto: direction violates an explicit hard constraint of the brief (drift from brief).",
+            "scores": {
+              "relevance": 10.0,
+              "novelty": 25.0,
+              "feasibility": 15.0,
+              "risk": 5.0,
+              "quality": 20.0
+            },
+            "comments": {
+              "relevance": "Directly violates the explicit 'no TV' constraint and the budget of only social media plus one offline event. Mass prime-time TV and billboards are aimed at a broad audience, not niche collectors aged 28-45, and the voiceover contradicts the 'without words' requirement.",
+              "novelty": "The approach is a conventional mass-media launch, not an unexpected or creative reframe. It is cliché for a perfume brand and offers no clever twist beyond ignoring the brief's core constraints.",
+              "feasibility": "Not executable within the stated constraints: federal TV prime-time and outdoor billboards require budgets far beyond social media and one offline event. Multiple format and production details are also unspecified.",
+              "risk": "No risks are considered at all. The direction ignores budget overruns, audience mismatch, brand dilution, and the contradiction between voiceover and the wordless storytelling requirement.",
+              "quality": "The plan is internally contradictory: it claims to tell a story without words yet uses a voiceover, and it claims social/offline budget while proposing TV and outdoor. Execution path is not coherent for the brief."
+            }
+          },
+          {
+            "direction_id": "social:Ночной клуб «Северный свет»",
+            "total": 86.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90.0,
+              "novelty": 88.0,
+              "feasibility": 85.0,
+              "risk": 75.0,
+              "quality": 88.0
+            },
+            "comments": {
+              "relevance": "Directly serves the brief: tells the scent story without words, targets niche collectors via an exclusive offline event and social media, aligns with no-TV/budget constraints. The 500-bottle goal is implied through viral FOMO rather than explicitly addressed.",
+              "novelty": "Fresh and surprising: a silent dark party with numbered bottles and image fragments creates a mysterious collective ritual. Not fully unprecedented, but the specific 'visual map of northern lights' twist is creative and engaging.",
+              "feasibility": "The concept is buildable with standard event and social media logistics. Some operational details remain unclear, such as how photos are assigned to participants or how the 'white field' recognition works precisely.",
+              "risk": "Risks are named, including exclusivity backlash, dependence on participant engagement, and geographic limits. However, mitigation strategies are only partial, with the digital compensation plan being the most concrete.",
+              "quality": "Clear, elegant, and coherent plan with a strong narrative flow. The rationale explains why the format suits the audience, though a few execution mechanics could be more precisely specified."
+            }
+          }
+        ],
+        "trace": {
+          "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_02_perfume_advanced.jsonl",
+          "total_events": 53,
+          "by_type": {
+            "agent_start": 8,
+            "tool_response": 4,
+            "retry": 3,
+            "agent_step": 28,
+            "agent_end": 8,
+            "veto": 2
+          }
+        }
+      }
+    },
+    "eval_03_sleep_app": {
+      "title": "Приложение для сна «Дрёма»",
+      "constraints": [
+        "не использовать образ спальни и кровати в коммуникации",
+        "запуск без бюджета на рекламу"
+      ],
+      "baseline": {
+        "mode": "baseline",
+        "llm_used": false,
+        "wall_clock_s": 0.037,
+        "llm_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0.0,
+        "n_directions": 6,
+        "mean_score": 69.0,
+        "score_spread": 9.5,
+        "probe_total": 82.5,
+        "drift_caught": false,
+        "vetoes": 0,
+        "replacements": 0,
+        "judge_fallbacks": 0,
+        "human_time_min": 33.0,
+        "verdicts": [
+          {
+            "direction_id": "artistic:Artistic angle",
+            "total": 64.3,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 66,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "social:Social angle",
+            "total": 71.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 66,
+              "novelty": 60.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "professional:Professional angle",
+            "total": 64.3,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 66,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "historical:Historical angle",
+            "total": 73.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 66,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "ritual:Ritual angle",
+            "total": 66.3,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 66,
+              "novelty": 70.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "natural:Natural angle",
+            "total": 73.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 66,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "ritual:Спальня как герой кампании",
+            "total": 82.5,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 95,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          }
+        ],
+        "trace": {
+          "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_03_sleep_app_baseline.jsonl",
+          "total_events": 24,
+          "by_type": {
+            "agent_start": 4,
+            "agent_step": 16,
+            "agent_end": 4
+          }
+        }
+      },
+      "advanced": {
+        "mode": "advanced",
+        "llm_used": true,
+        "wall_clock_s": 270.86,
+        "llm_calls": 10,
+        "prompt_tokens": 11668,
+        "completion_tokens": 23935,
+        "total_tokens": 35603,
+        "cost_usd": 0.00614,
+        "usage_estimated": 0,
+        "api_failures": 0,
+        "n_directions": 7,
+        "mean_score": 77.1,
+        "score_spread": 11.3,
+        "probe_total": 11.7,
+        "drift_caught": true,
+        "vetoes": 1,
+        "replacements": 1,
+        "judge_fallbacks": 0,
+        "human_time_min": 7.5,
+        "verdicts": [
+          {
+            "direction_id": "artistic:Соната для одной ночи",
+            "total": 81.1,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 88.0,
+              "novelty": 92.0,
+              "feasibility": 72.0,
+              "risk": 68.0,
+              "quality": 78.0
+            },
+            "comments": {
+              "relevance": "Directly targets the brief's key aims: uses voice and nature sounds, avoids bedroom/bed imagery, and creates an organic shareable hook to replace paid ads. Slight gap: the sleep-inducing function is implicit rather than central.",
+              "novelty": "Reframes the sleep app as a generative art gallery, not a utility. The daily unique sound painting and shareable artifact is an unexpected angle in a crowded category.",
+              "feasibility": "Feasible in principle, but the audio-generation pipeline, visualizer, storage, and export flow need more concrete technical definition before MVP execution.",
+              "risk": "Two relevant risks are named, but mitigation is only partial: tonal limits are mentioned without a fallback plan, and storage/export costs are noted but not resolved.",
+              "quality": "The concept is clearly and elegantly articulated, with strong art direction and a coherent viral loop. The execution path remains somewhat abstract on the technical side."
+            }
+          },
+          {
+            "direction_id": "social:Ночная перекличка",
+            "total": 69.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 78.0,
+              "novelty": 82.0,
+              "feasibility": 60.0,
+              "risk": 55.0,
+              "quality": 65.0
+            },
+            "comments": {
+              "relevance": "Addresses sleep and insomnia, and the no-budget launch via user-generated social sharing. However, the shared voice stream may feel more stimulating than calming, slightly drifting from the narrator-led sleep core.",
+              "novelty": "A fresh social twist on sleep apps—users’ whispered thoughts become the audio content. Unconventional and emotionally resonant, though the collective audio stream idea is not entirely unprecedented.",
+              "feasibility": "Building the audio recording and playback system is plausible, but the concept depends on a critical mass of users and a cold-start content loop that is not explained. Technical moderation and audio processing details are also unspecified.",
+              "risk": "Risks of anxious voices and an empty chorus are acknowledged, but no concrete mitigation strategies are given for moderation, privacy, or solving the cold-start problem.",
+              "quality": "The direction is clear and evocative in its rationale, but the execution path, architecture, and MVP scope remain under-specified."
+            }
+          },
+          {
+            "direction_id": "professional:Гильдия усыпителей",
+            "total": 77.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 72.0,
+              "novelty": 92.0,
+              "feasibility": 78.0,
+              "risk": 68.0,
+              "quality": 80.0
+            },
+            "comments": {
+              "relevance": "Отвечает на задачу дифференциации и самопродвижения без бюджета, но смещает фокус с простого засыпания на состязание, что может не совпадать с ожиданиями аудитории с бессонницей.",
+              "novelty": "Неожиданный и редкий для сна подход — гильдия и признание мастеров вместо «лечения». Сильный творческий ход.",
+              "feasibility": "Механика реализуема: запись, экзамен, значки, библиотека. Требует уточнения модерации и оценки качества пользовательского контента.",
+              "risk": "Риски названы, но почти без стратегий смягчения: не ясно, как защитить качество и не перегрузить интерфейс.",
+              "quality": "Идея и логика изложены ясно, есть обоснование и осознание слабых мест, но не хватает деталей реализации."
+            }
+          },
+          {
+            "direction_id": "historical:Колыбельная прабабушки",
+            "total": 73.7,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 85.0,
+              "novelty": 90.0,
+              "feasibility": 55.0,
+              "risk": 50.0,
+              "quality": 78.0
+            },
+            "comments": {
+              "relevance": "Направление напрямую отвечает на задачу создания медитативного приложения для засыпания с голосом диктора, выделяется на фоне конкурентов и хорошо соответствует аудитории 30-55, но может не подойти части пользователей, которым нужен нейтральный звук.",
+              "novelty": "Оригинальный подход: культурное наследие, колыбельные и заговоры как еженедельные 'голоса прошлого' — сильный контраст с типичными медитативными приложениями.",
+              "feasibility": "Реализация требует получения редких этнографических материалов, лицензий и экспедиций, что сложно без бюджета и существенно повышает неопределенность.",
+              "risk": "Риски упомянуты, но не проработаны: нет стратегии обхода правовых сложностей, запасного контента или плана привлечения аудитории, которой не близка культурная тематика.",
+              "quality": "Концепция изложена ясно и вдохновляюще, но отсутствуют детали по технической реализации, процессу создания контента и монетизации."
+            }
+          },
+          {
+            "direction_id": "ritual:Двадцать один вечер",
+            "total": 80.5,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 88.0,
+              "novelty": 75.0,
+              "feasibility": 85.0,
+              "risk": 65.0,
+              "quality": 82.0
+            },
+            "comments": {
+              "relevance": "Directly addresses the brief: creates a distinctive sleep ritual with voice and sound, avoids bedroom/bed imagery, and uses habit formation for retention and word-of-mouth without ad spend. Minor gap: the ritual frame may appeal more broadly than the specific insomnia audience.",
+              "novelty": "Fresh enough: framing sleep as an intentionally 'grown' personal ritual is a clever twist on typical sleep apps. However, the 21-day habit concept is a familiar trope, and the basic structure of reminders plus audio is not radically new.",
+              "feasibility": "Clearly executable with standard mobile app capabilities: scheduled signals, voice prompts, nature audio, and simple user actions. Some technical details around persistence of the ritual without the app remain unspecified but are not major blockers.",
+              "risk": "Two key risks are explicitly named: notification fatigue and the potentially off-putting 'grown ritual' language. However, no concrete mitigation strategies are offered, leaving an important gap in robustness analysis.",
+              "quality": "Well-articulated and elegant in its simplicity. The rationale is coherent, but the 'grown ritual' phrase and the exact transition from in-app ritual to app-free persistence could be described more precisely."
+            }
+          },
+          {
+            "direction_id": "natural:Годовой круг",
+            "total": 76.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 85.0,
+              "novelty": 80.0,
+              "feasibility": 65.0,
+              "risk": 65.0,
+              "quality": 78.0
+            },
+            "comments": {
+              "relevance": "Directly addresses differentiation via seasonal sounds; fits 30-55 nature affinity and avoids bedroom imagery. Minor gap: daily variation may not suit all insomnia users.",
+              "novelty": "Fresh twist on familiar nature sounds: annual cycle as a living narrative. Not radically unprecedented but clever and non-obvious.",
+              "feasibility": "Requires substantial seasonal audio library; launch without ad budget doesn't solve production cost. Possible but with significant content dependencies.",
+              "risk": "Acknowledges high content cost and potential dislike of changing audio for sleep stability, but no concrete mitigation strategies provided.",
+              "quality": "Clearly articulated concept and rationale; elegant 'aging forest' metaphor. Lacks execution detail for daily selection and voice integration."
+            }
+          },
+          {
+            "direction_id": "ritual:Спальня как герой кампании",
+            "total": 11.7,
+            "approved": false,
+            "vetoed": true,
+            "veto_reason": "Court veto: direction violates an explicit hard constraint of the brief (drift from brief).",
+            "scores": {
+              "relevance": 8.0,
+              "novelty": 10.0,
+              "feasibility": 25.0,
+              "risk": 0.0,
+              "quality": 15.0
+            },
+            "comments": {
+              "relevance": "Прямо нарушает ключевое ограничение — образ спальни и кровати — и требует платного бюджета, тогда как по брифу запуск без рекламного бюджета.",
+              "novelty": "Типовой визуал сна и стандартный платный трафик; нет неожиданного или нестандартного хода.",
+              "feasibility": "В описанных рамках не реализуемо: платный медиаплан противоречит отсутствию бюджета, а образ спальни — запрету.",
+              "risk": "Риски не указаны; не учтены ни нарушение ограничений, ни провал платного запуска без бюджета.",
+              "quality": "Идея описана связно, но противоречит брифу и не предлагает рабочего решения в заданных условиях."
+            }
+          },
+          {
+            "direction_id": "ritual:Выдох дня",
+            "total": 81.1,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90.0,
+              "novelty": 84.0,
+              "feasibility": 68.0,
+              "risk": 72.0,
+              "quality": 86.0
+            },
+            "comments": {
+              "relevance": "Directly targets insomnia as a mental shift, integrates with existing evening actions, avoids bedroom imagery, and is sharable without ad spend.",
+              "novelty": "Turns the app into an evening ritual/action rather than a place; changing daily content adds freshness, though habit-ritual mechanics are somewhat familiar.",
+              "feasibility": "Core playback is simple, but daily new 3-minute stories require constant voice/audio production; without ad budget this is a significant dependency.",
+              "risk": "Both key risks are named, but mitigation strategies are not fully developed; content burnout and habit breaks remain partly unhandled.",
+              "quality": "Well-articulated concept with clear rationale, coherent framing, and concise execution path; minor ambiguity around content production model."
+            }
+          }
+        ],
+        "trace": {
+          "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_03_sleep_app_advanced.jsonl",
+          "total_events": 52,
+          "by_type": {
+            "agent_start": 8,
+            "tool_response": 4,
+            "agent_step": 28,
+            "agent_end": 8,
+            "veto": 2,
+            "retry": 2
+          }
+        }
+      }
+    },
+    "eval_04_bike_delivery": {
+      "title": "Велодоставка «Зелёный курьер»",
+      "constraints": [
+        "фирменный стиль не должен использовать зелёный цвет",
+        "никаких фото курьеров в рекламе"
+      ],
+      "baseline": {
+        "mode": "baseline",
+        "llm_used": false,
+        "wall_clock_s": 0.039,
+        "llm_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0.0,
+        "n_directions": 6,
+        "mean_score": 73.8,
+        "score_spread": 9.5,
+        "probe_total": 82.5,
+        "drift_caught": false,
+        "vetoes": 0,
+        "replacements": 0,
+        "judge_fallbacks": 0,
+        "human_time_min": 33.0,
+        "verdicts": [
+          {
+            "direction_id": "artistic:Artistic angle",
+            "total": 69.1,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "social:Social angle",
+            "total": 76.6,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 60.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "professional:Professional angle",
+            "total": 69.1,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "historical:Historical angle",
+            "total": 78.6,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "ritual:Ritual angle",
+            "total": 71.1,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 70.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "natural:Natural angle",
+            "total": 78.6,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "natural:Зелёная волна курьеров",
+            "total": 82.5,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 95,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          }
+        ],
+        "trace": {
+          "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_04_bike_delivery_baseline.jsonl",
+          "total_events": 24,
+          "by_type": {
+            "agent_start": 4,
+            "agent_step": 16,
+            "agent_end": 4
+          }
+        }
+      },
+      "advanced": {
+        "mode": "advanced",
+        "llm_used": true,
+        "wall_clock_s": 228.37,
+        "llm_calls": 10,
+        "prompt_tokens": 11345,
+        "completion_tokens": 23580,
+        "total_tokens": 34925,
+        "cost_usd": 0.00884,
+        "usage_estimated": 0,
+        "api_failures": 0,
+        "n_directions": 7,
+        "mean_score": 75.2,
+        "score_spread": 9.8,
+        "probe_total": 23.0,
+        "drift_caught": true,
+        "vetoes": 1,
+        "replacements": 1,
+        "judge_fallbacks": 0,
+        "human_time_min": 7.5,
+        "verdicts": [
+          {
+            "direction_id": "artistic:Тихая карта",
+            "total": 79.5,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 80.0,
+              "novelty": 88.0,
+              "feasibility": 75.0,
+              "risk": 65.0,
+              "quality": 88.0
+            },
+            "comments": {
+              "relevance": "Strongly addresses the quiet/clean positioning and satisfies both constraints (no green, no courier photos); the office-wall collectible angle fits the office-lunch audience, but the 'fast' aspect of the brief is not directly communicated.",
+              "novelty": "Reframes delivery packaging as a collectible route-artifact; the idea of drawing actual courier routes as an old-city map on cardboard is fresh and unexpected, with a clear viral/collectible hook.",
+              "feasibility": "Executable in principle with variable-data printing and courier tracking, but practical details around per-box route data, print costs, and production speed need clarification.",
+              "risk": "Identifies the main risks (personalized printing cost, perceived overkill, dependency on tracking data) but does not offer concrete mitigation strategies or edge-case handling.",
+              "quality": "Well-articulated and elegant concept; the palette, material choice, and collectible narrative are coherent and easy to grasp."
+            }
+          },
+          {
+            "direction_id": "social:Обеденный круг",
+            "total": 75.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82.0,
+              "novelty": 84.0,
+              "feasibility": 66.0,
+              "risk": 65.0,
+              "quality": 76.0
+            },
+            "comments": {
+              "relevance": "Точно попадает в офисную аудиторию и создаёт «тихую» доставку, однако тема чистоты и скорости раскрыта слабее; есть небольшой разрыв с частью брифовых целей.",
+              "novelty": "Свежий и неочевидный ход: превратить разрозненные офисные заказы в коллективный «тихий стол». Добавляет сторителлинг без фото курьеров.",
+              "feasibility": "Идея реалистична, но сильно зависит от согласований с офис-менеджерами, систем пропусков и готовности компаний делиться коммуникацией и логистикой.",
+              "risk": "Основные риски названы, но отсутствуют конкретные сценарии их снятия или планы действий при отказах офисов.",
+              "quality": "Концепция сформулирована ясно, есть логика и обоснование. Не хватает деталей исполнения и антикризисных решений."
+            }
+          },
+          {
+            "direction_id": "professional:Школа тихих маршрутов",
+            "total": 73.6,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 78.0,
+              "novelty": 80.0,
+              "feasibility": 72.0,
+              "risk": 60.0,
+              "quality": 72.0
+            },
+            "comments": {
+              "relevance": "Directly addresses quiet/clean positioning and respects both constraints (no green, no courier photos). But the link to fast delivery and office lunch context is more implied than explicit, leaving a minor gap.",
+              "novelty": "The 'master cartographer' angle is fresh and non-obvious, reframing courier expertise through route maps instead of faces. Familiar 'school/mastery' framing keeps it from being truly unexpected.",
+              "feasibility": "Route maps are easy to produce, but the proposed training system and reward 'master map' require significant operational investment. How this translates to a short ad format needs clarification.",
+              "risk": "Risks are identified—abstraction, training cost, audience misinterpretation—but no concrete mitigation strategies are offered. This is a partial risk consideration at best.",
+              "quality": "The concept is clearly articulated and elegant in principle, but lacks execution details: no sample map visual style, campaign mechanics, or specific copy. Slightly abstract and under-specified."
+            }
+          },
+          {
+            "direction_id": "historical:Гильдия городских курьеров",
+            "total": 71.2,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 65.0,
+              "novelty": 75.0,
+              "feasibility": 75.0,
+              "risk": 65.0,
+              "quality": 80.0
+            },
+            "comments": {
+              "relevance": "Strongly matches the historic-center setting and satisfies the no-green/no-courier-photo constraints, but the 'slow noble tradition' framing underplays the core promise of fast delivery and may not fit office lunch customers who need quick unboxing.",
+              "novelty": "The guild/herald concept is a fresh twist on standard delivery branding, especially with archival maps and wax-sealed packaging, though heritage-styled courier services remain a familiar territory.",
+              "feasibility": "Executable with standard print/packaging suppliers, but the production details of wax seals, engraved patents, and archival assets need clarification; cost and speed of implementation are not fully specified.",
+              "risk": "Risks are acknowledged — costume-theater feel, social-media limitations, and slower unboxing — but no concrete mitigations are offered, leaving key failure modes only partially addressed.",
+              "quality": "Well-articulated and conceptually coherent; the rationale ties brand memory to local identity elegantly, though the 'patent' element is slightly obscure and could overcomplicate the customer experience."
+            }
+          },
+          {
+            "direction_id": "ritual:Обед как ритуал",
+            "total": 71.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 75.0,
+              "novelty": 80.0,
+              "feasibility": 70.0,
+              "risk": 55.0,
+              "quality": 74.0
+            },
+            "comments": {
+              "relevance": "Directly addresses office lunch ritual and quiet/clean delivery, but the brief's speed emphasis is only implicit.",
+              "novelty": "The 'lunch bell' ritual and per-order cards add a fresh, non-obvious layer to delivery.",
+              "feasibility": "Reusable boxes and timed logistics are buildable but need detailed operational clarification.",
+              "risk": "Risks are named, but no concrete mitigation strategies are provided for cost, timing, or audience pushback.",
+              "quality": "Clear concept and rationale, though execution mechanics remain somewhat abstract."
+            }
+          },
+          {
+            "direction_id": "natural:Сезонный маршрут",
+            "total": 73.7,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 75.0,
+              "novelty": 82.0,
+              "feasibility": 74.0,
+              "risk": 55.0,
+              "quality": 78.0
+            },
+            "comments": {
+              "relevance": "Addresses quiet/clean via seasonal nature and no-green palette, but does not directly establish 'fast' in the delivery promise; office lunch audience only broadly matched.",
+              "novelty": "Bird-route logic, seasonal packaging forms, and natural palette are a fresh ecological reframe; not a radical departure but memorable.",
+              "feasibility": "Productible in principle, but quiet-route algorithm and rotating seasonal packaging/menu need concrete production and logistics clarification.",
+              "risk": "Three risks are named, but no mitigation is offered; seasonal logistics and speed conflict could derail execution.",
+              "quality": "Coherent and elegant narrative, though execution details are thin; overall clear."
+            }
+          },
+          {
+            "direction_id": "natural:Зелёная волна курьеров",
+            "total": 23.0,
+            "approved": false,
+            "vetoed": true,
+            "veto_reason": "Court veto: direction violates an explicit hard constraint of the brief (drift from brief).",
+            "scores": {
+              "relevance": 20.0,
+              "novelty": 20.0,
+              "feasibility": 35.0,
+              "risk": 10.0,
+              "quality": 30.0
+            },
+            "comments": {
+              "relevance": "Directly violates two hard constraints: uses green and photos of couriers in advertising. Fails to answer the brief as specified.",
+              "novelty": "The green eco-metaphor and hero courier faces are highly predictable and cliché for this category.",
+              "feasibility": "Technically producible, but not feasible as a compliant direction because it contradicts the stated brand and advertising constraints.",
+              "risk": "No risks considered; the direction ignores major compliance risks from constraint violation.",
+              "quality": "The plan is coherent but simplistic, and the conceptual rationale is undermined by ignoring explicit constraints."
+            }
+          },
+          {
+            "direction_id": "natural:Сезонные тропы города",
+            "total": 81.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 85.0,
+              "novelty": 85.0,
+              "feasibility": 75.0,
+              "risk": 75.0,
+              "quality": 82.0
+            },
+            "comments": {
+              "relevance": "Directly serves the eco-friendly, quiet, clean positioning and respects both brand constraints. Slight gap: 'fast' is addressed implicitly via routes rather than speed claims.",
+              "novelty": "Reframes delivery as a seasonal local nature experience, avoiding the usual green eco clichés. Fresh and creative, though the seasonal-local concept is broadly familiar.",
+              "feasibility": "Executable, but seasonal menu/packaging changes and route-based maps create real operational complexity that needs further definition.",
+              "risk": "Key operational risks and the non-green palette risk are explicitly named, but mitigation strategies are only partial and several edge cases remain unaddressed.",
+              "quality": "Well-articulated and elegant concept with a clear narrative and coherent visual direction, though some aspects require more precise execution detail."
+            }
+          }
+        ],
+        "trace": {
+          "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_04_bike_delivery_advanced.jsonl",
+          "total_events": 52,
+          "by_type": {
+            "agent_start": 8,
+            "tool_response": 4,
+            "agent_step": 28,
+            "agent_end": 8,
+            "veto": 2,
+            "retry": 2
+          }
+        }
+      }
+    },
+    "eval_05_art_expo": {
+      "title": "Выставка «Горизонт событий»",
+      "constraints": [
+        "нельзя использовать текстовые пояснения на стенах",
+        "маршрут не длиннее 40 минут"
+      ],
+      "baseline": {
+        "mode": "baseline",
+        "llm_used": false,
+        "wall_clock_s": 0.035,
+        "llm_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0.0,
+        "n_directions": 6,
+        "mean_score": 73.8,
+        "score_spread": 9.5,
+        "probe_total": 81.0,
+        "drift_caught": false,
+        "vetoes": 0,
+        "replacements": 0,
+        "judge_fallbacks": 0,
+        "human_time_min": 33.0,
+        "verdicts": [
+          {
+            "direction_id": "artistic:Artistic angle",
+            "total": 69.1,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "social:Social angle",
+            "total": 76.6,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 60.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "professional:Professional angle",
+            "total": 69.1,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "historical:Historical angle",
+            "total": 78.6,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "ritual:Ritual angle",
+            "total": 71.1,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 70.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "natural:Natural angle",
+            "total": 78.6,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "historical:Энциклопедия выставки",
+            "total": 81.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          }
+        ],
+        "trace": {
+          "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_05_art_expo_baseline.jsonl",
+          "total_events": 24,
+          "by_type": {
+            "agent_start": 4,
+            "agent_step": 16,
+            "agent_end": 4
+          }
+        }
+      },
+      "advanced": {
+        "mode": "advanced",
+        "llm_used": true,
+        "wall_clock_s": 312.94,
+        "llm_calls": 11,
+        "prompt_tokens": 12207,
+        "completion_tokens": 30289,
+        "total_tokens": 42496,
+        "cost_usd": 0.01578,
+        "usage_estimated": 0,
+        "api_failures": 0,
+        "n_directions": 7,
+        "mean_score": 77.5,
+        "score_spread": 12.9,
+        "probe_total": 22.2,
+        "drift_caught": true,
+        "vetoes": 1,
+        "replacements": 1,
+        "judge_fallbacks": 0,
+        "human_time_min": 7.5,
+        "verdicts": [
+          {
+            "direction_id": "artistic:Комната тишины",
+            "total": 80.9,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90.0,
+              "novelty": 72.0,
+              "feasibility": 85.0,
+              "risk": 65.0,
+              "quality": 85.0
+            },
+            "comments": {
+              "relevance": "Directly targets the brief's themes of time, speed, and burnout while delivering the requested sense of silence. The no-text constraint and 40-minute limit are respected, and the experience is intuitive for first-time contemporary art visitors.",
+              "novelty": "The core mechanism—sensory contrast between noise and silence—is familiar in immersive art, but the use of rotating timed disks as visual noise adds a clever twist and makes the burnout metaphor more tangible.",
+              "feasibility": "The installation is technically plausible with standard lighting and timed mechanical elements. Some details about disk construction and room calibration remain unspecified, but the route is short and the concept is reproducible.",
+              "risk": "Technical dependency and the risk of a too-abrupt contrast are acknowledged, but mitigation strategies are only partial. There is no concrete plan to handle visitors who may feel startled rather than liberated.",
+              "quality": "The plan is clear, elegant, and well-articulated as a two-phase journey. Minor ambiguity around the exact look and behavior of the 'disks with timers' does not undermine the overall execution."
+            }
+          },
+          {
+            "direction_id": "social:Фрагменты общей истории",
+            "total": 68.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 65.0,
+              "novelty": 60.0,
+              "feasibility": 70.0,
+              "risk": 75.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "A concept about shared personal fragments, but it only loosely connects to the core themes of time, speed, and burnout, and the participatory format risks disrupting the desired feeling of silence.",
+              "novelty": "Visitor-generated content forming a collective projection is a recognisable participatory-art device, with some fresh framing but no truly unexpected twist.",
+              "feasibility": "Interactive walls and visitor-submitted fragments are buildable, but technical details for photo/gesture capture, anonymous submission, and moderation remain unspecified.",
+              "risk": "The submission explicitly names privacy concerns and moderation complexity, and proposes anonymity and content control, though failure modes like emotional overload and time overruns are not fully addressed.",
+              "quality": "The concept is clearly articulated with a strong rationale, but the execution path is under-specified regarding route duration, spatial layout, and technical implementation."
+            }
+          },
+          {
+            "direction_id": "professional:Мастерская медленного ремонта",
+            "total": 76.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90.0,
+              "novelty": 75.0,
+              "feasibility": 75.0,
+              "risk": 60.0,
+              "quality": 72.0
+            },
+            "comments": {
+              "relevance": "Напрямую отвечает на бриф: тема выгорания раскрыта через метафору поломки и ремонта, медленность и тишина заложены в самом наблюдении за ремеслом. Подходит для аудитории новичков и не требует текстов на стенах.",
+              "novelty": "Кинцуги как метафора известна, но присутствие живого мастера и интерактивный 'ремонт' воображаемой вазы добавляют свежий тактильный и созерцательный поворот, хотя концептуальная рамка не полностью удивляет.",
+              "feasibility": "Реализуемо, но требует реального мастера в каждом показе, закупки материалов и логистики. Необходимо уточнить, как обеспечить количество посетителей и поток в рамках 40-минутного маршрута.",
+              "risk": "Основные риски названы: зависимость от мастера и возможность восприятия как мастер-класса. Однако нет стратегий митигации, не проработаны риски недопонимания без текста, перегруженности помещения или нехватки фрагментов.",
+              "quality": "Концепция изложена ясно и с уместной поэтикой, но описание остаётся на уровне идеи: не хватает конкретики по маршруту, временным рамкам и тому, как сценарий защищает концептуальный жест от бытового восприятия."
+            }
+          },
+          {
+            "direction_id": "historical:Песочные часы прошлого",
+            "total": 79.4,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 86.0,
+              "novelty": 82.0,
+              "feasibility": 75.0,
+              "risk": 72.0,
+              "quality": 76.0
+            },
+            "comments": {
+              "relevance": "Directly addresses time and speed through historical instruments, and the 'time flows both ways' effect encourages a contemplative pace. However, links to burnout/silence are only implied, and first-time visitors are not explicitly accommodated beyond familiar objects.",
+              "novelty": "Reframing time as reversible through theatrical light on familiar hourglasses is a clever twist, though historical timepiece installations are not entirely unfamiliar.",
+              "feasibility": "Light-controlled illusion is plausible but needs detailed technical specification; unclear how sand is physically manipulated and how the central hall route stays under 40 minutes.",
+              "risk": "Two key curatorial risks are named, but mitigation is only directional ('careful work'), and technical/audience-safety edge cases are unaddressed.",
+              "quality": "Concept is elegantly articulated but lacks a concrete visitor journey, spatial plan, and technical execution details needed to feel fully buildable."
+            }
+          },
+          {
+            "direction_id": "ritual:Литургия медленного шага",
+            "total": 79.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90.0,
+              "novelty": 76.0,
+              "feasibility": 75.0,
+              "risk": 65.0,
+              "quality": 80.0
+            },
+            "comments": {
+              "relevance": "Напрямую отвечает на бриф: замедление, телесный опыт тишины, комфорт для новичков. Соответствует ограничениям — без текста на стенах и в рамках маршрута. Небольшой минус: «коллективный танец» может не всем подойти как формат.",
+              "novelty": "Ритуализация прогулки и невидимый ритм — свежий поворот, но жанр звуковой медитативной прогулки уже знаком. Интересная деталь — превращение каждого шага в коллективный медленный танец.",
+              "feasibility": "В целом реализуемо: звуковой пейзаж, тактильные метки, зоны. Однако требуются серьезная акустическая настройка и четкая логистика «невидимого ритма», иначе эффект может не собраться.",
+              "risk": "Ключевые риски названы — директивность, дискомфорт, сложность акустики. Но отсутствуют конкретные митигации и запасные сценарии для тех, кто не готов участвовать.",
+              "quality": "Концепция изложена ясно и цельно, идея легко считывается. Не хватает деталей по устройству зон и технологии звука, но общее направление понятно."
+            }
+          },
+          {
+            "direction_id": "natural:Сад падающей листвы",
+            "total": 79.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90.0,
+              "novelty": 75.0,
+              "feasibility": 80.0,
+              "risk": 65.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Directly addresses the brief's core themes of time, slowing down, and rest; the natural leaf metaphor is accessible to first-time contemporary art visitors, and it avoids wall text while fitting within a final-hall segment of the route.",
+              "novelty": "The falling-leaf metaphor is familiar, but the biological trajectories, invisible air currents, and visitor participation in a composter add a gentle, fresh twist that softens the concept.",
+              "feasibility": "Feasible in principle, though the technical implementation of realistic leaf motion and invisible air flows needs more specification; no fundamental impossibility is evident.",
+              "risk": "Two main risks are acknowledged, but no concrete mitigations are offered; additional edge cases such as maintenance, leaf safety, and visitor interaction are not addressed.",
+              "quality": "The concept is poetically clear and elegant, but the execution plan remains somewhat vague, especially regarding the mechanics of the air currents and the composter interaction."
+            }
+          },
+          {
+            "direction_id": "historical:Энциклопедия выставки",
+            "total": 22.2,
+            "approved": false,
+            "vetoed": true,
+            "veto_reason": "Court veto: direction violates an explicit hard constraint of the brief (drift from brief).",
+            "scores": {
+              "relevance": 5.0,
+              "novelty": 20.0,
+              "feasibility": 50.0,
+              "risk": 10.0,
+              "quality": 35.0
+            },
+            "comments": {
+              "relevance": "Directly violates the no-text-on-walls constraint, exceeds the 40-minute limit, and produces anxiety rather than calm.",
+              "novelty": "A text-heavy historical encyclopedia is a conventional exhibition format with no surprising twist.",
+              "feasibility": "Technically buildable, but it contradicts core brief constraints, so it is not feasible as a valid submission.",
+              "risk": "No risks or failure modes are identified, despite clear risks of visitor fatigue and unwanted anxiety.",
+              "quality": "Internally coherent, but the plan is fundamentally misaligned with the brief and lacks risk handling."
+            }
+          },
+          {
+            "direction_id": "historical:Колокольный круг",
+            "total": 79.6,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 88.0,
+              "novelty": 76.0,
+              "feasibility": 76.0,
+              "risk": 70.0,
+              "quality": 82.0
+            },
+            "comments": {
+              "relevance": "Точно отвечает на ключевые цели: тема времени/выгорания раскрыта через звук, финальная тишина создаёт нужное послевкусие, нет текстов, маршрут в лимите; аудитория вовлекается через телесный опыт.",
+              "novelty": "Колокол как исторический инструмент времени — свежий и поэтичный поворот, но звуковые маршруты и «тишина после звона» уже встречались; это скорее удачная вариация.",
+              "feasibility": "Идея реализуема с аудиотехникой, но описание не раскрывает, как без текста физически направлять посетителя, как контролировать громкость в разных помещениях и калибровать 38–40 минут.",
+              "risk": "Заявлены два риска и частичная митигация — плавный дроп громкости. Не хватает анализа реакции на громкий звук, сенсорных перегрузок и религиозных ассоциаций; но базовое осознание есть.",
+              "quality": "Логика маршрута и образ «ярусов» выстроены элегантно, финал с горизонтом событий — сильная точка; есть лёгкая неясность в способе ведения посетителя звуком без подписей."
+            }
+          }
+        ],
+        "trace": {
+          "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_05_art_expo_advanced.jsonl",
+          "total_events": 53,
+          "by_type": {
+            "agent_start": 8,
+            "tool_response": 4,
+            "retry": 3,
+            "agent_step": 28,
+            "agent_end": 8,
+            "veto": 2
+          }
+        }
+      }
+    },
+    "eval_06_bakery": {
+      "title": "Крафтовая пекарня «Тёплый мякиш»",
+      "constraints": [
+        "не использовать слово «крафтовый»",
+        "открытие через 3 недели, бюджет на маркетинг 50 000 руб"
+      ],
+      "baseline": {
+        "mode": "baseline",
+        "llm_used": false,
+        "wall_clock_s": 0.034,
+        "llm_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0.0,
+        "n_directions": 6,
+        "mean_score": 76.2,
+        "score_spread": 9.5,
+        "probe_total": 80.5,
+        "drift_caught": false,
+        "vetoes": 0,
+        "replacements": 0,
+        "judge_fallbacks": 0,
+        "human_time_min": 33.0,
+        "verdicts": [
+          {
+            "direction_id": "artistic:Artistic angle",
+            "total": 71.5,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "social:Social angle",
+            "total": 79.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90,
+              "novelty": 60.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "professional:Professional angle",
+            "total": 71.5,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "historical:Historical angle",
+            "total": 81.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "ritual:Ritual angle",
+            "total": 73.5,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90,
+              "novelty": 70.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "natural:Natural angle",
+            "total": 81.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "professional:Крафтовый громкий старт",
+            "total": 80.5,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 95,
+              "novelty": 60.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          }
+        ],
+        "trace": {
+          "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_06_bakery_baseline.jsonl",
+          "total_events": 12,
+          "by_type": {
+            "agent_start": 2,
+            "agent_step": 8,
+            "agent_end": 2
+          }
+        }
+      },
+      "advanced": {
+        "mode": "advanced",
+        "llm_used": true,
+        "wall_clock_s": 439.09,
+        "llm_calls": 14,
+        "prompt_tokens": 15914,
+        "completion_tokens": 25078,
+        "total_tokens": 40992,
+        "cost_usd": 0.01118,
+        "usage_estimated": 0,
+        "api_failures": 0,
+        "n_directions": 7,
+        "mean_score": 77.7,
+        "score_spread": 25.7,
+        "probe_total": 7.8,
+        "drift_caught": true,
+        "vetoes": 1,
+        "replacements": 1,
+        "judge_fallbacks": 1,
+        "human_time_min": 7.5,
+        "verdicts": [
+          {
+            "direction_id": "artistic:Хлебная галерея",
+            "total": 80.2,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 85.0,
+              "novelty": 90.0,
+              "feasibility": 75.0,
+              "risk": 65.0,
+              "quality": 80.0
+            },
+            "comments": {
+              "relevance": "Отвечает ключевой цели — превращает витрину в центр притяжения, укладывается в бюджет 50 000 руб. и срок 3 недели, не использует слово «крафтовый». Аудитория семей с детьми и пенсионеров хорошо заходит на яркие узнаваемые формы, но связь со старыми прабабушкиными рецептами прямо не раскрыта.",
+              "novelty": "Неожиданный и свежий ход: ежедневная съедобная «галерея» из теста превращает обычную витрину в событие. Это не шаблонная акция, а оригинальное переосмысление витринного пространства пекарни.",
+              "feasibility": "Концепция дешевая и реализуемая: нужны формовка и бумажные описания, первые пять экспонатов подготовить за 3 недели реально. Однако остаются технические вопросы по ежедневному циклу производства, квалификации пекаря и сохранению формы/свежести хлеба в витрине.",
+              "risk": "Риски частично названы: трудоёмкость формовки и возможность затора у витрины. Есть частичное смягчение по заготовке декора, но нет решения для блокировки прохода и не учтены пищевые/санитарные риски длительного экспонирования хлеба.",
+              "quality": "Идея изложена ясно и элегантно, рациональная часть убедительна. Не хватает операционных деталей: расписание замены витрины, протокол продажи вечернего экспоната и описание оформления бумажных табличек."
+            }
+          },
+          {
+            "direction_id": "social:Соседний стол",
+            "total": 59.5,
+            "approved": false,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 50,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "professional:Школа закваски",
+            "total": 79.7,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 85.0,
+              "novelty": 75.0,
+              "feasibility": 78.0,
+              "risk": 75.0,
+              "quality": 82.0
+            },
+            "comments": {
+              "relevance": "Directly supports becoming a neighborhood attraction, targets families and pensioners through a free hands-on sourdough school, and avoids the forbidden word. Minor gap: does not explicitly emphasize great-grandmother recipes or a full plan for the 3-week launch.",
+              "novelty": "Community baking classes are somewhat familiar, but the 'bread apprentice' take-home jar concept adds a charming twist and creates an ongoing relationship with the bakery.",
+              "feasibility": "Feasible within a small marketing budget, but requires clear allocation of baker time, sourdough maintenance, jar prep, and registration logistics before the 3-week opening.",
+              "risk": "Overcrowding and baker workload are explicitly acknowledged, with pre-registration as a mitigation. Additional risks like food safety or low attendance are not fully addressed.",
+              "quality": "Clear, coherent, and warmly articulated plan with a strong rationale and an elegant community-building loop from class to regular customer."
+            }
+          },
+          {
+            "direction_id": "historical:Пекарня-музей",
+            "total": 79.9,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 88.0,
+              "novelty": 76.0,
+              "feasibility": 73.0,
+              "risk": 76.0,
+              "quality": 82.0
+            },
+            "comments": {
+              "relevance": "Сильно попадает в бренд-легенду о прабабушкиных рецептах и в аудиторию: пенсионеры узнают знакомое, дети получают живую историю. Отвечает задачам, хотя не полностью проработана роль семьи и сообщества.",
+              "novelty": "Концепция «пекарня-музей» узнаваема, но добавление истории на каждой коробке с выпечкой — свежий и трогательный ход, который выделяет ее среди сетей.",
+              "feasibility": "В целом реализуемо за 3 недели и 50 тыс. руб., если использовать копии и печатные материалы. Однако требует уточнения источников атрибутики и подбора экспонатов.",
+              "risk": "Риски обозначены: нехватка подлинных вещей и проверка исторических фактов. Есть частичные пути решения, но не хватает экономии времени и запасного плана.",
+              "quality": "Ясная концепция с понятной логикой: история создает эмоциональную привязку. Немного не хватает конкретики по бюджету и срокам монтажа."
+            }
+          },
+          {
+            "direction_id": "ritual:Тёплый час",
+            "total": 83.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90.0,
+              "novelty": 76.0,
+              "feasibility": 88.0,
+              "risk": 75.0,
+              "quality": 85.0
+            },
+            "comments": {
+              "relevance": "Directly answers the brief: a daily ritual creates a neighborhood anchor, targets families with children and pensioners, aligns with old recipes, and avoids the forbidden word 'крафтовый'.",
+              "novelty": "The 'warm hour' ritual with a bell and discounted hot bread is a fresh twist on a bakery happy hour, though the concept of timed fresh-bread sales is somewhat familiar.",
+              "feasibility": "Easily executable with a bell, fixed baking schedule, discounts, and free tea; minor clarification is needed on how the 50,000 rub budget and 3-week timeline are used.",
+              "risk": "Identifies key risks: margin erosion, queue only during a short window, and disappointment if bread is unavailable. Mitigations are suggested, but edge cases like overcrowding or schedule failures remain partially addressed.",
+              "quality": "Clear, elegant, and well-articulated concept with a simple operational rhythm; only minor clarity gaps around exact discount amounts and audience targeting remain."
+            }
+          },
+          {
+            "direction_id": "natural:Хлеб по сезону",
+            "total": 75.7,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 85.0,
+              "novelty": 74.0,
+              "feasibility": 72.0,
+              "risk": 70.0,
+              "quality": 70.0
+            },
+            "comments": {
+              "relevance": "Directly ties the bakery to a natural seasonal cycle that appeals to parents and grandparents; avoids the forbidden word and aligns with old family recipes, though community-hub positioning could be stronger.",
+              "novelty": "Seasonal menus are a familiar bakery trope, but the live starter jar and 'growth diary' add a refreshing, memorable ritual twist.",
+              "feasibility": "Concept is feasible as a direction, but the 3-week launch window and 50k budget require a simplified phased rollout; monthly full menu changes need extra R&D planning.",
+              "risk": "Risks about seasonal sourcing, staff confusion, and waste are acknowledged, but concrete mitigation plans are underdeveloped — only a vague 'plan in advance' is implied.",
+              "quality": "The concept is clear and evocative, but lacks operational detail: no budget breakdown, timeline, or concrete menu-calendar execution path."
+            }
+          },
+          {
+            "direction_id": "professional:Крафтовый громкий старт",
+            "total": 7.8,
+            "approved": false,
+            "vetoed": true,
+            "veto_reason": "Court veto: direction violates an explicit hard constraint of the brief (drift from brief).",
+            "scores": {
+              "relevance": 10.0,
+              "novelty": 15.0,
+              "feasibility": 5.0,
+              "risk": 0.0,
+              "quality": 5.0
+            },
+            "comments": {
+              "relevance": "Directly violates the brief's explicit constraint against using 'крафтовый', ignores the 50,000 rub budget and 3-week opening, and does not address families/pensioners or the grandmother-recipe heritage.",
+              "novelty": "The 'craft' positioning is a familiar, template-level cliché; there is no unexpected angle or clever twist, only an oversized media plan disconnected from the actual brief.",
+              "feasibility": "Not buildable as described: the 3 million rub campaign exceeds the budget by 60x and would launch six months after the opening, while the core concept is forbidden by the brief.",
+              "risk": "No risks are acknowledged, despite severe risks including brand-constraint violation, budget infeasibility, and total audience mismatch.",
+              "quality": "The plan is incoherent and self-contradictory: it explicitly uses the forbidden word, cites an unrelated recipe heritage, and proposes a delayed campaign for an immediate opening."
+            }
+          },
+          {
+            "direction_id": "professional:Академия Тёплого мякиша",
+            "total": 85.2,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 88.0,
+              "novelty": 82.0,
+              "feasibility": 90.0,
+              "risk": 75.0,
+              "quality": 88.0
+            },
+            "comments": {
+              "relevance": "Напрямую отвечает на бриф: семейная пекарня становится центром притяжения через еженедельный ритуал, вовлекает и детей, и пенсионеров, не использует запрещённое слово и укладывается в срок и бюджет.",
+              "novelty": "Формат «однодневного подмастерья» с именной карточкой и порядковым номером — свежий и придающий статус, хотя сам мастер-класс как жанр уже знаком.",
+              "feasibility": "Реализуемо за 3 недели при бюджете 50 000 ₽: нужны только печать карточек, бейджи и выделенный стол в существующей пекарне.",
+              "risk": "Основные риски замедления производства и дефицита мест названы, предложены лист записи и очередь ожидания, но не рассмотрены санитарные и возрастные нюансы.",
+              "quality": "Ясная и элегантная концепция с понятной логикой повторных визитов и сарафанного радио, минимальная перегруженность деталями."
+            }
+          }
+        ],
+        "trace": {
+          "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_06_bakery_advanced.jsonl",
+          "total_events": 50,
+          "by_type": {
+            "agent_start": 9,
+            "tool_response": 4,
+            "agent_step": 23,
+            "agent_end": 7,
+            "retry": 5,
+            "veto": 2
+          }
+        }
+      }
+    },
+    "eval_07_kids_coding": {
+      "title": "Онлайн-школа программирования для детей",
+      "constraints": [
+        "в коммуникации нельзя обещать будущую профессию или доход",
+        "запуск только в родительских сообществах (Telegram, чаты)"
+      ],
+      "baseline": {
+        "mode": "baseline",
+        "llm_used": false,
+        "wall_clock_s": 0.041,
+        "llm_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0.0,
+        "n_directions": 6,
+        "mean_score": 77.8,
+        "score_spread": 9.5,
+        "probe_total": 69.4,
+        "drift_caught": false,
+        "vetoes": 0,
+        "replacements": 0,
+        "judge_fallbacks": 0,
+        "human_time_min": 33.0,
+        "verdicts": [
+          {
+            "direction_id": "artistic:Artistic angle",
+            "total": 73.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 95,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "social:Social angle",
+            "total": 80.5,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 95,
+              "novelty": 60.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "professional:Professional angle",
+            "total": 73.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 95,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "historical:Historical angle",
+            "total": 82.5,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 95,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "ritual:Ritual angle",
+            "total": 75.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 95,
+              "novelty": 70.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "natural:Natural angle",
+            "total": 82.5,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 95,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "social:Программист к 14 — миллион в кармане",
+            "total": 69.4,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 58,
+              "novelty": 60.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          }
+        ],
+        "trace": {
+          "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_07_kids_coding_baseline.jsonl",
+          "total_events": 24,
+          "by_type": {
+            "agent_start": 4,
+            "agent_step": 16,
+            "agent_end": 4
+          }
+        }
+      },
+      "advanced": {
+        "mode": "advanced",
+        "llm_used": true,
+        "wall_clock_s": 374.29,
+        "llm_calls": 11,
+        "prompt_tokens": 12757,
+        "completion_tokens": 28457,
+        "total_tokens": 41214,
+        "cost_usd": 0.01233,
+        "usage_estimated": 0,
+        "api_failures": 0,
+        "n_directions": 7,
+        "mean_score": 78.3,
+        "score_spread": 25.5,
+        "probe_total": 19.0,
+        "drift_caught": true,
+        "vetoes": 1,
+        "replacements": 1,
+        "judge_fallbacks": 0,
+        "human_time_min": 7.5,
+        "verdicts": [
+          {
+            "direction_id": "artistic:Код как пиксельная живопись",
+            "total": 79.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 85.0,
+              "novelty": 75.0,
+              "feasibility": 75.0,
+              "risk": 75.0,
+              "quality": 82.0
+            },
+            "comments": {
+              "relevance": "Directly reframes screen time as meaningful creative output and is shareable in parent chats; slight risk of reading as 'art only' rather than core learning, with no explicit educational skills promise beyond the risk note.",
+              "novelty": "Coding-as-painting is a fresh creative angle, and the printed posters/album twist is memorable; however, creative coding is a known trope in kids' education.",
+              "feasibility": "Feasible with standard coding platforms, but online gallery curation, printing, and album logistics need operational detail.",
+              "risk": "Two key risks are identified with partial mitigations (show algorithms/logic; careful curation). Additional risks like screen-time structure and privacy are not addressed.",
+              "quality": "Clear, coherent, and elegantly framed concept; the gallery/album execution path is slightly under-specified."
+            }
+          },
+          {
+            "direction_id": "social:Семейный гейм-тест",
+            "total": 86.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 92.0,
+              "novelty": 85.0,
+              "feasibility": 78.0,
+              "risk": 88.0,
+              "quality": 84.0
+            },
+            "comments": {
+              "relevance": "Прямо отвечает на возражение об экранном времени, превращая одиночный экранный вечер в совместный ритуал. Точное попадание в аудиторию родителей детей 9-14 лет. Не обещает профессию/доход. Соответствует запуску в родительских сообществах, так как создает повод для обмена опытом.",
+              "novelty": "Свежий взгляд на проблему экранного времени: не запрет/ограничение, а новый формат использования. Идея «письма для родителя» и роли первого игрока дает понятный ритуал. Не революционно, но содержит заметный креативный поворот.",
+              "feasibility": "Реализуемо: после каждого урока генерировать/отправлять письмо с мини-игрой несложно технически. Однако требует дополнительной проработки: как именно ребенок делится кодом с родителем, какие форматы мини-игр, какая платформа. Некоторые детали не уточнены.",
+              "risk": "Риски явно идентифицированы: низкая вовлеченность уставших родителей и конфликт из-за критики. Предложены релевантные смягчения: короткий необязательный отзыв и обучение бережной обратной связи. Не хватает детализации по техническим сбоям в передаче письма.",
+              "quality": "Идея изложена ясно и структурно. Введение в курс и расстановка ролей понятны. Небольшая перегруженность смыслами (код + обратная связь + совместный ритуал), но в целом исполнение чистое и логичное."
+            }
+          },
+          {
+            "direction_id": "professional:Ремесленная мастерская кода",
+            "total": 61.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 45.0,
+              "novelty": 65.0,
+              "feasibility": 75.0,
+              "risk": 55.0,
+              "quality": 80.0
+            },
+            "comments": {
+              "relevance": "Focuses on real skills and social proof but does not directly address parents' main concern about excessive screen time; partial answer.",
+              "novelty": "Craft workshop metaphor with ranks and technical reviews is a fresh twist, though gamified mentoring is familiar.",
+              "feasibility": "Concept is executable as an online program, but platform/process details need clarification.",
+              "risk": "Some risks noted (competitiveness, semantics of 'workshop') but no mitigation for the core screen-time objection or other edge cases.",
+              "quality": "Clear and coherent vision; elegant alignment of workshop metaphor with skill progression."
+            }
+          },
+          {
+            "direction_id": "historical:Археология пиксельных игр",
+            "total": 72.2,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 58.0,
+              "novelty": 78.0,
+              "feasibility": 80.0,
+              "risk": 75.0,
+              "quality": 80.0
+            },
+            "comments": {
+              "relevance": "Частично отвечает на бриф: подходит для родительских чатов и не обещает профессий/дохода, но не снимает напрямую ключевое возражение родителей об избытке экранного времени.",
+              "novelty": "Свежий и неожиданный для детской школы угол: археология игр и ретро-эстетика добавляют культурный контекст, хотя сам жанр ретро-переписывания знаком индустрии.",
+              "feasibility": "Реализуемо: коды классических игр доступны, современные инструменты для переписывания существуют; требуют уточнения конкретный стек и соревновательная обвязка.",
+              "risk": "Риски устаревания, скуки и недоверия родителей обозначены, есть частичные митигации, но не проработана проблема ограничения экранного времени.",
+              "quality": "Концепция изложена ясно и связно: структура «эпох», «музей» и рациональное обоснование создают понятную рамку, но есть небольшой перекос в описание курса вместо кампании."
+            }
+          },
+          {
+            "direction_id": "ritual:Тридцать минут до ужина",
+            "total": 83.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 91.0,
+              "novelty": 78.0,
+              "feasibility": 72.0,
+              "risk": 85.0,
+              "quality": 86.0
+            },
+            "comments": {
+              "relevance": "Directly answers the core screen-time objection with a bounded, family-centered ritual; fits parents of 9-14 and works in parent chats; no forbidden career/income promises.",
+              "novelty": "Familiar time-limiting idea, but the ritual framing with opening, task, closing beacon, and dinner storytelling adds a fresh, memorable twist.",
+              "feasibility": "Executable as a campaign and product feature, but needs clarification on enforced timing, session plans, and how the 'beacon' and save/continue flow work.",
+              "risk": "Risks are explicitly named with mitigations: parent non-compliance via reminders/stickers, and flow interruption via flexible 'save and continue'.",
+              "quality": "Clean, well-articulated concept with a clear rationale, simple ritual structure, and sensible risk handling."
+            }
+          },
+          {
+            "direction_id": "natural:Сад кода",
+            "total": 79.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 80.0,
+              "novelty": 82.0,
+              "feasibility": 76.0,
+              "risk": 70.0,
+              "quality": 86.0
+            },
+            "comments": {
+              "relevance": "Отвечает на тревогу родителей через метафору роста, но связь с экранным временем нужно дополнительно проявить; не обещает профессию/доход, аудитория точная.",
+              "novelty": "Свежий поворот: природные циклы как путь обучения, ошибки-увядания и подкормки-исправления; не шаблонно, хотя метафора сада встречается.",
+              "feasibility": "Концепт реализуем в родительских чатах, но требует уточнить, как именно оформляются «артефакты урожая» и дневник наблюдений на короткой дистанции.",
+              "risk": "Риски названы: медленность и возможное усиление страха экрана; есть частичные меры (материальные артефакты, подчеркивание цифрового сада), но не хватает полных сценариев.",
+              "quality": "Ясная и элегантная структура, последовательная метафора, понятная логика: сезоны соответствуют этапам работы; незначительная перегруженность образами."
+            }
+          },
+          {
+            "direction_id": "social:Программист к 14 — миллион в кармане",
+            "total": 19.0,
+            "approved": false,
+            "vetoed": true,
+            "veto_reason": "Court veto: direction violates an explicit hard constraint of the brief (drift from brief).",
+            "scores": {
+              "relevance": 10.0,
+              "novelty": 30.0,
+              "feasibility": 20.0,
+              "risk": 10.0,
+              "quality": 30.0
+            },
+            "comments": {
+              "relevance": "Прямо нарушает ключевые ограничения: обещает будущую профессию и доход, а канал размещения (TikTok/YouTube) не соответствует запуску в родительских сообществах Telegram/чатах.",
+              "novelty": "Идея шаблонная и даже вредная: обещание 'миллиона в кармане' — типичный кликбейт, не предлагает нового решения снятия возражения об экранном времени.",
+              "feasibility": "Нежизнеспособно из-за нарушения ограничений: нельзя реализовать коммуникацию с обещанием дохода, а площадки не соответствуют заданным каналам.",
+              "risk": "Риски не указаны, при этом очевидны: юридические/этические последствия ложных обещаний, негативная реакция родителей, несоответствие платформам.",
+              "quality": "План противоречив: рационализация противоречит ограничениям, отсутствует проработка снятия возражения про экранное время."
+            }
+          },
+          {
+            "direction_id": "social:Семейное тест-драйв",
+            "total": 87.3,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90.0,
+              "novelty": 84.0,
+              "feasibility": 85.0,
+              "risk": 90.0,
+              "quality": 87.0
+            },
+            "comments": {
+              "relevance": "Directly targets parents' screen-time objection by reframing game creation as a shared parent-child activity; fits parent chat channels and respects no career/income promises.",
+              "novelty": "Fresh twist on parent-child co-play: child as creator, parent as tester, plus community recognition via bug-report ritual. Familiar social mechanics but the framing is memorable.",
+              "feasibility": "Buildable with school game platform and Telegram; requires technical details around QR access and moderation, but no major blockers.",
+              "risk": "Explicitly names the risks of parent time-friction and low community response, and supplies mitigations: framing as a lesson and a moderator who ensures responses.",
+              "quality": "Clear, elegant loop: test-drive, bug-report, social recognition. Slight ambiguity remains around moderator cost/scope, but overall well articulated."
+            }
+          }
+        ],
+        "trace": {
+          "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_07_kids_coding_advanced.jsonl",
+          "total_events": 52,
+          "by_type": {
+            "agent_start": 8,
+            "tool_response": 4,
+            "agent_step": 28,
+            "agent_end": 8,
+            "veto": 2,
+            "retry": 2
+          }
+        }
+      }
+    },
+    "eval_08_cheese": {
+      "title": "Дизайн упаковки сыра «Луговой»",
+      "constraints": [
+        "фотографии продукта не использовать",
+        "на упаковке обязательны состав, ГОСТ и штрихкод"
+      ],
+      "baseline": {
+        "mode": "baseline",
+        "llm_used": false,
+        "wall_clock_s": 0.034,
+        "llm_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0.0,
+        "n_directions": 6,
+        "mean_score": 73.8,
+        "score_spread": 9.5,
+        "probe_total": 80.5,
+        "drift_caught": false,
+        "vetoes": 0,
+        "replacements": 0,
+        "judge_fallbacks": 0,
+        "human_time_min": 33.0,
+        "verdicts": [
+          {
+            "direction_id": "artistic:Artistic angle",
+            "total": 69.1,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "social:Social angle",
+            "total": 76.6,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 60.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "professional:Professional angle",
+            "total": 69.1,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "historical:Historical angle",
+            "total": 78.6,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "ritual:Ritual angle",
+            "total": 71.1,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 70.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "natural:Natural angle",
+            "total": 78.6,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "artistic:Максимальная сырная фотосетка",
+            "total": 80.5,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 95,
+              "novelty": 60.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          }
+        ],
+        "trace": {
+          "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_08_cheese_baseline.jsonl",
+          "total_events": 24,
+          "by_type": {
+            "agent_start": 4,
+            "agent_step": 16,
+            "agent_end": 4
+          }
+        }
+      },
+      "advanced": {
+        "mode": "advanced",
+        "llm_used": true,
+        "wall_clock_s": 154.64,
+        "llm_calls": 10,
+        "prompt_tokens": 11686,
+        "completion_tokens": 14689,
+        "total_tokens": 26375,
+        "cost_usd": 0.008,
+        "usage_estimated": 0,
+        "api_failures": 0,
+        "n_directions": 7,
+        "mean_score": 78.8,
+        "score_spread": 12.0,
+        "probe_total": 16.8,
+        "drift_caught": true,
+        "vetoes": 1,
+        "replacements": 1,
+        "judge_fallbacks": 0,
+        "human_time_min": 7.5,
+        "verdicts": [
+          {
+            "direction_id": "artistic:Луговой лубок",
+            "total": 78.6,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 85.0,
+              "novelty": 78.0,
+              "feasibility": 75.0,
+              "risk": 68.0,
+              "quality": 82.0
+            },
+            "comments": {
+              "relevance": "Strongly meets recognition and memorability goals for the 35-60 audience via dense color and folk-art code; minor gap: mandatory info (composition, GOST, barcode) not addressed.",
+              "novelty": "Fresh twist on folk art with clean geometric abstraction, though lubok-style packaging is not unprecedented.",
+              "feasibility": "Executable, but high printing costs for complex color transitions require clarification and budget validation.",
+              "risk": "Risks are identified—stylization may repel conservative buyers and printing costs are high—but no concrete mitigation strategies are provided.",
+              "quality": "Clear, coherent, and elegant concept with strong rationale; would be stronger with explicit placement plans for mandatory label elements."
+            }
+          },
+          {
+            "direction_id": "social:Свои на лугу",
+            "total": 78.2,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 85.0,
+              "novelty": 82.0,
+              "feasibility": 78.0,
+              "risk": 60.0,
+              "quality": 78.0
+            },
+            "comments": {
+              "relevance": "Strongly answers the brief: creates a distinctive, memorable package for 35-60 shoppers and avoids product photos. Slight gap: mandatory composition/GOST/barcode are noted only as risks, not solved in the layout.",
+              "novelty": "Fresh 'people behind the brand' concept with a vinyl-style name band; the QR-to-direct-contact layer adds a clever twist, though social proof angles are somewhat familiar.",
+              "feasibility": "Buildable as a packaging concept, but needs consent from named people, a managed promo page, and careful typographic handling of long names plus mandatory elements.",
+              "risk": "Risks such as composition overload and uncontrolled user communication are identified, but no concrete mitigation strategies are provided, leaving major edge cases unaddressed.",
+              "quality": "The concept is clear and elegant, but execution lacks specific layout, typography, and visual hierarchy decisions, so the path from idea to final design is still underdefined."
+            }
+          },
+          {
+            "direction_id": "professional:Карта сыровара",
+            "total": 81.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 85.0,
+              "novelty": 90.0,
+              "feasibility": 75.0,
+              "risk": 70.0,
+              "quality": 80.0
+            },
+            "comments": {
+              "relevance": "Направление хорошо отвечает на бриф: решает задачу выделения на полке и создаёт запоминающийся образ без фотографий продукта. Однако для аудитории 35-60 лет может быть не совсем очевидна метафора 'рабочей тетради сыровара' — есть риск, что часть покупателей сочтёт её слишком сложной и не поймёт, как эта информация помогает сделать выбор.",
+              "novelty": "Идея 'карты сыровара' — свежий и неочевидный ход. Обычные упаковки сыра используют либо фото продукта, либо стереотипные 'деревенские' образы. Визуальный язык диаграмм, шкал созревания и зон для пометок предлагает уникальный и техничный способ выделиться на полке, что является неожиданным углом для категории.",
+              "feasibility": "Концепция в целом реализуема, но требует значительной проработки. Необходимо создать модульную сетку, которая вместит обязательную информацию (состав, ГОСТ, штрихкод) вместе с диаграммами и зонами. Нужны уточнения по конструкции упаковки, типографике и способам нанесения. Также остаются вопросы о том, как все эти элементы будут масштабироваться для разных сортов.",
+              "risk": "Автор указал на основные риски: конкуренция обязательной информации с таблицами и возможное непонимание 'ремесленного' кода. Однако предложенные митигации ('продумать модульную сетку') являются общими и не содержат конкретных решений. Не рассмотрены дополнительные риски: перегруженность упаковки, плохая читаемость мелких элементов для аудитории 35-60 лет, сложность восприятия на расстоянии трёх метров.",
+              "quality": "Идея изложена ясно и логично, есть чёткое позиционирование и визуальный образ. Ключевые элементы (шкалы, зоны пометок, диаграммы) описаны образно, но не представлены в виде конкретной структуры или макета. Не хватает деталей о том, как именно будет выглядеть 'карта зрелости' и как она будет интегрирована с обязательными реквизитами."
+            }
+          },
+          {
+            "direction_id": "historical:Традиция из-под рук",
+            "total": 81.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90.0,
+              "novelty": 72.0,
+              "feasibility": 82.0,
+              "risk": 75.0,
+              "quality": 85.0
+            },
+            "comments": {
+              "relevance": "Directly targets shelf recognition and trust for the 35-60 audience; respects no-photo constraint and acknowledges mandatory composition/GOST elements.",
+              "novelty": "Retro/historical cheese packaging is a familiar territory; the stamped/pressed typography and field-herb vignettes add a modest twist but not a radical reframe.",
+              "feasibility": "Clearly executable with typography and prepress work, though legibility of GOST, composition, and barcode requires careful layout and production refinement.",
+              "risk": "Museum-like detachment and informational readability are named as risks, but mitigation remains general; more explicit handling of barcode scannability and shelf-distance legibility would improve robustness.",
+              "quality": "Coherent, well-articulated direction with a clear historical narrative and elegant design rationale; minor ambiguity remains in translating vintage aesthetics to mandatory modern packaging elements."
+            }
+          },
+          {
+            "direction_id": "ritual:Пять дней до сыра",
+            "total": 71.3,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 68.0,
+              "novelty": 85.0,
+              "feasibility": 70.0,
+              "risk": 63.0,
+              "quality": 70.0
+            },
+            "comments": {
+              "relevance": "Идея отвечает задаче запоминаемости через ритуал, но основное внимание уделено обороту упаковки, тогда как ключевая цель — узнаваемость с трёх метров — требует проработанного лицевого решения. Также не хватает явного учёта обязательной информации.",
+              "novelty": "Отрывной календарь с пятидневным ритуалом дегустации — свежий и неожиданный ход для сырной упаковки. Он превращает покупку в традицию и помогает выделиться среди похожих соседей на полке.",
+              "feasibility": "Концепция в целом реализуема, но остаются вопросы по технологии отрывных элементов на упаковке сыра, по размещению обязательных данных при перегруженном обороте и по тому, как физически устроены «день 1–5».",
+              "risk": "Риски названы: покупатели не читают оборот, а вставка может мешать читаемости ГОСТа и состава. Однако митигирующих решений не предложено, также не рассмотрены транспортные повреждения и перегруженность лицевой стороны.",
+              "quality": "Идея описана ясно и с хорошим настроением, но не хватает конкретики: типографика, цветовая система, точная структура лицевой стороны и взаимодействие календаря с обязательными элементами остаются размытыми."
+            }
+          },
+          {
+            "direction_id": "natural:Травяной гербарий",
+            "total": 77.1,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 88.0,
+              "novelty": 78.0,
+              "feasibility": 75.0,
+              "risk": 62.0,
+              "quality": 72.0
+            },
+            "comments": {
+              "relevance": "Strongly answers the brief: uses nature-rooted imagery to create shelf presence, avoids product photos, and targets the 35-60 naturalness-seeking audience. Slight gap in ensuring the cheese identity reads instantly from three meters.",
+              "novelty": "Herbarium kraft packaging is familiar in eco-design, but the cheese silhouette formed from leaves and color zones tied to actual ingredients adds a clever, memorable twist.",
+              "feasibility": "Kraft pouch with printed botanicals is buildable, but requires special print processes and material testing. Placement of mandatory elements like GOST, ingredients, and barcode is not yet specified.",
+              "risk": "Two risks are named: higher kraft printing cost and possible vegan-product confusion. However, no concrete mitigation strategies or additional edge cases are addressed.",
+              "quality": "Concept is clear and coherent, but execution details are still high-level; the leaf-composition construction and on-pack information hierarchy need further specification."
+            }
+          },
+          {
+            "direction_id": "artistic:Максимальная сырная фотосетка",
+            "total": 16.8,
+            "approved": false,
+            "vetoed": true,
+            "veto_reason": "Court veto: direction violates an explicit hard constraint of the brief (drift from brief).",
+            "scores": {
+              "relevance": 10.0,
+              "novelty": 20.0,
+              "feasibility": 30.0,
+              "risk": 5.0,
+              "quality": 20.0
+            },
+            "comments": {
+              "relevance": "Прямо нарушает ключевое ограничение брифа: использование фотографий продукта запрещено. Не отвечает задачам и аудитории.",
+              "novelty": "Гиперреалистичные фото сыра — шаблонный и предсказуемый приём для молочной упаковки, усугублённый противоречащим брифу решением.",
+              "feasibility": "Печать фото реализуема, но вынос обязательных состава, ГОСТа и штрихкода в QR-код не соответствует требованиям и нормам маркировки.",
+              "risk": "Риски не описаны вообще. Основной риск — юридическая несостоятельность и полное несоответствие брифу — не учтён.",
+              "quality": "План противоречив: заявлен минимализм, но предложена фотосетка; исполнение описано поверхностно и без инженерной проработки."
+            }
+          },
+          {
+            "direction_id": "artistic:Цветущий луг",
+            "total": 83.3,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 92.0,
+              "novelty": 76.0,
+              "feasibility": 75.0,
+              "risk": 85.0,
+              "quality": 85.0
+            },
+            "comments": {
+              "relevance": "Directly answers the brief: large meadow color field ensures 3-meter shelf recognition, tactile/abstract graphics avoid product photos, and a separate white herbarium label accommodates mandatory composition, GOST and barcode without breaking the visual. Audience fit is strong.",
+              "novelty": "The abstract meadow with tactile embossing and foil rosette is a clear step away from standard cheese photography, though 'meadow/natural' imagery is a somewhat familiar territory. The tactile detail and herbarium label add a fresh twist.",
+              "feasibility": "Generally executable with current packaging technologies, but tactile embossing/foil on cheese packaging requires material selection, print testing, and cost validation. Some technical details remain unspecified.",
+              "risk": "Risks are explicitly identified: higher production cost, durability against condensation/friction, and potential retail confusion. Testing and promo support are proposed as mitigations, showing solid risk awareness.",
+              "quality": "Cleanly articulated concept with a coherent visual hierarchy: color field, tactile texture, abstract landscape, foil accent, and informational label. Elegant, though slight clarity on production parameters could strengthen execution."
+            }
+          }
+        ],
+        "trace": {
+          "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_08_cheese_advanced.jsonl",
+          "total_events": 58,
+          "by_type": {
+            "agent_start": 9,
+            "tool_response": 4,
+            "agent_step": 32,
+            "agent_end": 8,
+            "retry": 3,
+            "veto": 2
+          }
+        }
+      }
+    },
+    "eval_09_food_fest": {
+      "title": "Фестиваль уличной еды «Перекрёсток»",
+      "constraints": [
+        "дополнительный бюджет не выделяется",
+        "алкоголь на фестивале запрещён администрацией парка"
+      ],
+      "baseline": {
+        "mode": "baseline",
+        "llm_used": false,
+        "wall_clock_s": 0.085,
+        "llm_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0.0,
+        "n_directions": 6,
+        "mean_score": 73.8,
+        "score_spread": 9.5,
+        "probe_total": 78.6,
+        "drift_caught": false,
+        "vetoes": 0,
+        "replacements": 0,
+        "judge_fallbacks": 0,
+        "human_time_min": 33.0,
+        "verdicts": [
+          {
+            "direction_id": "artistic:Artistic angle",
+            "total": 69.1,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "social:Social angle",
+            "total": 76.6,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 60.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "professional:Professional angle",
+            "total": 69.1,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "historical:Historical angle",
+            "total": 78.6,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "ritual:Ritual angle",
+            "total": 71.1,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 70.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "natural:Natural angle",
+            "total": 78.6,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "ritual:Пивная легенда Перекрёстка",
+            "total": 78.6,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          }
+        ],
+        "trace": {
+          "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_09_food_fest_baseline.jsonl",
+          "total_events": 36,
+          "by_type": {
+            "agent_start": 6,
+            "agent_step": 24,
+            "agent_end": 6
+          }
+        }
+      },
+      "advanced": {
+        "mode": "advanced",
+        "llm_used": true,
+        "wall_clock_s": 466.03,
+        "llm_calls": 13,
+        "prompt_tokens": 14966,
+        "completion_tokens": 46591,
+        "total_tokens": 61557,
+        "cost_usd": 0.01651,
+        "usage_estimated": 0,
+        "api_failures": 0,
+        "n_directions": 7,
+        "mean_score": 80.1,
+        "score_spread": 12.0,
+        "probe_total": 14.8,
+        "drift_caught": true,
+        "vetoes": 1,
+        "replacements": 1,
+        "judge_fallbacks": 0,
+        "human_time_min": 7.5,
+        "verdicts": [
+          {
+            "direction_id": "artistic:Съедобная партитура",
+            "total": 78.6,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 88.0,
+              "novelty": 85.0,
+              "feasibility": 65.0,
+              "risk": 70.0,
+              "quality": 78.0
+            },
+            "comments": {
+              "relevance": "Directly addresses the core goal of making guests stay until the finale via an edible narrative arc; fits young adult audience and respects no-additional-budget constraint. Minor gap: two stages and 20 corners are not deeply integrated, and some eat-and-go attendees may not engage.",
+              "novelty": "Reframes eating at a festival as consuming music, creating an immersive post-ironic performance; the hidden-symbol and live-animation twist is fresh, though interactive food events are not entirely unprecedented.",
+              "feasibility": "Printing symbols on napkins or dishes is feasible at low cost, but the technical path from guests wiping/revealing symbols to a live animated finale remains undefined; significant unknowns in data collection and coordination with 20 corners.",
+              "risk": "Two main risks are explicitly acknowledged with partial mitigation: symbols being consumed early and the metaphor not landing. Missing deeper handling of technical failure, hygiene, and participant confusion.",
+              "quality": "The concept is elegantly articulated and powerful, but the execution plan is vague around how symbols are gathered and translated into the final animation, leaving a gap between artistic vision and operational clarity."
+            }
+          },
+          {
+            "direction_id": "social:Большой общий стол",
+            "total": 79.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90.0,
+              "novelty": 72.0,
+              "feasibility": 78.0,
+              "risk": 74.0,
+              "quality": 78.0
+            },
+            "comments": {
+              "relevance": "Directly targets the retention goal by creating a social anchor that keeps people engaged until the finale; fits the youth audience, no-alcohol constraint, and zero-budget requirement.",
+              "novelty": "The shared table concept is familiar, but the themed stickers, communal artifact, and final group photo add a fresh, memorable twist.",
+              "feasibility": "Executable with minimal resources, but practical details like table size, seating, food handling, and cleanup need clarification.",
+              "risk": "Main risks are acknowledged with mitigations, though spillage, hygiene, weather, and crowd-flow risks remain underexplored.",
+              "quality": "The concept is clearly articulated and elegant in its simplicity, but the execution path would benefit from more operational detail."
+            }
+          },
+          {
+            "direction_id": "professional:Поединок поварят",
+            "total": 80.1,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 88.0,
+              "novelty": 75.0,
+              "feasibility": 78.0,
+              "risk": 74.0,
+              "quality": 80.0
+            },
+            "comments": {
+              "relevance": "Directly addresses the brief: creates a reason to stay until the finale, works within the zero-alcohol/no-budget constraints, and fits young audiences through participation and competition. Minor gap: not every visitor may want the 'kitchen school' framing.",
+              "novelty": "The stamp-booklet learning mechanic and the audience-vote final duel are a fresh twist on standard street-food entertainment, though cooking competitions and collectable stamps are familiar tools.",
+              "feasibility": "Uses food and ingredients already at the corners; core execution is possible with existing resources. Needs clarification on printing/booklets, recruiting volunteers, and rehearsal logistics, but no major blockers.",
+              "risk": "Correctly identifies the two biggest risks — poor timing and audience reluctance to participate — and gives partial mitigations (rehearsal, volunteers). Misses hygiene, knife safety, and crowd-vote dispute edge cases.",
+              "quality": "Clear and elegant concept with a simple progression from corners to a stage finale. Execution path is understandable, though participant selection and the tie between 20 corners and final meal need more detail."
+            }
+          },
+          {
+            "direction_id": "historical:Вкусная история парка",
+            "total": 80.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 82.0,
+              "novelty": 86.0,
+              "feasibility": 74.0,
+              "risk": 72.0,
+              "quality": 84.0
+            },
+            "comments": {
+              "relevance": "Directly targets the key goal of keeping guests until the finale through the passport/ribbon mechanic; slight uncertainty remains on whether the selected decades resonate with 18-35.",
+              "novelty": "The historical food time-travel framing is unexpected, and turning stamped passports into a collective 'ribbon of time' at the finale is a genuinely clever twist.",
+              "feasibility": "Paper tickets and thematic menus are low-cost, but recreating/stylizing period recipes may require ingredients and equipment that many vendors cannot provide without clarification.",
+              "risk": "Two key risks are noted and one is partially mitigated; however, crowd-flow, passport loss, and a concrete mitigation for recipe feasibility are still missing.",
+              "quality": "The narrative arc is clear and elegant, with a strong symbolic finale; execution is more conceptual than operational but still understandable."
+            }
+          },
+          {
+            "direction_id": "ritual:Бесконечный тост",
+            "total": 75.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 80.0,
+              "novelty": 72.0,
+              "feasibility": 72.0,
+              "risk": 68.0,
+              "quality": 80.0
+            },
+            "comments": {
+              "relevance": "Directly addresses the brief by creating a participatory ritual that leads to a collective final moment, though it doesn't fully solve all reasons visitors leave.",
+              "novelty": "Fresh twist on the alcohol ban by reframing it as a toast ritual, but the core mechanic is familiar.",
+              "feasibility": "Executable with existing drinks and simple cups, but needs coordination across corners and clarifications on drink sourcing.",
+              "risk": "Two key risks identified, with partial mitigations, but dependencies on corner menus and participant understanding remain.",
+              "quality": "Clear and elegant plan with a poetic link between ritual and stage opening, though slightly over-engineered."
+            }
+          },
+          {
+            "direction_id": "natural:Живое лоно земли",
+            "total": 80.4,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 85.0,
+              "novelty": 92.0,
+              "feasibility": 70.0,
+              "risk": 85.0,
+              "quality": 65.0
+            },
+            "comments": {
+              "relevance": "Focuses on retention with a participatory ritual leading to the finale, but leaves the food/stage programming under-addressed.",
+              "novelty": "Unexpected organic metaphor; the collective seed toss is a fresh visual hook.",
+              "feasibility": "Low cost, but the seed-sticking-then-tossing mechanic is ambiguous and needs clarification; relies on unstated materials for the fertile circle.",
+              "risk": "Acknowledges wind and litter with mitigations; however, crowd movement and the physical circle installation are unaddressed.",
+              "quality": "Poetic but contradictory execution path; needs clearer choreography of when seeds are planted vs. thrown."
+            }
+          },
+          {
+            "direction_id": "ritual:Пивная легенда Перекрёстка",
+            "total": 14.8,
+            "approved": false,
+            "vetoed": true,
+            "veto_reason": "Court veto: direction violates an explicit hard constraint of the brief (drift from brief).",
+            "scores": {
+              "relevance": 15.0,
+              "novelty": 30.0,
+              "feasibility": 10.0,
+              "risk": 0.0,
+              "quality": 15.0
+            },
+            "comments": {
+              "relevance": "The central mechanism directly violates the explicit park administration ban on alcohol, which is a hard constraint. It also relies on an unapproved sponsor budget, so it does not actually answer the brief.",
+              "novelty": "Using a beer tent as a festival anchor is a predictable and familiar tactic. There is no creative reframe beyond adding alcohol, which itself is an obvious solution.",
+              "feasibility": "Not practically executable as described because serving alcohol is prohibited. The sponsor-covered budget is also unconfirmed and lacks any implementation details.",
+              "risk": "No risks are identified at all. The direction ignores the most critical risk: the alcohol ban, which makes the entire concept invalid.",
+              "quality": "The plan is internally vague and contradictory, relying on a prohibited element while claiming 80% retention without evidence. Execution path is unclear."
+            }
+          },
+          {
+            "direction_id": "ritual:Последний укус",
+            "total": 87.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90.0,
+              "novelty": 85.0,
+              "feasibility": 85.0,
+              "risk": 85.0,
+              "quality": 88.0
+            },
+            "comments": {
+              "relevance": "Directly targets the goal of keeping guests until the finale; uses only already-purchased food, requires no alcohol, and needs no additional budget. Fits the young audience's participatory energy.",
+              "novelty": "Fresh ritual twist—deferring a bite and making the finale a collective act—reframes the problem creatively, though it is not radically unprecedented.",
+              "feasibility": "Executable with minimal production overhead; needs clear corner-level instructions, timing/sound coordination, and a festival map note, but all are low-cost and realistic.",
+              "risk": "Identifies the two main risks and provides practical mitigations; could also address food safety or guests without saved bites, but the risk handling is strong.",
+              "quality": "Clean, coherent, and elegant concept; rationale is tightly linked to constraints and the execution path is easy to follow."
+            }
+          }
+        ],
+        "trace": {
+          "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_09_food_fest_advanced.jsonl",
+          "total_events": 39,
+          "by_type": {
+            "agent_start": 9,
+            "tool_response": 3,
+            "agent_step": 20,
+            "agent_end": 5,
+            "veto": 1,
+            "retry": 1
+          }
+        }
+      }
+    },
+    "eval_10_edge_hotel": {
+      "title": "Тихий отель для выгоревших (ПРОТИВОРЕЧИВЫЙ БРИФ)",
+      "constraints": [
+        "полный отказ от экранов и интернета (корневое требование)",
+        "обязательные push-уведомления в моменте",
+        "обязательная livestream-трансляция общих зон",
+        "умные номера с голосовым ассистентом",
+        "доступ к рабочей почте и созвонам"
+      ],
+      "baseline": {
+        "mode": "baseline",
+        "llm_used": false,
+        "wall_clock_s": 0.038,
+        "llm_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0.0,
+        "n_directions": 6,
+        "mean_score": 77.8,
+        "score_spread": 9.5,
+        "probe_total": 80.5,
+        "drift_caught": false,
+        "vetoes": 0,
+        "replacements": 0,
+        "judge_fallbacks": 0,
+        "human_time_min": 33.0,
+        "verdicts": [
+          {
+            "direction_id": "artistic:Artistic angle",
+            "total": 73.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 95,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "social:Social angle",
+            "total": 80.5,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 95,
+              "novelty": 60.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "professional:Professional angle",
+            "total": 73.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 95,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "historical:Historical angle",
+            "total": 82.5,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 95,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "ritual:Ritual angle",
+            "total": 75.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 95,
+              "novelty": 70.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "natural:Natural angle",
+            "total": 82.5,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 95,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          },
+          {
+            "direction_id": "professional:Идеальный баланс: детокс без ограничений",
+            "total": 80.5,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 95,
+              "novelty": 60.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            }
+          }
+        ],
+        "trace": {
+          "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_10_edge_hotel_baseline.jsonl",
+          "total_events": 12,
+          "by_type": {
+            "agent_start": 2,
+            "agent_step": 8,
+            "agent_end": 2
+          }
+        }
+      },
+      "advanced": {
+        "mode": "advanced",
+        "llm_used": true,
+        "wall_clock_s": 218.93,
+        "llm_calls": 10,
+        "prompt_tokens": 12869,
+        "completion_tokens": 22980,
+        "total_tokens": 35849,
+        "cost_usd": 0.00774,
+        "usage_estimated": 0,
+        "api_failures": 0,
+        "n_directions": 7,
+        "mean_score": 33.3,
+        "score_spread": 65.0,
+        "probe_total": 27.5,
+        "drift_caught": true,
+        "vetoes": 1,
+        "replacements": 1,
+        "judge_fallbacks": 0,
+        "human_time_min": 7.5,
+        "verdicts": [
+          {
+            "direction_id": "artistic:Artistic angle",
+            "total": 36.8,
+            "approved": false,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 45.0,
+              "novelty": 40.0,
+              "feasibility": 35.0,
+              "risk": 25.0,
+              "quality": 30.0
+            },
+            "comments": {
+              "relevance": "Artistic framing is loosely related to the brief but does not concretely address the core contradiction between digital detox and mandatory connectivity, nor specify how it serves the dual audience of burned-out IT professionals and influencers.",
+              "novelty": "Using an 'artistic expression' frame as a catch-all reframe is a familiar, predictable move; it offers no surprising angle or clever twist on the brief's tensions.",
+              "feasibility": "The direction is not concretely executable — it lacks any actual design, operational, or technical plan for turning the contradictory brief into a buildable experience.",
+              "risk": "Only 'needs validation with real users' is noted; no substantive edge cases, contradictions, privacy, or operational risks are identified or mitigated.",
+              "quality": "The plan is vague and generic, with no clear execution path, insufficient detail, and no coherent resolution of the brief's inherent contradictions."
+            }
+          },
+          {
+            "direction_id": "social:Social angle",
+            "total": 20.0,
+            "approved": false,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 30.0,
+              "novelty": 20.0,
+              "feasibility": 20.0,
+              "risk": 0.0,
+              "quality": 20.0
+            },
+            "comments": {
+              "relevance": "The social framing is not developed into a concrete solution and ignores the brief's core contradictory requirements around screens, internet, push notifications, livestreams, voice assistants, and work access.",
+              "novelty": "Offering a generic 'social expression' angle is a familiar, predictable framing with no surprising creative twist or reframing of the problem.",
+              "feasibility": "No actionable plan, execution details, or technical approach is provided; it cannot be built or reproduced as described.",
+              "risk": "No risks, edge cases, or failure modes are identified or addressed, especially given the intentionally contradictory constraints.",
+              "quality": "The direction is vague and lacks a clear execution path; it provides only a label and a broad rationale rather than an articulated plan."
+            }
+          },
+          {
+            "direction_id": "professional:Professional angle",
+            "total": 28.2,
+            "approved": false,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 35.0,
+              "novelty": 25.0,
+              "feasibility": 30.0,
+              "risk": 20.0,
+              "quality": 25.0
+            },
+            "comments": {
+              "relevance": "Only gestures at audience and professional framing; does not address the brief's contradictory requirements or the digital-detox core goal.",
+              "novelty": "A generic 'professional expression' frame is a predictable reframe with no surprising angle or creative twist.",
+              "feasibility": "No concrete experience, mechanics, or delivery plan is described, so it cannot be built as-is.",
+              "risk": "Only notes validation is needed; no edge cases, contradictions, or mitigations are identified.",
+              "quality": "Vague and under-specified; lacks a clear execution path and does not resolve the brief's internal tensions."
+            }
+          },
+          {
+            "direction_id": "historical:Historical angle",
+            "total": 20.5,
+            "approved": false,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 25.0,
+              "novelty": 30.0,
+              "feasibility": 20.0,
+              "risk": 0.0,
+              "quality": 20.0
+            },
+            "comments": {
+              "relevance": "The historical frame is a thematic label, not a solution to the brief's core requirements. It ignores the fundamental contradictions between digital detox and mandatory notifications/livestream/voice assistants, and gives no plan for the specified audience.",
+              "novelty": "Using a historical framing for a hotel experience is a familiar and overused approach; no unexpected angle or clever reframe is actually articulated.",
+              "feasibility": "The direction provides no operational, technical, or experiential detail. It cannot be built or reproduced as described.",
+              "risk": "No risks, edge cases, or failure modes are identified. The submission explicitly lists 'Risks: (none)', which is unacceptable for a contradictory brief.",
+              "quality": "The plan is extremely vague and underdeveloped; it is hard to understand what the actual experience would be or how it would be executed."
+            }
+          },
+          {
+            "direction_id": "ritual:Ritual angle",
+            "total": 29.5,
+            "approved": false,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 30.0,
+              "novelty": 35.0,
+              "feasibility": 30.0,
+              "risk": 20.0,
+              "quality": 30.0
+            },
+            "comments": {
+              "relevance": "The direction barely addresses the brief: it proposes a 'ritual' framing but gives no concrete handling of the central contradictions between offline detox and mandatory push notifications, livestreams, smart assistants, and work email access.",
+              "novelty": "Framing a hotel as a ritual is familiar and vague; it lacks any surprising twist or reframing that would make the paradoxical brief feel newly resolved.",
+              "feasibility": "No executable plan is described. There is no detail on how the ritual concept would be implemented, how contradictions would be resolved, or what the actual guest experience would be.",
+              "risk": "The only noted risk is 'needs validation with real users,' which is too generic. Key risks from contradictions, privacy/safety concerns around livestreams, and digital burnout are ignored.",
+              "quality": "The plan is vague and underdeveloped; the ritual frame is stated but not articulated into a coherent experience or engineering path."
+            }
+          },
+          {
+            "direction_id": "natural:Natural angle",
+            "total": 16.5,
+            "approved": false,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 30.0,
+              "novelty": 20.0,
+              "feasibility": 10.0,
+              "risk": 0.0,
+              "quality": 10.0
+            },
+            "comments": {
+              "relevance": "Does not address the brief's core contradictions or provide a concrete experience; 'natural expression' is vague and fails to target either IT burnout or influencer needs.",
+              "novelty": "A generic 'natural frame' framing is not surprising or disruptive; it offers no fresh twist on the contradictory brief.",
+              "feasibility": "No buildable plan, service design, or technical execution is described; impossible to reproduce as-is.",
+              "risk": "Explicitly lists 'none' risks despite a heavily contradictory brief; no edge cases or failure modes are considered.",
+              "quality": "Extremely vague and lacks any coherent execution path; barely more than a restatement of the brief."
+            }
+          },
+          {
+            "direction_id": "professional:Идеальный баланс: детокс без ограничений",
+            "total": 27.5,
+            "approved": false,
+            "vetoed": true,
+            "veto_reason": "Court veto: direction violates an explicit hard constraint of the brief (drift from brief).",
+            "scores": {
+              "relevance": 50.0,
+              "novelty": 25.0,
+              "feasibility": 15.0,
+              "risk": 5.0,
+              "quality": 25.0
+            },
+            "comments": {
+              "relevance": "Перечислены все требования, но ключевое противоречие не разрешено: полный детокс несовместим с push-уведомлениями, почтой и трансляциями; обещание «все счастливы» не подкреплено.",
+              "novelty": "Идея «без экранов, но все экраны» — это повторение противоречия, а не новый ход; неожиданного угла нет.",
+              "feasibility": "Одновременное выполнение взаимоисключающих условий не описано; технически неясно, как устроен «полный отдых без экранов» при доступе к почте и трансляциям.",
+              "risk": "Раздел рисков пуст, тогда как противоречие создаёт высокие риски для бренда, безопасности и целевой аудитории.",
+              "quality": "Односложная декларация без инженерной проработки; нет плана, как именно достигается «баланс»."
+            }
+          },
+          {
+            "direction_id": "professional:Тихий протокол",
+            "total": 81.5,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 89.0,
+              "novelty": 85.0,
+              "feasibility": 72.0,
+              "risk": 76.0,
+              "quality": 80.0
+            },
+            "comments": {
+              "relevance": "Прямо отвечает на противоречивые требования: сохраняет полный отказ от экранов и интернета для гостя, но превращает почту/созвоны в аудиопоток через голосовой шлюз; push-уведомления становятся тактильными/звуковыми, livestream переосмыслен без участия гостя в просмотре. Рамка 'профессиональной тренировочной базы' хорошо работает и для выгоревших специалистов, и для инфлюенсеров.",
+              "novelty": "Есть свежий поворот: 'цифровой оператор' без экрана и трансляция как 'публичная витрина', где гость не смотрит, а становится экспертом. Это не шаблонный digital detox, хотя голосовые ассистенты сами по себе уже знакомы.",
+              "feasibility": "Технологически реализуемо, но остаются существенные неясности: как гарантировать отсутствие доступа к интернету у гостя при работающем сетевом шлюзе, как обеспечить совместимость с корпоративными почтами/созвонами и как физически организовать тактильные/звуковые push-сигналы. Требуется доработка архитектуры.",
+              "risk": "Риски приватности и корпоративной безопасности названы, предложены согласия, зоны вне кадра и защищённый контур данных. Однако не рассмотрены отказ инфлюенсеров от участия, непреднамеренная фиксация в кадре, сбои голосового ассистента и психологическое давление от постоянных сигналов.",
+              "quality": "Концепция сформулирована ясно и элегантно, противоречия упакованы в профессиональную рамку. Лёгкая перегруженность деталями, но в целом исполнение логичное и убедительное."
+            }
+          }
+        ],
+        "trace": {
+          "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_10_edge_hotel_advanced.jsonl",
+          "total_events": 27,
+          "by_type": {
+            "agent_start": 4,
+            "tool_response": 2,
+            "retry": 2,
+            "agent_step": 14,
+            "agent_end": 4,
+            "veto": 1
+          }
+        }
+      }
+    }
+  },
+  "challenging_case": {
+    "brief": "eval_10_edge_hotel",
+    "why_hard": "Brief is intentionally self-contradictory: full digital detox AND push notifications, livestreams, voice assistants and work e-mail at once; audience is both detoxers and influencers. A 'solution' that satisfies everything is logically impossible.",
+    "baseline": {
+      "mean_score": 77.8,
+      "probe_total": 80.5,
+      "drift_caught": false
+    },
+    "advanced": {
+      "mean_score": 33.3,
+      "probe_total": 27.5,
+      "drift_caught": true,
+      "probe_relevance_comment": "Перечислены все требования, но ключевое противоречие не разрешено: полный детокс несовместим с push-уведомлениями, почтой и трансляциями; обещание «все счастливы» не подкреплено.",
+      "probe_quality_comment": "Односложная декларация без инженерной проработки; нет плана, как именно достигается «баланс».",
+      "vetoes": 1
+    },
+    "finding": "Heuristic one-shot judge scored the contradiction-absorbing probe 80.5/100 (caught=False) because lexical overlap is blind to logical conflict; the LLM rubric judge scored it 27.5/100 (caught=True) and named the contradiction, triggering the veto/retry loop. Judge discrimination (score spread) on this brief: baseline 9.5 vs advanced 65.0."
+  }
+}

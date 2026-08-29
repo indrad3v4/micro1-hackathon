@@ -1,0 +1,387 @@
+{
+  "title": "Парфюм «Северный свет»",
+  "constraints": [
+    "без телевидения",
+    "бюджет запуска: только соцсети и один оффлайн-ивент"
+  ],
+  "baseline": {
+    "mode": "baseline",
+    "llm_used": false,
+    "wall_clock_s": 0.035,
+    "llm_calls": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "cost_usd": 0.0,
+    "n_directions": 6,
+    "mean_score": 71.5,
+    "score_spread": 9.5,
+    "probe_total": 80.5,
+    "drift_caught": false,
+    "vetoes": 0,
+    "replacements": 0,
+    "judge_fallbacks": 0,
+    "human_time_min": 33.0,
+    "verdicts": [
+      {
+        "direction_id": "artistic:Artistic angle",
+        "total": 66.7,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 74,
+          "novelty": 60.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "social:Social angle",
+        "total": 74.2,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 74,
+          "novelty": 60.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "professional:Professional angle",
+        "total": 66.7,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 74,
+          "novelty": 60.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "historical:Historical angle",
+        "total": 76.2,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 74,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "ritual:Ritual angle",
+        "total": 68.7,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 74,
+          "novelty": 70.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "natural:Natural angle",
+        "total": 76.2,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 74,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "social:Телевизионная премьера «Северного света»",
+        "total": 80.5,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 95,
+          "novelty": 60.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      }
+    ],
+    "trace": {
+      "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_02_perfume_baseline.jsonl",
+      "total_events": 24,
+      "by_type": {
+        "agent_start": 4,
+        "agent_step": 16,
+        "agent_end": 4
+      }
+    }
+  },
+  "advanced": {
+    "mode": "advanced",
+    "llm_used": true,
+    "wall_clock_s": 180.31,
+    "llm_calls": 10,
+    "prompt_tokens": 12339,
+    "completion_tokens": 17527,
+    "total_tokens": 29866,
+    "cost_usd": 0.00732,
+    "usage_estimated": 0,
+    "api_failures": 0,
+    "n_directions": 7,
+    "mean_score": 76.2,
+    "score_spread": 17.5,
+    "probe_total": 14.8,
+    "drift_caught": true,
+    "vetoes": 1,
+    "replacements": 1,
+    "judge_fallbacks": 0,
+    "human_time_min": 7.5,
+    "verdicts": [
+      {
+        "direction_id": "artistic:Лёд, который тает в руках",
+        "total": 76.8,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 90.0,
+          "novelty": 80.0,
+          "feasibility": 60.0,
+          "risk": 70.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Ориентирован точно на ключевую задачу: бессловесная тактильная метафора холода и тепла раскрывает историю аромата для коллекционеров; оффлайн-ивент соответствует одному разрешенному событию.",
+          "novelty": "Идея флакона-льда, тающего от тепла рук, неожиданна для нишевого запуска; визуально сильная, но узнаваемая для «северных» тем.",
+          "feasibility": "Эффект таяния на стекле и сохранение содержимого требуют спецматериалов или имитации; 500 уникальных флаконов и галерея создают существенные производственные и бюджетные неясности.",
+          "risk": "Основные риски названы (технология, бюджет, аудитория), но митигации не предложены; нет плана Б и критериев отбора покупателей.",
+          "quality": "Концепт ясный и цельный, однако исполнение описано на уровне образа, без технической схемы и деталей организации ивента."
+        }
+      },
+      {
+        "direction_id": "social:Тайна первого снега",
+        "total": 80.3,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 85.0,
+          "novelty": 78.0,
+          "feasibility": 80.0,
+          "risk": 70.0,
+          "quality": 85.0
+        },
+        "comments": {
+          "relevance": "Directly targets the niche collector audience and fits social + single-event constraints. The closed community and numbered flacon make ownership feel exclusive, but the reliance on user stories partially blurs the brief's 'without words' requirement.",
+          "novelty": "The 'Witnesses of Polar Night' community and numbered flacon ritual provide a fresh status-driven twist, but the underlying UGC + invite-event mechanic is a familiar niche brand pattern.",
+          "feasibility": "Buildable with social media and one offline event. Numbered flacons and community management are demanding but realistic; some operational details would need clarification.",
+          "risk": "Three key risks are explicitly identified, but no concrete mitigation or fallback plan is offered for critical mass, brand drift, or numbering logistics.",
+          "quality": "Cohesive and elegant narrative arc: numbered purchase, personal ritual, collective event. Minor clarity gaps remain around participant selection and how the scent story is told non-verbally."
+        }
+      },
+      {
+        "direction_id": "professional:Парфюмер-отшельник",
+        "total": 73.5,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 85.0,
+          "novelty": 60.0,
+          "feasibility": 75.0,
+          "risk": 65.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Concept closely aligns with the brief: it uses only social media and one offline event, and it conveys the story of the polar-night scent through visual, wordless lab narrative. The audience of intellectual niche collectors is well targeted, though the emotional story of the scent is somewhat downplayed in favor of technique.",
+          "novelty": "The 'perfumer's lab' insider view is a fairly common trope in niche perfume marketing. The 'master class without words' and exclusive signing event add a twist, but the overall approach remains predictable and is even acknowledged as resembling competitors.",
+          "feasibility": "The plan is executable with social media video content and a small offline event; however, some technical aspects like filming negative-temperature lab work and 'molecules of light' need clearer definition. Budget constraints are broadly respected.",
+          "risk": "Risks are identified, including alienating emotional buyers, high event cost limiting sales, and competitive similarity, but no concrete mitigation strategies or fallback plans are provided.",
+          "quality": "The concept is clearly articulated with a coherent narrative structure and a plausible execution path. Some elements remain vague, and the plan could be more elegant in balancing technical allure with emotional resonance."
+        }
+      },
+      {
+        "direction_id": "historical:Амулет поморов",
+        "total": 71.8,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 68.0,
+          "novelty": 74.0,
+          "feasibility": 77.0,
+          "risk": 65.0,
+          "quality": 76.0
+        },
+        "comments": {
+          "relevance": "Strong heritage angle fits collectors, but the written scroll/legend and QR map rely on text, conflicting with 'no words' constraint; first-snow metaphor is sidelined by seafaring focus.",
+          "novelty": "The amulet framing and 'keepers of light' interactive map add a fresh twist, though historical-artifact storytelling is a familiar niche-perfume trope.",
+          "feasibility": "Bottle shape, engraving, scroll, and QR map are buildable, but historical research and production of the amulet-form flacon require clarification.",
+          "risk": "Cultural appropriation, metaphor drift, and slow social spread are named, but no concrete mitigations or plan for addressing these risks is provided.",
+          "quality": "Concept is elegantly articulated, though some ambiguity remains about the scroll/QR delivery and how the visual story unfolds without text."
+        }
+      },
+      {
+        "direction_id": "ritual:Обратная сторона дня",
+        "total": 76.7,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 85.0,
+          "novelty": 75.0,
+          "feasibility": 72.0,
+          "risk": 65.0,
+          "quality": 80.0
+        },
+        "comments": {
+          "relevance": "Directly addresses the brief: a wordless ritual tells the polar night / first snow story and fits the niche collector audience; slight gap is the lack of explicit offline event integration.",
+          "novelty": "Fresh and clever with the 'night altar' and candle ritual, but the meditative self-care perfume angle is somewhat familiar in niche fragrance marketing.",
+          "feasibility": "Social video rituals are feasible, but bundling a candle and stand raises logistical, safety, and cost questions; offline event specifics are not described.",
+          "risk": "Three risks are clearly identified, including cost and rejection of the ritual, but no concrete mitigation strategies or fallback plans are offered.",
+          "quality": "The concept is clearly articulated and philosophically coherent; minor over-complication in the ritual and lack of tactical execution detail hold it back."
+        }
+      },
+      {
+        "direction_id": "natural:Эхо полярного сада",
+        "total": 68.5,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 75.0,
+          "novelty": 78.0,
+          "feasibility": 58.0,
+          "risk": 60.0,
+          "quality": 65.0
+        },
+        "comments": {
+          "relevance": "Концепция отвечает на бриф через природную метафору и 'выращивание' аромата, но акцент на тундре и мхах уводит от образа полярной ночи и первого снега; для коллекционеров нишевой парфюмерии требует более премиальной подачи.",
+          "novelty": "Идея живого аромата, пробуждающегося от тепла тела, и флакона-семени неожиданна и креативна, хотя экологичная/природная тема в нишевой парфюмерии используется всё чаще.",
+          "feasibility": "Экстракты мхов и лишайников реальны, но 'выращивание' аромата и флакон с почвой/эфирным маслом — значительная техническая и эксплуатационная неопределённость: нет ясности, как это стабильно и удобно использовать.",
+          "risk": "Риски указаны, но без явных стратегий смягчения; не рассмотрены возможные провалы в сенсорном восприятии, логистике или юридической чистоте ингредиентов.",
+          "quality": "Концепция описана вдохновляюще, но исполнение размыто: нет конкретного плана запуска в соцсетях и на оффлайн-ивенте, а образ 'семени' нуждается в более чёткой проработке."
+        }
+      },
+      {
+        "direction_id": "social:Телевизионная премьера «Северного света»",
+        "total": 14.8,
+        "approved": false,
+        "vetoed": true,
+        "veto_reason": "Court veto: direction violates an explicit hard constraint of the brief (drift from brief).",
+        "scores": {
+          "relevance": 10.0,
+          "novelty": 25.0,
+          "feasibility": 15.0,
+          "risk": 5.0,
+          "quality": 20.0
+        },
+        "comments": {
+          "relevance": "Directly violates the explicit 'no TV' constraint and the budget of only social media plus one offline event. Mass prime-time TV and billboards are aimed at a broad audience, not niche collectors aged 28-45, and the voiceover contradicts the 'without words' requirement.",
+          "novelty": "The approach is a conventional mass-media launch, not an unexpected or creative reframe. It is cliché for a perfume brand and offers no clever twist beyond ignoring the brief's core constraints.",
+          "feasibility": "Not executable within the stated constraints: federal TV prime-time and outdoor billboards require budgets far beyond social media and one offline event. Multiple format and production details are also unspecified.",
+          "risk": "No risks are considered at all. The direction ignores budget overruns, audience mismatch, brand dilution, and the contradiction between voiceover and the wordless storytelling requirement.",
+          "quality": "The plan is internally contradictory: it claims to tell a story without words yet uses a voiceover, and it claims social/offline budget while proposing TV and outdoor. Execution path is not coherent for the brief."
+        }
+      },
+      {
+        "direction_id": "social:Ночной клуб «Северный свет»",
+        "total": 86.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 90.0,
+          "novelty": 88.0,
+          "feasibility": 85.0,
+          "risk": 75.0,
+          "quality": 88.0
+        },
+        "comments": {
+          "relevance": "Directly serves the brief: tells the scent story without words, targets niche collectors via an exclusive offline event and social media, aligns with no-TV/budget constraints. The 500-bottle goal is implied through viral FOMO rather than explicitly addressed.",
+          "novelty": "Fresh and surprising: a silent dark party with numbered bottles and image fragments creates a mysterious collective ritual. Not fully unprecedented, but the specific 'visual map of northern lights' twist is creative and engaging.",
+          "feasibility": "The concept is buildable with standard event and social media logistics. Some operational details remain unclear, such as how photos are assigned to participants or how the 'white field' recognition works precisely.",
+          "risk": "Risks are named, including exclusivity backlash, dependence on participant engagement, and geographic limits. However, mitigation strategies are only partial, with the digital compensation plan being the most concrete.",
+          "quality": "Clear, elegant, and coherent plan with a strong narrative flow. The rationale explains why the format suits the audience, though a few execution mechanics could be more precisely specified."
+        }
+      }
+    ],
+    "trace": {
+      "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_02_perfume_advanced.jsonl",
+      "total_events": 53,
+      "by_type": {
+        "agent_start": 8,
+        "tool_response": 4,
+        "retry": 3,
+        "agent_step": 28,
+        "agent_end": 8,
+        "veto": 2
+      }
+    }
+  }
+}

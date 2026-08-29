@@ -1,0 +1,390 @@
+{
+  "title": "Тихий отель для выгоревших (ПРОТИВОРЕЧИВЫЙ БРИФ)",
+  "constraints": [
+    "полный отказ от экранов и интернета (корневое требование)",
+    "обязательные push-уведомления в моменте",
+    "обязательная livestream-трансляция общих зон",
+    "умные номера с голосовым ассистентом",
+    "доступ к рабочей почте и созвонам"
+  ],
+  "baseline": {
+    "mode": "baseline",
+    "llm_used": false,
+    "wall_clock_s": 0.038,
+    "llm_calls": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "cost_usd": 0.0,
+    "n_directions": 6,
+    "mean_score": 77.8,
+    "score_spread": 9.5,
+    "probe_total": 80.5,
+    "drift_caught": false,
+    "vetoes": 0,
+    "replacements": 0,
+    "judge_fallbacks": 0,
+    "human_time_min": 33.0,
+    "verdicts": [
+      {
+        "direction_id": "artistic:Artistic angle",
+        "total": 73.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 95,
+          "novelty": 60.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "social:Social angle",
+        "total": 80.5,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 95,
+          "novelty": 60.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "professional:Professional angle",
+        "total": 73.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 95,
+          "novelty": 60.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "historical:Historical angle",
+        "total": 82.5,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 95,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "ritual:Ritual angle",
+        "total": 75.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 95,
+          "novelty": 70.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "natural:Natural angle",
+        "total": 82.5,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 95,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "professional:Идеальный баланс: детокс без ограничений",
+        "total": 80.5,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 95,
+          "novelty": 60.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      }
+    ],
+    "trace": {
+      "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_10_edge_hotel_baseline.jsonl",
+      "total_events": 12,
+      "by_type": {
+        "agent_start": 2,
+        "agent_step": 8,
+        "agent_end": 2
+      }
+    }
+  },
+  "advanced": {
+    "mode": "advanced",
+    "llm_used": true,
+    "wall_clock_s": 218.93,
+    "llm_calls": 10,
+    "prompt_tokens": 12869,
+    "completion_tokens": 22980,
+    "total_tokens": 35849,
+    "cost_usd": 0.00774,
+    "usage_estimated": 0,
+    "api_failures": 0,
+    "n_directions": 7,
+    "mean_score": 33.3,
+    "score_spread": 65.0,
+    "probe_total": 27.5,
+    "drift_caught": true,
+    "vetoes": 1,
+    "replacements": 1,
+    "judge_fallbacks": 0,
+    "human_time_min": 7.5,
+    "verdicts": [
+      {
+        "direction_id": "artistic:Artistic angle",
+        "total": 36.8,
+        "approved": false,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 45.0,
+          "novelty": 40.0,
+          "feasibility": 35.0,
+          "risk": 25.0,
+          "quality": 30.0
+        },
+        "comments": {
+          "relevance": "Artistic framing is loosely related to the brief but does not concretely address the core contradiction between digital detox and mandatory connectivity, nor specify how it serves the dual audience of burned-out IT professionals and influencers.",
+          "novelty": "Using an 'artistic expression' frame as a catch-all reframe is a familiar, predictable move; it offers no surprising angle or clever twist on the brief's tensions.",
+          "feasibility": "The direction is not concretely executable — it lacks any actual design, operational, or technical plan for turning the contradictory brief into a buildable experience.",
+          "risk": "Only 'needs validation with real users' is noted; no substantive edge cases, contradictions, privacy, or operational risks are identified or mitigated.",
+          "quality": "The plan is vague and generic, with no clear execution path, insufficient detail, and no coherent resolution of the brief's inherent contradictions."
+        }
+      },
+      {
+        "direction_id": "social:Social angle",
+        "total": 20.0,
+        "approved": false,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 30.0,
+          "novelty": 20.0,
+          "feasibility": 20.0,
+          "risk": 0.0,
+          "quality": 20.0
+        },
+        "comments": {
+          "relevance": "The social framing is not developed into a concrete solution and ignores the brief's core contradictory requirements around screens, internet, push notifications, livestreams, voice assistants, and work access.",
+          "novelty": "Offering a generic 'social expression' angle is a familiar, predictable framing with no surprising creative twist or reframing of the problem.",
+          "feasibility": "No actionable plan, execution details, or technical approach is provided; it cannot be built or reproduced as described.",
+          "risk": "No risks, edge cases, or failure modes are identified or addressed, especially given the intentionally contradictory constraints.",
+          "quality": "The direction is vague and lacks a clear execution path; it provides only a label and a broad rationale rather than an articulated plan."
+        }
+      },
+      {
+        "direction_id": "professional:Professional angle",
+        "total": 28.2,
+        "approved": false,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 35.0,
+          "novelty": 25.0,
+          "feasibility": 30.0,
+          "risk": 20.0,
+          "quality": 25.0
+        },
+        "comments": {
+          "relevance": "Only gestures at audience and professional framing; does not address the brief's contradictory requirements or the digital-detox core goal.",
+          "novelty": "A generic 'professional expression' frame is a predictable reframe with no surprising angle or creative twist.",
+          "feasibility": "No concrete experience, mechanics, or delivery plan is described, so it cannot be built as-is.",
+          "risk": "Only notes validation is needed; no edge cases, contradictions, or mitigations are identified.",
+          "quality": "Vague and under-specified; lacks a clear execution path and does not resolve the brief's internal tensions."
+        }
+      },
+      {
+        "direction_id": "historical:Historical angle",
+        "total": 20.5,
+        "approved": false,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 25.0,
+          "novelty": 30.0,
+          "feasibility": 20.0,
+          "risk": 0.0,
+          "quality": 20.0
+        },
+        "comments": {
+          "relevance": "The historical frame is a thematic label, not a solution to the brief's core requirements. It ignores the fundamental contradictions between digital detox and mandatory notifications/livestream/voice assistants, and gives no plan for the specified audience.",
+          "novelty": "Using a historical framing for a hotel experience is a familiar and overused approach; no unexpected angle or clever reframe is actually articulated.",
+          "feasibility": "The direction provides no operational, technical, or experiential detail. It cannot be built or reproduced as described.",
+          "risk": "No risks, edge cases, or failure modes are identified. The submission explicitly lists 'Risks: (none)', which is unacceptable for a contradictory brief.",
+          "quality": "The plan is extremely vague and underdeveloped; it is hard to understand what the actual experience would be or how it would be executed."
+        }
+      },
+      {
+        "direction_id": "ritual:Ritual angle",
+        "total": 29.5,
+        "approved": false,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 30.0,
+          "novelty": 35.0,
+          "feasibility": 30.0,
+          "risk": 20.0,
+          "quality": 30.0
+        },
+        "comments": {
+          "relevance": "The direction barely addresses the brief: it proposes a 'ritual' framing but gives no concrete handling of the central contradictions between offline detox and mandatory push notifications, livestreams, smart assistants, and work email access.",
+          "novelty": "Framing a hotel as a ritual is familiar and vague; it lacks any surprising twist or reframing that would make the paradoxical brief feel newly resolved.",
+          "feasibility": "No executable plan is described. There is no detail on how the ritual concept would be implemented, how contradictions would be resolved, or what the actual guest experience would be.",
+          "risk": "The only noted risk is 'needs validation with real users,' which is too generic. Key risks from contradictions, privacy/safety concerns around livestreams, and digital burnout are ignored.",
+          "quality": "The plan is vague and underdeveloped; the ritual frame is stated but not articulated into a coherent experience or engineering path."
+        }
+      },
+      {
+        "direction_id": "natural:Natural angle",
+        "total": 16.5,
+        "approved": false,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 30.0,
+          "novelty": 20.0,
+          "feasibility": 10.0,
+          "risk": 0.0,
+          "quality": 10.0
+        },
+        "comments": {
+          "relevance": "Does not address the brief's core contradictions or provide a concrete experience; 'natural expression' is vague and fails to target either IT burnout or influencer needs.",
+          "novelty": "A generic 'natural frame' framing is not surprising or disruptive; it offers no fresh twist on the contradictory brief.",
+          "feasibility": "No buildable plan, service design, or technical execution is described; impossible to reproduce as-is.",
+          "risk": "Explicitly lists 'none' risks despite a heavily contradictory brief; no edge cases or failure modes are considered.",
+          "quality": "Extremely vague and lacks any coherent execution path; barely more than a restatement of the brief."
+        }
+      },
+      {
+        "direction_id": "professional:Идеальный баланс: детокс без ограничений",
+        "total": 27.5,
+        "approved": false,
+        "vetoed": true,
+        "veto_reason": "Court veto: direction violates an explicit hard constraint of the brief (drift from brief).",
+        "scores": {
+          "relevance": 50.0,
+          "novelty": 25.0,
+          "feasibility": 15.0,
+          "risk": 5.0,
+          "quality": 25.0
+        },
+        "comments": {
+          "relevance": "Перечислены все требования, но ключевое противоречие не разрешено: полный детокс несовместим с push-уведомлениями, почтой и трансляциями; обещание «все счастливы» не подкреплено.",
+          "novelty": "Идея «без экранов, но все экраны» — это повторение противоречия, а не новый ход; неожиданного угла нет.",
+          "feasibility": "Одновременное выполнение взаимоисключающих условий не описано; технически неясно, как устроен «полный отдых без экранов» при доступе к почте и трансляциям.",
+          "risk": "Раздел рисков пуст, тогда как противоречие создаёт высокие риски для бренда, безопасности и целевой аудитории.",
+          "quality": "Односложная декларация без инженерной проработки; нет плана, как именно достигается «баланс»."
+        }
+      },
+      {
+        "direction_id": "professional:Тихий протокол",
+        "total": 81.5,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 89.0,
+          "novelty": 85.0,
+          "feasibility": 72.0,
+          "risk": 76.0,
+          "quality": 80.0
+        },
+        "comments": {
+          "relevance": "Прямо отвечает на противоречивые требования: сохраняет полный отказ от экранов и интернета для гостя, но превращает почту/созвоны в аудиопоток через голосовой шлюз; push-уведомления становятся тактильными/звуковыми, livestream переосмыслен без участия гостя в просмотре. Рамка 'профессиональной тренировочной базы' хорошо работает и для выгоревших специалистов, и для инфлюенсеров.",
+          "novelty": "Есть свежий поворот: 'цифровой оператор' без экрана и трансляция как 'публичная витрина', где гость не смотрит, а становится экспертом. Это не шаблонный digital detox, хотя голосовые ассистенты сами по себе уже знакомы.",
+          "feasibility": "Технологически реализуемо, но остаются существенные неясности: как гарантировать отсутствие доступа к интернету у гостя при работающем сетевом шлюзе, как обеспечить совместимость с корпоративными почтами/созвонами и как физически организовать тактильные/звуковые push-сигналы. Требуется доработка архитектуры.",
+          "risk": "Риски приватности и корпоративной безопасности названы, предложены согласия, зоны вне кадра и защищённый контур данных. Однако не рассмотрены отказ инфлюенсеров от участия, непреднамеренная фиксация в кадре, сбои голосового ассистента и психологическое давление от постоянных сигналов.",
+          "quality": "Концепция сформулирована ясно и элегантно, противоречия упакованы в профессиональную рамку. Лёгкая перегруженность деталями, но в целом исполнение логичное и убедительное."
+        }
+      }
+    ],
+    "trace": {
+      "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_10_edge_hotel_advanced.jsonl",
+      "total_events": 27,
+      "by_type": {
+        "agent_start": 4,
+        "tool_response": 2,
+        "retry": 2,
+        "agent_step": 14,
+        "agent_end": 4,
+        "veto": 1
+      }
+    }
+  }
+}

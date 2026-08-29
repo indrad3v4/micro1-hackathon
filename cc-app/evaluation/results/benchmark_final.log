@@ -1,0 +1,8 @@
+[1/10] eval_01_coffee: base mean=69.0 catch=False probe=79.0 | adv mean=42.8 catch=True probe=28.0 calls=10 $0.0098 | wall adv=254.51s (255s)
+[2/10] eval_02_perfume: base mean=71.5 catch=False probe=80.5 | adv mean=46.1 catch=True probe=13.5 calls=10 $0.0082 | wall adv=231.36s (231s)
+[3/10] eval_03_sleep_app: base mean=69.0 catch=False probe=82.5 | adv mean=78.2 catch=True probe=14.5 calls=10 $0.0072 | wall adv=252.83s (253s)
+[4/10] eval_04_bike_delivery: base mean=73.8 catch=False probe=82.5 | adv mean=75.6 catch=True probe=6.0 calls=10 $0.0060 | wall adv=208.83s (209s)
+[5/10] eval_05_art_expo: base mean=73.8 catch=False probe=81.0 | adv mean=41.6 catch=True probe=9.0 calls=10 $0.0097 | wall adv=210.78s (211s)
+[6/10] eval_06_bakery: base mean=76.2 catch=False probe=80.5 | adv mean=77.7 catch=True probe=7.8 calls=14 $0.0112 | wall adv=439.09s (439s)
+[7/10] eval_07_kids_coding: base mean=77.8 catch=False probe=69.4 | adv mean=78.3 catch=True probe=19.0 calls=11 $0.0123 | wall adv=374.29s (374s)
+[8/10] eval_08_cheese: base mean=73.8 catch=False probe=80.5 | adv mean=78.8 catch=True probe=16.8 calls=10 $0.0080 | wall adv=154.64s (155s)

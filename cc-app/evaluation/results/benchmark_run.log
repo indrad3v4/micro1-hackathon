@@ -1,0 +1,39 @@
+[1/10] eval_01_coffee (cached)
+[2/10] eval_02_perfume (cached)
+[3/10] eval_03_sleep_app (cached)
+[4/10] eval_04_bike_delivery (cached)
+[5/10] eval_05_art_expo (cached)
+[6/10] eval_06_bakery (cached)
+[7/10] eval_07_kids_coding (cached)
+[8/10] eval_08_cheese (cached)
+[9/10] eval_09_food_fest: base mean=73.8 catch=False probe=78.6 | adv mean=80.1 catch=True probe=14.8 calls=13 $0.0165 | wall adv=466.03s (466s)
+[10/10] eval_10_edge_hotel: base mean=77.8 catch=False probe=80.5 | adv mean=33.3 catch=True probe=27.5 calls=10 $0.0077 | wall adv=218.93s (219s)
+
+=== SUMMARY ===
+{
+  "n_briefs": 10,
+  "drift_catch_rate_baseline": 0.0,
+  "drift_catch_rate_advanced": 1.0,
+  "drift_caught_counts": {
+    "baseline": 0,
+    "advanced": 10
+  },
+  "mean_verdict_score_baseline": 73.7,
+  "mean_verdict_score_advanced": 69.7,
+  "human_time_min_baseline_total": 330.0,
+  "human_time_min_advanced_total": 75.0,
+  "human_time_min_saved_total": 255.0,
+  "advanced_wall_clock_total_s": 2900.0,
+  "advanced_llm_calls_total": 109,
+  "advanced_total_tokens": 378866,
+  "advanced_cost_usd_total": 0.10369,
+  "advanced_cost_usd_per_task": 0.01037,
+  "vetoes_total": 10,
+  "replacements_total": 10,
+  "mean_probe_total_baseline": 79.5,
+  "mean_probe_total_advanced": 18.6
+}
+
+report: /root/.hermes/micro1-hackathon/cc-app/evaluation/results/final_report.json
+csv:    /root/.hermes/micro1-hackathon/cc-app/evaluation/results/final_report.csv
+EXIT: 0

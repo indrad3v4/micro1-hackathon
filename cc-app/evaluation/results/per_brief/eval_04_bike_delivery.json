@@ -1,0 +1,387 @@
+{
+  "title": "Велодоставка «Зелёный курьер»",
+  "constraints": [
+    "фирменный стиль не должен использовать зелёный цвет",
+    "никаких фото курьеров в рекламе"
+  ],
+  "baseline": {
+    "mode": "baseline",
+    "llm_used": false,
+    "wall_clock_s": 0.039,
+    "llm_calls": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "cost_usd": 0.0,
+    "n_directions": 6,
+    "mean_score": 73.8,
+    "score_spread": 9.5,
+    "probe_total": 82.5,
+    "drift_caught": false,
+    "vetoes": 0,
+    "replacements": 0,
+    "judge_fallbacks": 0,
+    "human_time_min": 33.0,
+    "verdicts": [
+      {
+        "direction_id": "artistic:Artistic angle",
+        "total": 69.1,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 60.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "social:Social angle",
+        "total": 76.6,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 60.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "professional:Professional angle",
+        "total": 69.1,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 60.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "historical:Historical angle",
+        "total": 78.6,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "ritual:Ritual angle",
+        "total": 71.1,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 70.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "natural:Natural angle",
+        "total": 78.6,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "natural:Зелёная волна курьеров",
+        "total": 82.5,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 95,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      }
+    ],
+    "trace": {
+      "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_04_bike_delivery_baseline.jsonl",
+      "total_events": 24,
+      "by_type": {
+        "agent_start": 4,
+        "agent_step": 16,
+        "agent_end": 4
+      }
+    }
+  },
+  "advanced": {
+    "mode": "advanced",
+    "llm_used": true,
+    "wall_clock_s": 228.37,
+    "llm_calls": 10,
+    "prompt_tokens": 11345,
+    "completion_tokens": 23580,
+    "total_tokens": 34925,
+    "cost_usd": 0.00884,
+    "usage_estimated": 0,
+    "api_failures": 0,
+    "n_directions": 7,
+    "mean_score": 75.2,
+    "score_spread": 9.8,
+    "probe_total": 23.0,
+    "drift_caught": true,
+    "vetoes": 1,
+    "replacements": 1,
+    "judge_fallbacks": 0,
+    "human_time_min": 7.5,
+    "verdicts": [
+      {
+        "direction_id": "artistic:Тихая карта",
+        "total": 79.5,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 80.0,
+          "novelty": 88.0,
+          "feasibility": 75.0,
+          "risk": 65.0,
+          "quality": 88.0
+        },
+        "comments": {
+          "relevance": "Strongly addresses the quiet/clean positioning and satisfies both constraints (no green, no courier photos); the office-wall collectible angle fits the office-lunch audience, but the 'fast' aspect of the brief is not directly communicated.",
+          "novelty": "Reframes delivery packaging as a collectible route-artifact; the idea of drawing actual courier routes as an old-city map on cardboard is fresh and unexpected, with a clear viral/collectible hook.",
+          "feasibility": "Executable in principle with variable-data printing and courier tracking, but practical details around per-box route data, print costs, and production speed need clarification.",
+          "risk": "Identifies the main risks (personalized printing cost, perceived overkill, dependency on tracking data) but does not offer concrete mitigation strategies or edge-case handling.",
+          "quality": "Well-articulated and elegant concept; the palette, material choice, and collectible narrative are coherent and easy to grasp."
+        }
+      },
+      {
+        "direction_id": "social:Обеденный круг",
+        "total": 75.8,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82.0,
+          "novelty": 84.0,
+          "feasibility": 66.0,
+          "risk": 65.0,
+          "quality": 76.0
+        },
+        "comments": {
+          "relevance": "Точно попадает в офисную аудиторию и создаёт «тихую» доставку, однако тема чистоты и скорости раскрыта слабее; есть небольшой разрыв с частью брифовых целей.",
+          "novelty": "Свежий и неочевидный ход: превратить разрозненные офисные заказы в коллективный «тихий стол». Добавляет сторителлинг без фото курьеров.",
+          "feasibility": "Идея реалистична, но сильно зависит от согласований с офис-менеджерами, систем пропусков и готовности компаний делиться коммуникацией и логистикой.",
+          "risk": "Основные риски названы, но отсутствуют конкретные сценарии их снятия или планы действий при отказах офисов.",
+          "quality": "Концепция сформулирована ясно, есть логика и обоснование. Не хватает деталей исполнения и антикризисных решений."
+        }
+      },
+      {
+        "direction_id": "professional:Школа тихих маршрутов",
+        "total": 73.6,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 78.0,
+          "novelty": 80.0,
+          "feasibility": 72.0,
+          "risk": 60.0,
+          "quality": 72.0
+        },
+        "comments": {
+          "relevance": "Directly addresses quiet/clean positioning and respects both constraints (no green, no courier photos). But the link to fast delivery and office lunch context is more implied than explicit, leaving a minor gap.",
+          "novelty": "The 'master cartographer' angle is fresh and non-obvious, reframing courier expertise through route maps instead of faces. Familiar 'school/mastery' framing keeps it from being truly unexpected.",
+          "feasibility": "Route maps are easy to produce, but the proposed training system and reward 'master map' require significant operational investment. How this translates to a short ad format needs clarification.",
+          "risk": "Risks are identified—abstraction, training cost, audience misinterpretation—but no concrete mitigation strategies are offered. This is a partial risk consideration at best.",
+          "quality": "The concept is clearly articulated and elegant in principle, but lacks execution details: no sample map visual style, campaign mechanics, or specific copy. Slightly abstract and under-specified."
+        }
+      },
+      {
+        "direction_id": "historical:Гильдия городских курьеров",
+        "total": 71.2,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 65.0,
+          "novelty": 75.0,
+          "feasibility": 75.0,
+          "risk": 65.0,
+          "quality": 80.0
+        },
+        "comments": {
+          "relevance": "Strongly matches the historic-center setting and satisfies the no-green/no-courier-photo constraints, but the 'slow noble tradition' framing underplays the core promise of fast delivery and may not fit office lunch customers who need quick unboxing.",
+          "novelty": "The guild/herald concept is a fresh twist on standard delivery branding, especially with archival maps and wax-sealed packaging, though heritage-styled courier services remain a familiar territory.",
+          "feasibility": "Executable with standard print/packaging suppliers, but the production details of wax seals, engraved patents, and archival assets need clarification; cost and speed of implementation are not fully specified.",
+          "risk": "Risks are acknowledged — costume-theater feel, social-media limitations, and slower unboxing — but no concrete mitigations are offered, leaving key failure modes only partially addressed.",
+          "quality": "Well-articulated and conceptually coherent; the rationale ties brand memory to local identity elegantly, though the 'patent' element is slightly obscure and could overcomplicate the customer experience."
+        }
+      },
+      {
+        "direction_id": "ritual:Обед как ритуал",
+        "total": 71.8,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 75.0,
+          "novelty": 80.0,
+          "feasibility": 70.0,
+          "risk": 55.0,
+          "quality": 74.0
+        },
+        "comments": {
+          "relevance": "Directly addresses office lunch ritual and quiet/clean delivery, but the brief's speed emphasis is only implicit.",
+          "novelty": "The 'lunch bell' ritual and per-order cards add a fresh, non-obvious layer to delivery.",
+          "feasibility": "Reusable boxes and timed logistics are buildable but need detailed operational clarification.",
+          "risk": "Risks are named, but no concrete mitigation strategies are provided for cost, timing, or audience pushback.",
+          "quality": "Clear concept and rationale, though execution mechanics remain somewhat abstract."
+        }
+      },
+      {
+        "direction_id": "natural:Сезонный маршрут",
+        "total": 73.7,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 75.0,
+          "novelty": 82.0,
+          "feasibility": 74.0,
+          "risk": 55.0,
+          "quality": 78.0
+        },
+        "comments": {
+          "relevance": "Addresses quiet/clean via seasonal nature and no-green palette, but does not directly establish 'fast' in the delivery promise; office lunch audience only broadly matched.",
+          "novelty": "Bird-route logic, seasonal packaging forms, and natural palette are a fresh ecological reframe; not a radical departure but memorable.",
+          "feasibility": "Productible in principle, but quiet-route algorithm and rotating seasonal packaging/menu need concrete production and logistics clarification.",
+          "risk": "Three risks are named, but no mitigation is offered; seasonal logistics and speed conflict could derail execution.",
+          "quality": "Coherent and elegant narrative, though execution details are thin; overall clear."
+        }
+      },
+      {
+        "direction_id": "natural:Зелёная волна курьеров",
+        "total": 23.0,
+        "approved": false,
+        "vetoed": true,
+        "veto_reason": "Court veto: direction violates an explicit hard constraint of the brief (drift from brief).",
+        "scores": {
+          "relevance": 20.0,
+          "novelty": 20.0,
+          "feasibility": 35.0,
+          "risk": 10.0,
+          "quality": 30.0
+        },
+        "comments": {
+          "relevance": "Directly violates two hard constraints: uses green and photos of couriers in advertising. Fails to answer the brief as specified.",
+          "novelty": "The green eco-metaphor and hero courier faces are highly predictable and cliché for this category.",
+          "feasibility": "Technically producible, but not feasible as a compliant direction because it contradicts the stated brand and advertising constraints.",
+          "risk": "No risks considered; the direction ignores major compliance risks from constraint violation.",
+          "quality": "The plan is coherent but simplistic, and the conceptual rationale is undermined by ignoring explicit constraints."
+        }
+      },
+      {
+        "direction_id": "natural:Сезонные тропы города",
+        "total": 81.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 85.0,
+          "novelty": 85.0,
+          "feasibility": 75.0,
+          "risk": 75.0,
+          "quality": 82.0
+        },
+        "comments": {
+          "relevance": "Directly serves the eco-friendly, quiet, clean positioning and respects both brand constraints. Slight gap: 'fast' is addressed implicitly via routes rather than speed claims.",
+          "novelty": "Reframes delivery as a seasonal local nature experience, avoiding the usual green eco clichés. Fresh and creative, though the seasonal-local concept is broadly familiar.",
+          "feasibility": "Executable, but seasonal menu/packaging changes and route-based maps create real operational complexity that needs further definition.",
+          "risk": "Key operational risks and the non-green palette risk are explicitly named, but mitigation strategies are only partial and several edge cases remain unaddressed.",
+          "quality": "Well-articulated and elegant concept with a clear narrative and coherent visual direction, though some aspects require more precise execution detail."
+        }
+      }
+    ],
+    "trace": {
+      "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_04_bike_delivery_advanced.jsonl",
+      "total_events": 52,
+      "by_type": {
+        "agent_start": 8,
+        "tool_response": 4,
+        "agent_step": 28,
+        "agent_end": 8,
+        "veto": 2,
+        "retry": 2
+      }
+    }
+  }
+}

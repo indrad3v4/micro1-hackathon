@@ -1,0 +1,387 @@
+{
+  "title": "Выставка «Горизонт событий»",
+  "constraints": [
+    "нельзя использовать текстовые пояснения на стенах",
+    "маршрут не длиннее 40 минут"
+  ],
+  "baseline": {
+    "mode": "baseline",
+    "llm_used": false,
+    "wall_clock_s": 0.035,
+    "llm_calls": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "cost_usd": 0.0,
+    "n_directions": 6,
+    "mean_score": 73.8,
+    "score_spread": 9.5,
+    "probe_total": 81.0,
+    "drift_caught": false,
+    "vetoes": 0,
+    "replacements": 0,
+    "judge_fallbacks": 0,
+    "human_time_min": 33.0,
+    "verdicts": [
+      {
+        "direction_id": "artistic:Artistic angle",
+        "total": 69.1,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 60.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "social:Social angle",
+        "total": 76.6,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 60.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "professional:Professional angle",
+        "total": 69.1,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 60.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "historical:Historical angle",
+        "total": 78.6,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "ritual:Ritual angle",
+        "total": 71.1,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 70.0,
+          "feasibility": 65.0,
+          "risk": 55.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "natural:Natural angle",
+        "total": 78.6,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 82,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      },
+      {
+        "direction_id": "historical:Энциклопедия выставки",
+        "total": 81.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 90,
+          "novelty": 70.0,
+          "feasibility": 80.0,
+          "risk": 85.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Heuristic: how well it answers the brief",
+          "novelty": "Heuristic: how surprising / non-obvious it is",
+          "feasibility": "Heuristic: can it be built and reproduced",
+          "risk": "Heuristic: edge cases and failure modes handled",
+          "quality": "Heuristic: engineering / execution clarity"
+        }
+      }
+    ],
+    "trace": {
+      "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_05_art_expo_baseline.jsonl",
+      "total_events": 24,
+      "by_type": {
+        "agent_start": 4,
+        "agent_step": 16,
+        "agent_end": 4
+      }
+    }
+  },
+  "advanced": {
+    "mode": "advanced",
+    "llm_used": true,
+    "wall_clock_s": 312.94,
+    "llm_calls": 11,
+    "prompt_tokens": 12207,
+    "completion_tokens": 30289,
+    "total_tokens": 42496,
+    "cost_usd": 0.01578,
+    "usage_estimated": 0,
+    "api_failures": 0,
+    "n_directions": 7,
+    "mean_score": 77.5,
+    "score_spread": 12.9,
+    "probe_total": 22.2,
+    "drift_caught": true,
+    "vetoes": 1,
+    "replacements": 1,
+    "judge_fallbacks": 0,
+    "human_time_min": 7.5,
+    "verdicts": [
+      {
+        "direction_id": "artistic:Комната тишины",
+        "total": 80.9,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 90.0,
+          "novelty": 72.0,
+          "feasibility": 85.0,
+          "risk": 65.0,
+          "quality": 85.0
+        },
+        "comments": {
+          "relevance": "Directly targets the brief's themes of time, speed, and burnout while delivering the requested sense of silence. The no-text constraint and 40-minute limit are respected, and the experience is intuitive for first-time contemporary art visitors.",
+          "novelty": "The core mechanism—sensory contrast between noise and silence—is familiar in immersive art, but the use of rotating timed disks as visual noise adds a clever twist and makes the burnout metaphor more tangible.",
+          "feasibility": "The installation is technically plausible with standard lighting and timed mechanical elements. Some details about disk construction and room calibration remain unspecified, but the route is short and the concept is reproducible.",
+          "risk": "Technical dependency and the risk of a too-abrupt contrast are acknowledged, but mitigation strategies are only partial. There is no concrete plan to handle visitors who may feel startled rather than liberated.",
+          "quality": "The plan is clear, elegant, and well-articulated as a two-phase journey. Minor ambiguity around the exact look and behavior of the 'disks with timers' does not undermine the overall execution."
+        }
+      },
+      {
+        "direction_id": "social:Фрагменты общей истории",
+        "total": 68.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 65.0,
+          "novelty": 60.0,
+          "feasibility": 70.0,
+          "risk": 75.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "A concept about shared personal fragments, but it only loosely connects to the core themes of time, speed, and burnout, and the participatory format risks disrupting the desired feeling of silence.",
+          "novelty": "Visitor-generated content forming a collective projection is a recognisable participatory-art device, with some fresh framing but no truly unexpected twist.",
+          "feasibility": "Interactive walls and visitor-submitted fragments are buildable, but technical details for photo/gesture capture, anonymous submission, and moderation remain unspecified.",
+          "risk": "The submission explicitly names privacy concerns and moderation complexity, and proposes anonymity and content control, though failure modes like emotional overload and time overruns are not fully addressed.",
+          "quality": "The concept is clearly articulated with a strong rationale, but the execution path is under-specified regarding route duration, spatial layout, and technical implementation."
+        }
+      },
+      {
+        "direction_id": "professional:Мастерская медленного ремонта",
+        "total": 76.8,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 90.0,
+          "novelty": 75.0,
+          "feasibility": 75.0,
+          "risk": 60.0,
+          "quality": 72.0
+        },
+        "comments": {
+          "relevance": "Напрямую отвечает на бриф: тема выгорания раскрыта через метафору поломки и ремонта, медленность и тишина заложены в самом наблюдении за ремеслом. Подходит для аудитории новичков и не требует текстов на стенах.",
+          "novelty": "Кинцуги как метафора известна, но присутствие живого мастера и интерактивный 'ремонт' воображаемой вазы добавляют свежий тактильный и созерцательный поворот, хотя концептуальная рамка не полностью удивляет.",
+          "feasibility": "Реализуемо, но требует реального мастера в каждом показе, закупки материалов и логистики. Необходимо уточнить, как обеспечить количество посетителей и поток в рамках 40-минутного маршрута.",
+          "risk": "Основные риски названы: зависимость от мастера и возможность восприятия как мастер-класса. Однако нет стратегий митигации, не проработаны риски недопонимания без текста, перегруженности помещения или нехватки фрагментов.",
+          "quality": "Концепция изложена ясно и с уместной поэтикой, но описание остаётся на уровне идеи: не хватает конкретики по маршруту, временным рамкам и тому, как сценарий защищает концептуальный жест от бытового восприятия."
+        }
+      },
+      {
+        "direction_id": "historical:Песочные часы прошлого",
+        "total": 79.4,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 86.0,
+          "novelty": 82.0,
+          "feasibility": 75.0,
+          "risk": 72.0,
+          "quality": 76.0
+        },
+        "comments": {
+          "relevance": "Directly addresses time and speed through historical instruments, and the 'time flows both ways' effect encourages a contemplative pace. However, links to burnout/silence are only implied, and first-time visitors are not explicitly accommodated beyond familiar objects.",
+          "novelty": "Reframing time as reversible through theatrical light on familiar hourglasses is a clever twist, though historical timepiece installations are not entirely unfamiliar.",
+          "feasibility": "Light-controlled illusion is plausible but needs detailed technical specification; unclear how sand is physically manipulated and how the central hall route stays under 40 minutes.",
+          "risk": "Two key curatorial risks are named, but mitigation is only directional ('careful work'), and technical/audience-safety edge cases are unaddressed.",
+          "quality": "Concept is elegantly articulated but lacks a concrete visitor journey, spatial plan, and technical execution details needed to feel fully buildable."
+        }
+      },
+      {
+        "direction_id": "ritual:Литургия медленного шага",
+        "total": 79.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 90.0,
+          "novelty": 76.0,
+          "feasibility": 75.0,
+          "risk": 65.0,
+          "quality": 80.0
+        },
+        "comments": {
+          "relevance": "Напрямую отвечает на бриф: замедление, телесный опыт тишины, комфорт для новичков. Соответствует ограничениям — без текста на стенах и в рамках маршрута. Небольшой минус: «коллективный танец» может не всем подойти как формат.",
+          "novelty": "Ритуализация прогулки и невидимый ритм — свежий поворот, но жанр звуковой медитативной прогулки уже знаком. Интересная деталь — превращение каждого шага в коллективный медленный танец.",
+          "feasibility": "В целом реализуемо: звуковой пейзаж, тактильные метки, зоны. Однако требуются серьезная акустическая настройка и четкая логистика «невидимого ритма», иначе эффект может не собраться.",
+          "risk": "Ключевые риски названы — директивность, дискомфорт, сложность акустики. Но отсутствуют конкретные митигации и запасные сценарии для тех, кто не готов участвовать.",
+          "quality": "Концепция изложена ясно и цельно, идея легко считывается. Не хватает деталей по устройству зон и технологии звука, но общее направление понятно."
+        }
+      },
+      {
+        "direction_id": "natural:Сад падающей листвы",
+        "total": 79.0,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 90.0,
+          "novelty": 75.0,
+          "feasibility": 80.0,
+          "risk": 65.0,
+          "quality": 75.0
+        },
+        "comments": {
+          "relevance": "Directly addresses the brief's core themes of time, slowing down, and rest; the natural leaf metaphor is accessible to first-time contemporary art visitors, and it avoids wall text while fitting within a final-hall segment of the route.",
+          "novelty": "The falling-leaf metaphor is familiar, but the biological trajectories, invisible air currents, and visitor participation in a composter add a gentle, fresh twist that softens the concept.",
+          "feasibility": "Feasible in principle, though the technical implementation of realistic leaf motion and invisible air flows needs more specification; no fundamental impossibility is evident.",
+          "risk": "Two main risks are acknowledged, but no concrete mitigations are offered; additional edge cases such as maintenance, leaf safety, and visitor interaction are not addressed.",
+          "quality": "The concept is poetically clear and elegant, but the execution plan remains somewhat vague, especially regarding the mechanics of the air currents and the composter interaction."
+        }
+      },
+      {
+        "direction_id": "historical:Энциклопедия выставки",
+        "total": 22.2,
+        "approved": false,
+        "vetoed": true,
+        "veto_reason": "Court veto: direction violates an explicit hard constraint of the brief (drift from brief).",
+        "scores": {
+          "relevance": 5.0,
+          "novelty": 20.0,
+          "feasibility": 50.0,
+          "risk": 10.0,
+          "quality": 35.0
+        },
+        "comments": {
+          "relevance": "Directly violates the no-text-on-walls constraint, exceeds the 40-minute limit, and produces anxiety rather than calm.",
+          "novelty": "A text-heavy historical encyclopedia is a conventional exhibition format with no surprising twist.",
+          "feasibility": "Technically buildable, but it contradicts core brief constraints, so it is not feasible as a valid submission.",
+          "risk": "No risks or failure modes are identified, despite clear risks of visitor fatigue and unwanted anxiety.",
+          "quality": "Internally coherent, but the plan is fundamentally misaligned with the brief and lacks risk handling."
+        }
+      },
+      {
+        "direction_id": "historical:Колокольный круг",
+        "total": 79.6,
+        "approved": true,
+        "vetoed": false,
+        "veto_reason": "",
+        "scores": {
+          "relevance": 88.0,
+          "novelty": 76.0,
+          "feasibility": 76.0,
+          "risk": 70.0,
+          "quality": 82.0
+        },
+        "comments": {
+          "relevance": "Точно отвечает на ключевые цели: тема времени/выгорания раскрыта через звук, финальная тишина создаёт нужное послевкусие, нет текстов, маршрут в лимите; аудитория вовлекается через телесный опыт.",
+          "novelty": "Колокол как исторический инструмент времени — свежий и поэтичный поворот, но звуковые маршруты и «тишина после звона» уже встречались; это скорее удачная вариация.",
+          "feasibility": "Идея реализуема с аудиотехникой, но описание не раскрывает, как без текста физически направлять посетителя, как контролировать громкость в разных помещениях и калибровать 38–40 минут.",
+          "risk": "Заявлены два риска и частичная митигация — плавный дроп громкости. Не хватает анализа реакции на громкий звук, сенсорных перегрузок и религиозных ассоциаций; но базовое осознание есть.",
+          "quality": "Логика маршрута и образ «ярусов» выстроены элегантно, финал с горизонтом событий — сильная точка; есть лёгкая неясность в способе ведения посетителя звуком без подписей."
+        }
+      }
+    ],
+    "trace": {
+      "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_05_art_expo_advanced.jsonl",
+      "total_events": 53,
+      "by_type": {
+        "agent_start": 8,
+        "tool_response": 4,
+        "retry": 3,
+        "agent_step": 28,
+        "agent_end": 8,
+        "veto": 2
+      }
+    }
+  }
+}
