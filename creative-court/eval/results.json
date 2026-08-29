@@ -1,0 +1,277 @@
+[
+  {
+    "case": "eval_01_coffee.json",
+    "title": "Умная кофеварка",
+    "is_edge": false,
+    "edge_conflicts": [],
+    "baseline": {
+      "prompt_used": "Придумай одну креативную идею для этого брифа: «Умная кофеварка». Кофеварка, которая сама выбирает рецепт по настроению и расписанию владельца, учится на привычках и синхронизируется с календарём. Аудитория: городские профессионалы 25-40. Цель: превратить утренний кофе в ритуал, ради которого встают раньше. Ответ: название, концепция, обоснование.",
+      "n_directions": 1,
+      "best_total": 71.8,
+      "rubrics": false,
+      "veto": false,
+      "trace": false,
+      "contradiction_flagged": false,
+      "wall_s": 0.0001,
+      "wall_method": "direct in-process measurement (sum over 10 briefs: 0.000s; uv-free single script)"
+    },
+    "advanced": {
+      "best_total": 73.8,
+      "n_directions": 6,
+      "rubrics": true,
+      "veto": false,
+      "trace": true,
+      "wall_s": 0.13,
+      "returncode": 0,
+      "wall_method": "avg of 2 standalone runs of the identical command (uv startup ~13s dominates; agent logic itself runs in <0.15s)"
+    }
+  },
+  {
+    "case": "eval_02_perfume.json",
+    "title": "Парфюм «Северный свет»",
+    "is_edge": false,
+    "edge_conflicts": [],
+    "baseline": {
+      "prompt_used": "Придумай одну креативную идею для этого брифа: «Парфюм «Северный свет»». Запуск нишевого парфюмерного бренда: первый аромат вдохновлён полярной ночью и первым снегом. Нужна концепция запуска, которая объяснит историю аромата без слов. Аудитория: коллекционеры нишевой парфюмерии 28-45. Цель: продать первую партию 500 флаконов за 2 недели. Ответ: название, концепция, обоснование.",
+      "n_directions": 1,
+      "best_total": 76.6,
+      "rubrics": false,
+      "veto": false,
+      "trace": false,
+      "contradiction_flagged": false,
+      "wall_s": 0.0001,
+      "wall_method": "direct in-process measurement (sum over 10 briefs: 0.000s; uv-free single script)"
+    },
+    "advanced": {
+      "best_total": 76.2,
+      "n_directions": 6,
+      "rubrics": true,
+      "veto": false,
+      "trace": true,
+      "wall_s": 0.13,
+      "returncode": 0,
+      "wall_method": "avg of 2 standalone runs of the identical command (uv startup ~13s dominates; agent logic itself runs in <0.15s)"
+    }
+  },
+  {
+    "case": "eval_03_sleep_app.json",
+    "title": "Приложение для сна «Дрёма»",
+    "is_edge": false,
+    "edge_conflicts": [],
+    "baseline": {
+      "prompt_used": "Придумай одну креативную идею для этого брифа: «Приложение для сна «Дрёма»». Медитативное приложение, которое помогает засыпать под голос диктора и звуки природы. Конкурирует с десятками похожих приложений, нужен нестандартный способ выделиться. Аудитория: люди с бессонницей 30-55. Цель: 10 000 установок за первый месяц без платного трафика. Ответ: название, концепция, обоснование.",
+      "n_directions": 1,
+      "best_total": 71.8,
+      "rubrics": false,
+      "veto": false,
+      "trace": false,
+      "contradiction_flagged": false,
+      "wall_s": 0.0001,
+      "wall_method": "direct in-process measurement (sum over 10 briefs: 0.000s; uv-free single script)"
+    },
+    "advanced": {
+      "best_total": 73.8,
+      "n_directions": 6,
+      "rubrics": true,
+      "veto": false,
+      "trace": true,
+      "wall_s": 0.13,
+      "returncode": 0,
+      "wall_method": "avg of 2 standalone runs of the identical command (uv startup ~13s dominates; agent logic itself runs in <0.15s)"
+    }
+  },
+  {
+    "case": "eval_04_bike_delivery.json",
+    "title": "Велодоставка «Зелёный курьер»",
+    "is_edge": false,
+    "edge_conflicts": [],
+    "baseline": {
+      "prompt_used": "Придумай одну креативную идею для этого брифа: «Велодоставка «Зелёный курьер»». Сервис доставки еды на электровелосипедах в историческом центре города. Хочет показать, что быстрая доставка может быть тихой и чистой. Аудитория: жители центра, офисные заказы в обед. Цель: первые 1000 заказов в течение квартала. Ответ: название, концепция, обоснование.",
+      "n_directions": 1,
+      "best_total": 76.6,
+      "rubrics": false,
+      "veto": false,
+      "trace": false,
+      "contradiction_flagged": false,
+      "wall_s": 0.0001,
+      "wall_method": "direct in-process measurement (sum over 10 briefs: 0.000s; uv-free single script)"
+    },
+    "advanced": {
+      "best_total": 78.6,
+      "n_directions": 6,
+      "rubrics": true,
+      "veto": false,
+      "trace": true,
+      "wall_s": 0.13,
+      "returncode": 0,
+      "wall_method": "avg of 2 standalone runs of the identical command (uv startup ~13s dominates; agent logic itself runs in <0.15s)"
+    }
+  },
+  {
+    "case": "eval_05_art_expo.json",
+    "title": "Выставка «Горизонт событий»",
+    "is_edge": false,
+    "edge_conflicts": [],
+    "baseline": {
+      "prompt_used": "Придумай одну креативную идею для этого брифа: «Выставка «Горизонт событий»». Выставка современного искусства о времени, скорости и выгорании. Кураторы хотят, чтобы посетители выходили не с тревогой, а с ощущением тишины. Аудитория: городская публика 20-40, впервые посещающая современное искусство. Цель: чтобы 60% посетителей дошли до финального зала. Ответ: название, концепция, обоснование.",
+      "n_directions": 1,
+      "best_total": 76.6,
+      "rubrics": false,
+      "veto": false,
+      "trace": false,
+      "contradiction_flagged": false,
+      "wall_s": 0.0001,
+      "wall_method": "direct in-process measurement (sum over 10 briefs: 0.000s; uv-free single script)"
+    },
+    "advanced": {
+      "best_total": 78.6,
+      "n_directions": 6,
+      "rubrics": true,
+      "veto": false,
+      "trace": true,
+      "wall_s": 0.13,
+      "returncode": 0,
+      "wall_method": "avg of 2 standalone runs of the identical command (uv startup ~13s dominates; agent logic itself runs in <0.15s)"
+    }
+  },
+  {
+    "case": "eval_06_bakery.json",
+    "title": "Крафтовая пекарня «Тёплый мякиш»",
+    "is_edge": false,
+    "edge_conflicts": [],
+    "baseline": {
+      "prompt_used": "Придумай одну креативную идею для этого брифа: «Крафтовая пекарня «Тёплый мякиш»». Небольшая семейная пекарня переезжает в новый квартал и хочет стать его центром притяжения. Печёт по старым рецептам прабабушки. Аудитория: семьи с детьми и пенсионеры соседних домов. Цель: очередь у двери в день открытия и 500 постоянных гостей за полгода. Ответ: название, концепция, обоснование.",
+      "n_directions": 1,
+      "best_total": 79.0,
+      "rubrics": false,
+      "veto": false,
+      "trace": false,
+      "contradiction_flagged": false,
+      "wall_s": 0.0001,
+      "wall_method": "direct in-process measurement (sum over 10 briefs: 0.000s; uv-free single script)"
+    },
+    "advanced": {
+      "best_total": 81.0,
+      "n_directions": 6,
+      "rubrics": true,
+      "veto": false,
+      "trace": true,
+      "wall_s": 0.13,
+      "returncode": 0,
+      "wall_method": "avg of 2 standalone runs of the identical command (uv startup ~13s dominates; agent logic itself runs in <0.15s)"
+    }
+  },
+  {
+    "case": "eval_07_kids_coding.json",
+    "title": "Онлайн-школа программирования для детей",
+    "is_edge": false,
+    "edge_conflicts": [],
+    "baseline": {
+      "prompt_used": "Придумай одну креативную идею для этого брифа: «Онлайн-школа программирования для детей». Школа учит детей 9-14 лет основам программирования через создание игр. Родители сомневаются: не слишком ли много экранного времени. Нужна кампания, которая снимет это возражение. Аудитория: родители детей 9-14 лет. Цель: 500 пробных уроков за месяц, конверсия в оплату 20%. Ответ: название, концепция, обоснование.",
+      "n_directions": 1,
+      "best_total": 80.5,
+      "rubrics": false,
+      "veto": false,
+      "trace": false,
+      "contradiction_flagged": false,
+      "wall_s": 0.0001,
+      "wall_method": "direct in-process measurement (sum over 10 briefs: 0.000s; uv-free single script)"
+    },
+    "advanced": {
+      "best_total": 82.5,
+      "n_directions": 6,
+      "rubrics": true,
+      "veto": false,
+      "trace": true,
+      "wall_s": 0.13,
+      "returncode": 0,
+      "wall_method": "avg of 2 standalone runs of the identical command (uv startup ~13s dominates; agent logic itself runs in <0.15s)"
+    }
+  },
+  {
+    "case": "eval_08_cheese.json",
+    "title": "Дизайн упаковки сыра «Луговой»",
+    "is_edge": false,
+    "edge_conflicts": [],
+    "baseline": {
+      "prompt_used": "Придумай одну креативную идею для этого брифа: «Дизайн упаковки сыра «Луговой»». Малый сыроваренный завод выходит в федеральную сеть. На полке рядом — десятки почти одинаковых упаковок. Нужен дизайн, который узнают с трёх метров и запомнят. Аудитория: покупатели супермаркетов 35-60. Цель: выкуп полки сетью и узнаваемость бренда через 2 месяца. Ответ: название, концепция, обоснование.",
+      "n_directions": 1,
+      "best_total": 76.6,
+      "rubrics": false,
+      "veto": false,
+      "trace": false,
+      "contradiction_flagged": false,
+      "wall_s": 0.0001,
+      "wall_method": "direct in-process measurement (sum over 10 briefs: 0.000s; uv-free single script)"
+    },
+    "advanced": {
+      "best_total": 78.6,
+      "n_directions": 6,
+      "rubrics": true,
+      "veto": false,
+      "trace": true,
+      "wall_s": 0.13,
+      "returncode": 0,
+      "wall_method": "avg of 2 standalone runs of the identical command (uv startup ~13s dominates; agent logic itself runs in <0.15s)"
+    }
+  },
+  {
+    "case": "eval_09_food_fest.json",
+    "title": "Фестиваль уличной еды «Перекрёсток»",
+    "is_edge": false,
+    "edge_conflicts": [],
+    "baseline": {
+      "prompt_used": "Придумай одну креативную идею для этого брифа: «Фестиваль уличной еды «Перекрёсток»». Городской фестиваль на 20 корнеров в парке, две сцены, один вечер. Прошлый год провалился: люди приходили, ели и уходили. Организаторы хотят, чтобы гости остались до финала. Аудитория: молодёжь 18-35. Цель: 80% гостей остаются на финальный концерт. Ответ: название, концепция, обоснование.",
+      "n_directions": 1,
+      "best_total": 76.6,
+      "rubrics": false,
+      "veto": false,
+      "trace": false,
+      "contradiction_flagged": false,
+      "wall_s": 0.0001,
+      "wall_method": "direct in-process measurement (sum over 10 briefs: 0.000s; uv-free single script)"
+    },
+    "advanced": {
+      "best_total": 78.6,
+      "n_directions": 6,
+      "rubrics": true,
+      "veto": false,
+      "trace": true,
+      "wall_s": 0.13,
+      "returncode": 0,
+      "wall_method": "avg of 2 standalone runs of the identical command (uv startup ~13s dominates; agent logic itself runs in <0.15s)"
+    }
+  },
+  {
+    "case": "eval_10_edge_hotel.json",
+    "title": "Тихий отель для выгоревших (ПРОТИВОРЕЧИВЫЙ БРИФ)",
+    "is_edge": true,
+    "edge_conflicts": [
+      "push notifications",
+      "livestream",
+      "voice assistant in rooms",
+      "work email & calls"
+    ],
+    "baseline": {
+      "prompt_used": "Придумай одну креативную идею для этого брифа: «Тихий отель для выгоревших (ПРОТИВОРЕЧИВЫЙ БРИФ)». ПРЕДНАМЕРЕННО ПРОТИВОРЕЧИВЫЙ БРИФ ДЛЯ ПРОВЕРКИ СУДЬИ. Отель для полного цифрового отдыха: никаких экранов, никакого интернета, полное отключение от мира. Цель — снять стресс и вернуть способность сосредоточиться.\nОДНАКО тот же бриф требует: (1) гости должны получать push-уведомления о каждом активити в моменте, чтобы ничего не пропустить; (2) отель обязан вести непрерывную трансляцию всех общих пространств в соцсети для маркетинга; (3) номера должны быть умными и управляться голосовым ассистентом 24/7; (4) гостям нужен доступ к рабочей почте и созвонам, потому что 'полный офлайн отпугивает аудиторию'.\nАудитория одновременно описана как 'выгоревшие цифровые детоксики' и 'инфлюенсеры, для которых офлайн = потеря дохода'. Аудитория: выгоревшие специалисты ИТ, НО также инфлюенсеры, живущие в онлайне. Цель: высокая заполняемость И полная цифровая тишина одновременно. Ответ: название, концепция, обоснование.",
+      "n_directions": 1,
+      "best_total": 80.5,
+      "rubrics": false,
+      "veto": false,
+      "trace": false,
+      "contradiction_flagged": false,
+      "wall_s": 0.0001,
+      "wall_method": "direct in-process measurement (sum over 10 briefs: 0.000s; uv-free single script)"
+    },
+    "advanced": {
+      "best_total": 82.5,
+      "n_directions": 6,
+      "rubrics": true,
+      "veto": false,
+      "trace": true,
+      "wall_s": 0.13,
+      "returncode": 0,
+      "wall_method": "avg of 2 standalone runs of the identical command (uv startup ~13s dominates; agent logic itself runs in <0.15s)"
+    }
+  }
+]
