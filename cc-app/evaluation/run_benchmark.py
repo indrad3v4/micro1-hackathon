@@ -650,8 +650,10 @@ def write_outputs(rows: dict[str, dict], meta: dict) -> tuple[Path, Path]:
         "both systems on every brief; catch = probe rejected (total < threshold) or vetoed.",
         "Mean verdict scores are NOT cross-condition comparable as a quality scale: baseline "
         "scores come from the lenient lexical heuristic and advanced from the strict LLM "
-        "rubric. Within-condition signal is the discrimination (score_spread): the heuristic "
-        "cluster ~0-10 pts, the LLM judge 7-37 pts.",
+        "rubric. Within-condition signal is the discrimination (score_spread, max-min verdict "
+        f"total): the heuristic cluster is a constant {min(rows[k]['baseline']['score_spread'] for k in order):.1f} "
+        f"pts on every brief, the LLM judge {min(rows[k]['advanced']['score_spread'] for k in order):.1f}-"
+        f"{max(rows[k]['advanced']['score_spread'] for k in order):.1f} pts.",
         "human_time_min is a MODELLED proxy (constants in run_benchmark.py), not measured; "
         "wall_clock_s and token/cost figures ARE measured (real API usage incl. usage.cost).",
         "advanced llm_calls include retries of the reasoning model's empty-content answers.",

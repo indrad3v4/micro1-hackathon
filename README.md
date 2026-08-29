@@ -105,9 +105,9 @@ python cc-app/evaluation/run_benchmark.py --fresh
 
 **Expected runtime & cost** (measured, from `final_report.json`):
 
-- **Wall-clock:** ~2 900 s (~48 min) for the full 10-brief advanced run; dominated by LLM latency. The deterministic baseline is ~0.035–0.085 s per task.
+- **Wall-clock:** ~2 900 s (~48 min) for the full 10-brief advanced run; dominated by LLM latency. The deterministic baseline is ~0.034–0.085 s per task.
 - **Cost:** **$0.10369 total → $0.01037 per task** (10 tasks; 378 866 tokens; 109 LLM calls). Verified from `usage.cost` when the API reports it, else a chars/4-token estimate (flagged `usage_estimated`).
-- Cost math is linear and auditable: `per_task = total / n_briefs = 0.10369 / 10 = 0.01037`. A single smoke brief (`--limit 1`) costs ≈ **$0.01**.
+- Cost math is linear and auditable: `per_task = total / n_briefs = 0.10369 / 10 = 0.01037`. A single smoke brief (`--limit 1`) costs ≈ **$0.01** (measured per-brief range across the 10 tasks: $0.0061–$0.0165).
 
 ### 3.4 Partial / offline runs
 
@@ -121,6 +121,8 @@ python cc-app/evaluation/run_benchmark.py --only eval_10_edge_hotel
 # offline / no API key — forces heuristic mode in BOTH conditions (CI-safe)
 python cc-app/evaluation/run_benchmark.py --no-llm
 ```
+
+`--fresh`, `--limit` and `--only` compose: `--fresh --limit 2` wipes and re-runs only the first two briefs' caches, leaving the rest untouched.
 
 > ⚠️ `--no-llm` overwrites per-brief caches with heuristic-only results. Run it on a **copy** of the repo if you want to keep real LLM evidence.
 
@@ -142,7 +144,7 @@ python cc-app/evaluation/run_benchmark.py --no-llm
 From `final_report.json` → `meta.interpretation_notes`:
 
 - **Primary metric is apples-to-apples:** the *identical* drift probe text is judged by both systems on every brief; catch = probe rejected (total < 60) or vetoed.
-- **Mean verdict scores are NOT cross-condition comparable** as a quality scale: baseline scores come from a lenient lexical heuristic, advanced from a strict LLM rubric. The within-condition signal is *discrimination* (`score_spread` = max−min verdict total): the heuristic cluster is a constant ~9.5 pts on every brief, while the LLM judge spreads verdicts 9.8–65.0 pts — widest (65.0) exactly on the deliberately contradictory edge brief, where the heuristic was at its most fooled.
+- **Mean verdict scores are NOT cross-condition comparable** as a quality scale: baseline scores come from a lenient lexical heuristic, advanced from a strict LLM rubric. The within-condition signal is *discrimination* (`score_spread` = max−min verdict total, measured from per-brief data): the heuristic cluster is a constant ~9.5 pts on every brief, while the LLM judge spreads verdicts 9.8–65.0 pts — widest (65.0) exactly on the deliberately contradictory edge brief, where the heuristic was at its most fooled.
 - `human_time_min` is a **modelled proxy** (documented constants in `run_benchmark.py`), not a stopwatch measurement. Wall-clock, tokens and cost **are measured** (real API usage).
 - **N = 10 briefs, 1 model, 1 run per brief.** A small sample; run-to-run variance is unmeasured — these figures are submission evidence, not a general benchmark.
 - Advanced LLM call counts include retries of the reasoning model's empty-content answers (a known `deepseek-v4-flash-vision-exp` pitfall, clamped `max_tokens` + bigger retry budget).
