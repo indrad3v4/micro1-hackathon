@@ -1,5 +1,5 @@
 {
-  "current_step": "5.3",
+  "current_step": "5.4",
   "steps": {
     "5.1": {
       "title": "Collect benchmark evidence (cc-app/evaluation/results/ final_report.csv+json from run_benchmark.py)",
@@ -11,7 +11,7 @@
     },
     "5.3": {
       "title": "README.md reproduction guide (clean env, exact commands, versions, runtime+cost from real report)",
-      "status": "pending"
+      "status": "done"
     },
     "5.4": {
       "title": "Trajectories package (creative-court/traces/*.jsonl committed; baseline vs advanced comparison runs)",
@@ -23,20 +23,25 @@
     }
   },
   "last_judge_verdict": {
-    "step": "5.2",
+    "step": "5.3",
     "pass": true,
-    "total": 82,
+    "total": 88,
     "scores": {
       "Problem&UserValue": 13,
       "AgentSolution&Engineering": 25,
-      "EndToEnd": 15,
+      "EndToEnd": 18,
       "MeasuredImprovement": 14,
-      "Reproducibility": 12,
-      "HotTake": 3
+      "Reproducibility": 13,
+      "HotTake": 5
     },
-    "note": "changelog verified against real report (all headline numbers match); 4 doc fixes applied and committed (596e84d)",
+    "note": "README reproduction guide verified against real report (all numbers match final_report.json); v2 token-result message core present, no stale framing; judge fixes applied and committed (7eac808): accurate score_spread 9.8-65.0 (now auto-computed in harness note), per-brief cost range, --fresh/--limit/--only compose note, changelog spread 37->34.6",
     "evidence": [
-      "IMPROVEMENT_CHANGELOG.md"
+      "README.md",
+      "IMPROVEMENT_CHANGELOG.md",
+      "cc-app/evaluation/results/final_report.json",
+      "cc-app/evaluation/run_benchmark.py",
+      "creative-court/pyproject.toml",
+      "cc-app/requirements.txt"
     ]
   }
 }
