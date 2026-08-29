@@ -2,19 +2,21 @@
 
 **Submission:** micro1 Agentic Workflows Hackathon — Frontier Engineering Challenge 2026 (HackerEarth)
 **Repo:** `github.com/indrad3v4/micro1-hackathon` · branch `master` · English only (code, docs, UI)
-**Harness:** `cc-app/evaluation/run_benchmark.py` · **Model:** `deepseek-v4-flash-vision-exp` · **Python:** 3.12.14 (≥3.11 supported)
+**Harness:** `cc-app/evaluation/run_benchmark.py` · **Model:** `deepseek-v4-flash` · **Python:** 3.12.14 (≥3.11 supported)
 
-> **One-liner.** *You pay for tokens that work toward your goal — not for tokens that warm the air.*
+> **The signature stays human.** *The more you delegate, the less of you is left in the work — the Court brings it back, signable.*
 
 ---
 
 ## 1. What this is
 
-Creative Court 2.0 is a **routing layer for meaning** in front of a creative-generation LLM. A `CreatorAgent` fans a product brief out into 6+ creative directions (ИКРА frames: artistic / social / professional / historical / ritual / natural); a `JudgeAgent` scores **every** direction on a contextual rubric (relevance / novelty / feasibility / risk / quality); directions that violate an explicit hard constraint of the brief are **vetoed and replaced** in a retry loop; and the human stays the final authority, with every decision written to an append-only JSONL trajectory (instruction → action → feedback → human checkpoints — submission deliverable 04).
+Creative Court 2.0 is a **human-judgment layer** in front of an AI coding agent. When an agent (Claude Code, Cursor, Codex, Hermes — or your own) generates creative work from a brief, the Court runs a `CreatorAgent` (fans the brief into 6+ directions) and a `JudgeAgent` (scores every direction on a contextual rubric: relevance / novelty / feasibility / risk / quality), **vetoes** directions that violate the brief's hard constraints, and hands the human a **sign-off decision** — returning to the person the decisions their agent took. Every step is written to an append-only JSONL trajectory (instruction → action → feedback → human checkpoints — submission deliverable 04).
 
-**The problem it solves is token economics, not creativity.** A one-shot generator that is told "here is the brief, go" burns the whole generation budget and hands the human a wall of confident-sounding text that may violate the brief's hard constraints. The user then pays twice: once in tokens for text that missed the goal, once in minutes reading it. The Court inverts the flow — *more* tokens are spent per task, but every one is a **verification** token: judge calls, veto decisions, replacement checks. Token spend becomes a **gate on result**, not a meter of activity.
+**Golden thread:** delegation must never become abdication. The more a human delegates decisions to an agent, the less of themselves remains in the work — yet they sign for all of it. The Court's one job (system function, see `docs/triz-analysis.md`): *return signable decisions to the human*. Token economics is the *proof*, not the promise — the math that makes returning the signature affordable.
 
-**Form = token-result gate** (направляющий контур: it directs model parameters at the user's goal and vetoes drift before tokens are burned on the wrong path).
+**The promise (the drama it resolves):** *"My agent already decided. I signed what I was shown, not what I saw."* The Court separates one action into two: **delegate the generation, keep the verdict**. Speed stays (the driver), blindness and empty signatures disappear (the barrier). You can ask "why this?" without losing face — the judge asks it on every direction, by default. Your signature means something again.
+
+**Form = token-result gate** (направляющий контур: verification tokens — judge calls, veto decisions, replacement checks — become a gate on result, not a meter of activity). Main interfaces: **MCP server** (for AI IDEs, see §8) + Reflex dashboard (human-facing view over the same core).
 
 ### Measured result (10 briefs, `cc-app/evaluation/results/final_report.json`)
 
@@ -41,6 +43,7 @@ Every brief received the **same hand-written drift probe** (a confident-sounding
 micro1-hackathon/
 ├── creative-court/            # core agent package (stdlib-only runtime)
 │   ├── pyproject.toml         # dependencies = [] — no runtime deps
+│   ├── mcp_server.py          # ← MCP server (AI-IDE interface, see §8)
 │   ├── src/creative_court/
 │   │   ├── agents/{creator,judge}.py
 │   │   └── core/{llm,models,trace}.py
@@ -82,7 +85,7 @@ python3 -m venv .venv && source .venv/bin/activate
 
 # credentials + model wiring (OpenAI-compatible)
 export COMETAPI_KEY=sk-...            # or OPENROUTER_API_KEY / LLM_API_KEY
-export LLM_MODEL=deepseek-v4-flash-vision-exp
+export LLM_MODEL=deepseek-v4-flash
 export LLM_BASE_URL=https://api.cometapi.com/v1
 ```
 
@@ -132,7 +135,7 @@ python cc-app/evaluation/run_benchmark.py --no-llm
 |---|---|---|
 | Python | 3.12.14 (report), ≥3.11 supported | verified on 3.13 too |
 | `creative-court` package | 0.1.0 | `dependencies = []` — stdlib only; build backend `uv_build>=0.12.5,<0.13.0` |
-| LLM model | `deepseek-v4-flash-vision-exp` | env `LLM_MODEL` |
+| LLM model | `deepseek-v4-flash` | env `LLM_MODEL` |
 | LLM endpoint | `https://api.cometapi.com/v1` | OpenAI-compatible, env `LLM_BASE_URL` |
 | Judge reject threshold | 60.0 | const `REJECT_THRESHOLD` in `run_benchmark.py` |
 | `cc-app` (dashboard only) | reflex==0.9.9 · pydantic≥2.10 (2.13.4) · openai≥1.0 (2.24.0) · fastapi≥0.115 · uvicorn[standard]≥0.34 | Node.js 20+ for the Reflex dev server |
@@ -195,3 +198,39 @@ The baseline "spends nothing" — 0 LLM calls, $0.00, ~0.04 s/task (measured) �
 The Court inverts the cost curve. It spends **~1 US cent per task** (measured: `$0.01037/task`, 10.9 LLM calls, ~37 900 tokens) — but every token is a *verification* token: rubric-judge calls, veto decisions, replacement checks. Result: 10/10 drift probes caught, probe mean 79.5 → 18.6, human time 33 → 7.5 min per task (**25.5 min saved**).
 
 The arithmetic: **$0.01 of QA buys back 25.5 minutes of human attention** (~2 500 minutes per dollar). The most expensive model call in an agentic workflow is the one you never vetoed, because its output still has to be read. Token spend should be a **gate on result**, not a meter of activity: route tokens through a veto gate and the marginal cent pays for certainty — not for tokens that warm the air.
+
+---
+
+## 8. MCP — the Court as a tool for AI IDEs
+
+The product's main interface is an **MCP server** (`creative-court/mcp_server.py`): any AI IDE or agent (Claude Code, Cursor, Codex, Hermes, …) calls the Court as a tool — the agent is the Creator, the human is the signatory, the Court is the Judge + trace between them.
+
+### Tools
+
+| Tool | What it does |
+|---|---|
+| `court_run_brief` | brief → 6 directions → LLM verdicts (ranked, 5-dimension rubric) |
+| `court_veto` | human vetoes a direction with a real reason → the concern becomes a hard requirement → regenerate + re-score |
+| `court_sign_off` | human signs the approved decisions; the exact list is bound into the trace as `data.signed` |
+| `court_export_trace` | read a run's full JSONL trajectory + event metrics |
+| `court_health` | LLM availability + trace count |
+
+### Connect
+
+```jsonc
+// claude_desktop_config.json / .cursor/mcp.json / hermes config
+{"mcpServers": {"creative-court": {
+  "command": "python3", "args": ["/path/to/micro1-hackathon/creative-court/mcp_server.py"]}}}
+```
+
+Remote: `python3 creative-court/mcp_server.py --http` → streamable HTTP on `0.0.0.0:8765`.
+
+### The loop (what the human actually does)
+
+1. `court_run_brief` — agent fans the brief into directions, judge scores them.
+2. Agent presents the top verdicts. Human spots drift → `court_veto(run, direction, "why this is wrong")`.
+3. Court regenerates with the reason as a hard requirement; human re-checks.
+4. `court_sign_off` — human signs *the actual list of decisions* (bound, recorded).
+5. `court_export_trace` — the court record is a shareable, auditable artifact.
+
+This is the drama resolved in tool calls: **delegate the generation, keep the verdict** — the human's signature is real again, and every step is provable.
