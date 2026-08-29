@@ -24,15 +24,39 @@ RUBRICS = [
     ("quality", 0.15, "engineering / execution clarity"),
 ]
 
-# Resolve prompt path relative to this file's module directory
-_PROMPTS_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "..", "prompts")
+# Resolve prompts: repo root has prompts/ (creative-court/prompts does not exist).
+_CANDIDATES = [
+    os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", "prompts"),
+    os.path.join(os.path.dirname(__file__), "..", "..", "..", "prompts"),
+    os.path.join(os.path.dirname(__file__), "..", "..", "prompts"),
+]
+_PROMPTS_DIR = next((p for p in _CANDIDATES
+                     if os.path.isfile(os.path.join(p, "judge_prompt.txt"))),
+                    _CANDIDATES[0])
+
+# The prompt contains literal JSON braces (its OUTPUT FORMAT section) which
+# would break str.format() in _llm_score. Double every brace that is not a
+# known placeholder, so .format() works everywhere (MCP, CLI, Reflex, bench).
+_PLACEHOLDER_KEYS = (
+    "brief_title", "brief_description", "brief_audience", "brief_constraints",
+    "direction_frame", "direction_name", "direction_concept",
+    "direction_rationale", "direction_risks",
+)
+
+
+def _format_safe(prompt: str) -> str:
+    out = prompt.replace("{", "{{").replace("}", "}}")
+    for k in _PLACEHOLDER_KEYS:
+        out = out.replace("{{" + k + "}}", "{" + k + "}")
+    return out
 
 
 class JudgeAgent:
     def __init__(self, recorder: TraceRecorder, llm: LLMClient | None = None):
         self.recorder = recorder
         self.llm = llm or LLMClient()
-        self._prompt_text = load_prompt(os.path.join(_PROMPTS_DIR, "judge_prompt.txt"))
+        self._prompt_text = _format_safe(
+            load_prompt(os.path.join(_PROMPTS_DIR, "judge_prompt.txt")))
 
     def judge(self, brief: Brief, directions: list[Direction]) -> list[Verdict]:
         agent = "judge"
@@ -77,7 +101,9 @@ class JudgeAgent:
     # --- LLM scoring --------------------------------------------------------
 
     def _llm_score(self, direction: Direction, brief: Brief) -> list[RubricScore]:
-        """Ask the LLM to score a single direction using the rubric prompt."""
+        """Ask the LLM to score a single direction using the rubric prompt.
+        Falls back to heuristic scoring on any LLM/parse failure so the Court
+        never dies mid-run."""
         user = self._prompt_text.format(
             brief_title=brief.title,
             brief_description=brief.description,
@@ -89,19 +115,33 @@ class JudgeAgent:
             direction_rationale=direction.rationale,
             direction_risks=", ".join(direction.risks) if direction.risks else "(none)",
         )
-        raw = self.llm.chat(system="", user=user, max_tokens=2048)
-        return self._parse_llm_scores(raw)
+        try:
+            raw = self.llm.chat(system="", user=user, max_tokens=2048)
+            return self._parse_llm_scores(raw)
+        except Exception as exc:
+            self.recorder.retry("judge", direction.name,
+                                f"LLM score failed ({exc}); heuristic fallback")
+            return self._heuristic_score(direction, brief)
 
     @staticmethod
     def _parse_llm_scores(raw: str) -> list[RubricScore]:
-        """Extract JSON scores from LLM output, handling markdown fences."""
+        """Extract JSON scores from LLM output, handling markdown fences and
+        stray reasoning/prose. Falls back to finding the first {...} block."""
         import re
-        cleaned = raw.strip()
+        cleaned = (raw or "").strip()
+        # drop any reasoning_content prefix (some models emit it)
+        cleaned = re.sub(r"<reasoning>.*?</reasoning>", "", cleaned, flags=re.DOTALL)
         # Strip optional markdown code fence
         m = re.search(r"```(?:json)?\s*\n(.*?)\n```\s*$", cleaned, re.DOTALL)
         if m:
             cleaned = m.group(1).strip()
-        obj = json.loads(cleaned)
+        try:
+            obj = json.loads(cleaned)
+        except json.JSONDecodeError:
+            m2 = re.search(r"\{.*\}", cleaned, re.DOTALL)
+            if not m2:
+                raise ValueError(f"no JSON object in judge output: {cleaned[:120]!r}")
+            obj = json.loads(m2.group(0))
         results = []
         for entry in obj.get("scores", []):
             dim = entry["dimension"]

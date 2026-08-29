@@ -14,7 +14,15 @@ from ..core.trace import TraceRecorder
 from ..core.llm import LLMClient, FRAMES, heuristic_directions, load_prompt
 
 # Load improved prompt from disk
-_PROMPTS_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "..", "prompts")
+# Resolve prompts: repo root has prompts/ (creative-court/prompts does not exist).
+_CANDIDATES = [
+    os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", "prompts"),
+    os.path.join(os.path.dirname(__file__), "..", "..", "..", "prompts"),
+    os.path.join(os.path.dirname(__file__), "..", "..", "prompts"),
+]
+_PROMPTS_DIR = next((p for p in _CANDIDATES
+                     if os.path.isfile(os.path.join(p, "creator_prompt.txt"))),
+                    _CANDIDATES[0])
 _CREATOR_SYSTEM = load_prompt(os.path.join(_PROMPTS_DIR, "creator_prompt.txt"))
 
 

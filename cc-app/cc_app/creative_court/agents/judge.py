@@ -25,14 +25,37 @@ RUBRICS = [
 ]
 
 # Resolve prompt path relative to this file's module directory
-_PROMPTS_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "..", "prompts")
+# Resolve prompts: repo root has prompts/ (creative-court/prompts does not exist).
+_CANDIDATES = [
+    os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", "prompts"),
+    os.path.join(os.path.dirname(__file__), "..", "..", "..", "prompts"),
+    os.path.join(os.path.dirname(__file__), "..", "..", "prompts"),
+]
+_PROMPTS_DIR = next((p for p in _CANDIDATES
+                     if os.path.isfile(os.path.join(p, "judge_prompt.txt"))),
+                    _CANDIDATES[0])
+
+# Escape literal JSON braces in the prompt before .format() (see src version).
+_PLACEHOLDER_KEYS = (
+    "brief_title", "brief_description", "brief_audience", "brief_constraints",
+    "direction_frame", "direction_name", "direction_concept",
+    "direction_rationale", "direction_risks",
+)
+
+
+def _format_safe(prompt: str) -> str:
+    out = prompt.replace("{", "{{").replace("}", "}}")
+    for k in _PLACEHOLDER_KEYS:
+        out = out.replace("{{" + k + "}}", "{" + k + "}")
+    return out
 
 
 class JudgeAgent:
     def __init__(self, recorder: TraceRecorder, llm: LLMClient | None = None):
         self.recorder = recorder
         self.llm = llm or LLMClient()
-        self._prompt_text = load_prompt(os.path.join(_PROMPTS_DIR, "judge_prompt.txt"))
+        self._prompt_text = _format_safe(
+            load_prompt(os.path.join(_PROMPTS_DIR, "judge_prompt.txt")))
 
     def judge(self, brief: Brief, directions: list[Direction]) -> list[Verdict]:
         agent = "judge"

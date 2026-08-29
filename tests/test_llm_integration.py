@@ -118,8 +118,8 @@ def test_llm_custom_model():
 def test_default_model_when_no_env():
     _ensure_no_key()
     client = LLMClient()
-    # Default uses our internal fallback
-    assert client.model == "deepseek/deepseek-chat"
+    # Default uses our internal fallback (CometAPI-native id, verified live 2026-08-29)
+    assert client.model == "deepseek-v4-flash"
 
 
 # ── Tests: Prompt loading ─────────────────────────────────────────────────

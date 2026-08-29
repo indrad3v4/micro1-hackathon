@@ -48,9 +48,9 @@ def _resolve_base() -> str:
 
 
 def _resolve_model() -> str:
-    """Return model name, falling back to a good default."""
+    """Return model name, falling back to the CometAPI-native default."""
     return (os.environ.get("LLM_MODEL") or
-            "deepseek/deepseek-chat")
+            "deepseek-v4-flash")
 
 
 class LLMClient:
