@@ -1,11 +1,34 @@
 {
-  "current_step": "5.1",
+  "current_step": "5.2",
   "steps": {
-    "5.1": {"title": "Collect benchmark evidence (cc-app/evaluation/results/ final_report.csv+json from run_benchmark.py)", "status": "in_progress"},
-    "5.2": {"title": "IMPROVEMENT_CHANGELOG.md (PDF format: Baseline -> Iterations -> Final, Evidence+Decision per row, one removed experiment)", "status": "pending"},
-    "5.3": {"title": "README.md reproduction guide (clean env, exact commands, versions, runtime+cost from real report)", "status": "pending"},
-    "5.4": {"title": "Trajectories package (creative-court/traces/*.jsonl committed; baseline vs advanced comparison runs)", "status": "pending"},
-    "5.5": {"title": "Full-package judge roast + applied fixes", "status": "pending"}
+    "5.1": {
+      "title": "Collect benchmark evidence (cc-app/evaluation/results/ final_report.csv+json from run_benchmark.py)",
+      "status": "done"
+    },
+    "5.2": {
+      "title": "IMPROVEMENT_CHANGELOG.md (PDF format: Baseline -> Iterations -> Final, Evidence+Decision per row, one removed experiment)",
+      "status": "pending"
+    },
+    "5.3": {
+      "title": "README.md reproduction guide (clean env, exact commands, versions, runtime+cost from real report)",
+      "status": "pending"
+    },
+    "5.4": {
+      "title": "Trajectories package (creative-court/traces/*.jsonl committed; baseline vs advanced comparison runs)",
+      "status": "pending"
+    },
+    "5.5": {
+      "title": "Full-package judge roast + applied fixes",
+      "status": "pending"
+    }
   },
-  "last_judge_verdict": null
+  "last_judge_verdict": {
+    "step": "5.1",
+    "pass": true,
+    "note": "full 10/10 benchmark evidence collected and pushed (ceebbb4); drift 0/10 vs 10/10",
+    "evidence": [
+      "cc-app/evaluation/results/final_report.csv",
+      "cc-app/evaluation/results/final_report.json"
+    ]
+  }
 }
