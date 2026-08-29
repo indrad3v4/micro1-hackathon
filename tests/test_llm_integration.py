@@ -223,7 +223,7 @@ def test_parse_llm_scores_from_json():
         "approved": True,
         "summary": "Strong direction",
     })
-    scores = JudgeAgent._parse_llm_scores(raw)
+    scores, goal_fit = JudgeAgent._parse_llm_scores(raw)
     assert len(scores) == 5
     dims = {s.dimension for s in scores}
     assert dims == set(RUBRIC_DIMS := ["relevance", "novelty", "feasibility", "risk", "quality"])
@@ -242,7 +242,7 @@ def test_parse_llm_scores_strips_markdown_fence():
             {"dimension": "quality", "score": 50, "comment": "ok"}
         ]
     }) + "\n```"
-    scores = JudgeAgent._parse_llm_scores(raw)
+    scores, goal_fit = JudgeAgent._parse_llm_scores(raw)
     assert len(scores) == 5
 
 

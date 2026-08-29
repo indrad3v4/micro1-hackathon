@@ -14,6 +14,8 @@ Creative Court 2.0 is a **human-judgment layer** in front of an AI coding agent.
 
 **Golden thread:** delegation must never become abdication. The more a human delegates decisions to an agent, the less of themselves remains in the work — yet they sign for all of it. The Court's one job (system function, see `docs/triz-analysis.md`): *return signable decisions to the human*. Token economics is the *proof*, not the promise — the math that makes returning the signature affordable.
 
+**Drift is measured against the human's stated goal.** A brief is not enough: the human must state the higher purpose they launched the work for. Drift = the distance between what they wanted and what was done — a direction can respect every constraint yet still walk away from the goal. That is why `court_run_brief` requires `goal` and why every verdict carries a separate `goal_fit` signal (its own 0-100, reported to the signer, not folded into the weighted total). Without the goal there is nothing to drift from.
+
 **The promise (the drama it resolves):** *"My agent already decided. I signed what I was shown, not what I saw."* The Court separates one action into two: **delegate the generation, keep the verdict**. Speed stays (the driver), blindness and empty signatures disappear (the barrier). You can ask "why this?" without losing face — the judge asks it on every direction, by default. Your signature means something again.
 
 **Form = token-result gate** (направляющий контур: verification tokens — judge calls, veto decisions, replacement checks — become a gate on result, not a meter of activity). Main interfaces: **MCP server** (for AI IDEs, see §8) + Reflex dashboard (human-facing view over the same core).
@@ -209,7 +211,7 @@ The product's main interface is an **MCP server** (`creative-court/mcp_server.py
 
 | Tool | What it does |
 |---|---|
-| `court_run_brief` | brief → 6 directions → LLM verdicts (ranked, 5-dimension rubric) |
+| `court_run_brief` | brief + **required `goal`** → 6 directions → LLM verdicts (ranked, 5-dimension rubric **+ `goal_fit` per direction**) |
 | `court_veto` | human vetoes a direction with a real reason → the concern becomes a hard requirement → regenerate + re-score the SAME direction |
 | `court_sign_off` | human signs the approved decisions; the exact list is bound into the trace as `data.signed` |
 | `court_sign_off_all` | sign every currently-approved decision in ONE call, bound to canonical verdicts (no manual re-typing) |
@@ -221,6 +223,7 @@ The product's main interface is an **MCP server** (`creative-court/mcp_server.py
 - **Resources** — the Court's record is native MCP: `traces://list` (all runs) and `trace://{run_id}` (full trajectory). An AI IDE reads the signable record directly.
 - **Prompt** — `court_review` (run_id): guided "sign only what you saw" review — walk verdicts, find drift, decide veto-or-sign.
 - **Honesty built in**: every verdict carries `generated_by` (llm/heuristic) and `score_source`; responses include a `warnings` array when any fallback fired — heuristic work is never presented as LLM work.
+- **Goal is a first-class citizen**: `court_run_brief` refuses to run without the human's stated `goal` (nothing to drift from), and every verdict carries a separate `goal_fit {score, note}` — how much this direction moves the work toward that goal, independent of constraint-relevance.
 
 ### Connect
 
@@ -234,8 +237,8 @@ Remote: `python3 creative-court/mcp_server.py --http` → streamable HTTP on `0.
 
 ### The loop (what the human actually does)
 
-1. `court_run_brief` — agent fans the brief into directions, judge scores them.
-2. Agent presents the top verdicts. Human spots drift → `court_veto(run, direction, "why this is wrong")`.
+1. `court_run_brief(title, description, ..., goal="<your higher purpose>")` — the **goal is required**: drift is measured against what you want. Agent fans the brief into directions, judge scores them on the rubric **and their distance to your goal** (`goal_fit`).
+2. Agent presents the top verdicts. Human spots drift (constraint- or goal-drift) → `court_veto(run, direction, "why this is wrong")`.
 3. Court regenerates with the reason as a hard requirement; human re-checks.
 4. `court_sign_off` — human signs *the actual list of decisions* (bound, recorded).
 5. `court_export_trace` — the court record is a shareable, auditable artifact.

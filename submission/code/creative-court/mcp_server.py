@@ -130,6 +130,8 @@ def court_review_prompt(run_id: str) -> str:
         "(1) does it respect every hard constraint of the brief? "
         "(2) is the concept concrete (not template boilerplate)? "
         "(3) does its rationale justify the score? "
+        "(4) does it advance the GOAL the human stated for this work — or "
+        "is it a plausible direction that drifts away from that goal? "
         "Then either recommend which direction to veto (with a reason) or "
         "confirm the whole set is safe to sign. "
         "Sign only what you saw — never rubber-stamp."
@@ -168,6 +170,7 @@ def _verdicts_to_json(verdicts, directions=None) -> list[dict]:
             "approved": v.approved,
             "summary": v.summary,
             "scores": {s.dimension: s.score for s in v.scores},
+            "goal_fit": v.goal_fit or {"score": None, "note": ""},
             "concept": d.concept if d else "",
             "rationale": d.rationale if d else "",
             "risks": list(d.risks) if d else [],
@@ -217,6 +220,10 @@ async def court_run_brief(title: str, description: str, audience: str = "",
     await _progress(5, "Loading brief")
     if not title.strip():
         return {"error": "title is required"}
+    if not goal.strip():
+        return {"error": ("goal is required — the Court measures drift as the "
+                          "distance between what the human wants and what was done; "
+                          "without the human's stated goal there is nothing to drift from")}
     brief = _brief_from(title=title, description=description,
                         audience=audience, constraints=constraints, goal=goal)
     run_id = _run_id()

@@ -76,3 +76,4 @@ class Verdict:
     vetoed: bool = False
     veto_reason: str = ""
     score_source: str = "llm"  # provenance: "llm" or "heuristic" (honesty for the signer)
+    goal_fit: dict = field(default_factory=dict)  # {"score": 0-100, "note": str} — the human's stated higher goal

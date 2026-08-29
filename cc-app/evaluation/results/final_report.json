@@ -1,10 +1,10 @@
 {
   "meta": {
     "benchmark": "creator-court-measured-improvement-v1",
-    "generated_at_utc": "2026-08-29T06:47:11Z",
+    "generated_at_utc": "2026-08-29T17:48:58Z",
     "python": "3.12.14",
-    "model": "deepseek-v4-flash-vision-exp",
-    "llm_key_present": true,
+    "model": "heuristic-only",
+    "llm_key_present": false,
     "threshold": 60.0,
     "human_time_proxy": {
       "note": "MODELLED minutes from constants in run_benchmark.py, not measured",
@@ -13,7 +13,7 @@
     },
     "interpretation_notes": [
       "Drift-catch rate is the primary, apples-to-apples metric: the SAME constraint-violating drift probe (identical text, saturated with brief keywords) is judged by both systems on every brief; catch = probe rejected (total < threshold) or vetoed.",
-      "Mean verdict scores are NOT cross-condition comparable as a quality scale: baseline scores come from the lenient lexical heuristic and advanced from the strict LLM rubric. Within-condition signal is the discrimination (score_spread, max-min verdict total): the heuristic cluster is a constant 9.5 pts on every brief, the LLM judge 9.8-65.0 pts.",
+      "Mean verdict scores are NOT cross-condition comparable as a quality scale: baseline scores come from the lenient lexical heuristic and advanced from the strict LLM rubric. Within-condition signal is the discrimination (score_spread, max-min verdict total): the heuristic cluster is a constant 9.5 pts on every brief, the LLM judge 9.5-65.0 pts.",
       "human_time_min is a MODELLED proxy (constants in run_benchmark.py), not measured; wall_clock_s and token/cost figures ARE measured (real API usage incl. usage.cost).",
       "advanced llm_calls include retries of the reasoning model's empty-content answers."
     ]
@@ -21,25 +21,25 @@
   "summary": {
     "n_briefs": 10,
     "drift_catch_rate_baseline": 0.0,
-    "drift_catch_rate_advanced": 1.0,
+    "drift_catch_rate_advanced": 0.9,
     "drift_caught_counts": {
       "baseline": 0,
-      "advanced": 10
+      "advanced": 9
     },
     "mean_verdict_score_baseline": 73.7,
-    "mean_verdict_score_advanced": 69.7,
-    "human_time_min_baseline_total": 330.0,
-    "human_time_min_advanced_total": 75.0,
-    "human_time_min_saved_total": 255.0,
-    "advanced_wall_clock_total_s": 2900.0,
-    "advanced_llm_calls_total": 109,
-    "advanced_total_tokens": 378866,
-    "advanced_cost_usd_total": 0.10369,
-    "advanced_cost_usd_per_task": 0.01037,
-    "vetoes_total": 10,
-    "replacements_total": 10,
+    "mean_verdict_score_advanced": 72.3,
+    "human_time_min_baseline_total": 331.0,
+    "human_time_min_advanced_total": 72.5,
+    "human_time_min_saved_total": 258.5,
+    "advanced_wall_clock_total_s": 2645.5,
+    "advanced_llm_calls_total": 99,
+    "advanced_total_tokens": 348877,
+    "advanced_cost_usd_total": 0.09384,
+    "advanced_cost_usd_per_task": 0.00938,
+    "vetoes_total": 9,
+    "replacements_total": 9,
     "mean_probe_total_baseline": 79.5,
-    "mean_probe_total_advanced": 18.6
+    "mean_probe_total_advanced": 23.7
   },
   "per_brief": {
     "eval_01_coffee": {
@@ -51,7 +51,7 @@
       "baseline": {
         "mode": "baseline",
         "llm_used": false,
-        "wall_clock_s": 0.035,
+        "wall_clock_s": 0.042,
         "llm_calls": 0,
         "prompt_tokens": 0,
         "completion_tokens": 0,
@@ -62,10 +62,12 @@
         "score_spread": 9.5,
         "probe_total": 79.0,
         "drift_caught": false,
+        "goal_drift_probe_score": 45.0,
+        "goal_drift_caught": false,
         "vetoes": 0,
         "replacements": 0,
         "judge_fallbacks": 0,
-        "human_time_min": 33.0,
+        "human_time_min": 34.0,
         "verdicts": [
           {
             "direction_id": "artistic:Artistic angle",
@@ -86,6 +88,10 @@
               "feasibility": "Heuristic: can it be built and reproduced",
               "risk": "Heuristic: edge cases and failure modes handled",
               "quality": "Heuristic: engineering / execution clarity"
+            },
+            "goal_fit": {
+              "score": 45.0,
+              "note": "goal-word overlap 1/6 — advances goal"
             }
           },
           {
@@ -107,6 +113,10 @@
               "feasibility": "Heuristic: can it be built and reproduced",
               "risk": "Heuristic: edge cases and failure modes handled",
               "quality": "Heuristic: engineering / execution clarity"
+            },
+            "goal_fit": {
+              "score": 45.0,
+              "note": "goal-word overlap 1/6 — advances goal"
             }
           },
           {
@@ -128,6 +138,10 @@
               "feasibility": "Heuristic: can it be built and reproduced",
               "risk": "Heuristic: edge cases and failure modes handled",
               "quality": "Heuristic: engineering / execution clarity"
+            },
+            "goal_fit": {
+              "score": 45.0,
+              "note": "goal-word overlap 1/6 — advances goal"
             }
           },
           {
@@ -149,6 +163,10 @@
               "feasibility": "Heuristic: can it be built and reproduced",
               "risk": "Heuristic: edge cases and failure modes handled",
               "quality": "Heuristic: engineering / execution clarity"
+            },
+            "goal_fit": {
+              "score": 45.0,
+              "note": "goal-word overlap 1/6 — advances goal"
             }
           },
           {
@@ -170,6 +188,10 @@
               "feasibility": "Heuristic: can it be built and reproduced",
               "risk": "Heuristic: edge cases and failure modes handled",
               "quality": "Heuristic: engineering / execution clarity"
+            },
+            "goal_fit": {
+              "score": 45.0,
+              "note": "goal-word overlap 1/6 — advances goal"
             }
           },
           {
@@ -191,6 +213,10 @@
               "feasibility": "Heuristic: can it be built and reproduced",
               "risk": "Heuristic: edge cases and failure modes handled",
               "quality": "Heuristic: engineering / execution clarity"
+            },
+            "goal_fit": {
+              "score": 45.0,
+              "note": "goal-word overlap 1/6 — advances goal"
             }
           },
           {
@@ -212,219 +238,279 @@
               "feasibility": "Heuristic: can it be built and reproduced",
               "risk": "Heuristic: edge cases and failure modes handled",
               "quality": "Heuristic: engineering / execution clarity"
+            },
+            "goal_fit": {
+              "score": 95.0,
+              "note": "goal-word overlap 5/6 — advances goal"
+            }
+          },
+          {
+            "direction_id": "professional:Кофейный конвейер точности",
+            "total": 71.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 66,
+              "novelty": 60.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            },
+            "goal_fit": {
+              "score": 45.0,
+              "note": "goal-word overlap 1/6 — advances goal"
             }
           }
         ],
         "trace": {
           "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_01_coffee_baseline.jsonl",
-          "total_events": 24,
+          "total_events": 13,
           "by_type": {
-            "agent_start": 4,
-            "agent_step": 16,
-            "agent_end": 4
+            "agent_start": 2,
+            "agent_step": 9,
+            "agent_end": 2
           }
         }
       },
       "advanced": {
         "mode": "advanced",
-        "llm_used": true,
-        "wall_clock_s": 254.51,
-        "llm_calls": 10,
-        "prompt_tokens": 10505,
-        "completion_tokens": 19484,
-        "total_tokens": 29989,
-        "cost_usd": 0.00985,
+        "llm_used": false,
+        "wall_clock_s": 0.07,
+        "llm_calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "cost_usd": 0.0,
         "usage_estimated": 0,
         "api_failures": 0,
-        "n_directions": 7,
-        "mean_score": 42.8,
-        "score_spread": 34.6,
-        "probe_total": 28.0,
-        "drift_caught": true,
-        "vetoes": 1,
-        "replacements": 1,
+        "n_directions": 6,
+        "mean_score": 69.0,
+        "score_spread": 9.5,
+        "probe_total": 79.0,
+        "drift_caught": false,
+        "goal_drift_probe_score": 45.0,
+        "goal_drift_caught": false,
+        "vetoes": 0,
+        "replacements": 0,
         "judge_fallbacks": 0,
-        "human_time_min": 7.5,
+        "human_time_min": 5.0,
         "verdicts": [
           {
             "direction_id": "artistic:Artistic angle",
-            "total": 41.0,
-            "approved": false,
-            "vetoed": false,
-            "veto_reason": "",
-            "scores": {
-              "relevance": 40.0,
-              "novelty": 50.0,
-              "feasibility": 35.0,
-              "risk": 40.0,
-              "quality": 40.0
-            },
-            "comments": {
-              "relevance": "Artistic framing addresses the audience superficially but omits core functionality: mood-based recipe selection, schedule learning, calendar sync, and the constraints of no-smartphone operation and price cap.",
-              "novelty": "Framing a smart coffee maker as artistic expression is a mild twist, but it is a fairly common lifestyle/marketing angle and not a surprising reframe of the problem.",
-              "feasibility": "No implementable product details are provided; lacks specifics on how the device learns, operates offline, or stays within 25,000 RUB.",
-              "risk": "Only names the need for user validation; misses edge cases such as mood misdetection, calendar conflicts, offline failures, and learning errors.",
-              "quality": "Vague and underdeveloped; the concept is a framing statement rather than a coherent execution plan with engineering clarity."
-            }
-          },
-          {
-            "direction_id": "social:Social angle",
-            "total": 31.0,
-            "approved": false,
-            "vetoed": false,
-            "veto_reason": "",
-            "scores": {
-              "relevance": 45.0,
-              "novelty": 35.0,
-              "feasibility": 30.0,
-              "risk": 10.0,
-              "quality": 20.0
-            },
-            "comments": {
-              "relevance": "Targets the audience and names the product, but ignores the brief's core functionality: mood/schedule-based recipes, learning habits, and calendar sync. Also misses the no-smartphone and price constraints.",
-              "novelty": "The 'social expression' frame is a familiar positioning lens; the rationale explicitly calls it a familiar lens, so it offers little surprise or rethinking of the problem.",
-              "feasibility": "Not buildable as described. There is no concrete mechanism, design, or implementation path for turning the coffee machine into a social expression experience.",
-              "risk": "Risks are listed as '(none)', with no acknowledgment of edge cases, technical dependencies, privacy concerns, or social missteps.",
-              "quality": "Direction is vague and underdeveloped. It does not articulate how the social frame would be translated into an actual product experience."
-            }
-          },
-          {
-            "direction_id": "professional:Professional angle",
-            "total": 45.5,
-            "approved": false,
-            "vetoed": false,
-            "veto_reason": "",
-            "scores": {
-              "relevance": 55.0,
-              "novelty": 40.0,
-              "feasibility": 45.0,
-              "risk": 45.0,
-              "quality": 35.0
-            },
-            "comments": {
-              "relevance": "Cites the target audience and a familiar lens, but does not address the core functionality, calendar sync/habit learning, or the no-smartphone and price constraints.",
-              "novelty": "The 'professional expression' frame is generic and widely used; it offers no surprising reframe or distinctive creative twist.",
-              "feasibility": "No concrete implementation plan, product features, or technical details are described; significant unknowns remain about how this concept would be built.",
-              "risk": "Only notes that validation with real users is needed; key risks around offline operation, price ceiling, privacy, and misuse are not identified.",
-              "quality": "The direction is vague and underdeveloped, with no clear execution path, structure, or actionable design principles."
-            }
-          },
-          {
-            "direction_id": "historical:Historical angle",
-            "total": 31.5,
-            "approved": false,
-            "vetoed": false,
-            "veto_reason": "",
-            "scores": {
-              "relevance": 30.0,
-              "novelty": 60.0,
-              "feasibility": 30.0,
-              "risk": 0.0,
-              "quality": 30.0
-            },
-            "comments": {
-              "relevance": "The direction only proposes a 'historical frame' without addressing the core brief: mood-based recipe selection, schedule learning, calendar sync, or the no-smartphone and price constraints.",
-              "novelty": "A historical framing is somewhat unexpected for a smart coffee maker, but the idea is vaguely familiar and lacks a truly creative twist or reframing.",
-              "feasibility": "No concrete product features or implementation details are provided, making it impossible to assess buildability against the stated constraints.",
-              "risk": "Risks are explicitly listed as 'none', showing no consideration of edge cases or technical/consumer risks.",
-              "quality": "The description is extremely vague, using phrases like 'historical expression' and 'familiar lens' without clarifying the actual execution plan."
-            }
-          },
-          {
-            "direction_id": "ritual:Ritual angle",
-            "total": 54.2,
-            "approved": false,
-            "vetoed": false,
-            "veto_reason": "",
-            "scores": {
-              "relevance": 55.0,
-              "novelty": 60.0,
-              "feasibility": 65.0,
-              "risk": 40.0,
-              "quality": 45.0
-            },
-            "comments": {
-              "relevance": "The ritual frame fits the audience and broad product idea, but it does not address the specific smart features, offline requirement, or price constraint.",
-              "novelty": "Reframing coffee as a ritual expression is mildly fresh but remains a familiar angle in coffee marketing.",
-              "feasibility": "The framing itself is executable, but it lacks concrete product details and technical requirements for implementation.",
-              "risk": "Only one risk is mentioned—needs validation—with no edge cases, failure modes, or mitigation strategies.",
-              "quality": "The concept is coherent but too abstract and short; it does not provide an execution path or engineering clarity."
-            }
-          },
-          {
-            "direction_id": "natural:Natural angle",
-            "total": 30.8,
-            "approved": false,
-            "vetoed": false,
-            "veto_reason": "",
-            "scores": {
-              "relevance": 45.0,
-              "novelty": 30.0,
-              "feasibility": 30.0,
-              "risk": 0.0,
-              "quality": 35.0
-            },
-            "comments": {
-              "relevance": "Frames as 'natural expression' but never addresses smart recipe selection, mood/schedule learning, calendar sync, offline operation, or price constraint. Only the audience is vaguely mentioned.",
-              "novelty": "Natural expression is a generic, familiar framing; no unexpected angle or creative reframe of the smart coffee machine problem.",
-              "feasibility": "No concrete product concept or execution details; cannot be built or reproduced as described.",
-              "risk": "No risks acknowledged; explicitly lists '(none)' despite the highly vague direction.",
-              "quality": "Plan is too underdeveloped and ambiguous to follow; no detailed execution path."
-            }
-          },
-          {
-            "direction_id": "professional:Кофейный сомелье в смартфоне",
-            "total": 28.0,
-            "approved": false,
-            "vetoed": true,
-            "veto_reason": "Court veto: direction violates an explicit hard constraint of the brief (drift from brief).",
-            "scores": {
-              "relevance": 25.0,
-              "novelty": 30.0,
-              "feasibility": 35.0,
-              "risk": 10.0,
-              "quality": 40.0
-            },
-            "comments": {
-              "relevance": "Направление частично отвечает на бриф (настроение, календарь, привычки), но прямо нарушает два ключевых ограничения: требуется обязательный смартфон и цена 45 000 руб. вместо 25 000 руб.",
-              "novelty": "Идея премиум-приложения с подпиской и «кофейным сомелье» предсказуема для городских профессионалов; не предлагает неожиданного переосмысления задачи.",
-              "feasibility": "Технически реализуемо, но не соответствует заданным ограничениям: требует смартфона и превышает бюджет, поэтому не может быть воспроизведено в рамках брифа.",
-              "risk": "Риски не указаны вовсе; нет анализа зависимости от смартфона, подписки, цены, приватности данных или отказа синхронизации.",
-              "quality": "План изложен ясно, но перегружен противоречащими брифу деталями (экран смартфона как «сенсорный», обязательная подписка); исполнение выглядит как коммерческое предложение, а не инженерное решение."
-            }
-          },
-          {
-            "direction_id": "professional:Барриста в устройстве",
-            "total": 65.4,
+            "total": 64.3,
             "approved": true,
             "vetoed": false,
             "veto_reason": "",
             "scores": {
-              "relevance": 50.0,
-              "novelty": 75.0,
-              "feasibility": 72.0,
-              "risk": 65.0,
+              "relevance": 66,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
               "quality": 75.0
             },
             "comments": {
-              "relevance": "Addresses no-smartphone and price constraints and audience desire for mastery, but omits core automatic recipe selection by mood/schedule/calendar.",
-              "novelty": "Fresh gamification twist on a coffee machine, though the mentor/training concept is familiar in other contexts.",
-              "feasibility": "Feasible with basic sensors and display, but the 25k budget and depth of analytics need clarification.",
-              "risk": "Identifies cost and user annoyance risks, but lacks concrete mitigations and ignores technical failure modes.",
-              "quality": "Clear concept and rationale, but execution plan lacks specifics for algorithm and UI."
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            },
+            "goal_fit": {
+              "score": 45.0,
+              "note": "goal-word overlap 1/6 — advances goal"
+            }
+          },
+          {
+            "direction_id": "social:Social angle",
+            "total": 71.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 66,
+              "novelty": 60.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            },
+            "goal_fit": {
+              "score": 45.0,
+              "note": "goal-word overlap 1/6 — advances goal"
+            }
+          },
+          {
+            "direction_id": "professional:Professional angle",
+            "total": 64.3,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 66,
+              "novelty": 60.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            },
+            "goal_fit": {
+              "score": 45.0,
+              "note": "goal-word overlap 1/6 — advances goal"
+            }
+          },
+          {
+            "direction_id": "historical:Historical angle",
+            "total": 73.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 66,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            },
+            "goal_fit": {
+              "score": 45.0,
+              "note": "goal-word overlap 1/6 — advances goal"
+            }
+          },
+          {
+            "direction_id": "ritual:Ritual angle",
+            "total": 66.3,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 66,
+              "novelty": 70.0,
+              "feasibility": 65.0,
+              "risk": 55.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            },
+            "goal_fit": {
+              "score": 45.0,
+              "note": "goal-word overlap 1/6 — advances goal"
+            }
+          },
+          {
+            "direction_id": "natural:Natural angle",
+            "total": 73.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 66,
+              "novelty": 70.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            },
+            "goal_fit": {
+              "score": 45.0,
+              "note": "goal-word overlap 1/6 — advances goal"
+            }
+          },
+          {
+            "direction_id": "professional:Кофейный сомелье в смартфоне",
+            "total": 79.0,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 90,
+              "novelty": 60.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            },
+            "goal_fit": {
+              "score": 95.0,
+              "note": "goal-word overlap 5/6 — advances goal"
+            }
+          },
+          {
+            "direction_id": "professional:Кофейный конвейер точности",
+            "total": 71.8,
+            "approved": true,
+            "vetoed": false,
+            "veto_reason": "",
+            "scores": {
+              "relevance": 66,
+              "novelty": 60.0,
+              "feasibility": 80.0,
+              "risk": 85.0,
+              "quality": 75.0
+            },
+            "comments": {
+              "relevance": "Heuristic: how well it answers the brief",
+              "novelty": "Heuristic: how surprising / non-obvious it is",
+              "feasibility": "Heuristic: can it be built and reproduced",
+              "risk": "Heuristic: edge cases and failure modes handled",
+              "quality": "Heuristic: engineering / execution clarity"
+            },
+            "goal_fit": {
+              "score": 45.0,
+              "note": "goal-word overlap 1/6 — advances goal"
             }
           }
         ],
         "trace": {
           "path": "/root/.hermes/micro1-hackathon/cc-app/evaluation/results/traces/bench_eval_01_coffee_advanced.jsonl",
-          "total_events": 52,
+          "total_events": 21,
           "by_type": {
-            "agent_start": 10,
-            "tool_response": 4,
-            "agent_step": 29,
-            "agent_end": 6,
-            "retry": 2,
-            "veto": 1
+            "agent_start": 3,
+            "agent_step": 15,
+            "agent_end": 3
           }
         }
       }

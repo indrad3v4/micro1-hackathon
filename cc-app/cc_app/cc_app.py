@@ -45,6 +45,7 @@ class CCState(rx.State):
     description: str = ""
     audience: str = ""
     constraints_raw: str = ""
+    goal: str = ""
     creativity: float = 0.5
 
     # -- Results (up to 6 IKRA frames) --
@@ -177,6 +178,9 @@ class CCState(rx.State):
     def set_constraints_raw(self, constraints_raw: str) -> None:
         self.constraints_raw = constraints_raw
 
+    def set_goal(self, goal: str) -> None:
+        self.goal = goal
+
     # Per-card veto reason setters (auto-setters disabled in Reflex 0.9)
     def set_veto_reason_0(self, v: str) -> None: self.direction_0_veto_reason = v
     def set_veto_reason_1(self, v: str) -> None: self.direction_1_veto_reason = v
@@ -206,7 +210,7 @@ class CCState(rx.State):
         constraints = [c.strip() for c in self.constraints_raw.split("\n")
                        if c.strip()]
         return Brief(title=self.title, description=self.description,
-                     audience=self.audience, constraints=constraints, goal="")
+                     audience=self.audience, constraints=constraints, goal=self.goal)
 
     def _set_direction(self, idx: int, direction: Direction,
                        verdict: Optional[Verdict]) -> None:
@@ -231,6 +235,11 @@ class CCState(rx.State):
         if verdict and verdict.scores:
             rubric_str = " · ".join(
                 f"{s.dimension}: {s.score:.0f}" for s in verdict.scores)
+            # goal_fit: the separate signal for the human — distance from the
+            # stated goal (drift is measured against THIS, not just constraints)
+            gf = getattr(verdict, "goal_fit", None) or {}
+            if gf.get("score") is not None:
+                rubric_str += f" · goal: {gf['score']:.0f}"
             setattr(self, f"{prefix}_rubric_display", rubric_str)
         # 'replaced after veto' marker survives only if the direction was reworked
         replaced = getattr(self, f"{prefix}_replaced_display", "")
@@ -249,6 +258,10 @@ class CCState(rx.State):
         if not self.title.strip():
             self._log_event({"ts": self._now(), "agent": "ui", "type": "error",
                              "action": "Missing brief title"})
+            return rx.stop_propagation
+        if not self.goal.strip():
+            self._log_event({"ts": self._now(), "agent": "ui", "type": "error",
+                             "action": "Missing goal — drift is measured against what you want; state your goal"})
             return rx.stop_propagation
 
         self.is_running = True
@@ -559,6 +572,15 @@ def brief_form() -> rx.Component:
                     width="100%", variant="soft", color_scheme="gray",
                     bg=DARK_SURFACE, border_color=DARK_BORDER, color=DARK_TEXT,
                     font_family="monospace"),
+                rx.text("Your Goal (the higher purpose of this work)", size="2", color=DARK_MUTED),
+                rx.text_area(
+                    placeholder="e.g. give teens a real place to be published without adult gatekeeping",
+                    value=CCState.goal, on_change=CCState.set_goal, rows="2",
+                    width="100%", variant="soft", color_scheme="gray",
+                    bg=DARK_SURFACE, border_color=DARK_BORDER, color=DARK_TEXT,
+                    font_family="monospace"),
+                rx.text("Drift is measured against THIS goal — without it there is nothing to drift from.",
+                        size="1", color=DARK_MUTED),
                 rx.vstack(
                     rx.flex(rx.text("Creativity Level:", size="2",
                                     color=DARK_MUTED),

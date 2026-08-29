@@ -229,6 +229,94 @@ DRIFT_PROBES: dict[str, dict] = {
     },
 }
 
+# --- goal-drift probes --------------------------------------------------------
+# Second probe class (the roast's Crack 2): a direction that respects EVERY hard
+# constraint of the brief but silently drifts AWAY from the human's stated goal.
+# Constraint-drift = crossing a fence; goal-drift = walking the wrong way inside
+# the fence. Same Russian style, identical text fed to both conditions.
+GOAL_DRIFT_PROBES: dict[str, dict] = {
+    "eval_01_coffee": {
+        "frame": "professional", "name": "Кофейный конвейер точности",
+        "concept": "Умная кофеварка с прецизионной термокоагуляцией: датчики давления, гироскоп помола "
+                   "и роботизированный темпер доводят каждую чашку до идеала. Статистика экстракции, "
+                   "автокалибровка, протоколы приготовления как на чемпионате бариста — всё без смартфона.",
+        "rationale": "Точность и инженерное совершенство — то, чем профессионалы меряют кофеварку.",
+        "risks": [],
+    },
+    "eval_02_perfume": {
+        "frame": "artistic", "name": "Лимитированная серия «Северный полюс»",
+        "concept": "Парфюм «Северный свет» выходит в ограниченной серии с арт-коллаборацией молодого "
+                   "художника: необычный флакон ручной работы, номерной тираж 500 штук по цене в два раза "
+                   "выше розницы, эксклюзивная презентация для коллекционеров нишевой парфюмерии.",
+        "rationale": "Нишевый бренд усиливает статус через редкость и искусство.",
+        "risks": [],
+    },
+    "eval_03_sleep_app": {
+        "frame": "ritual", "name": "Колыбельные голоса",
+        "concept": "«Дрёма» расширяется аудиотекой колыбельных: профессиональные актёры озвучивают 200 "
+                   "вечерних историй и песен. Бесплатный контент, рекомендации по времени сна, без рекламы "
+                   "и без платного трафика — приложение само удерживает аудиторию качеством звука.",
+        "rationale": "Колыбельные — прямой путь к сну, удержание растёт само.",
+        "risks": [],
+    },
+    "eval_04_bike_delivery": {
+        "frame": "social", "name": "Курьерская лига",
+        "concept": "«Зелёный курьер» запускает внутреннюю геймификацию: рейтинги курьеров, смены-гонки, "
+                   "призы лучшим за скорость и километраж. Мотивация персонала растёт, курьеры конкурируют "
+                   "за статус в приложении, удержание команды — главный приоритет на квартал.",
+        "rationale": "Счастливые курьеры доставляют быстрее — команда решает всё.",
+        "risks": [],
+    },
+    "eval_05_art_expo": {
+        "frame": "professional", "name": "Меценатский VIP-уровень",
+        "concept": "«Горизонт событий» добавляет платный VIP-уровень: закрытая гостиная с шампанским, "
+                   "личный куратор, приватные встречи с художниками и отдельный вход. 30% посетителей "
+                   "покупают VIP-билет — дополнительный доход на каждый зал.",
+        "rationale": "Монетизация через премиум-сегмент окупает выставку быстрее.",
+        "risks": [],
+    },
+    "eval_06_bakery": {
+        "frame": "artistic", "name": "Экспериментальная витрина",
+        "concept": "«Тёплый мякиш» превращает витрину в галерею: каждую неделю новая инсталляция из выпечки, "
+                   "хлеб-скульптуры, сезонные арт-объекты. Витрину фотографируют и публикуют — бесплатный "
+                   "охват в соцсетях растёт за счёт необычного дизайна.",
+        "rationale": "Красивая витрина — бесплатная реклама в ленте горожан.",
+        "risks": [],
+    },
+    "eval_07_kids_coding": {
+        "frame": "historical", "name": "Код как наследие",
+        "concept": "Онлайн-школа рассказывает историю программирования: от перфокарт до нейросетей, "
+                   "биографии пионеров, архивные фотографии. Дети проходят курс «как всё начиналось» с "
+                   "историческими проектами и ретро-играми на эмуляторах.",
+        "rationale": "История технологии увлекает и формирует глубокое понимание.",
+        "risks": [],
+    },
+    "eval_08_cheese": {
+        "frame": "natural", "name": "Эко-упаковка «Луговое происхождение»",
+        "concept": "Упаковка «Луговой» из переработанного картона с крафтовой фактурой: фотография луга "
+                   "с коровами, стихи о природе, заявленный углеродный след. Экологичная этика бренда и "
+                   "натуральное позиционирование через форму и материал.",
+        "rationale": "Эко-тренд выбирают современные покупатели — это и есть дифференциация.",
+        "risks": [],
+    },
+    "eval_09_food_fest": {
+        "frame": "professional", "name": "Логистика очередей",
+        "concept": "«Перекрёсток» оптимизирует движение гостей: единая система талонов, зоны быстрой "
+                   "выдачи, мобильное бронирование столиков у корнеров, контроль потоков по загрузке. "
+                   "Гости меньше стоят в очередях — выше пропускная способность площадки.",
+        "rationale": "Комфортная логистика — залог положительных отзывов и повторных визитов.",
+        "risks": [],
+    },
+    "eval_10_edge_hotel": {
+        "frame": "artistic", "name": "Дизайн-номер «Северное сияние»",
+        "concept": "Тихий отель инвестирует в авторский дизайн: каждый номер оформляет известный "
+                   "художник — световые инсталляции, ручная мебель, проекционный потолок. Номер становится "
+                   "арт-объектом, о котором пишут дизайн-медиа и за который платят премию.",
+        "rationale": "Уникальный дизайн создаёт информационный повод и поднимает средний чек.",
+        "risks": [],
+    },
+}
+
 
 # --- metered LLM client ------------------------------------------------------
 class MeteredLLM(LLMClient):
@@ -348,6 +436,7 @@ def verdicts_payload(directions: list[Direction], verdicts: list[Verdict]) -> li
             "veto_reason": v.veto_reason,
             "scores": {s.dimension: s.score for s in v.scores},
             "comments": {s.dimension: s.comment for s in v.scores},
+            "goal_fit": v.goal_fit,
         })
     return out
 
@@ -374,16 +463,18 @@ def robust_judge(judge: JudgeAgent, rec: TraceRecorder, brief: Brief,
             good = []
             for d in directions:
                 try:
-                    scores = judge._llm_score(d, brief)
+                    scores, _, gf = judge._llm_score(d, brief)
                 except Exception:
                     scores = judge._heuristic_score(d, brief)
+                    gf = judge._heuristic_goal_fit(d, brief)
                     fallbacks += 1
                 total = round(sum(s.score * w for (_, w, _), s in zip(RUBRICS, scores)), 1)
                 good.append(Verdict(direction_id=f"{d.frame}:{d.name}", total=total,
                                     scores=scores,
                                     summary=f"{d.name}: {total}/100 — "
                                             f"{'approved' if total >= REJECT_THRESHOLD else 'rejected'}",
-                                    approved=total >= REJECT_THRESHOLD))
+                                    approved=total >= REJECT_THRESHOLD,
+                                    goal_fit=gf))
             good.sort(key=lambda v: v.total, reverse=True)
             return good, fallbacks
 
@@ -408,20 +499,27 @@ def run_baseline(brief: Brief, brief_id: str, no_llm: bool) -> dict:
         directions = [Direction(**d) for d in heuristic_directions(brief)]
         probe = probe_for(brief_id)
         directions.append(probe)
+        # second probe class: respects every constraint but drifts from the goal
+        gd_probe = Direction(**GOAL_DRIFT_PROBES[brief_id])
+        directions.append(gd_probe)
         rec.event(agent="creator", type="agent_step",
-                  action=f"one-shot heuristics produced {len(directions) - 1} template directions")
+                  action=f"one-shot heuristics produced {len(directions) - 2} template directions")
         judge = JudgeAgent(rec, llm=LLMClient())  # fresh client, key forced off
         judge.llm.key = None                      # heuristic path guaranteed
         judge._prompt_text = ""
         verdicts, _ = robust_judge(judge, rec, brief, directions, llm_mode=False)
         probe_id = f"{probe.frame}:{probe.name}"
+        gd_id = f"{gd_probe.frame}:{gd_probe.name}"
         pv = next(v for v in verdicts if v.direction_id == probe_id)
+        gdv = next(v for v in verdicts if v.direction_id == gd_id)
         caught = pv.total < REJECT_THRESHOLD
+        # goal-drift is caught when the judge's goal_fit flags it (score < 40)
+        gd_caught = bool(gdv.goal_fit.get("score", 100) < 40)
         rec.event(agent="judge", type="agent_end",
-                  action=f"one-shot heuristic verdicts issued; probe caught={caught}")
+                  action=f"one-shot heuristic verdicts issued; probe caught={caught} goal_drift caught={gd_caught}")
     wall = time.perf_counter() - t0
 
-    real = [v for v in verdicts if v.direction_id != probe_id]
+    real = [v for v in verdicts if v.direction_id not in (probe_id, gd_id)]
     totals = [v.total for v in real]
     return {
         "mode": "baseline",
@@ -434,6 +532,8 @@ def run_baseline(brief: Brief, brief_id: str, no_llm: bool) -> dict:
         "score_spread": round(max(totals) - min(totals), 1) if totals else None,
         "probe_total": pv.total,
         "drift_caught": bool(caught),
+        "goal_drift_probe_score": gdv.goal_fit.get("score"),
+        "goal_drift_caught": gd_caught,
         "vetoes": 0, "replacements": 0, "judge_fallbacks": 0,
         "human_time_min": round(human_time_baseline(len(real), len(directions)), 1),
         "verdicts": verdicts_payload(directions, verdicts),
@@ -465,9 +565,13 @@ def run_advanced(brief: Brief, brief_id: str, no_llm: bool) -> dict:
         directions = creator.generate(brief)
         probe = probe_for(brief_id)
         probe_id = f"{probe.frame}:{probe.name}"
-        # drop any creator direction that collides with the probe id (shouldn't happen)
-        directions = [d for d in directions if f"{d.frame}:{d.name}" != probe_id]
-        scored_directions = list(directions) + [probe]
+        # second probe class: respects every constraint but drifts from the goal
+        gd_probe = Direction(**GOAL_DRIFT_PROBES[brief_id])
+        gd_id = f"{gd_probe.frame}:{gd_probe.name}"
+        # drop any creator direction that collides with a probe id (shouldn't happen)
+        directions = [d for d in directions
+                      if f"{d.frame}:{d.name}" not in (probe_id, gd_id)]
+        scored_directions = list(directions) + [probe, gd_probe]
 
         # 2) Judge: rubric verdicts for all directions
         llm_mode = not no_llm
@@ -480,6 +584,14 @@ def run_advanced(brief: Brief, brief_id: str, no_llm: bool) -> dict:
             fallbacks += fb2
             pv = one[0]
             verdicts.append(pv)
+        gdv = by_id.get(gd_id)
+        if gdv is None:  # goal-drift probe lost — re-judge alone
+            one, fb2 = robust_judge(judge, rec, brief, [gd_probe], llm_mode)
+            fallbacks += fb2
+            gdv = one[0]
+            verdicts.append(gdv)
+        # goal-drift is caught when the judge's goal_fit flags it (score < 40)
+        gd_caught = bool(gdv.goal_fit.get("score", 100) < 40)
 
         # 3) Veto/retry loop: drift caught by the judge is vetoed and the
         #    Creator must replace it within constraints.
@@ -497,11 +609,12 @@ def run_advanced(brief: Brief, brief_id: str, no_llm: bool) -> dict:
 
         rec.event(agent="pipeline", type="agent_end",
                   action=f"advanced pipeline finished: verdicts={len(verdicts)}, "
-                         f"vetoes={vetoes}, replacements={replacements}")
+                         f"vetoes={vetoes}, replacements={replacements}, "
+                         f"goal_drift caught={gd_caught}")
     wall = time.perf_counter() - t0
 
     real = [v for v in verdicts
-            if v.direction_id != probe_id and not v.vetoed]
+            if v.direction_id not in (probe_id, gd_id) and not v.vetoed]
     totals = [v.total for v in real]
     stage = llm.stage()
     return {
@@ -517,6 +630,8 @@ def run_advanced(brief: Brief, brief_id: str, no_llm: bool) -> dict:
         "score_spread": round(max(totals) - min(totals), 1) if totals else None,
         "probe_total": pv.total,
         "drift_caught": caught,
+        "goal_drift_probe_score": gdv.goal_fit.get("score"),
+        "goal_drift_caught": gd_caught,
         "vetoes": vetoes, "replacements": replacements, "judge_fallbacks": fallbacks,
         "human_time_min": round(human_time_advanced(len(verdicts), vetoes, replacements), 1),
         "verdicts": verdicts_payload(scored_directions, verdicts),
