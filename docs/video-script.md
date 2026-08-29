@@ -64,13 +64,13 @@ court_export_trace(run_id)   → events, veto=yes, human_checkpoint=yes
 
 | Metric | Baseline | Court | Delta |
 |---|---|---|---|
-| Drift-catch rate | 0/10 (0%) | 10/10 (100%) | +100% |
-| Mean drift-probe score | 79.5 | 18.6 | −60.9 pts |
-| Human time/task (modelled proxy) | 33 min | 7.5 min | −77% |
-| Cost/task (measured) | $0.00 | $0.01037 | — |
+| Drift-catch rate | 0/10 (0%) | 9/10 (90%) | +90% |
+| Mean drift-probe score | 79.5 | 23.7 | −55.8 pts |
+| Human time/task (modelled proxy) | 33.1 min | 7.25 min | −78% |
+| Cost/task (measured) | $0.00 | $0.00938 | — |
 
 **VO:**
-"Measured, apples-to-apples: same ten briefs, same injected drift probes, two systems. The simple baseline catches none and pushes 33 minutes of re-reading onto you. The Court catches all ten — including the deliberately contradictory hotel brief — for about one US cent per task. Verification tokens, not warm air."
+"Measured, apples-to-apples: same ten briefs, same injected drift probes, two systems. The simple baseline catches none and pushes 33 minutes of re-reading onto you. The Court catches nine of ten — including the deliberately contradictory hotel brief — for about one US cent per task. Verification tokens, not warm air."
 
 ### Scene 5 — Hot take (3:00–3:25)
 **Visual:** one line, big: "An LLM judge without a human veto accepts edge cases as truth."
@@ -116,7 +116,7 @@ Recording setup: 1920×1080, dark theme, font ≥20pt, cursor enlarged. OBS; one
 - [ ] **Scene 3 recorded as ONE live take in Hermes** — the MCP tools must be seen discovering and running, not simulated.
 
 **Fact ledger (source → scene):**
-- Drift-catch 0/10 → 10/10; probe 79.5→18.6; 33→7.5 min (modelled); $0.10369; 10 vetoes/10 replacements — `final_report.csv` + Changelog §1.
+- Drift-catch 0/10 → 9/10; probe 79.5→23.7; 33.1→7.25 min (modelled); $0.09384 total / $0.00938 per task; 9 vetoes/9 replacements — `final_report.csv` + Changelog §1.
 - Veto rework example (LIVE in Hermes, verified 2026-08-29, `creative-court/traces/run_20260829_195251.jsonl`): `natural:Poetry from the Wild` (78.2) vetoed for budget-constraint breach (its own risks admit "may exceed the 50 EUR budget") → reworked to `natural:Natural angle` 29.0 (rejected) → `artistic:Artistic angle` 71.5 survived → signed. 42 trace events, veto=yes, human_checkpoint=yes.
 - Alternative earlier demo (same day, creative-court traces): `social:Poet-to-Poet Signal` → `social:Pen-Poem Exchange` 38.5 → 84.8 — use whichever live run you record; do NOT mix numbers.
 - 81.0 "Historical angle" top score on contradictory brief + B12 veto — `IMPROVEMENT_CHANGELOG.md` (comparison, conclusion 2–3).
