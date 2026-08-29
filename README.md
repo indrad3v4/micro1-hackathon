@@ -156,6 +156,8 @@ From `final_report.json` → `meta.interpretation_notes`:
 - `cc-app/evaluation/results/per_brief/*.json` — crash-safe per-brief results (10)
 - `cc-app/evaluation/results/traces/bench_eval_*_{baseline,advanced}.jsonl` — benchmark trajectory pairs (20; 10 baseline + 10 advanced)
 - `creative-court/traces/*.jsonl` — agent trajectories (deliverable 04)
+- `cc-app/traces/traces/dashboard_*.jsonl` — live Reflex dashboard session trace (interactive human-in-the-loop run; heuristic fallback — no API key at demo time)
+- `visuals/demo_*.png` — dashboard demo screenshots (form filled + results)
 - `IMPROVEMENT_CHANGELOG.md` — baseline → Iterations 1–3 → Final, with the removed R1 experiment
 
 ## 6. Trajectory format (submission requirement 04)
@@ -179,3 +181,17 @@ The four submission-required aspects map directly onto schema fields — **instr
 | human checkpoints | `type: "human_checkpoint"` + `human_checkpoint` | `"human_checkpoint": "ASSESSMENT: человек проверяет топ-3 перед запуском"` |
 
 Veto and retry events additionally record the court's drift-catch mechanics (`veto`, `retry_of`), so the 10/10 drift-catch result is auditable event-by-event, not just as a summary number. All 56 committed trace files validate against this schema (checked programmatically: 0 malformed lines).
+
+**Trace coverage honesty.** Benchmark traces (`results/traces/bench_eval_*`) contain **zero `human_checkpoint` events by design**: `run_benchmark.py` is a *headless* harness — no human reviews during an automated run, so nothing is checkpointed. Human-checkpoint capability lives in the interactive path: the schema field, the single `human_checkpoint` event in `creative-court/traces/eval_adv_B12.jsonl` (`ASSESSMENT: человек проверяет топ-3 перед запуском`), and the Reflex dashboard session trace (`cc-app/traces/traces/dashboard_*.jsonl`). Likewise, baseline bench traces carry **no `tool_call`/`tool_response` events because the baseline makes 0 LLM calls** — the heuristic judge does no tool use; the absence *is* the measured zero, not a recording gap. Advanced bench traces carry `tool_response` (LLM verdicts), `veto` (17) and `retry` (25) events.
+
+---
+
+## 7. Hot Take — unrouted tokens are the hidden cost
+
+Most agentic designs treat **generation** as the expensive part and **checking** as the cheap part. This benchmark measures the opposite.
+
+The baseline "spends nothing" — 0 LLM calls, $0.00, ~0.04 s/task (measured) — and still fails the goal: it accepts all 10 constraint-violating drift probes (mean probe score 79.5/100) because its check is a rubber-stamp. The bill does not disappear; it is deferred to the most expensive interpreter in the loop, the human: 33 modelled minutes per task re-reading directions that already missed the brief.
+
+The Court inverts the cost curve. It spends **~1 US cent per task** (measured: `$0.01037/task`, 10.9 LLM calls, ~37 900 tokens) — but every token is a *verification* token: rubric-judge calls, veto decisions, replacement checks. Result: 10/10 drift probes caught, probe mean 79.5 → 18.6, human time 33 → 7.5 min per task (**25.5 min saved**).
+
+The arithmetic: **$0.01 of QA buys back 25.5 minutes of human attention** (~2 500 minutes per dollar). The most expensive model call in an agentic workflow is the one you never vetoed, because its output still has to be read. Token spend should be a **gate on result**, not a meter of activity: route tokens through a veto gate and the marginal cent pays for certainty — not for tokens that warm the air.
