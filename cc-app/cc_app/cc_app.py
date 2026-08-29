@@ -28,6 +28,7 @@ _CC_TRACES = os.path.join(os.path.dirname(__file__), "..", "traces")
 
 from .creative_court.core.models import Brief, Direction, RubricScore, Verdict
 from .creative_court.core.trace import TraceRecorder
+from .creative_court.core.llm import LLMClient
 from .creative_court.agents.creator import CreatorAgent
 from .creative_court.agents.judge import JudgeAgent, RUBRICS
 
@@ -57,6 +58,9 @@ class CCState(rx.State):
     direction_0_summary: str = ""
     direction_0_veto_frame: str = ""
     direction_0_risks_display: str = ""
+    direction_0_replaced_display: str = ""
+    direction_0_rubric_display: str = ""
+    direction_0_veto_reason: str = ""
 
     direction_1_frame: str = ""
     direction_1_name: str = ""
@@ -68,6 +72,9 @@ class CCState(rx.State):
     direction_1_summary: str = ""
     direction_1_veto_frame: str = ""
     direction_1_risks_display: str = ""
+    direction_1_replaced_display: str = ""
+    direction_1_rubric_display: str = ""
+    direction_1_veto_reason: str = ""
 
     direction_2_frame: str = ""
     direction_2_name: str = ""
@@ -79,6 +86,9 @@ class CCState(rx.State):
     direction_2_summary: str = ""
     direction_2_veto_frame: str = ""
     direction_2_risks_display: str = ""
+    direction_2_replaced_display: str = ""
+    direction_2_rubric_display: str = ""
+    direction_2_veto_reason: str = ""
 
     direction_3_frame: str = ""
     direction_3_name: str = ""
@@ -90,6 +100,9 @@ class CCState(rx.State):
     direction_3_summary: str = ""
     direction_3_veto_frame: str = ""
     direction_3_risks_display: str = ""
+    direction_3_replaced_display: str = ""
+    direction_3_rubric_display: str = ""
+    direction_3_veto_reason: str = ""
 
     direction_4_frame: str = ""
     direction_4_name: str = ""
@@ -101,6 +114,9 @@ class CCState(rx.State):
     direction_4_summary: str = ""
     direction_4_veto_frame: str = ""
     direction_4_risks_display: str = ""
+    direction_4_replaced_display: str = ""
+    direction_4_rubric_display: str = ""
+    direction_4_veto_reason: str = ""
 
     direction_5_frame: str = ""
     direction_5_name: str = ""
@@ -112,7 +128,9 @@ class CCState(rx.State):
     direction_5_summary: str = ""
     direction_5_veto_frame: str = ""
     direction_5_risks_display: str = ""
-    direction_5_risks_display: str = ""
+    direction_5_replaced_display: str = ""
+    direction_5_rubric_display: str = ""
+    direction_5_veto_reason: str = ""
 
     num_directions: int = 0
     verdicts: List[Dict[str, Any]] = []
@@ -127,6 +145,9 @@ class CCState(rx.State):
     # -- Token meter (honest counters, no fabricated token numbers) --
     judge_calls: int = 0
     creator_calls: int = 0
+
+    # -- Judge mode (honest: LLM-backed or heuristic fallback) --
+    llm_available: bool = False
 
     # -- Orchestration flags --
     is_running: bool = False
@@ -155,6 +176,14 @@ class CCState(rx.State):
 
     def set_constraints_raw(self, constraints_raw: str) -> None:
         self.constraints_raw = constraints_raw
+
+    # Per-card veto reason setters (auto-setters disabled in Reflex 0.9)
+    def set_veto_reason_0(self, v: str) -> None: self.direction_0_veto_reason = v
+    def set_veto_reason_1(self, v: str) -> None: self.direction_1_veto_reason = v
+    def set_veto_reason_2(self, v: str) -> None: self.direction_2_veto_reason = v
+    def set_veto_reason_3(self, v: str) -> None: self.direction_3_veto_reason = v
+    def set_veto_reason_4(self, v: str) -> None: self.direction_4_veto_reason = v
+    def set_veto_reason_5(self, v: str) -> None: self.direction_5_veto_reason = v
 
     def _now(self) -> str:
         return datetime.now(timezone.utc).isoformat(timespec="milliseconds")
@@ -198,6 +227,20 @@ class CCState(rx.State):
         setattr(self, f"{prefix}_approved", v_approved)
         setattr(self, f"{prefix}_summary", v_summary)
         setattr(self, f"{prefix}_veto_frame", direction.frame)
+        # 5-dimension rubric as a display string (deliberation visible on the card)
+        if verdict and verdict.scores:
+            rubric_str = " · ".join(
+                f"{s.dimension}: {s.score:.0f}" for s in verdict.scores)
+            setattr(self, f"{prefix}_rubric_display", rubric_str)
+        # 'replaced after veto' marker survives only if the direction was reworked
+        replaced = getattr(self, f"{prefix}_replaced_display", "")
+        if replaced and "veto concern" in (direction.risks or []):
+            setattr(self, f"{prefix}_replaced_display", replaced)
+        elif "veto concern" in (direction.risks or []):
+            setattr(self, f"{prefix}_replaced_display",
+                    "⚠ replaced after human veto")
+        else:
+            setattr(self, f"{prefix}_replaced_display", "")
 
     # --- Orchestration handler ---
 
@@ -215,11 +258,13 @@ class CCState(rx.State):
         self.signed = False
         self.judge_calls = 0
         self.creator_calls = 0
+        self.llm_available = LLMClient().available
         self._signoff_lines = ["", "", ""]
         # Clear all direction fields
         for i in range(6):
             for attr in ["_frame", "_name", "_concept", "_rationale",
-                         "_risks", "_risks_display", "_score", "_approved", "_summary", "_veto_frame"]:
+                         "_risks", "_risks_display", "_score", "_approved", "_summary", "_veto_frame",
+                         "_replaced_display", "_rubric_display", "_veto_reason"]:
                 setattr(self, f"direction_{i}{attr}", "")
 
         run_dir = os.path.join(_CC_TRACES, "traces")
@@ -327,10 +372,28 @@ class CCState(rx.State):
         """Record the human sign-off in the trajectory and flip the flag."""
         if self.signed or not self.run_complete:
             return rx.stop_propagation
+        # Bind the signature to the actual decisions: names + scores + veto reasons.
+        signed_payload = []
+        for i in range(self.num_directions):
+            prefix = f"direction_{i}"
+            name = getattr(self, f"{prefix}_name")
+            if not name:
+                continue
+            signed_payload.append({
+                "name": name,
+                "frame": getattr(self, f"{prefix}_frame"),
+                "score": round(getattr(self, f"{prefix}_score"), 1),
+                "approved": bool(getattr(self, f"{prefix}_approved")),
+                "replaced": getattr(self, f"{prefix}_replaced_display", ""),
+                "veto_reason": getattr(self, f"{prefix}_veto_reason", ""),
+            })
         try:
             rec = TraceRecorder(self.trace_path or os.path.join(
                 _CC_TRACES, "traces", f"signoff_{datetime.now().strftime('%Y%m%d_%H%M%S')}.jsonl"))
-            rec.human_checkpoint("human", "human signed decisions")
+            rec.event(agent="human", type="human_checkpoint",
+                      human_checkpoint="human signed decisions",
+                      data={"signed": signed_payload,
+                            "top3": [l for l in self._signoff_lines if l]})
             rec.close()
         except Exception as exc:
             self._log_event({"ts": self._now(), "agent": "error",
@@ -338,19 +401,21 @@ class CCState(rx.State):
         self.signed = True
         self._log_event({"ts": self._now(), "agent": "human",
                          "type": "human_checkpoint",
-                         "action": "human signed decisions"})
+                         "action": "human signed decisions",
+                         "data": {"signed": signed_payload}})
         return rx.stop_propagation
 
     # --- Veto handler ---
 
     def handle_veto(self, frame_name: str, reason: str = "") -> rx.event.EventSpec:
-        """Veto a direction by frame name and regenerate it."""
+        """Veto a direction by frame name and regenerate it with the human's reason."""
         if not self.title.strip():
             return rx.stop_propagation
         self.retry_needed = True
+        reason = (reason or "Rejected during review").strip()
         self._log_event({"ts": self._now(), "agent": "human", "type": "veto",
                          "action": f"Vetoed: {frame_name}",
-                         "feedback": reason or "Rejected during review"})
+                         "feedback": reason})
         brief = self._build_brief()
         parent_dir = os.path.dirname(
             self.trace_path or os.path.join(_CC_TRACES, "traces"))
@@ -363,10 +428,13 @@ class CCState(rx.State):
         target_idx = None
         for i, d in enumerate(directions):
             if d.frame == frame_name:
-                d.concept = f"[REWORKED per veto] {d.concept} - Address concerns."
+                # Real human reason drives the rework — no fake "[REWORKED per veto]" string.
+                d.concept = f"{d.concept} — reworked to address: {reason}"
+                d.rationale = f"Revised after human veto. Reason: {reason}"
+                d.risks = list(d.risks) + [f"veto concern: {reason}"]
                 new_rec.event(agent="creator", type="retry",
                               retry_of=f"{frame_name}:{d.name}",
-                              feedback=reason or "Rejected")
+                              feedback=reason)
                 target_idx = i
                 break
         verdicts = judge.judge(brief, directions)
@@ -377,6 +445,7 @@ class CCState(rx.State):
                          "type": "agent_step",
                          "action": f"Re-scored after veto: {frame_name}"})
         new_rec.close()
+        self._compute_signoff_lines()
         return rx.stop_propagation
 
     # --- Export handler ---
@@ -536,6 +605,9 @@ def arena_card(idx: int) -> rx.Component:
     summary = getattr(CCState, f"{prefix}_summary")
     veto_frame = getattr(CCState, f"{prefix}_veto_frame")
     risks_display = getattr(CCState, f"{prefix}_risks_display")
+    replaced_display = getattr(CCState, f"{prefix}_replaced_display")
+    rubric_display = getattr(CCState, f"{prefix}_rubric_display")
+    veto_reason = getattr(CCState, f"{prefix}_veto_reason")
 
     badge_color = FRAME_COLORS.get(str(frame) or "", DARK_MUTED)
     status_color = rx.cond(approved == True, GREEN_APPROVED, RED_REJECTED)
@@ -566,13 +638,25 @@ def arena_card(idx: int) -> rx.Component:
             rx.cond(risks_display != "",
                     rx.text(risks_display, size="1", color=RED_REJECTED,
                             font_family="monospace", margin_top="0.25rem")),
+            rx.cond(rubric_display != "",
+                    rx.text(rubric_display, size="1", color=ACCENT_BLUE,
+                            font_family="monospace", margin_top="0.25rem")),
+            rx.cond(replaced_display != "",
+                    rx.badge(replaced_display, size="1", color_scheme="amber",
+                             radius="full", variant="soft", width="100%",
+                             text_align="center", margin_top="0.25rem")),
             rx.divider(border_bottom_color=DARK_BORDER),
             rx.flex(approval_badge, rx.text(summary, size="2", color=DARK_MUTED),
                     align_items="center", gap="0.5rem", width="100%", flex_wrap="wrap"),
+            rx.input(placeholder="Reason for veto...",
+                     value=veto_reason, on_change=getattr(CCState, f"set_veto_reason_{idx}"),
+                     size="1", variant="soft", color_scheme="gray",
+                     bg=DARK_SURFACE, border_color=DARK_BORDER,
+                     color=DARK_TEXT, width="100%", margin_top="0.25rem"),
             rx.button("Veto & Redo", size="1", variant="outline", color_scheme="red",
                       border=f"1px solid {RED_REJECTED}", color=RED_REJECTED,
-                      on_click=CCState.handle_veto(veto_frame, "Rejected via dashboard"),
-                      margin_top="0.5rem", width="100%"),
+                      on_click=CCState.handle_veto(veto_frame, veto_reason),
+                      margin_top="0.25rem", width="100%"),
             spacing="3", width="100%"),
         bg=DARK_ELEVATED, border=f"1px solid {DARK_BORDER}",
         border_left=f"4px solid {GREEN_APPROVED}",
@@ -599,6 +683,11 @@ def arena_panel() -> rx.Component:
                     rx.badge("Awaiting Review", color_scheme="red",
                              radius="full", size="1")),
             rx.spacer(),
+            rx.cond(CCState.llm_available,
+                    rx.badge("LLM Judge", color_scheme="green",
+                             radius="full", size="1"),
+                    rx.badge("Heuristic fallback (no LLM key)",
+                             color_scheme="amber", radius="full", size="1")),
             rx.text(f"{CCState.num_directions} directions", size="2",
                     color=DARK_MUTED),
             align_items="center", width="100%"),
@@ -660,17 +749,21 @@ def signoff_section() -> rx.Component:
 
 
 def token_meter() -> rx.Component:
-    """Token meter: verification vs blind generation (honest counters)."""
+    """Token meter: verification vs blind generation (honest counters).
+
+    Shows CALL counts (judge vs creator), honestly labeled — not raw token
+    numbers, which are only measured in the benchmark harness.
+    """
     return rx.card(
         rx.vstack(
             rx.flex(
-                rx.heading("Token Meter", size="4", color=DARK_TEXT),
-                rx.badge("per run", radius="full", size="1",
+                rx.heading("Work Meter", size="4", color=DARK_TEXT),
+                rx.badge("calls, not raw tokens", radius="full", size="1",
                          color_scheme="gray", variant="soft"),
                 align_items="center", gap="0.75rem"),
             rx.flex(
                 rx.vstack(
-                    rx.text("Tokens on goal (verification)", size="1",
+                    rx.text("Calls on goal (verification)", size="1",
                             color=GREEN_APPROVED, font_weight="semibold"),
                     rx.heading(CCState.judge_calls, size="6",
                                color=GREEN_APPROVED),
@@ -678,7 +771,7 @@ def token_meter() -> rx.Component:
                             color=DARK_MUTED),
                     align_items="center", width="100%"),
                 rx.vstack(
-                    rx.text("Tokens burned (blind generation)", size="1",
+                    rx.text("Calls burned (blind generation)", size="1",
                             color=RED_REJECTED, font_weight="semibold"),
                     rx.heading(CCState.creator_calls, size="6",
                                color=RED_REJECTED),
@@ -688,6 +781,9 @@ def token_meter() -> rx.Component:
                 justify="between", width="100%", gap="1rem"),
             rx.text("Every judge call is a verification token — it protects the goal",
                     size="1", color=DARK_MUTED, font_style="italic"),
+            rx.text("Token totals are measured in the benchmark harness "
+                    "(final_report.json), not estimated here",
+                    size="1", color=DARK_MUTED),
             spacing="3", width="100%"),
         bg=DARK_SURFACE, border=f"1px solid {DARK_BORDER}",
         border_radius="12px", padding="1rem", width="100%")
