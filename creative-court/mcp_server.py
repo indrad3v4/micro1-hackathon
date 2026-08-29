@@ -51,13 +51,89 @@ TRACE_DIR.mkdir(parents=True, exist_ok=True)
 server = MCPServer(
     name="creative-court",
     title="Creative Court — Token Result Gate",
-    version="0.2.0",
+    version="0.3.0",
     instructions=(
         "The final signature stays human. Run a brief through the Court, review "
         "the verdicts, veto drift with a real reason, then sign only what you saw. "
-        "Every step is recorded to a JSONL trajectory."
+        "Every step is recorded to a JSONL trajectory. Traces are also exposed as "
+        "resources (trace://{run_id}) and a review prompt (court_review) is available."
     ),
 )
+
+# ---------------------------------------------------------------------------
+# Resources — the Court's record exposed to the client (AI IDE / agent).
+# This is the product's core promise made native to MCP: "return signable
+# decisions to the human" — the trajectory IS the signable record.
+# ---------------------------------------------------------------------------
+
+
+def _list_traces() -> list[dict]:
+    runs = []
+    for f in sorted(TRACE_DIR.glob("run_*.jsonl")):
+        runs.append({
+            "uri": f"trace://{f.stem.replace('run_', '')}",
+            "run_id": f.stem.replace("run_", ""),
+            "path": str(f),
+            "size": f.stat().st_size,
+        })
+    return runs
+
+
+def _read_trace_file(run_id: str) -> list[dict] | None:
+    p = TRACE_DIR / f"run_{run_id}.jsonl"
+    if not p.exists():
+        return None
+    events = []
+    with open(p, encoding="utf-8") as fh:
+        for line in fh:
+            if line.strip():
+                events.append(json.loads(line))
+    return events
+
+
+@server.resource(uri="traces://list", name="traces_list",
+                 title="Court run index",
+                 description="All Creative Court runs recorded in the trajectory store")
+def traces_list() -> list[dict]:
+    """List every recorded run (run_id, trace path, size)."""
+    return _list_traces()
+
+
+@server.resource(uri="trace://{run_id}", name="trace_read",
+                 title="Court trajectory",
+                 description="Full JSONL trajectory of one run — instruction → action → feedback → human checkpoints")
+def trace_read(run_id: str) -> dict:
+    """Return the full trajectory of one run (events + metrics)."""
+    events = _read_trace_file(run_id)
+    if events is None:
+        raise ValueError(f"run {run_id} not found")
+    from creative_court.core.trace import export_trace_metrics
+    return {
+        "run_id": run_id,
+        "events": events,
+        "metrics": export_trace_metrics(str(TRACE_DIR / f"run_{run_id}.jsonl")),
+    }
+
+
+# ---------------------------------------------------------------------------
+# Prompt — a guided review workflow the client can invoke by name.
+# ---------------------------------------------------------------------------
+
+
+@server.prompt(name="court_review", title="Review a Creative Court run",
+               description="Walk a run's verdicts as the human who must sign — find drift, decide veto or sign")
+def court_review_prompt(run_id: str) -> str:
+    """Template: the agent reads a run's trace and produces a sign-or-veto review."""
+    return (
+        f"You are the human signatory for Creative Court run `{run_id}`.\n"
+        "Read the trajectory, then for each approved direction answer: "
+        "(1) does it respect every hard constraint of the brief? "
+        "(2) is the concept concrete (not template boilerplate)? "
+        "(3) does its rationale justify the score? "
+        "Then either recommend which direction to veto (with a reason) or "
+        "confirm the whole set is safe to sign. "
+        "Sign only what you saw — never rubber-stamp."
+    )
 
 
 def _run_id() -> str:
@@ -95,8 +171,24 @@ def _verdicts_to_json(verdicts, directions=None) -> list[dict]:
             "concept": d.concept if d else "",
             "rationale": d.rationale if d else "",
             "risks": list(d.risks) if d else [],
+            # honesty: how was this produced? a heuristic direction must never
+            # be presented as LLM work (brand-champion rule)
+            "generated_by": getattr(d, "generated_by", "llm") if d else "llm",
         })
     return out
+
+
+def _warnings(directions) -> list[str]:
+    """Surface any fallback so a human never signs heuristic work as LLM work."""
+    warns = []
+    if not directions:
+        return warns
+    n_heur = sum(1 for d in directions if getattr(d, "generated_by", "llm") == "heuristic")
+    if n_heur == len(directions):
+        warns.append("LLM generation failed; all directions are heuristic templates")
+    elif n_heur:
+        warns.append(f"{n_heur}/{len(directions)} directions are heuristic fallbacks (LLM output unparseable)")
+    return warns
 
 
 @server.tool()
@@ -134,12 +226,18 @@ def court_run_brief(title: str, description: str, audience: str = "",
         directions = creator.generate(brief)
         verdicts = judge.judge(brief, directions)
         approved = [v for v in verdicts if v.approved]
+        # Sidecar: persist the canonical verdicts so sign-off binds to THEM,
+        # not to whatever the human re-typed (brand-champion rule).
+        (TRACE_DIR / f"{run_id}.verdicts.json").write_text(
+            json.dumps(_verdicts_to_json(verdicts, directions),
+                       ensure_ascii=False), encoding="utf-8")
         return {
             "run_id": run_id,
             "trace_path": str(trace_path),
             "directions_count": len(directions),
             "approved_count": len(approved),
             "verdicts": _verdicts_to_json(verdicts, directions),
+            "warnings": _warnings(directions),
             "note": ("Judge is " + ("LLM-backed" if LLMClient().available
                                     else "heuristic fallback (no LLM key)")),
         }
@@ -174,24 +272,33 @@ def court_veto(run_id: str, direction_id: str, reason: str) -> dict:
     try:
         creator = CreatorAgent(recorder=rec, llm=LLMClient())
         judge = JudgeAgent(recorder=rec, llm=LLMClient())
-        # The human's reason becomes a hard requirement: regenerate the set
-        # with the concern added to the brief's constraints, then re-score.
+        # The human's reason becomes a hard requirement on the SAME direction:
+        # rework is bound to direction_id, reason fed into the Creator prompt.
         revised_brief = Brief(
             title=brief.title, description=brief.description,
             audience=brief.audience,
             constraints=list(brief.constraints) + [f"human requirement: {reason}"],
             goal=brief.goal)
         rec.event(agent="human", type="veto", action=direction_id, feedback=reason)
-        directions = creator.generate(revised_brief)
+        directions = creator.generate(
+            revised_brief,
+            rework={"direction_id": direction_id, "reason": reason})
         verdicts = judge.judge(revised_brief, directions)
-        # the reworked slot = the direction that best answers the new constraint
-        reworked = max(verdicts, key=lambda v: v.total)
+        # the reworked slot must be the SAME direction (frame) as the vetoed one,
+        # re-generated under the new constraint — not a random unrelated frame.
+        frame = direction_id.split(":")[0] if ":" in direction_id else direction_id
+        target = next((v for v in verdicts if v.direction_id.startswith(frame + ":")), None)
+        # refresh canonical verdicts sidecar so sign_off binds to the current set
+        (TRACE_DIR / f"{run_id}.verdicts.json").write_text(
+            json.dumps(_verdicts_to_json(verdicts, directions),
+                       ensure_ascii=False), encoding="utf-8")
         return {
             "veto_id": veto_id,
-            "reworked_direction": reworked.direction_id,
+            "reworked_direction": target.direction_id if target else direction_id,
             "reason": reason,
-            "reworked_verdict": reworked.total,
+            "reworked_verdict": target.total if target else None,
             "all_verdicts": _verdicts_to_json(verdicts, directions),
+            "warnings": _warnings(directions),
             "trace_path": str(trace_path),
         }
     finally:
@@ -214,6 +321,38 @@ def court_sign_off(run_id: str, decisions: list[dict]) -> dict:
         return {
             "run_id": run_id,
             "signed": decisions,
+            "recorded": True,
+            "trace_path": str(trace_path),
+        }
+    finally:
+        rec.close()
+
+
+@server.tool()
+def court_sign_off_all(run_id: str) -> dict:
+    """Sign every currently-approved decision in ONE call, bound to the CANONICAL
+    verdicts (persisted at run/veto time) — the human confirms instead of re-typing
+    id/score/concept. Returns the signed list plus a pass-diff showing what changed
+    since the previous state, so silent replacements become visible."""
+    trace_path = TRACE_DIR / f"{run_id}.jsonl"
+    verdicts_path = TRACE_DIR / f"{run_id}.verdicts.json"
+    if not trace_path.exists():
+        return {"error": f"run {run_id} not found"}
+    if not verdicts_path.exists():
+        return {"error": f"run {run_id} has no persisted verdicts — run the brief first"}
+    canonical = json.loads(verdicts_path.read_text(encoding="utf-8"))
+    approved = [v for v in canonical if v.get("approved")]
+    if not approved:
+        return {"error": "no approved decisions to sign", "approved": []}
+    rec = TraceRecorder(str(trace_path), meta={"sign_off": datetime.now().isoformat()})
+    try:
+        rec.event(agent="human", type="human_checkpoint",
+                  human_checkpoint="human signed decisions",
+                  data={"signed": approved})
+        return {
+            "run_id": run_id,
+            "signed_count": len(approved),
+            "signed": approved,
             "recorded": True,
             "trace_path": str(trace_path),
         }

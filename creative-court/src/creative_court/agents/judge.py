@@ -67,9 +67,9 @@ class JudgeAgent:
         verdicts = []
         for d in directions:
             if self.llm.available and self._prompt_text:
-                score = self._llm_score(d, brief)
+                score, source = self._llm_score(d, brief)
             else:
-                score = self._heuristic_score(d, brief)
+                score, source = self._heuristic_score(d, brief), "heuristic"
             total = round(sum(s.score * w for (dim, w, _), s in zip(RUBRICS, score)), 1)
             approved = total >= 60.0
             v = Verdict(
@@ -78,6 +78,7 @@ class JudgeAgent:
                 scores=score,
                 summary=f"{d.name}: {total}/100 — {'approved' if approved else 'rejected'}",
                 approved=approved,
+                score_source=source,
             )
             verdicts.append(v)
             self.recorder.event(
@@ -100,10 +101,12 @@ class JudgeAgent:
 
     # --- LLM scoring --------------------------------------------------------
 
-    def _llm_score(self, direction: Direction, brief: Brief) -> list[RubricScore]:
+    def _llm_score(self, direction: Direction, brief: Brief) -> tuple[list[RubricScore], str]:
         """Ask the LLM to score a single direction using the rubric prompt.
         Falls back to heuristic scoring on any LLM/parse failure so the Court
-        never dies mid-run."""
+        never dies mid-run. On parse failure, retries once with a strict-JSON
+        hint BEFORE the heuristic — a heuristic number must never be
+        indistinguishable from an LLM one. Returns (scores, source)."""
         user = self._prompt_text.format(
             brief_title=brief.title,
             brief_description=brief.description,
@@ -117,11 +120,17 @@ class JudgeAgent:
         )
         try:
             raw = self.llm.chat(system="", user=user, max_tokens=2048)
-            return self._parse_llm_scores(raw)
+            return self._parse_llm_scores(raw), "llm"
         except Exception as exc:
-            self.recorder.retry("judge", direction.name,
-                                f"LLM score failed ({exc}); heuristic fallback")
-            return self._heuristic_score(direction, brief)
+            # one strict-JSON retry before giving up to heuristic
+            try:
+                strict = user + "\n\nIMPORTANT: Reply with ONLY valid JSON, no prose."
+                raw2 = self.llm.chat(system="", user=strict, max_tokens=2048)
+                return self._parse_llm_scores(raw2), "llm"
+            except Exception as exc2:
+                self.recorder.retry("judge", direction.name,
+                                    f"LLM score failed twice ({exc} | {exc2}); heuristic fallback")
+                return self._heuristic_score(direction, brief), "heuristic"
 
     @staticmethod
     def _parse_llm_scores(raw: str) -> list[RubricScore]:

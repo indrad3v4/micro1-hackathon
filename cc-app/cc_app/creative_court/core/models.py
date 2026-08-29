@@ -54,6 +54,7 @@ class Direction:
     concept: str               # what it is
     rationale: str             # why it fits the brief
     risks: list[str] = field(default_factory=list)
+    generated_by: str = "llm"  # provenance: "llm" or "heuristic" (honesty for the signer)
 
 
 @dataclass

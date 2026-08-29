@@ -210,10 +210,17 @@ The product's main interface is an **MCP server** (`creative-court/mcp_server.py
 | Tool | What it does |
 |---|---|
 | `court_run_brief` | brief → 6 directions → LLM verdicts (ranked, 5-dimension rubric) |
-| `court_veto` | human vetoes a direction with a real reason → the concern becomes a hard requirement → regenerate + re-score |
+| `court_veto` | human vetoes a direction with a real reason → the concern becomes a hard requirement → regenerate + re-score the SAME direction |
 | `court_sign_off` | human signs the approved decisions; the exact list is bound into the trace as `data.signed` |
+| `court_sign_off_all` | sign every currently-approved decision in ONE call, bound to canonical verdicts (no manual re-typing) |
 | `court_export_trace` | read a run's full JSONL trajectory + event metrics |
 | `court_health` | LLM availability + trace count |
+
+### Resources & Prompts
+
+- **Resources** — the Court's record is native MCP: `traces://list` (all runs) and `trace://{run_id}` (full trajectory). An AI IDE reads the signable record directly.
+- **Prompt** — `court_review` (run_id): guided "sign only what you saw" review — walk verdicts, find drift, decide veto-or-sign.
+- **Honesty built in**: every verdict carries `generated_by` (llm/heuristic) and `score_source`; responses include a `warnings` array when any fallback fired — heuristic work is never presented as LLM work.
 
 ### Connect
 
