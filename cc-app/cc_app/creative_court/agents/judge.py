@@ -24,7 +24,6 @@ RUBRICS = [
     ("quality", 0.15, "engineering / execution clarity"),
 ]
 
-# Resolve prompt path relative to this file's module directory
 # Resolve prompts: repo root has prompts/ (creative-court/prompts does not exist).
 _CANDIDATES = [
     os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", "prompts"),
@@ -35,7 +34,9 @@ _PROMPTS_DIR = next((p for p in _CANDIDATES
                      if os.path.isfile(os.path.join(p, "judge_prompt.txt"))),
                     _CANDIDATES[0])
 
-# Escape literal JSON braces in the prompt before .format() (see src version).
+# The prompt contains literal JSON braces (its OUTPUT FORMAT section) which
+# would break str.format() in _llm_score. Double every brace that is not a
+# known placeholder, so .format() works everywhere (MCP, CLI, Reflex, bench).
 _PLACEHOLDER_KEYS = (
     "brief_title", "brief_description", "brief_audience", "brief_constraints",
     "direction_frame", "direction_name", "direction_concept",
@@ -57,18 +58,22 @@ class JudgeAgent:
         self._prompt_text = _format_safe(
             load_prompt(os.path.join(_PROMPTS_DIR, "judge_prompt.txt")))
 
-    def judge(self, brief: Brief, directions: list[Direction]) -> list[Verdict]:
+    def judge(self, brief: Brief, directions: list[Direction],
+              progress_cb=None) -> list[Verdict]:
         agent = "judge"
         self.recorder.event(
             agent=agent, type="agent_start",
             instruction=f"Score {len(directions)} directions against brief '{brief.title}'",
         )
         verdicts = []
-        for d in directions:
+        n = len(directions)
+        for i, d in enumerate(directions):
+            if progress_cb:
+                progress_cb(i, n, f"judging {i + 1}/{n}: {d.name}")
             if self.llm.available and self._prompt_text:
-                score = self._llm_score(d, brief)
+                score, source = self._llm_score(d, brief)
             else:
-                score = self._heuristic_score(d, brief)
+                score, source = self._heuristic_score(d, brief), "heuristic"
             total = round(sum(s.score * w for (dim, w, _), s in zip(RUBRICS, score)), 1)
             approved = total >= 60.0
             v = Verdict(
@@ -77,6 +82,7 @@ class JudgeAgent:
                 scores=score,
                 summary=f"{d.name}: {total}/100 — {'approved' if approved else 'rejected'}",
                 approved=approved,
+                score_source=source,
             )
             verdicts.append(v)
             self.recorder.event(
@@ -99,8 +105,12 @@ class JudgeAgent:
 
     # --- LLM scoring --------------------------------------------------------
 
-    def _llm_score(self, direction: Direction, brief: Brief) -> list[RubricScore]:
-        """Ask the LLM to score a single direction using the rubric prompt."""
+    def _llm_score(self, direction: Direction, brief: Brief) -> tuple[list[RubricScore], str]:
+        """Ask the LLM to score a single direction using the rubric prompt.
+        Falls back to heuristic scoring on any LLM/parse failure so the Court
+        never dies mid-run. On parse failure, retries once with a strict-JSON
+        hint BEFORE the heuristic — a heuristic number must never be
+        indistinguishable from an LLM one. Returns (scores, source)."""
         user = self._prompt_text.format(
             brief_title=brief.title,
             brief_description=brief.description,
@@ -112,19 +122,39 @@ class JudgeAgent:
             direction_rationale=direction.rationale,
             direction_risks=", ".join(direction.risks) if direction.risks else "(none)",
         )
-        raw = self.llm.chat(system="", user=user, max_tokens=2048)
-        return self._parse_llm_scores(raw)
+        try:
+            raw = self.llm.chat(system="", user=user, max_tokens=2048)
+            return self._parse_llm_scores(raw), "llm"
+        except Exception as exc:
+            # one strict-JSON retry before giving up to heuristic
+            try:
+                strict = user + "\n\nIMPORTANT: Reply with ONLY valid JSON, no prose."
+                raw2 = self.llm.chat(system="", user=strict, max_tokens=2048)
+                return self._parse_llm_scores(raw2), "llm"
+            except Exception as exc2:
+                self.recorder.retry("judge", direction.name,
+                                    f"LLM score failed twice ({exc} | {exc2}); heuristic fallback")
+                return self._heuristic_score(direction, brief), "heuristic"
 
     @staticmethod
     def _parse_llm_scores(raw: str) -> list[RubricScore]:
-        """Extract JSON scores from LLM output, handling markdown fences."""
+        """Extract JSON scores from LLM output, handling markdown fences and
+        stray reasoning/prose. Falls back to finding the first {...} block."""
         import re
-        cleaned = raw.strip()
+        cleaned = (raw or "").strip()
+        # drop any reasoning_content prefix (some models emit it)
+        cleaned = re.sub(r"<reasoning>.*?</reasoning>", "", cleaned, flags=re.DOTALL)
         # Strip optional markdown code fence
         m = re.search(r"```(?:json)?\s*\n(.*?)\n```\s*$", cleaned, re.DOTALL)
         if m:
             cleaned = m.group(1).strip()
-        obj = json.loads(cleaned)
+        try:
+            obj = json.loads(cleaned)
+        except json.JSONDecodeError:
+            m2 = re.search(r"\{.*\}", cleaned, re.DOTALL)
+            if not m2:
+                raise ValueError(f"no JSON object in judge output: {cleaned[:120]!r}")
+            obj = json.loads(m2.group(0))
         results = []
         for entry in obj.get("scores", []):
             dim = entry["dimension"]

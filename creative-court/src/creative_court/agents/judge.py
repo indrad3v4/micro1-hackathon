@@ -58,14 +58,18 @@ class JudgeAgent:
         self._prompt_text = _format_safe(
             load_prompt(os.path.join(_PROMPTS_DIR, "judge_prompt.txt")))
 
-    def judge(self, brief: Brief, directions: list[Direction]) -> list[Verdict]:
+    def judge(self, brief: Brief, directions: list[Direction],
+              progress_cb=None) -> list[Verdict]:
         agent = "judge"
         self.recorder.event(
             agent=agent, type="agent_start",
             instruction=f"Score {len(directions)} directions against brief '{brief.title}'",
         )
         verdicts = []
-        for d in directions:
+        n = len(directions)
+        for i, d in enumerate(directions):
+            if progress_cb:
+                progress_cb(i, n, f"judging {i + 1}/{n}: {d.name}")
             if self.llm.available and self._prompt_text:
                 score, source = self._llm_score(d, brief)
             else:

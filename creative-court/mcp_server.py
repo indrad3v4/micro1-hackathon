@@ -36,7 +36,7 @@ from pathlib import Path
 # Make the core importable regardless of CWD.
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "src"))
 
-from mcp.server.mcpserver import MCPServer  # mcp 2.x
+from mcp.server.mcpserver import MCPServer, Context  # mcp 2.x
 
 from creative_court.core.models import Brief
 from creative_court.core.trace import TraceRecorder, export_trace_metrics
@@ -202,11 +202,19 @@ def court_health() -> dict:
 
 
 @server.tool()
-def court_run_brief(title: str, description: str, audience: str = "",
-                    constraints: str = "", goal: str = "") -> dict:
+async def court_run_brief(title: str, description: str, audience: str = "",
+                          constraints: str = "", goal: str = "",
+                          ctx: Context = None) -> dict:
     """Run a creative brief through the Court: Creator fans directions, Judge
     scores every one on the 5-dimension rubric and vetoes hard-constraint drift.
     Returns ranked verdicts; the human reviews and either signs or vetoes."""
+    import asyncio
+
+    async def _progress(p: float, msg: str) -> None:
+        if ctx:
+            await ctx.report_progress(p, 100, msg)
+
+    await _progress(5, "Loading brief")
     if not title.strip():
         return {"error": "title is required"}
     brief = _brief_from(title=title, description=description,
@@ -220,17 +228,31 @@ def court_run_brief(title: str, description: str, audience: str = "",
                     "goal": brief.goal}, ensure_ascii=False), encoding="utf-8")
     rec = TraceRecorder(str(trace_path), meta={
         "title": brief.title, "run": run_id, "kind": "mcp"})
+    loop = asyncio.get_running_loop()
     try:
         creator = CreatorAgent(recorder=rec, llm=LLMClient())
         judge = JudgeAgent(recorder=rec, llm=LLMClient())
-        directions = creator.generate(brief)
-        verdicts = judge.judge(brief, directions)
+        await _progress(15, "Creator: fanning directions")
+
+        # run the blocking LLM work off-loop; progress callbacks hop back via threadsafe
+        def _run():
+            dirs = creator.generate(brief)
+            n = len(dirs)
+            def cb(i, n, msg):
+                loop.call_soon_threadsafe(
+                    lambda: asyncio.ensure_future(_progress(30 + int(60 * (i + 1) / n), msg)))
+            vs = judge.judge(brief, dirs, progress_cb=cb)
+            return dirs, vs
+        directions, verdicts = await asyncio.to_thread(_run)
+
         approved = [v for v in verdicts if v.approved]
+        await _progress(95, "Persisting verdicts")
         # Sidecar: persist the canonical verdicts so sign-off binds to THEM,
         # not to whatever the human re-typed (brand-champion rule).
         (TRACE_DIR / f"{run_id}.verdicts.json").write_text(
             json.dumps(_verdicts_to_json(verdicts, directions),
                        ensure_ascii=False), encoding="utf-8")
+        await _progress(100, "Done")
         return {
             "run_id": run_id,
             "trace_path": str(trace_path),
@@ -246,10 +268,18 @@ def court_run_brief(title: str, description: str, audience: str = "",
 
 
 @server.tool()
-def court_veto(run_id: str, direction_id: str, reason: str) -> dict:
+async def court_veto(run_id: str, direction_id: str, reason: str,
+                     ctx: Context = None) -> dict:
     """Human vetoes one direction with a real reason; the Creator reworks that
     direction to address the reason and the Judge re-scores it. This is the
     moment the human's signature re-enters the work — reason is not optional."""
+    import asyncio
+
+    async def _progress(p: float, msg: str) -> None:
+        if ctx:
+            await ctx.report_progress(p, 100, msg)
+
+    await _progress(5, "Recording veto")
     if not reason.strip():
         return {"error": "a veto needs a real reason — that is the point"}
     trace_path = TRACE_DIR / f"{run_id}.jsonl"
@@ -269,6 +299,7 @@ def court_veto(run_id: str, direction_id: str, reason: str) -> dict:
                       audience="", constraints=[], goal="")
     veto_id = datetime.now().strftime("veto_%Y%m%d_%H%M%S")
     rec = TraceRecorder(str(trace_path), meta={"veto": veto_id, "for": run_id})
+    loop = asyncio.get_running_loop()
     try:
         creator = CreatorAgent(recorder=rec, llm=LLMClient())
         judge = JudgeAgent(recorder=rec, llm=LLMClient())
@@ -280,18 +311,31 @@ def court_veto(run_id: str, direction_id: str, reason: str) -> dict:
             constraints=list(brief.constraints) + [f"human requirement: {reason}"],
             goal=brief.goal)
         rec.event(agent="human", type="veto", action=direction_id, feedback=reason)
-        directions = creator.generate(
-            revised_brief,
-            rework={"direction_id": direction_id, "reason": reason})
-        verdicts = judge.judge(revised_brief, directions)
+        await _progress(20, "Creator: reworking the vetoed direction")
+
+        # run the blocking LLM work off-loop; progress callbacks hop back via threadsafe
+        def _run():
+            dirs = creator.generate(
+                revised_brief,
+                rework={"direction_id": direction_id, "reason": reason})
+            n = len(dirs)
+            def cb(i, n, msg):
+                loop.call_soon_threadsafe(
+                    lambda: asyncio.ensure_future(_progress(45 + int(45 * (i + 1) / n), msg)))
+            vs = judge.judge(revised_brief, dirs, progress_cb=cb)
+            return dirs, vs
+        directions, verdicts = await asyncio.to_thread(_run)
+
         # the reworked slot must be the SAME direction (frame) as the vetoed one,
         # re-generated under the new constraint — not a random unrelated frame.
         frame = direction_id.split(":")[0] if ":" in direction_id else direction_id
         target = next((v for v in verdicts if v.direction_id.startswith(frame + ":")), None)
         # refresh canonical verdicts sidecar so sign_off binds to the current set
+        await _progress(95, "Persisting verdicts")
         (TRACE_DIR / f"{run_id}.verdicts.json").write_text(
             json.dumps(_verdicts_to_json(verdicts, directions),
                        ensure_ascii=False), encoding="utf-8")
+        await _progress(100, "Done")
         return {
             "veto_id": veto_id,
             "reworked_direction": target.direction_id if target else direction_id,
