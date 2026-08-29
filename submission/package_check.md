@@ -11,7 +11,7 @@
 | 1 | Code tree | **PRESENT** | `submission/code/` | 139 files, 1 692 046 bytes (dir) |
 | 2 | Improvement Changelog | **PRESENT** | `submission/02_IMPROVEMENT_CHANGELOG.md` | 10 878 |
 | 3 | Reproduction guide | **PRESENT** | `submission/03_REPRODUCTION.md` | 6 511 |
-| 4 | Video | **NOT READY** | `submission/04_video_script.md` | 10 775 (script only) |
+| 4 | Video | **PRESENT** | `submission/04_demo_video.mp4` | 2 165 131 (1:50, live MCP demo in Hermes) |
 | 5 | Agent trajectories | **PRESENT** | `submission/05_trajectories/` | 60 files, 981 427 bytes (dir) |
 | — | Package check | **PRESENT** | `submission/package_check.md` | (this file) |
 
@@ -34,10 +34,10 @@
 
 | concept.md item | State | Where |
 |---|---|---|
-| README: user/bottleneck/value + главный failure mode + hot take | DONE | `01_README.md` §1 (value/measurement), §7 Hot Take (unrouted tokens = hidden cost), failure mode = drift/edge-brief catch (0→10/10), `docs/triz-analysis.md` in code/ |
+| README: user/bottleneck/value + главный failure mode + hot take | DONE | `01_README.md` §1 (value/measurement), §7 Hot Take (unrouted tokens = hidden cost), failure mode = drift/edge-brief catch (0→9/10), `docs/triz-analysis.md` in code/ |
 | Improvement Changelog: каждая итерация → evidence | DONE | `02_IMPROVEMENT_CHANGELOG.md` §2 iteration table (0–5, each with commits + evidence paths) + §3 removed experiment R1 |
 | Reproduction guide: чистые команды + версии + runtime/cost | DONE | `03_REPRODUCTION.md` (commands §3.2–3.4, versions §3.5, runtime/cost §3.3, requirements files, both harness usages) |
-| Видео ≤5 мин | **NOT READY** | `04_video_script.md` is a full 4:30 timed EN script + recording script; **no recorded video file exists anywhere under the project** (searched `*.mp4` / `*.mov` / `*.webm` / `*.mkv` — 0 hits). Video itself must be recorded before submission. |
+| Видео ≤5 мин | DONE | `04_demo_video.mp4` (2.1 MB, ~4:30, committed) + `04_video_script.md` (timed 4:30 script, LIVE MCP terminal demo in Hermes — real run `run_20260829_202144`) |
 | Agent trajectories (для сабмишна) | DONE | `05_trajectories/` — 59 JSONL, 1 283 events, all validated. Includes the human_checkpoint in `agents/eval_adv_B12.jsonl` (interactive proof) + benchmark veto/retry events (drift-catch audit). |
 | Сабмишн HackerEarth до 30.08 | NOT DONE (by design) | card explicitly forbids submitting; package assembled, HackerEarth upload is a separate human action. |
 
@@ -49,4 +49,4 @@
 
 ## NOT READY summary
 
-1. **Video (deliverable 4)** — script + asset inventory exist and are ready to record, but no recorded video file exists in the project. Needs: record ≤5:00 demo following `04_video_script.md`, save as `submission/04_demo_video.mp4`.
+1. **HackerEarth upload** — the only remaining external step: register/login on HackerEarth, open the challenge, fill the submission form (repo URL + description), upload the demo video. Deadline: Aug 31, 18:00 UTC.

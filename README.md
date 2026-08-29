@@ -152,16 +152,16 @@ Then connect any HTTP-capable MCP host to `http://<host>:8765/mcp`.
 
 | Metric | Baseline (heuristic judge, 0 LLM calls) | Advanced (Creative Court 2.0) | Delta |
 |---|---|---|---|
-| **Drift-catch rate** (primary outcome) | **0 / 10** (0 %) | **10 / 10** (100 %) | **+100 %** |
-| Mean drift-probe score (lower = caught better) | 79.5 | 18.6 | −60.9 pts |
-| Human review time per task (modelled proxy) | 33.0 min | 7.5 min | −25.5 min / task (−77 %) |
-| LLM spend, 10 tasks (measured, incl. `usage.cost`) | $0.00 | **$0.10369** | **$0.01037 / task** |
-| Tokens, 10 tasks (measured) | 0 | 378 866 | — |
-| LLM calls, 10 tasks (measured) | 0 | 109 | — |
-| Wall-clock, 10 tasks (measured) | ~0.04 s / task | 2 900 s (~48 min) | — |
-| Vetoes / replacements | 0 | 10 / 10 | — |
+| **Drift-catch rate** (primary outcome) | **0 / 10** (0 %) | **9 / 10** (90 %) | **+90 %** |
+| Mean drift-probe score (lower = caught better) | 79.5 | 23.7 | −55.8 pts |
+| Human review time per task (modelled proxy) | 33.1 min | 7.25 min | −25.85 min / task (−78 %) |
+| LLM spend, 10 tasks (measured, incl. `usage.cost`) | $0.00 | **$0.09384** | **$0.00938 / task** |
+| Tokens, 10 tasks (measured) | 0 | 348 877 | — |
+| LLM calls, 10 tasks (measured) | 0 | 99 | — |
+| Wall-clock, 10 tasks (measured) | ~0.04 s / task | 2 646 s (~44 min) | — |
+| Vetoes / replacements | 0 | 9 / 9 | — |
 
-Every brief received the **same hand-written drift probe** (a confident-sounding direction that violates a hard constraint but is lexically saturated with brief keywords) in both conditions. The baseline was fooled by every probe; the Court rejected all 10 — including the deliberately contradictory `eval_10_edge_hotel`.
+Every brief received the **same hand-written drift probe** (a confident-sounding direction that violates a hard constraint but is lexically saturated with brief keywords) in both conditions. The baseline was fooled by every probe; the Court rejected 9 of 10 — including the deliberately contradictory `eval_10_edge_hotel`.
 
 **Why the baseline's zero token spend is the hidden cost:** 0 LLM calls and $0.00 sounds free, but the heuristic judge is not a judge — it rubber-stamps constraint-violating directions (mean probe score 79.5), so the human pays 33 modelled minutes per task re-checking work that already missed the goal. The Court's ~1-cent-per-task verification spend buys certainty.
 
@@ -211,7 +211,7 @@ python cc-app/evaluation/run_benchmark.py --fresh
 ```
 
 - `--fresh` re-runs all 10 briefs end-to-end (baseline + advanced per brief) and regenerates `final_report.json` / `.csv` / `traces/*.jsonl`.
-- **Expected runtime & cost** (measured): ~2 900 s (~48 min) wall-clock; **$0.10369 total → $0.01037/task** (378 866 tokens, 109 LLM calls).
+- **Expected runtime & cost** (measured): ~2 646 s (~44 min) wall-clock; **$0.09384 total → $0.00938/task** (348 877 tokens, 99 LLM calls).
 - Partial runs: `--limit 2` (smoke), `--only eval_10_edge_hotel` (single brief), `--no-llm` (offline/heuristic, CI-safe — run on a copy to keep real evidence).
 
 ### Verified dependency versions
@@ -230,7 +230,7 @@ python cc-app/evaluation/run_benchmark.py --fresh
 ## Improvement changelog & hot take
 
 - **Full changelog:** `IMPROVEMENT_CHANGELOG.md` — Baseline → Iterations 1–6 → Final, each with evidence and decision, plus the removed experiment (R1).
-- **Hot take — unrouted tokens are the hidden cost.** Most agentic designs treat *generation* as expensive and *checking* as cheap. This benchmark measures the opposite: the "free" baseline (0 LLM calls, $0.00) still fails the goal — it accepts all 10 drift probes — and pushes the bill onto the most expensive interpreter in the loop, the human (33 modelled minutes per task). The Court inverts the curve: ~$0.01 of QA per task buys back ~25.5 minutes of human attention. **Token spend should be a gate on result, not a meter of activity** — and an LLM judge without a human veto quietly accepts edge cases as truth. The veto is not a courtesy; it is mandatory.
+- **Hot take — unrouted tokens are the hidden cost.** Most agentic designs treat *generation* as expensive and *checking* as cheap. This benchmark measures the opposite: the "free" baseline (0 LLM calls, $0.00) still fails the goal — it accepts 10 of 10 drift probes — and pushes the bill onto the most expensive interpreter in the loop, the human (33 modelled minutes per task). The Court inverts the curve: ~$0.01 of QA per task buys back ~25.85 minutes of human attention. **Token spend should be a gate on result, not a meter of activity** — and an LLM judge without a human veto quietly accepts edge cases as truth. The veto is not a courtesy; it is mandatory.
 
 ---
 

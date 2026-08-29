@@ -48,11 +48,11 @@ python cc-app/evaluation/run_benchmark.py --fresh
 | `per_brief/<id>.json` | crash-safe incremental per-brief results |
 | `traces/bench_eval_<id>_{baseline,advanced}.jsonl` | one trajectory pair per brief (TraceRecorder format) |
 
-**Expected runtime & cost** (measured, from `final_report.json`):
+- **Expected runtime & cost** (measured, from `final_report.json`):
 
-- **Wall-clock:** ~2 900 s (~48 min) for the full 10-brief advanced run; dominated by LLM latency. The deterministic baseline is ~0.034–0.085 s per task.
-- **Cost:** **$0.10369 total → $0.01037 per task** (10 tasks; 378 866 tokens; 109 LLM calls). Verified from `usage.cost` when the API reports it, else a chars/4-token estimate (flagged `usage_estimated`).
-- Cost math is linear and auditable: `per_task = total / n_briefs = 0.10369 / 10 = 0.01037`. A single smoke brief (`--limit 1`) costs ≈ **$0.01** (measured per-brief range across the 10 tasks: $0.0061–$0.0165).
+- **Wall-clock:** ~2 646 s (~44 min) for the full 10-brief advanced run; dominated by LLM latency. The deterministic baseline is ~0.034–0.085 s per task.
+- **Cost:** **$0.09384 total → $0.00938 per task** (10 tasks; 348 877 tokens; 99 LLM calls). Verified from `usage.cost` when the API reports it, else a chars/4-token estimate (flagged `usage_estimated`).
+- Cost math is linear and auditable: `per_task = total / n_briefs = 0.09384 / 10 = 0.00938`. A single smoke brief (`--limit 1`) costs ≈ **$0.01** (measured per-brief range across the 10 tasks: $0.0061–$0.0165).
 
 ## 3.4 Partial / offline runs
 
