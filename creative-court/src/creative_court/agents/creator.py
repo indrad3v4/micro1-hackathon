@@ -5,18 +5,17 @@ heuristic fallback otherwise (keeps the pipeline runnable offline).
 """
 from __future__ import annotations
 
+import json
+import os
+import re
+
 from ..core.models import Brief, Direction
 from ..core.trace import TraceRecorder
-from ..core.llm import LLMClient, heuristic_directions
+from ..core.llm import LLMClient, FRAMES, heuristic_directions, load_prompt
 
-CREATOR_SYSTEM = (
-    "You are the Creator agent in a creative court. Given a brief, produce "
-    "creative directions across SIX frames: artistic, social, professional, "
-    "historical, ritual, natural. For each direction give: frame, name, "
-    "concept (what it is), rationale (why it fits the brief), risks. "
-    "Return STRICT JSON: {\"directions\": [{\"frame\": ..., \"name\": ..., "
-    "\"concept\": ..., \"rationale\": ..., \"risks\": [...]}]}"
-)
+# Load improved prompt from disk
+_PROMPTS_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "..", "prompts")
+_CREATOR_SYSTEM = load_prompt(os.path.join(_PROMPTS_DIR, "creator_prompt.txt"))
 
 
 class CreatorAgent:
@@ -30,11 +29,12 @@ class CreatorAgent:
             agent=agent, type="agent_start",
             instruction=f"Generate creative directions for brief: {brief.title}",
         )
-        if self.llm.available:
+        if self.llm.available and _CREATOR_SYSTEM:
             try:
-                raw = self.llm.chat(CREATOR_SYSTEM, f"BRIEF:\n{brief.title}\n{brief.description}")
-                self.recorder.tool_response(agent, "llm", raw)
-                payload = _parse_json(raw)
+                raw = self._build_user_prompt(brief)
+                response = self.llm.chat(system=_CREATOR_SYSTEM, user=raw, max_tokens=4096)
+                self.recorder.tool_response(agent, "llm", response)
+                payload = _parse_json(response)
                 directions = [
                     Direction(**{**d, "risks": d.get("risks", [])})
                     for d in payload.get("directions", [])
@@ -58,10 +58,30 @@ class CreatorAgent:
                             action=f"returned {len(directions)} directions")
         return directions
 
+    @staticmethod
+    def _build_user_prompt(brief: Brief) -> str:
+        parts = [f"Title: {brief.title}", f"Description: {brief.description}"]
+        if brief.audience:
+            parts.append(f"Audience: {brief.audience}")
+        if brief.goal:
+            parts.append(f"Goal: {brief.goal}")
+        if brief.constraints:
+            parts.append(f"Constraints:\n" + "\n".join(f"- {c}" for c in brief.constraints))
+        return "\n".join(parts)
+
 
 def _parse_json(raw: str) -> dict:
-    import re
-    m = re.search(r"\{.*\}", raw, re.DOTALL)
-    if not m:
+    """Extract JSON from LLM output, stripping markdown fences if present."""
+    cleaned = raw.strip()
+    m = re.search(r"```(?:json)?\s*\n(.*?)\n```\s*$", cleaned, re.DOTALL)
+    if m:
+        cleaned = m.group(1).strip()
+    # Try full parse first, then bracket-fallback
+    try:
+        return json.loads(cleaned)
+    except json.JSONDecodeError:
+        pass
+    m2 = re.search(r"\{.*\}", cleaned, re.DOTALL)
+    if not m2:
         raise ValueError("no JSON object in LLM output")
-    return __import__("json").loads(m.group(0))
+    return json.loads(m2.group(0))
