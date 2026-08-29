@@ -101,8 +101,8 @@ class PipelineResult(BaseModel):
 # Helpers
 # ---------------------------------------------------------------------------
 
-TRACE_DIR = Path("traces")
-BRIEFS_DIR = _PROJECT_ROOT / "demo_briefs"
+TRACE_DIR = _ROOT / "traces"
+BRIEFS_DIR = _ROOT / "demo_briefs"
 
 def _check_llm() -> bool:
     """Return True if an LLM key is configured."""
