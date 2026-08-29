@@ -101,7 +101,7 @@ python cc-app/evaluation/run_benchmark.py --fresh
 | `final_report.json` | full machine-readable evidence (meta + summary + per-brief baseline/advanced blocks) |
 | `final_report.csv` | one row per brief + totals |
 | `per_brief/<id>.json` | crash-safe incremental per-brief results |
-| `traces/bench_<id>_{baseline,advanced}.jsonl` | one trajectory pair per brief (TraceRecorder format) |
+| `traces/bench_eval_<id>_{baseline,advanced}.jsonl` | one trajectory pair per brief (TraceRecorder format) |
 
 **Expected runtime & cost** (measured, from `final_report.json`):
 
@@ -154,6 +154,28 @@ From `final_report.json` → `meta.interpretation_notes`:
 - `cc-app/evaluation/results/final_report.json` — machine-readable evidence (source of truth for all numbers above)
 - `cc-app/evaluation/results/final_report.csv` — one row per brief + totals
 - `cc-app/evaluation/results/per_brief/*.json` — crash-safe per-brief results (10)
-- `cc-app/evaluation/results/traces/bench_*_{baseline,advanced}.jsonl` — benchmark trajectory pairs (20)
+- `cc-app/evaluation/results/traces/bench_eval_*_{baseline,advanced}.jsonl` — benchmark trajectory pairs (20; 10 baseline + 10 advanced)
 - `creative-court/traces/*.jsonl` — agent trajectories (deliverable 04)
 - `IMPROVEMENT_CHANGELOG.md` — baseline → Iterations 1–3 → Final, with the removed R1 experiment
+
+## 6. Trajectory format (submission requirement 04)
+
+Every trace is **append-only JSONL** written by `TraceRecorder` (`creative-court/src/creative_court/core/trace.py`) with atomic per-line `fsync`. Each line is one flat event with 12 keys:
+
+```jsonc
+{"ts": "…ISO-8601 UTC…", "agent": "creator|judge|harness|…",
+ "type": "agent_start|agent_step|agent_end|tool_call|tool_response|veto|retry|human_checkpoint",
+ "instruction": "…", "action": "…", "tool": "…", "tool_response": "…",
+ "feedback": "…", "retry_of": "…", "human_checkpoint": "…", "verdict": "…", "data": {…}}
+```
+
+The four submission-required aspects map directly onto schema fields — **instruction → action → feedback → human checkpoints**:
+
+| Requirement | Schema field(s) | Example (from `creative-court/traces/eval_adv_B12.jsonl`) |
+|---|---|---|
+| instruction | `instruction` | the brief + direction prompt passed to the agent |
+| action | `action` / `tool` / `tool_response` | `"action": "verdict for artistic:Artistic angle"` + `tool: "llm"` |
+| feedback | `feedback` | `"feedback": "Artistic angle: 64.3/100 — approved"` |
+| human checkpoints | `type: "human_checkpoint"` + `human_checkpoint` | `"human_checkpoint": "ASSESSMENT: человек проверяет топ-3 перед запуском"` |
+
+Veto and retry events additionally record the court's drift-catch mechanics (`veto`, `retry_of`), so the 10/10 drift-catch result is auditable event-by-event, not just as a summary number. All 56 committed trace files validate against this schema (checked programmatically: 0 malformed lines).
